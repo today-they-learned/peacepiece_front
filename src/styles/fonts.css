@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "NS-L";
+  src: url("fonts/NanumSquareOTF_acL.otf");
+}
+@font-face {
+  font-family: "NS-R";
+  src: url("fonts/NanumSquareOTF_acR.otf");
+}
+@font-face {
+  font-family: "NS-B";
+  src: url("fonts/NanumSquareOTF_acB.otf");
+}
+@font-face {
+  font-family: "NS-EB";
+  src: url("fonts/NanumSquareOTF_acEB.otf");
+}
+@font-face {
+  font-family: "TR-B";
+  src: url("fonts/TmoneyRoundWindExtraBold.ttf");
+}
+@font-face {
+  font-family: "TR-R";
+  src: url("fonts/TmoneyRoundWindRegular.ttf");
+}
+
+@font-face {
+  font-family: "GS-B";
+  src: url("fonts/GmarketSansTTFBold.ttf");
+}
+
+@font-face {
+  font-family: "GS-M";
+  src: url("fonts/GmarketSansTTFMedium.ttf");
+}
+@font-face {
+  font-family: "GS-L";
+  src: url("fonts/GmarketSansTTFLight.ttf");
+}
