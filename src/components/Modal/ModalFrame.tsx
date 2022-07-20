@@ -6,7 +6,6 @@ const Container = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,6 +85,7 @@ const ConfirmButton = styled.button`
 const Contents = styled.div`
   width: 70%;
   margin-right: 0;
+  font-weight: bolder;
 `;
 
 type NewType = {
