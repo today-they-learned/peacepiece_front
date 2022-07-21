@@ -1,10 +1,10 @@
+import MobileNavbar from "components/Navbar/MobileNavbar";
 import React from "react";
-import Navbar from "components/Navbar/Navbar";
 
 const MobileLayout = ({ children }) => {
   return (
     <>
-      <Navbar />
+      <MobileNavbar />
       <div>{children}</div>
     </>
   );

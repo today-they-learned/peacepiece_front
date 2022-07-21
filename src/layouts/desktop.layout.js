@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "components/Navbar/Navbar";
+import DesktopNavbar from "components/Navbar/DesktopNavbar";
 
 const DesktopLayout = ({ children }) => {
   return (
     <>
-      <Navbar />
+      <DesktopNavbar />
       <div>{children}</div>
     </>
   );
