@@ -7,19 +7,20 @@ import Main from "components/Main/Main";
 import Island from "components/Island/Island";
 import Challenge from "components/Challenge/Challenge";
 import Piece from "components/Piece/Piece";
+import ResponsiveLayout from "layouts/responsive.layout";
 
 const App = () => {
   return (
     <>
       <GlobalStyles />
       <Router>
-        <Routes>
-          <Route path="/" element={<Main />}>
-            <Route path="island" element={<Island />} />
+        <ResponsiveLayout>
+          <Routes>
+            <Route exact path="/" element={<Island />} />
             <Route path="challenge" element={<Challenge />} />
             <Route path="piece" element={<Piece />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </ResponsiveLayout>
       </Router>
     </>
   );

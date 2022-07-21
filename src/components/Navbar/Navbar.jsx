@@ -145,8 +145,15 @@ const Navbar = () => {
   const [currentClickNav, setCurrentClickNav] = useState("island");
   const [prevClickNav, setPrevClickNav] = useState(null);
 
+  const navigate = useNavigate();
+
   const getClickNav = (e) => {
     setCurrentClickNav(e.target.id);
+    if (e.target.id === "island") {
+      navigate("/");
+    } else {
+      navigate(`/${e.target.id}`);
+    }
   };
 
   useEffect(() => {
