@@ -1,15 +1,28 @@
 import "./App.css";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Main from "components/Main/Main";
+import GlobalStyles from "styles/GlobalStyles";
 
-function App() {
+import Island from "components/Island/Island";
+import Challenge from "components/Challenge/Challenge";
+import Piece from "components/Piece/Piece";
+import ResponsiveLayout from "layouts/responsive.layout";
+
+const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
-    </Router>
+    <>
+      <GlobalStyles />
+      <Router>
+        <ResponsiveLayout>
+          <Routes>
+            <Route path="/" element={<Island />} />
+            <Route path="challenge" element={<Challenge />} />
+            <Route path="piece" element={<Piece />} />
+          </Routes>
+        </ResponsiveLayout>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;
