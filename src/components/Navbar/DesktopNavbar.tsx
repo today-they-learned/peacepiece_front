@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ButtonHTMLAttributes } from "react";
 
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
@@ -32,7 +32,7 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
-const Island = styled.span`
+const Island = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 18px;
   &::after {
@@ -60,7 +60,7 @@ const Island = styled.span`
   }
 `;
 
-const Challenge = styled.span`
+const Challenge = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 18px;
   &::after {
@@ -88,7 +88,7 @@ const Challenge = styled.span`
   }
 `;
 
-const Piece = styled.span`
+const Piece = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 18px;
   &::after {
@@ -147,12 +147,15 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const getClickNav = (e) => {
-    setCurrentClickNav(e.target.id);
-    if (e.target.id === "island") {
-      navigate("/");
-    } else {
-      navigate(`/${e.target.id}`);
+  const getClickNav = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target instanceof Element) {
+      setCurrentClickNav(e.target.id);
+
+      if (e.target.id === "island") {
+        navigate("/");
+      } else {
+        navigate(`/${e.target.id}`);
+      }
     }
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Piece = (props) => {
+const Piece = () => {
   return <div>피스</div>;
 };
 

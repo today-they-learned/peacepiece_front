@@ -1,6 +1,6 @@
 import React from "react";
 
-const Island = (props) => {
+const Island = () => {
   return <div>소개</div>;
 };
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Challenge = (props) => {
+const Challenge = () => {
   return <div>챌린지</div>;
 };
 

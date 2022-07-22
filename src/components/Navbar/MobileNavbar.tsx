@@ -31,7 +31,7 @@ const Container = styled.div`
   cursor: pointer;
 `;
 
-const Island = styled.span`
+const Island = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 1rem;
   &::after {
@@ -59,7 +59,7 @@ const Island = styled.span`
   }
 `;
 
-const Challenge = styled.span`
+const Challenge = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 1rem;
   &::after {
@@ -87,7 +87,7 @@ const Challenge = styled.span`
   }
 `;
 
-const Piece = styled.span`
+const Piece = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 1rem;
   &::after {
@@ -146,12 +146,14 @@ const MobileNavbar = () => {
 
   const navigate = useNavigate();
 
-  const getClickNav = (e) => {
-    setCurrentClickNav(e.target.id);
-    if (e.target.id === "island") {
-      navigate("/");
-    } else {
-      navigate(`/${e.target.id}`);
+  const getClickNav = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target instanceof Element) {
+      setCurrentClickNav(e.target.id);
+      if (e.target.id === "island") {
+        navigate("/");
+      } else {
+        navigate(`/${e.target.id}`);
+      }
     }
   };
 
