@@ -12,7 +12,7 @@ interface Props {
   column?: boolean;
   reverse?: boolean;
   wrap?: string;
-  jusifyContent?: string;
+  justifyContent?: string;
   alignItems?: string;
   center?: boolean;
 }
@@ -27,7 +27,7 @@ const defaultProps = {
   column: false,
   reverse: false,
   wrap: "nowrap",
-  jusifyContent: "flex-start",
+  justifyContent: "flex-start",
   alignItems: "flex-start",
   center: false,
 };
@@ -44,7 +44,7 @@ const FlexBox = (props: Props) => {
     column,
     reverse,
     wrap,
-    jusifyContent,
+    justifyContent,
     alignItems,
     center,
   } = props;
@@ -60,7 +60,7 @@ const FlexBox = (props: Props) => {
     border-radius: ${borderRadius};
     flex-direction: ${dir};
     flex-wrap: ${wrap};
-    justify-content: ${center ? "center" : jusifyContent};
+    justify-content: ${center ? "center" : justifyContent};
     align-items: ${center ? "center" : alignItems};
   `;
 
