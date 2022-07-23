@@ -1,23 +1,23 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import COLOR from "constants/color.constant";
+import COLOR from "constants/color";
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
   * {
     box-sizing: border-box;
+    font-size: 16px;
   }
   body{
     background-color: ${COLOR.WHITE};
     color: ${COLOR.BLACK};
-    font-size: 15px;
   }
   a {
     color: inherit;
     text-decoration: none;
   }
   input, button {
-    background-color: transparent;
+    background-color: transparent; 
     border: none;
     outline: none;
   }
