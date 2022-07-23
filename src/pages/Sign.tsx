@@ -12,7 +12,7 @@ const Sign = () => {
       <FlexBox
         column
         shadow
-        width="33rem"
+        width="30rem"
         margin="10rem 0 0 0"
         borderRadius="1rem"
       >
@@ -24,7 +24,9 @@ const Sign = () => {
             회원가입
           </TabBtn>
         </FlexBox>
-        {tab ? <Login /> : <Signup />}
+        <FlexBox width="100%" margin="2.5rem 0" center>
+          {tab ? <Login /> : <Signup />}
+        </FlexBox>
       </FlexBox>
     </FlexBox>
   );

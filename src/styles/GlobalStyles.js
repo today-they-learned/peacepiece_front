@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
   body{
     background-color: ${COLOR.WHITE};
     color: ${COLOR.BLACK};
+    font-family: 'NS-R';
   }
   a {
     color: inherit;
