@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import styled from "styled-components";
+import FlexButton from "../common/FlexButton";
 
 const Container = styled.div`
   position: absolute;
@@ -14,7 +15,7 @@ const Container = styled.div`
 
 const ModalBlock = styled.div`
   width: 28rem;
-  height: 13rem;
+  height: 12rem;
   border-radius: 8px;
   padding: 1.5rem;
   background-color: white;
@@ -65,36 +66,9 @@ const Content = styled.div`
 
 const ButtonContainer = styled.div`
   width: 100%;
+  margin-left: 64%;
   display: flex;
   flex-direction: row;
-`;
-
-const BackButton = styled.button`
-  width: 4.2rem;
-  height: 2rem;
-  border: 0;
-  outline: 0;
-  border-radius: 0.3rem;
-  margin-left: 65%;
-  font-size: 0.8rem;
-  font-weight: bolder;
-  background-color: #a3a3a3;
-  color: white;
-  cursor: pointer;
-`;
-
-const ConfirmButton = styled.button`
-  width: 4.2rem;
-  height: 2rem;
-  border: 0;
-  outline: 0;
-  border-radius: 0.3rem;
-  margin-left: 5%;
-  font-size: 0.8rem;
-  font-weight: bolder;
-  background-color: #ff4e4e;
-  color: white;
-  cursor: pointer;
 `;
 
 // 임시 모달 데이터
@@ -118,8 +92,24 @@ const ModalFrame = () => {
         <Content>{modalData.content}</Content>
 
         <ButtonContainer>
-          <BackButton>취소</BackButton>
-          <ConfirmButton>확인</ConfirmButton>
+          <FlexButton
+            width="4.2rem"
+            height="2rem"
+            margin="0 0 0 0.8rem"
+            color="white"
+            backgroundColor="#a3a3a3"
+          >
+            취소
+          </FlexButton>
+          <FlexButton
+            width="4.2rem"
+            height="2rem"
+            margin="0 0 0 0.8rem"
+            color="white"
+            backgroundColor="#ff4e4e"
+          >
+            로그아웃
+          </FlexButton>
         </ButtonContainer>
       </ModalBlock>
     </Container>
