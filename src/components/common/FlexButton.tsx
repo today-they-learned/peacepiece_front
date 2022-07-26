@@ -23,7 +23,7 @@ const defaultProps = {
   fontSize: "0.8rem",
   fontWeight: "bolder",
   cursor: "pointer",
-  color: "",
+  color: "white",
   backgroundColor: "",
 };
 

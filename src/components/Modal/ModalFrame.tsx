@@ -96,7 +96,6 @@ const ModalFrame = () => {
             width="4.2rem"
             height="2rem"
             margin="0 0 0 0.8rem"
-            color="white"
             backgroundColor="#a3a3a3"
           >
             취소
@@ -105,7 +104,6 @@ const ModalFrame = () => {
             width="4.2rem"
             height="2rem"
             margin="0 0 0 0.8rem"
-            color="white"
             backgroundColor="#ff4e4e"
           >
             로그아웃

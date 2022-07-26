@@ -1,7 +1,8 @@
 import React from "react";
+import ModalFrame from "../Modal/ModalFrame";
 
 function Main() {
-  return <div>Main</div>;
+  return <ModalFrame />;
 }
 
 export default Main;
