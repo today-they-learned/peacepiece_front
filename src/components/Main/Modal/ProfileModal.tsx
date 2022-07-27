@@ -14,7 +14,7 @@ const Container = styled.div`
   width: 14rem;
   background: white;
   border-radius: 0.6rem;
-  box-shadow: 2px 2px 8px #c5c5c5;
+  box-shadow: 2px 2px 6px #c5c5c5;
   :after {
     border-top: 0px solid transparent;
     border-left: 1rem solid transparent;
