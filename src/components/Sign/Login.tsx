@@ -23,6 +23,7 @@ const Login = () => {
   const [password, onChangePassword] = useInput("");
 
   const handleSubmit = () => {
+    // eslint-disable-next-line no-console
     console.log(email, password);
   };
 

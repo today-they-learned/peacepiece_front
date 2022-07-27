@@ -14,7 +14,7 @@ const TabBtn = ({ children, isOnTab, tab, setTab }: Props) => {
     height: 3.5rem;
     font-family: "NS-B";
     color: ${isOnTab ? COLOR.primary : COLOR.gray};
-    border-radius: ${tab ? "1rem 0 0 0" : "0 1rem 0 0"};
+    border-radius: ${tab ? "0 1rem 0 0" : "1rem 0 0 0"};
     background: ${isOnTab ? "white" : COLOR.lightgray};
   `;
 

@@ -4,8 +4,13 @@ import TabBtn from "components/Tab/TabBtn";
 import Login from "components/Sign/Login";
 import Signup from "components/Sign/Signup";
 
+const enum signTab {
+  login = 0,
+  signup = 1,
+}
+
 const Sign = () => {
-  const [tab, setTab] = useState(1); // 0: Signup  1:Login
+  const [tab, setTab] = useState(signTab.login);
 
   return (
     <FlexBox width="100vw" center>
@@ -17,15 +22,15 @@ const Sign = () => {
         borderRadius="1rem"
       >
         <FlexBox width="100%">
-          <TabBtn tab={1} isOnTab={tab === 1} setTab={setTab}>
+          <TabBtn tab={0} isOnTab={tab === signTab.login} setTab={setTab}>
             로그인
           </TabBtn>
-          <TabBtn tab={0} isOnTab={tab === 0} setTab={setTab}>
+          <TabBtn tab={1} isOnTab={tab === signTab.signup} setTab={setTab}>
             회원가입
           </TabBtn>
         </FlexBox>
         <FlexBox width="100%" margin="2.5rem 0" center>
-          {tab ? <Login /> : <Signup />}
+          {tab === signTab.login ? <Login /> : <Signup />}
         </FlexBox>
       </FlexBox>
     </FlexBox>
