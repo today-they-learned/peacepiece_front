@@ -4,18 +4,18 @@ import COLOR from "constants/color";
 
 interface Props {
   children: React.ReactNode;
-  isOnTab: boolean;
+  curTab: number;
   tab: number;
   setTab: React.Dispatch<React.SetStateAction<number>>;
 }
-const TabBtn = ({ children, isOnTab, tab, setTab }: Props) => {
+const TabBtn = ({ children, curTab, tab, setTab }: Props) => {
   const Btn = styled.button`
     width: 50%;
     height: 3.5rem;
     font-family: "NS-B";
-    color: ${isOnTab ? COLOR.primary : COLOR.gray};
+    color: ${curTab === tab ? COLOR.primary : COLOR.gray};
     border-radius: ${tab ? "0 1rem 0 0" : "1rem 0 0 0"};
-    background: ${isOnTab ? "white" : COLOR.lightgray};
+    background: ${curTab === tab ? "white" : COLOR.lightgray};
   `;
 
   return <Btn onClick={() => setTab(tab)}>{children}</Btn>;

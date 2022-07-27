@@ -22,10 +22,10 @@ const Sign = () => {
         borderRadius="1rem"
       >
         <FlexBox width="100%">
-          <TabBtn tab={0} isOnTab={tab === signTab.login} setTab={setTab}>
+          <TabBtn tab={signTab.login} curTab={tab} setTab={setTab}>
             로그인
           </TabBtn>
-          <TabBtn tab={1} isOnTab={tab === signTab.signup} setTab={setTab}>
+          <TabBtn tab={signTab.signup} curTab={tab} setTab={setTab}>
             회원가입
           </TabBtn>
         </FlexBox>
