@@ -55,7 +55,7 @@ const ModalFrame = () => {
   const [modalData, setData] = useState(data);
   return (
     <ModalBlock>
-      <FlexBox width="100%" margin="1% 0 1% 0">
+      <FlexBox margin="1% 0 1% 0">
         <Title>{modalData.title}</Title>
         <Close onClick={() => setModalIsOpen(false)} />
       </FlexBox>
@@ -63,7 +63,7 @@ const ModalFrame = () => {
 
       <FlexBox margin="1%">{modalData.content}</FlexBox>
 
-      <FlexBox width="100%" margin="15% 0 0 60%">
+      <FlexBox margin="15% 0 0 60%">
         <FlexButton
           width="4.2rem"
           height="2rem"
