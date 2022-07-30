@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import FlexBox from "../common/FlexBox";
 
 interface Props {
   toggle: boolean;
@@ -27,13 +28,6 @@ const Container = styled.div`
   }
 `;
 
-const ProfileContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  padding: 1rem;
-`;
-
 const Avatar = styled.div`
   width: 2.3rem;
   height: 2.3rem;
@@ -52,16 +46,9 @@ const Line = styled.div`
 `;
 
 const ProfileLabel = styled.label`
-  margin: 0.55rem 0.3rem 0 0;
+  margin: 0.7rem 0.3rem 0 0;
   font-size: 0.9rem;
   font-weight: bolder;
-`;
-
-const LineContainer = styled.div`
-  width: 100%;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: row;
 `;
 
 const AccountIcon = styled.img.attrs({
@@ -93,7 +80,7 @@ const LogoutIcon = styled.img.attrs({
 `;
 
 const SettingLabel = styled.label`
-  margin: 0.1rem 1.5rem 0 0.5rem;
+  margin: 0.35rem 1.5rem 0 0.5rem;
   font-size: 0.9rem;
   font-weight: bold;
   color: #606060;
@@ -138,28 +125,28 @@ const ProfileModal = () => {
   };
   return (
     <Container>
-      <ProfileContainer>
+      <FlexBox padding="1rem">
         <Avatar />
         <ProfileLabel style={{ color: "#3CE87B" }}>환경지키미</ProfileLabel>
         <ProfileLabel>권소예</ProfileLabel>
         <ProfileLabel style={{ color: "#606060" }}>님</ProfileLabel>
-      </ProfileContainer>
+      </FlexBox>
       <Line />
-      <LineContainer>
+      <FlexBox padding="0.5rem">
         <AccountIcon />
         <SettingLabel>계정 설정</SettingLabel>
-      </LineContainer>
-      <LineContainer>
+      </FlexBox>
+      <FlexBox padding="0.5rem">
         <MailIcon />
         <SettingLabel>메일 알림</SettingLabel>
         <Toggle onClick={clickedToggle} toggle={toggle}>
           <Circle toggle={toggle} />
         </Toggle>
-      </LineContainer>
-      <LineContainer>
+      </FlexBox>
+      <FlexBox padding="0.5rem">
         <LogoutIcon />
         <SettingLabel style={{ color: "#ff4e4e" }}>로그아웃</SettingLabel>
-      </LineContainer>
+      </FlexBox>
     </Container>
   );
 };

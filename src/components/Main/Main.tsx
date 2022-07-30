@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileModal from "./Modal/ProfileModal";
+import ProfileModal from "../Modal/ProfileModal";
 
 function Main() {
   return <ProfileModal />;
