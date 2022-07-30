@@ -1,14 +1,22 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GlobalStyles from "styles/GlobalStyles";
+import "styles/fonts.css";
+import "semantic-ui-css/semantic.min.css";
+
 import Main from "components/Main/Main";
+import { Sign } from "pages";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
-    </Router>
+    <>
+      <GlobalStyles />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/sign" element={<Sign />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
