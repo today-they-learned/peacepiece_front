@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
-import COLOR from "constants/color";
+import React from "react";
+import styled from "styled-components";
 import FlexBox from "components/common/FlexBox";
 
 const Foot = styled.div`
@@ -15,36 +14,34 @@ const Line = styled.div`
   opacity: 0.4;
 `;
 
-const Logo = styled.span`
-  color: ${COLOR.primary};
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
+const Logo = styled.img`
+  width: 2rem;
+  height: 2rem;
 `;
 
 const FootItems = styled.div`
   display: flex;
-  margin-left: 5%;
-  justify-content: space-around;
-  width: 55%;
+  justify-content: space-between;
+  width: 70%;
 `;
 
 const Label = styled.span`
   position: relative;
-  width: 10rem;
-  font-size: 15px;
+  width: 6rem;
+  margin-top: 0.1rem;
+  font-size: 0.8rem;
   color: #a3a3a3;
-  opacity: 0.6;
+  opacity: 0.5;
   text-align: center;
   cursor: pointer;
 `;
 
-const Footbar = () => {
+const MobileFootbar = () => {
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 10rem">
-        <Logo>PeacePiece</Logo>
+      <FlexBox padding="2rem 1rem">
+        <Logo src="images/logo.png" />
         <FootItems>
           <Label>서비스 소개</Label>
           <Label>이용약관</Label>
@@ -52,14 +49,14 @@ const Footbar = () => {
           <Label>팀원 소개</Label>
         </FootItems>
       </FlexBox>
-      <FlexBox padding="0rem 9rem">
+      <FlexBox padding="0rem 1rem">
         <Line />
       </FlexBox>
-      <FlexBox padding="0.8rem 9rem">
+      <FlexBox padding="0.8rem 1rem">
         <Label style={{ width: "12rem" }}>Team TTL | PeacePice</Label>
       </FlexBox>
     </Foot>
   );
 };
 
-export default Footbar;
+export default MobileFootbar;
