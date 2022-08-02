@@ -1,4 +1,3 @@
-import "./App.css";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GlobalStyles from "styles/GlobalStyles";
@@ -25,7 +24,6 @@ const App = () => {
             <Route path="/sign" element={<Sign />} />
           </Routes>
         </ResponsiveLayout>
-
       </Router>
     </>
   );

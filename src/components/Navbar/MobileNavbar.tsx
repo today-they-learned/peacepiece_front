@@ -42,7 +42,7 @@ const Island = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.MAINCOLOR};
+    background: ${COLOR.primary};
     transition: all 0.5s;
   }
 
@@ -70,7 +70,7 @@ const Challenge = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.MAINCOLOR};
+    background: ${COLOR.primary};
     transition: all 0.5s;
   }
 
@@ -98,7 +98,7 @@ const Piece = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.MAINCOLOR};
+    background: ${COLOR.primary};
     transition: all 0.5s;
   }
 
@@ -123,17 +123,17 @@ const RightNavItems = styled.div`
 `;
 
 const Start = styled.div`
-  background-color: ${COLOR.MAINCOLOR};
+  background-color: ${COLOR.primary};
   width: 5.5rem;
   border-radius: 1.5rem;
   padding: 0.5rem 1rem;
-  color: ${COLOR.WHITE};
+  color: ${COLOR.white};
   display: flex;
   justify-content: center;
 `;
 
 const Profile = styled.div`
-  background-color: ${COLOR.GRAY};
+  background-color: ${COLOR.gray};
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
