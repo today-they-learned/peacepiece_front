@@ -34,6 +34,7 @@ module.exports = {
       "off" | "warn" | "error",
       { allowAsProps: true | false },
     ],
+    "react/button-has-type": 0,
   },
   settings: {
     "import/resolver": {
