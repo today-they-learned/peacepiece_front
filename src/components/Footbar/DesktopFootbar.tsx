@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import COLOR from "constants/color";
 import FlexBox from "components/common/FlexBox";
+import { useNavigate } from "react-router-dom";
 
 const Foot = styled.div`
   width: 100%;
@@ -18,7 +18,7 @@ const Line = styled.div`
 const Logo = styled.span`
   color: ${COLOR.primary};
   font-size: 20px;
-  font-weight: bold;
+  font-weight: bolder;
   cursor: pointer;
 `;
 
@@ -26,7 +26,7 @@ const FootItems = styled.div`
   display: flex;
   margin-left: 5%;
   justify-content: space-around;
-  width: 55%;
+  width: 52.5%;
 `;
 
 const Label = styled.span`
@@ -34,22 +34,48 @@ const Label = styled.span`
   width: 10rem;
   font-size: 15px;
   color: #a3a3a3;
-  opacity: 0.6;
   text-align: center;
   cursor: pointer;
+  opacity: 0.7;
 `;
 
 const Footbar = () => {
+  const navigate = useNavigate();
+
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 10rem">
+      <FlexBox padding="2rem 11rem">
         <Logo>PeacePiece</Logo>
         <FootItems>
-          <Label>서비스 소개</Label>
-          <Label>이용약관</Label>
-          <Label>개인정보처리방침</Label>
-          <Label>팀원 소개</Label>
+          <Label
+            onClick={() => {
+              navigate("/serviceintro");
+            }}
+          >
+            서비스 소개
+          </Label>
+          <Label
+            onClick={() => {
+              navigate("/term");
+            }}
+          >
+            이용약관
+          </Label>
+          <Label
+            onClick={() => {
+              navigate("/privacy");
+            }}
+          >
+            개인정보처리방침
+          </Label>
+          <Label
+            onClick={() => {
+              navigate("/crewintro");
+            }}
+          >
+            팀원 소개
+          </Label>
         </FootItems>
       </FlexBox>
       <FlexBox padding="0rem 9rem">
