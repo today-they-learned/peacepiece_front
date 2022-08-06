@@ -5,12 +5,13 @@ import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { Dropdown } from "semantic-ui-react";
 
 const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem;
+  padding: 2rem 10rem 0 10rem;
 `;
 
 const Logo = styled.span`
@@ -30,6 +31,9 @@ const Container = styled.div`
   width: 4rem;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Island = styled.span<{ isClicked: string }>`
@@ -63,6 +67,7 @@ const Island = styled.span<{ isClicked: string }>`
 const Challenge = styled.span<{ isClicked: string }>`
   opacity: 0.3;
   font-size: 18px;
+
   &::after {
     content: "";
     position: absolute;
@@ -86,6 +91,26 @@ const Challenge = styled.span<{ isClicked: string }>`
   &:hover::after {
     width: 100%;
   }
+`;
+
+const DropdownBox = styled.div`
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: ${COLOR.gray};
+  display: none;
+  text-align: center;
+
+  ${Container}:hover & {
+    display: block;
+  }
+`;
+
+const DropdonwText = styled.span`
+  font-size: 1rem;
 `;
 
 const Piece = styled.span<{ isClicked: string }>`
@@ -118,6 +143,7 @@ const Piece = styled.span<{ isClicked: string }>`
 
 const RightNavItems = styled.div`
   width: 10rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,6 +218,10 @@ const Navbar = () => {
           >
             챌린지
           </Challenge>
+          <DropdownBox>
+            <DropdonwText>진행 중</DropdonwText>
+            <DropdonwText>종료</DropdonwText>
+          </DropdownBox>
         </Container>
         <Container>
           <Piece id="piece" onClick={getClickNav} isClicked={currentClickNav}>
@@ -202,7 +232,7 @@ const Navbar = () => {
       <RightNavItems>
         <Start>시작하기</Start>
         {/* <IoIosNotificationsOutline size="35" />
-        <Profile /> */}
+      <Profile /> */}
       </RightNavItems>
     </Nav>
   );
