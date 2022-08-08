@@ -1,9 +1,6 @@
-/* eslint-disable no-undef */
-import React, { useEffect, useState, ButtonHTMLAttributes } from "react";
-
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const Nav = styled.div`
@@ -14,7 +11,7 @@ const Nav = styled.div`
 `;
 
 const Logo = styled.span`
-  color: ${COLOR.primary};
+  color: ${COLOR.font.primary};
   font-size: 20px;
   font-weight: bold;
 `;
@@ -43,7 +40,7 @@ const Island = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -71,7 +68,7 @@ const Challenge = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -99,7 +96,7 @@ const Piece = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -124,21 +121,13 @@ const RightNavItems = styled.div`
 `;
 
 const Start = styled.div`
-  background-color: ${COLOR.primary};
+  background-color: ${COLOR.font.primary};
   width: 6rem;
   border-radius: 1.5rem;
   padding: 0.7rem 1rem;
   color: ${COLOR.white};
   display: flex;
   justify-content: center;
-`;
-
-const Profile = styled.div`
-  background-color: ${COLOR.gray};
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  margin: 0 2rem;
 `;
 
 const Navbar = () => {
