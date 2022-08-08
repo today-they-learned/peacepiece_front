@@ -22,7 +22,7 @@ const COLOR = {
     nav: "#2D3039",
     navSecondary: "#282828",
     banner: "linear-gradient(to right, #279650, #3ce87b)",
-    modalShadow: "#616161",
+    modalShadow: "rgba(97, 97, 97, 0.5)",
   },
   border: {
     default: "#b0b0b0",
