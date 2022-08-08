@@ -96,7 +96,7 @@ const Challenge = styled.span<{ isClicked: string }>`
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
   width: 100vw;
   height: 4rem;
-  background-color: ${COLOR.gray};
+  background-color: ${COLOR.black};
   display: none;
   text-align: center;
   position: absolute;
@@ -122,6 +122,7 @@ const DropdownTextBox = styled.div`
 const DropdonwText = styled.span`
   font-size: 0.8rem;
   margin: 5.8rem;
+  color: ${COLOR.gray};
 `;
 
 const Piece = styled.span<{ isClicked: string }>`
@@ -181,12 +182,13 @@ const Navbar = () => {
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("island");
   const [prevClickNav, setPrevClickNav] = useState(null);
+  const [currentClickSubNav, setCurrentClickSubNav] =
+    useState("proceed_challenge");
+  const [prevClickSubNav, setPrevClickSubNav] = useState(null);
 
   const navigate = useNavigate();
 
-  // const onClickChallenge = () => setClickedChallenge(!clickedChallenge);
-
-  const getClickNav = (e: React.MouseEvent<HTMLElement>) => {
+  const onClickNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickNav(e.target.id);
 
@@ -201,6 +203,18 @@ const Navbar = () => {
       } else {
         setClickedChallenge(false);
       }
+    }
+  };
+
+  const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target instanceof Element) {
+      setCurrentClickSubNav(e.target.id);
+
+      if (e.target.id === "proceed_challenge") {
+        navigate("/challenge");
+      }
+
+      navigate(`/${e.target.id}`);
     }
   };
 
@@ -220,41 +234,61 @@ const Navbar = () => {
     setPrevClickNav(currentClickNav);
   }, [currentClickNav]);
 
+  useEffect(() => {
+    if (currentClickSubNav !== null) {
+      const current = document.getElementById(currentClickSubNav);
+      current.style.color = `${COLOR.primary}`;
+    }
+
+    if (prevClickSubNav !== null) {
+      const prev = document.getElementById(prevClickSubNav);
+      prev.style.color = `${COLOR.gray}`;
+    }
+
+    setPrevClickSubNav(currentClickSubNav);
+  }, [currentClickSubNav]);
+
   return (
     <Nav>
       <Logo>PeacePiece</Logo>
       <CenterNavItems>
         <Container>
-          <Island id="island" onClick={getClickNav} isClicked={currentClickNav}>
+          <Island id="island" onClick={onClickNav} isClicked={currentClickNav}>
             나의 섬
           </Island>
         </Container>
         <Container>
           <Challenge
             id="challenge"
-            onClick={getClickNav}
+            onClick={onClickNav}
             isClicked={currentClickNav}
           >
             챌린지
           </Challenge>
           <DropdownBox clickedChallenge={clickedChallenge}>
             <DropdownTextBox>
-              <DropdonwText>진행 중인 챌린지</DropdonwText>
-              <DropdonwText>지난 챌린지</DropdonwText>
-              <DropdonwText>챌린지 제안</DropdonwText>
+              <DropdonwText id="proceed_challenge" onClick={onClickSubNav}>
+                진행 중인 챌린지
+              </DropdonwText>
+              <DropdonwText id="ended_challenge" onClick={onClickSubNav}>
+                지난 챌린지
+              </DropdonwText>
+              <DropdonwText id="proposal_challenge" onClick={onClickSubNav}>
+                챌린지 제안
+              </DropdonwText>
             </DropdownTextBox>
           </DropdownBox>
         </Container>
         <Container>
-          <Piece id="piece" onClick={getClickNav} isClicked={currentClickNav}>
+          <Piece id="piece" onClick={onClickNav} isClicked={currentClickNav}>
             피스
           </Piece>
         </Container>
       </CenterNavItems>
       <RightNavItems>
-        <Start>시작하기</Start>
-        {/* <IoIosNotificationsOutline size="35" />
-      <Profile /> */}
+        {/* <Start>시작하기</Start> */}
+        <IoIosNotificationsOutline size="35" />
+        <Profile />
       </RightNavItems>
     </Nav>
   );
