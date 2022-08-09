@@ -10,6 +10,8 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 10rem 0 10rem;
+  background-color: ${COLOR.bg.nav};
+  font-family: "Pr-ExtraBold";
 `;
 
 const Logo = styled.span`
@@ -35,8 +37,9 @@ const Container = styled.div`
 `;
 
 const Island = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
+  font-family: "Pr-Regular";
   font-size: 1rem;
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -63,9 +66,9 @@ const Island = styled.span<{ isClicked: string }>`
 `;
 
 const Challenge = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
   font-size: 1rem;
-
+  font-family: "Pr-Regular";
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -118,14 +121,16 @@ const DropdownTextBox = styled.div`
 `;
 
 const DropdonwText = styled.span`
+  font-family: "Pr-Bold";
   font-size: 0.8rem;
   margin: 5.8rem;
-  color: ${COLOR.gray};
+  color: ${COLOR.font.disabled};
 `;
 
 const Piece = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
+  font-family: "Pr-Regular";
   font-size: 1rem;
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -223,13 +228,13 @@ const Navbar = () => {
     if (currentClickNav !== null) {
       const current = document.getElementById(currentClickNav);
       current.style.color = `${COLOR.font.primary}`;
-      current.style.fontWeight = "bold";
+      current.style.fontFamily = "Pr-Bold";
     }
 
     if (prevClickNav !== null) {
       const prev = document.getElementById(prevClickNav);
-      prev.style.color = `${COLOR.font.default}`;
-      prev.style.fontWeight = "normal";
+      prev.style.color = `${COLOR.font.disabled}`;
+      prev.style.fontFamily = "Pr-Regular";
     }
 
     setPrevClickNav(currentClickNav);

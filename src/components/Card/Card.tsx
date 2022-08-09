@@ -7,7 +7,7 @@ const Container = styled.div`
   width: 16.3rem;
   height: 20rem;
   border-radius: 2rem;
-  background-color: ${COLOR.lightgray};
+  background-color: ${COLOR.bg.secondary};
   position: relative;
   margin-left: 5rem; // 잘 보이게 하려고 잠시 설정
 `;
@@ -31,7 +31,7 @@ const CompleteBox = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
-  color: ${COLOR.primary};
+  color: ${COLOR.font.primary};
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
@@ -77,13 +77,13 @@ const Person = styled.img`
 
 const Number = styled.span`
   font-size: 0.75rem;
-  color: ${COLOR.gray};
+  color: ${COLOR.font.secondary};
 `;
 
 const Point = styled.span`
   font-size: 0.875rem;
   font-weight: bold;
-  color: ${COLOR.gray};
+  color: ${COLOR.font.secondary};
 `;
 
 const HashTagBox = styled.div`

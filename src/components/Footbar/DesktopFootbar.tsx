@@ -16,7 +16,7 @@ const Line = styled.div`
 `;
 
 const Logo = styled.span`
-  color: ${COLOR.primary};
+  color: ${COLOR.font.primary};
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
