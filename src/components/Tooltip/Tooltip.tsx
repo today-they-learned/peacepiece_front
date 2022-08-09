@@ -6,8 +6,6 @@ import FlexBox from "components/common/FlexBox";
 const Container = styled.div`
   width: 14rem;
   height: 5.8rem;
-  margin-top: 10%;
-  margin-left: 55%;
   display: flex;
   flex-direction: column-reverse;
 `;
