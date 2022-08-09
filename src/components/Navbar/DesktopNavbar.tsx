@@ -8,10 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { Dropdown } from "semantic-ui-react";
 
 const Nav = styled.div`
+  width: 100%;
+  height: 4.375rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 10rem 0 10rem;
+  padding: 0 10rem 0 10rem;
 `;
 
 const Logo = styled.span`
@@ -38,11 +40,11 @@ const Container = styled.div`
 
 const Island = styled.span<{ isClicked: string }>`
   opacity: 0.3;
-  font-size: 18px;
+  font-size: 1rem;
   &::after {
     content: "";
     position: absolute;
-    top: 2rem;
+    top: 2.5em;
     left: 50%;
     transform: translateX(-50%);
     width: 0%;
@@ -55,23 +57,23 @@ const Island = styled.span<{ isClicked: string }>`
     props.isClicked === "island" &&
     css`
       &::after {
-        width: 100%;
+        width: 5rem;
       }
     `}
 
   &:hover::after {
-    width: 100%;
+    width: 5rem;
   }
 `;
 
 const Challenge = styled.span<{ isClicked: string }>`
   opacity: 0.3;
-  font-size: 18px;
+  font-size: 1rem;
 
   &::after {
     content: "";
     position: absolute;
-    top: 2rem;
+    top: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 0%;
@@ -84,12 +86,12 @@ const Challenge = styled.span<{ isClicked: string }>`
     props.isClicked === "challenge" &&
     css`
       &::after {
-        width: 100%;
+        width: 5rem;
       }
     `}
 
   &:hover::after {
-    width: 100%;
+    width: 5rem;
   }
 `;
 
@@ -100,7 +102,7 @@ const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
   display: none;
   text-align: center;
   position: absolute;
-  top: 2.3rem;
+  top: 2.79rem;
   ${(props) =>
     props.clickedChallenge
       ? css`
@@ -127,11 +129,11 @@ const DropdonwText = styled.span`
 
 const Piece = styled.span<{ isClicked: string }>`
   opacity: 0.3;
-  font-size: 18px;
+  font-size: 1rem;
   &::after {
     content: "";
     position: absolute;
-    top: 2rem;
+    top: 2.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 0%;
@@ -144,12 +146,12 @@ const Piece = styled.span<{ isClicked: string }>`
     props.isClicked === "piece" &&
     css`
       &::after {
-        width: 100%;
+        width: 5rem;
       }
     `}
 
   &:hover::after {
-    width: 100%;
+    width: 5rem;
   }
 `;
 
@@ -163,12 +165,15 @@ const RightNavItems = styled.div`
 
 const Start = styled.div`
   background-color: ${COLOR.primary};
-  width: 6rem;
-  border-radius: 1.5rem;
+  width: 5.56rem;
+  height: 2.5rem;
+  border-radius: 1rem;
   padding: 0.7rem 1rem;
   color: ${COLOR.white};
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-size: 1rem;
 `;
 
 const Profile = styled.div`
@@ -286,9 +291,9 @@ const Navbar = () => {
         </Container>
       </CenterNavItems>
       <RightNavItems>
-        {/* <Start>시작하기</Start> */}
-        <IoIosNotificationsOutline size="35" />
-        <Profile />
+        <Start>시작하기</Start>
+        {/* <IoIosNotificationsOutline size="35" />
+        <Profile /> */}
       </RightNavItems>
     </Nav>
   );
