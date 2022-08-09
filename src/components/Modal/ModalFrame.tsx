@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import styled from "styled-components";
+import COLOR from "constants/color";
 import FlexBox from "../common/FlexBox";
 import FlexButton from "../common/FlexButton";
 
@@ -15,6 +16,7 @@ const ModalBlock = styled.div`
   margin-top: -6rem;
   padding: 1rem;
   background-color: white;
+  box-shadow: 2px 2px 6px ${COLOR.bg.modalShadow};
   display: flex;
   flex-direction: column;
   animation: modal-show 1s;
@@ -40,7 +42,7 @@ const Line = styled.div`
   width: 100%;
   margin-bottom: 1%;
   height: 0.08rem;
-  background-color: #a3a3a3;
+  background-color: ${COLOR.font.secondary};
   opacity: 0.2;
 `;
 

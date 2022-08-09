@@ -10,7 +10,7 @@ interface Props {
   borderRadius?: string;
   fontSize?: string;
   fontWeight?: string;
-  cursor?: boolean;
+  cursor?: string;
   color?: string;
   backgroundColor?: string;
 }
