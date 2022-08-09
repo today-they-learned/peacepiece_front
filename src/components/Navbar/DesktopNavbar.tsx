@@ -1,11 +1,7 @@
-/* eslint-disable no-undef */
-import React, { useEffect, useState, ButtonHTMLAttributes } from "react";
-
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "semantic-ui-react";
 
 const Nav = styled.div`
   width: 100%;
@@ -17,7 +13,7 @@ const Nav = styled.div`
 `;
 
 const Logo = styled.span`
-  color: ${COLOR.primary};
+  color: ${COLOR.font.primary};
   font-size: 20px;
   font-weight: bold;
 `;
@@ -49,7 +45,7 @@ const Island = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -78,7 +74,7 @@ const Challenge = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -138,7 +134,7 @@ const Piece = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -164,7 +160,7 @@ const RightNavItems = styled.div`
 `;
 
 const Start = styled.div`
-  background-color: ${COLOR.primary};
+  background-color: ${COLOR.font.primary};
   width: 5.56rem;
   height: 2.5rem;
   border-radius: 1rem;
@@ -177,7 +173,7 @@ const Start = styled.div`
 `;
 
 const Profile = styled.div`
-  background-color: ${COLOR.gray};
+  background-color: ${COLOR.font.disabled};
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
@@ -226,13 +222,13 @@ const Navbar = () => {
   useEffect(() => {
     if (currentClickNav !== null) {
       const current = document.getElementById(currentClickNav);
-      current.style.opacity = "1";
+      current.style.color = `${COLOR.font.primary}`;
       current.style.fontWeight = "bold";
     }
 
     if (prevClickNav !== null) {
       const prev = document.getElementById(prevClickNav);
-      prev.style.opacity = "0.3";
+      prev.style.color = `${COLOR.font.default}`;
       prev.style.fontWeight = "normal";
     }
 
@@ -242,12 +238,12 @@ const Navbar = () => {
   useEffect(() => {
     if (currentClickSubNav !== null) {
       const current = document.getElementById(currentClickSubNav);
-      current.style.color = `${COLOR.primary}`;
+      current.style.color = `${COLOR.font.primary}`;
     }
 
     if (prevClickSubNav !== null) {
       const prev = document.getElementById(prevClickSubNav);
-      prev.style.color = `${COLOR.gray}`;
+      prev.style.color = `${COLOR.font.default}`;
     }
 
     setPrevClickSubNav(currentClickSubNav);
