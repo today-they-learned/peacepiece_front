@@ -1,7 +1,12 @@
 import React from "react";
+import Tooltip from "components/Tooltip/Tooltip";
 
 const Island = () => {
-  return <div>소개</div>;
+  return (
+    <div>
+      <Tooltip />
+    </div>
+  );
 };
 
 export default Island;
