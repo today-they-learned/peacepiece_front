@@ -1,6 +1,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import COLOR from "constants/color";
 import FlexBox from "../common/FlexBox";
 
 interface Props {
@@ -13,9 +14,9 @@ const Container = styled.div`
   margin-left: 60%;
   padding-bottom: 0.5rem;
   width: 14rem;
-  background: white;
+  background: ${COLOR.white};
   border-radius: 0.6rem;
-  box-shadow: 2px 2px 6px #c5c5c5;
+  box-shadow: 2px 2px 6px ${COLOR.bg.modalShadow};
   :after {
     border-top: 0px solid transparent;
     border-left: 1rem solid transparent;
@@ -41,12 +42,12 @@ const Line = styled.div`
   width: 85%;
   margin-left: 7.5%;
   height: 0.06rem;
-  background-color: #a3a3a3;
+  background-color: ${COLOR.font.secondary};
   opacity: 0.4;
 `;
 
 const ProfileLabel = styled.label`
-  margin: 0.7rem 0.3rem 0 0;
+  margin: 0.55rem 0.3rem 0 0;
   font-size: 0.9rem;
   font-weight: bolder;
 `;
@@ -80,7 +81,7 @@ const LogoutIcon = styled.img.attrs({
 `;
 
 const SettingLabel = styled.label`
-  margin: 0.35rem 1.5rem 0 0.5rem;
+  margin: 0.1rem 1.5rem 0 0.5rem;
   font-size: 0.9rem;
   font-weight: bold;
   color: #606060;
@@ -90,11 +91,11 @@ const SettingLabel = styled.label`
 export const Toggle = styled.button<Props>`
   width: 2.8rem;
   height: 1.4rem;
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
   border-radius: 1rem;
   border: none;
   cursor: pointer;
-  background-color: ${(props) => (!props.toggle ? "none" : "#3CE87B")};
+  background-color: ${(props) => (!props.toggle ? "lightgray" : "#3CE87B")};
   position: relative;
   display: flex;
   justify-content: center;
@@ -103,7 +104,7 @@ export const Toggle = styled.button<Props>`
 `;
 
 const Circle = styled.div<Props>`
-  background-color: white;
+  background-color: ${COLOR.white};
   width: 1.2rem;
   height: 1.2rem;
   border-radius: 1rem;
@@ -117,7 +118,6 @@ const Circle = styled.div<Props>`
       transition: all 0.5s ease-in-out;
     `}
 `;
-
 const ProfileModal = () => {
   const [toggle, setToggle] = useState(false);
   const clickedToggle = () => {
@@ -132,11 +132,11 @@ const ProfileModal = () => {
         <ProfileLabel style={{ color: "#606060" }}>님</ProfileLabel>
       </FlexBox>
       <Line />
-      <FlexBox padding="0.5rem">
+      <FlexBox margin="0.2rem 0 0 0" padding="0.5rem">
         <AccountIcon />
         <SettingLabel>계정 설정</SettingLabel>
       </FlexBox>
-      <FlexBox padding="0.5rem">
+      <FlexBox margin="0.1rem 0 0 0" padding="0.5rem">
         <MailIcon />
         <SettingLabel>메일 알림</SettingLabel>
         <Toggle onClick={clickedToggle} toggle={toggle}>
