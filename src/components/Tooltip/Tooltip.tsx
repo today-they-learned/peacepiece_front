@@ -32,13 +32,17 @@ const Tooltip = styled.div`
   }
 `;
 
+const Iconn = styled(Icon)`
+  cursor: pointer;
+`;
+
 const HoverTooltip = () => {
   const [hover, setHover] = useState(false);
 
   return (
     <Container>
       <FlexBox margin="0 0 0 1rem">
-        <Icon
+        <Iconn
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           name="question circle"
