@@ -218,9 +218,9 @@ const Navbar = () => {
 
       if (e.target.id === "proceed_challenge") {
         navigate("/challenge");
+      } else {
+        navigate(`/${e.target.id}`);
       }
-
-      navigate(`/${e.target.id}`);
     }
   };
 
@@ -237,6 +237,14 @@ const Navbar = () => {
       prev.style.fontFamily = "Pr-Regular";
     }
 
+    if (prevClickSubNav) {
+      const prev = document.getElementById(prevClickSubNav);
+      const proceedChallenge = document.getElementById("proceed_challenge");
+      prev.style.color = `${COLOR.font.disabled}`;
+      proceedChallenge.style.color = `${COLOR.font.primary}`;
+      setCurrentClickSubNav("proceed_challenge");
+    }
+
     setPrevClickNav(currentClickNav);
   }, [currentClickNav]);
 
@@ -248,7 +256,7 @@ const Navbar = () => {
 
     if (prevClickSubNav !== null) {
       const prev = document.getElementById(prevClickSubNav);
-      prev.style.color = `${COLOR.font.default}`;
+      prev.style.color = `${COLOR.font.disabled}`;
     }
 
     setPrevClickSubNav(currentClickSubNav);
