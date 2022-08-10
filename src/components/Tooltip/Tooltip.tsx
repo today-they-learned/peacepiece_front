@@ -5,7 +5,7 @@ import FlexBox from "components/common/FlexBox";
 
 const Container = styled.div`
   width: 14rem;
-  height: 5.8rem;
+  height: 20rem;
   display: flex;
   flex-direction: column-reverse;
 `;
@@ -14,8 +14,6 @@ const Tooltip = styled.div`
   position: relative;
   margin-bottom: 0.25rem;
   padding: 0.6rem 1.2rem 0.6rem 1.2rem;
-  width: 14rem;
-  height: 3.8rem;
   background: black;
   color: white;
   font-size: 13px;
@@ -36,7 +34,12 @@ const Iconn = styled(Icon)`
   cursor: pointer;
 `;
 
-const HoverTooltip = () => {
+interface Props {
+  text: string;
+}
+
+const HoverTooltip = (props: Props) => {
+  const { text } = props;
   const [hover, setHover] = useState(false);
 
   return (
@@ -50,11 +53,7 @@ const HoverTooltip = () => {
           color="grey"
         />
       </FlexBox>
-      {hover ? (
-        <Tooltip>챌린지 인증을 하면 PP포인트를 받을 수 있어요! 😎</Tooltip>
-      ) : (
-        ""
-      )}
+      {hover ? <Tooltip>{text}</Tooltip> : ""}
     </Container>
   );
 };
