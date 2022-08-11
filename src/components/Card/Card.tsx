@@ -9,7 +9,6 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-left: 5rem; // 잘 보이게 하려고 잠시 설정
 `;
 
 const Thumbnail = styled.img`
@@ -17,36 +16,6 @@ const Thumbnail = styled.img`
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
-`;
-
-const CompleteThumb = styled.img`
-  width: 16.3rem;
-  height: 12rem;
-  border-radius: 2rem 2rem 0 0;
-  margin-bottom: 1rem;
-  filter: brightness(50%);
-`;
-
-const CompleteBox = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: ${COLOR.font.primary};
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 50%;
-  background: ${COLOR.black};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CompleteWord = styled.span`
-  width: 2rem;
-  font-size: 0.875rem;
-  font-family: "Pr-SemiBold";
-  text-align: center;
-  line-height: 1rem;
 `;
 
 const ContenttBox = styled.div`
