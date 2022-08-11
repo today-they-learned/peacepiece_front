@@ -3,11 +3,23 @@ import styled from "styled-components";
 import { Icon } from "semantic-ui-react";
 import FlexBox from "components/common/FlexBox";
 
+const Title = styled.div`
+  width: 18rem;
+  height: 4.5rem;
+  position: relative;
+  background-color: #363636;
+  margin: 10%;
+`;
+
 const Container = styled.div`
   width: 14rem;
-  height: 20rem;
+  height: 8rem;
   display: flex;
   flex-direction: column-reverse;
+  position: absolute;
+  top: -6rem;
+  left: 10rem;
+  z-index: 10;
 `;
 
 const Tooltip = styled.div`
@@ -35,26 +47,28 @@ const Iconn = styled(Icon)`
 `;
 
 interface Props {
-  text: string;
+  children: React.ReactNode;
 }
 
 const HoverTooltip = (props: Props) => {
-  const { text } = props;
+  const { children } = props;
   const [hover, setHover] = useState(false);
 
   return (
-    <Container>
-      <FlexBox margin="0 0 0 1rem">
-        <Iconn
-          onMouseOver={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          name="question circle"
-          size="large"
-          color="grey"
-        />
-      </FlexBox>
-      {hover ? <Tooltip>{text}</Tooltip> : ""}
-    </Container>
+    <Title>
+      <Container>
+        <FlexBox margin="0 0 0 1rem">
+          <Iconn
+            onMouseOver={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            name="question circle"
+            size="large"
+            color="grey"
+          />
+        </FlexBox>
+        {hover ? <Tooltip>{children}</Tooltip> : ""}
+      </Container>
+    </Title>
   );
 };
 
