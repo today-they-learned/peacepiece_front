@@ -11,7 +11,7 @@ export interface Props {
 
 const Container = styled.div`
   width: 14rem;
-  height: 8rem;
+  height: 10rem;
   display: flex;
   flex-direction: column-reverse;
   position: absolute;
@@ -40,10 +40,6 @@ const Tooltip = styled.div`
   }
 `;
 
-const Iconn = styled(Icon)`
-  cursor: pointer;
-`;
-
 const HoverTooltip = (props: Props) => {
   const { children, top, left } = props;
   const [hover, setHover] = useState(false);
@@ -51,12 +47,13 @@ const HoverTooltip = (props: Props) => {
   return (
     <Container top={top} left={left}>
       <FlexBox margin="0 0 0 1rem">
-        <Iconn
+        <Icon
           onMouseOver={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           name="question circle"
           size="large"
           color="grey"
+          link
         />
       </FlexBox>
       {hover ? <Tooltip>{children}</Tooltip> : ""}
