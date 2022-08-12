@@ -8,6 +8,7 @@ interface Props {
   height?: string;
   margin?: string;
   fontSize?: string;
+  fontFamily?: string;
   color?: string;
   backgroundColor?: string;
 }
@@ -17,13 +18,22 @@ const defaultProps = {
   height: "3.4rem",
   margin: "0",
   fontSize: "16px",
+  fontFamily: "Pr-SemiBold",
   color: "white",
   backgroundColor: COLOR.bg.secondary,
 };
 
 const FlexTextButton = (props: Props) => {
-  const { children, width, height, margin, fontSize, color, backgroundColor } =
-    props;
+  const {
+    children,
+    width,
+    height,
+    margin,
+    fontSize,
+    fontFamily,
+    color,
+    backgroundColor,
+  } = props;
 
   const FlexTextButton = styled.button`
     width: ${width};
@@ -31,7 +41,7 @@ const FlexTextButton = (props: Props) => {
     margin: ${margin};
     padding: 0;
     font-size: ${fontSize};
-    font-family: "Pr-SemiBold";
+    font-family: ${fontFamily};
     text-align: left;
     background-color: ${backgroundColor};
     color: ${color};
