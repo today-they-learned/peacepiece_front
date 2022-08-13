@@ -1,4 +1,3 @@
-import COLOR from "constants/color";
 import React from "react";
 import styled from "styled-components";
 
@@ -10,30 +9,20 @@ interface Props {
   fontSize?: string;
   fontFamily?: string;
   color?: string;
-  backgroundColor?: string;
 }
 
 const defaultProps = {
-  width: "19rem",
-  height: "3.4rem",
+  width: "auto",
+  height: "auto",
   margin: "0",
   fontSize: "16px",
   fontFamily: "Pr-SemiBold",
   color: "white",
-  backgroundColor: COLOR.bg.secondary,
 };
 
 const FlexTextButton = (props: Props) => {
-  const {
-    children,
-    width,
-    height,
-    margin,
-    fontSize,
-    fontFamily,
-    color,
-    backgroundColor,
-  } = props;
+  const { children, width, height, margin, fontSize, fontFamily, color } =
+    props;
 
   const FlexTextButton = styled.button`
     width: ${width};
@@ -43,7 +32,6 @@ const FlexTextButton = (props: Props) => {
     font-size: ${fontSize};
     font-family: ${fontFamily};
     text-align: left;
-    background-color: ${backgroundColor};
     color: ${color};
   `;
 
