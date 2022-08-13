@@ -21,7 +21,7 @@ const COLOR = {
     default: "#191a21",
     nav: "#2D3039",
     navSecondary: "#282828",
-    banner: "linear-gradient(to right, #279650, #3ce87b)",
+    banner: "linear-gradient(to left, #279650, #3ce87b)",
     modalShadow: "rgba(97, 97, 97, 0.5)",
   },
   border: {
