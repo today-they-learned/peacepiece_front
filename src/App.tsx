@@ -10,6 +10,8 @@ import Island from "components/Island/Island";
 import Challenge from "components/Challenge/Challenge";
 import Piece from "components/Piece/Piece";
 import ResponsiveLayout from "layouts/responsive.layout";
+import EndedChallenge from "components/Challenge/EndedChallenge";
+import ProposalChallenge from "components/Challenge/ProposalChallenge";
 
 const App = () => {
   return (
@@ -19,9 +21,11 @@ const App = () => {
         <ResponsiveLayout>
           <Routes>
             <Route path="/" element={<Island />} />
-            <Route path="challenge" element={<Challenge />} />
             <Route path="piece" element={<Piece />} />
             <Route path="/sign" element={<Sign />} />
+            <Route path="challenge" element={<Challenge />} />
+            <Route path="proposal_challenge" element={<ProposalChallenge />} />
+            <Route path="ended_challenge" element={<EndedChallenge />} />
           </Routes>
         </ResponsiveLayout>
       </Router>
