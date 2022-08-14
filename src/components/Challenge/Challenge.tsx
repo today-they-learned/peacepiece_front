@@ -4,11 +4,6 @@ import React from "react";
 
 import styled, { css } from "styled-components";
 
-const LayoutContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 const Container = styled.div`
   width: 73.56rem;
   margin: 1rem auto;
