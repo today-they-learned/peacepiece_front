@@ -48,7 +48,6 @@ const CompleteWord = styled.span`
   line-height: 1rem;
 `;
 
-
 const ContenttBox = styled.div`
   margin-left: 1rem;
 `;
