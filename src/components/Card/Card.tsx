@@ -19,7 +19,7 @@ const Thumbnail = styled.img`
   margin-bottom: 1rem;
 `;
 
-const ContenttBox = styled.div`
+const ContentBox = styled.div`
   margin-left: 1rem;
 `;
 
@@ -74,7 +74,7 @@ const Card = () => {
   return (
     <Container>
       <Thumbnail src="images/card.png" />
-      <ContenttBox>
+      <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
@@ -88,7 +88,7 @@ const Card = () => {
             <HashTag key={index}>#{tag}</HashTag>
           ))}
         </HashTagBox>
-      </ContenttBox>
+      </ContentBox>
     </Container>
   );
 };
