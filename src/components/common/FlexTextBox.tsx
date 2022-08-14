@@ -20,11 +20,11 @@ const defaultProps = {
   color: "white",
 };
 
-const FlexTextButton = (props: Props) => {
+const FlexTextBox = (props: Props) => {
   const { children, width, height, margin, fontSize, fontFamily, color } =
     props;
 
-  const FlexTextButton = styled.button`
+  const FlexTextBox = styled.div`
     width: ${width};
     height: ${height};
     margin: ${margin};
@@ -35,8 +35,8 @@ const FlexTextButton = (props: Props) => {
     color: ${color};
   `;
 
-  return <FlexTextButton>{children}</FlexTextButton>;
+  return <FlexTextBox>{children}</FlexTextBox>;
 };
-FlexTextButton.defaultProps = defaultProps;
+FlexTextBox.defaultProps = defaultProps;
 
-export default FlexTextButton;
+export default FlexTextBox;
