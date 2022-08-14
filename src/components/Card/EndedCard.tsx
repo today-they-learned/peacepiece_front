@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+
+import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 
 const Container = styled.div`
@@ -43,11 +44,10 @@ const CompleteBox = styled.div`
 const CompleteWord = styled.span`
   width: 2rem;
   font-size: 0.875rem;
-  font-weight: bold;
+  font-family: "Pr-SemiBold";
   text-align: center;
   line-height: 1rem;
 `;
-
 
 const ContenttBox = styled.div`
   margin-left: 1rem;
@@ -99,11 +99,14 @@ const HashTag = styled.div`
   margin-right: 0.5rem;
 `;
 
-const Card = () => {
+const EndedCard = () => {
   const Tags = ["001a", "텀블러_챌린지"];
   return (
     <Container>
-      <Thumbnail src="images/card.png" />
+      <CompleteThumb src="images/card.png" />
+      <CompleteBox>
+        <CompleteWord>내가 해냄</CompleteWord>
+      </CompleteBox>
       <ContenttBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
@@ -123,4 +126,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default EndedCard;
