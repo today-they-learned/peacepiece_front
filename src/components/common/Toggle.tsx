@@ -15,7 +15,7 @@ export const Togglee = styled.button<Props>`
   border: none;
   cursor: pointer;
   background-color: ${(props) =>
-    !props.toggle ? "lightgray" : COLOR.font.primary};
+    !props.toggle ? "#C0E1CC" : COLOR.font.primary};
   position: relative;
   display: flex;
   justify-content: center;
