@@ -3,6 +3,7 @@ import COLOR from "constants/color";
 import styled from "styled-components";
 
 interface Props {
+  children: React.ReactNode;
   width?: string;
   height?: string;
   margin?: string;
@@ -19,7 +20,7 @@ const defaultProps = {
 };
 
 const BannerBox = (props: Props) => {
-  const { width, height, margin, borderRadius, banner } = props;
+  const { children, width, height, margin, borderRadius, banner } = props;
 
   const dir = banner ? COLOR.bg.banner : COLOR.bg.primary;
 
@@ -31,7 +32,7 @@ const BannerBox = (props: Props) => {
     background: ${dir};
   `;
 
-  return <BannerBox />;
+  return <BannerBox>{children}</BannerBox>;
 };
 BannerBox.defaultProps = defaultProps;
 
