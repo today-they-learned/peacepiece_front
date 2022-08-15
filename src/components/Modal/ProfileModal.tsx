@@ -12,17 +12,17 @@ const Container = styled.div`
   width: 14rem;
   background: ${COLOR.white};
   border-radius: 0.6rem;
-  box-shadow: 2px 2px 6px ${COLOR.bg.modalShadow};
+  box-shadow: 2px 2px 8px ${COLOR.bg.modalShadow};
   z-index: 10;
   :after {
     border-top: 0px solid transparent;
-    border-left: 1rem solid transparent;
-    border-right: 1rem solid transparent;
-    border-bottom: 1rem solid white;
+    border-left: 1.2rem solid transparent;
+    border-right: 1.2rem solid transparent;
+    border-bottom: 1.5rem solid white;
     content: "";
     position: absolute;
     top: -0.6rem;
-    left: 11rem;
+    left: 10.5rem;
     z-index: 10;
   }
 `;
