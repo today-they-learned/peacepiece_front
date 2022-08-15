@@ -177,13 +177,6 @@ const Start = styled.div`
   font-size: 1rem;
 `;
 
-const Profile = styled.div`
-  background-color: ${COLOR.font.disabled};
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  margin: 0 2rem;
-`;
 const Navbar = () => {
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("island");
