@@ -7,11 +7,13 @@ export interface Props {
   children: React.ReactNode;
   top: string;
   left: string;
+  width: string;
+  height: string;
 }
 
 const Container = styled.div`
-  width: 14rem;
-  height: 10rem;
+  width: ${(p: Props) => p.width};
+  height: ${(p: Props) => p.height};
   display: flex;
   flex-direction: column-reverse;
   position: absolute;
@@ -27,7 +29,7 @@ const Tooltip = styled.div`
   background: black;
   color: white;
   font-size: 13px;
-  font-weight: bolder;
+  font-family: "Pr-Bold";
   :after {
     border-top: 0.9rem solid black;
     border-left: 0.6rem solid transparent;
@@ -41,11 +43,11 @@ const Tooltip = styled.div`
 `;
 
 const HoverTooltip = (props: Props) => {
-  const { children, top, left } = props;
+  const { children, top, left, width, height } = props;
   const [hover, setHover] = useState(false);
 
   return (
-    <Container top={top} left={left}>
+    <Container top={top} left={left} width={width} height={height}>
       <FlexBox margin="0 0 0 1rem">
         <Icon
           onMouseOver={() => setHover(true)}
