@@ -103,7 +103,7 @@ const ProfileModal = () => {
       <FlexBox margin="0.1rem 0 0 0" padding="0.5rem">
         <MailIcon />
         <SettingLabel>메일 알림</SettingLabel>
-        <Toggle />
+        <Toggle checked={false} />
       </FlexBox>
       <FlexBox padding="0.5rem">
         <LogoutIcon />

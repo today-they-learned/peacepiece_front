@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 
 interface Props {
-  toggle: boolean;
+  checked: boolean;
 }
 
-export const Togglee = styled.button<Props>`
+export const ToggleBtn = styled.button<Props>`
   // 함수 이름 "Toggle"이랑 이름이 달라야 해서 Togglee로 설정했는데 더 좋은 이름 있으면 추천 받아요.
   width: 2.8rem;
   height: 1.4rem;
@@ -15,7 +15,7 @@ export const Togglee = styled.button<Props>`
   border: none;
   cursor: pointer;
   background-color: ${(props) =>
-    !props.toggle ? "#C0E1CC" : COLOR.font.primary};
+    !props.checked ? "#C0E1CC" : COLOR.font.primary};
   position: relative;
   display: flex;
   justify-content: center;
@@ -32,24 +32,25 @@ const Circle = styled.div<Props>`
   left: 5%;
   transition: all 0.5s ease-in-out;
   ${(props) =>
-    props.toggle &&
+    props.checked &&
     css`
       transform: translate(1.35rem, 0);
       transition: all 0.5s ease-in-out;
     `}
 `;
 
-const Toggle = () => {
-  const [toggle, setToggle] = useState(false);
+const Toggle = (props: Props) => {
+  const { checked } = props;
+  const [toggle, setToggle] = useState(checked);
 
   const clickedToggle = () => {
     setToggle((prev) => !prev);
   };
 
   return (
-    <Togglee onClick={clickedToggle} toggle={toggle}>
-      <Circle toggle={toggle} />
-    </Togglee>
+    <ToggleBtn onClick={clickedToggle} checked={toggle}>
+      <Circle checked={toggle} />
+    </ToggleBtn>
   );
 };
 
