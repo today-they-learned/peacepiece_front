@@ -1,4 +1,3 @@
-import ChallengeOfferCard from "components/Card/ChallengeOfferCard";
 import React from "react";
 
 const ChallengeOffer = () => {
