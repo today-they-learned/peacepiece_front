@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import styled from "styled-components";
 import FlexBox from "components/common/FlexBox";
+import COLOR from "constants/color";
 
 const Foot = styled.div`
   width: 100%;
@@ -10,7 +10,7 @@ const Foot = styled.div`
 const Line = styled.div`
   width: 100%;
   height: 0.5px;
-  background-color: #a3a3a3;
+  background-color: ${COLOR.font.secondary};
   opacity: 0.4;
 `;
 
@@ -30,7 +30,7 @@ const Label = styled.span`
   width: 6rem;
   margin-top: 0.1rem;
   font-size: 0.8rem;
-  color: #a3a3a3;
+  color: ${COLOR.font.secondary};
   opacity: 0.5;
   text-align: center;
   cursor: pointer;
@@ -40,7 +40,7 @@ const MobileFootbar = () => {
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 1rem">
+      <FlexBox padding="1.5rem 1rem">
         <Logo src="images/logo.png" />
         <FootItems>
           <Label>서비스 소개</Label>
