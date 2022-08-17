@@ -4,8 +4,8 @@ import BannerBox from "components/common/BannerBox";
 const Island = () => {
   return (
     <div>
-      <BannerBox width="8rem" height="10rem" />
-      <BannerBox width="8rem" height="10rem" banner />
+      <BannerBox width="8rem" height="20rem" />
+      <BannerBox width="8rem" height="20rem" banner />
     </div>
   );
 };
