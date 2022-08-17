@@ -9,7 +9,6 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-bottom: 2.8rem;
 `;
 
 const CompleteThumb = styled.img`

@@ -19,7 +19,7 @@ const Thumbnail = styled.img`
 `;
 
 const ContentBox = styled.div`
-  margin-left: 1rem;
+margin-left: 1rem;
 `;
 
 const Title = styled.div`
