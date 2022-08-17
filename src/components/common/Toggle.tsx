@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const ToggleBtn = styled.button<Props>`
-  // 함수 이름 "Toggle"이랑 이름이 달라야 해서 Togglee로 설정했는데 더 좋은 이름 있으면 추천 받아요.
   width: 2.8rem;
   height: 1.4rem;
   margin-top: 0.2rem;
