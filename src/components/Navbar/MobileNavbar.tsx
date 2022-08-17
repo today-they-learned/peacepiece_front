@@ -1,9 +1,6 @@
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from "react";
-
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { IoIosNotificationsOutline } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const Nav = styled.div`
@@ -42,7 +39,7 @@ const Island = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -70,7 +67,7 @@ const Challenge = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -98,7 +95,7 @@ const Piece = styled.span<{ isClicked: string }>`
     transform: translateX(-50%);
     width: 0%;
     height: 4px;
-    background: ${COLOR.primary};
+    background: ${COLOR.font.primary};
     transition: all 0.5s;
   }
 
@@ -123,21 +120,13 @@ const RightNavItems = styled.div`
 `;
 
 const Start = styled.div`
-  background-color: ${COLOR.primary};
+  background-color: ${COLOR.font.primary};
   width: 5.5rem;
   border-radius: 1.5rem;
   padding: 0.5rem 1rem;
   color: ${COLOR.white};
   display: flex;
   justify-content: center;
-`;
-
-const Profile = styled.div`
-  background-color: ${COLOR.gray};
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  margin-left: 1rem;
 `;
 
 const MobileNavbar = () => {

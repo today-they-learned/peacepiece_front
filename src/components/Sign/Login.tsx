@@ -11,7 +11,7 @@ const ResetPassword = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  color: ${COLOR.primary};
+  color: ${COLOR.font.primary};
   font-family: "NS-B";
   font-size: 14px;
   padding: 0;

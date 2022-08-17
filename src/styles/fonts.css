@@ -1,38 +1,36 @@
 @font-face {
-  font-family: "NS-L";
-  src: url("fonts/NanumSquareOTF_acL.otf");
+  font-family: "Pr-Thin";
+  src: url("fonts/Pretendard-Thin.woff2");
 }
 @font-face {
-  font-family: "NS-R";
-  src: url("fonts/NanumSquareOTF_acR.otf");
+  font-family: "Pr-ExtraLight";
+  src: url("fonts/Pretendard-ExtraLight.woff2");
 }
 @font-face {
-  font-family: "NS-B";
-  src: url("fonts/NanumSquareOTF_acB.otf");
+  font-family: "Pr-Light";
+  src: url("fonts/Pretendard-Light.woff2");
 }
 @font-face {
-  font-family: "NS-EB";
-  src: url("fonts/NanumSquareOTF_acEB.otf");
+  font-family: "Pr-Regular";
+  src: url("fonts/Pretendard-Regular.woff2");
 }
 @font-face {
-  font-family: "TR-B";
-  src: url("fonts/TmoneyRoundWindExtraBold.ttf");
+  font-family: "Pr-Medium";
+  src: url("fonts/Pretendard-Medium.woff2");
 }
 @font-face {
-  font-family: "TR-R";
-  src: url("fonts/TmoneyRoundWindRegular.ttf");
-}
-
-@font-face {
-  font-family: "GS-B";
-  src: url("fonts/GmarketSansTTFBold.ttf");
-}
-
-@font-face {
-  font-family: "GS-M";
-  src: url("fonts/GmarketSansTTFMedium.ttf");
+  font-family: "Pr-SemiBold";
+  src: url("fonts/Pretendard-SemiBold.woff2");
 }
 @font-face {
-  font-family: "GS-L";
-  src: url("fonts/GmarketSansTTFLight.ttf");
+  font-family: "Pr-Bold";
+  src: url("fonts/Pretendard-Bold.woff2");
+}
+@font-face {
+  font-family: "Pr-ExtraBold";
+  src: url("fonts/Pretendard-ExtraBold.woff2");
+}
+@font-face {
+  font-family: "Pr-Black";
+  src: url("fonts/Pretendard-Black.woff2");
 }
