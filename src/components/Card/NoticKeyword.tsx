@@ -7,7 +7,12 @@ import HoverTooltip from "components/Tooltip/Tooltip";
 import FlexButton from "components/common/FlexButton";
 import FlexBox from "components/common/FlexBox";
 
-const Container = styled.div`
+interface Props {
+  margin?: string;
+  color?: string;
+}
+
+const TagContainer = styled.div`
   width: 24.5rem;
   height: 12rem;
   margin-top: 2.2rem;
@@ -21,10 +26,11 @@ const Title = styled.div`
   margin-top: 0.4rem;
 `;
 
-const Label = styled.label`
+const Label = styled.label<Props>`
   font-family: "Pr-Bold";
   font-size: 1.7rem;
-  color: ${COLOR.font.primary};
+  margin: ${(props) => (props.margin ? props.margin : 0)};
+  color: ${(props) => (props.color ? props.color : COLOR.white)};
 `;
 
 const NoticKeyword = () => {
@@ -42,15 +48,15 @@ const NoticKeyword = () => {
       margin="5%"
     >
       <Title>
-        <Label style={{ marginLeft: "0.5rem", color: COLOR.font.primary }}>
+        <Label color={COLOR.font.primary} margin="0 0 0 0.5rem">
           권소예
         </Label>
-        <Label style={{ color: COLOR.white }}>님의 알림 키워드</Label>
+        <Label>님의 알림 키워드</Label>
         <HoverTooltip top="-3.5rem" left="15.5rem" width="17rem" height="5rem">
           알림 설정을 한 키워드의 챌린지가 올라왔을 때, 이메일로 알려드릴게요 😇
         </HoverTooltip>
       </Title>
-      <Container>
+      <TagContainer>
         <FlexButton margin="0 0 0 16rem" fontSize="15px" fontWeight="400">
           수정하기{">"}
         </FlexButton>
@@ -62,11 +68,11 @@ const NoticKeyword = () => {
               margin="0 1rem 1rem 0"
               fontSize="17px"
             >
-              {keyword}
+              #{keyword}
             </FlexTextBox>
           ))}
         </FlexBox>
-      </Container>
+      </TagContainer>
     </BannerBox>
   );
 };

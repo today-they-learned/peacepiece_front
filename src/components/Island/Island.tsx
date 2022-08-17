@@ -1,7 +1,12 @@
+import NoticKeyword from "components/Card/NoticKeyword";
 import React from "react";
 
 const Island = () => {
-  return <div>내소개</div>;
+  return (
+    <div>
+      <NoticKeyword />
+    </div>
+  );
 };
 
 export default Island;
