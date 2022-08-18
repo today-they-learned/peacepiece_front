@@ -147,48 +147,6 @@ const Start = styled.div`
   font-size: 1rem;
 `;
 
-const Profile = styled.div`
-  background-color: ${COLOR.font.disabled};
-  width: 2rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  margin: 0 2rem;
-`;
-
-const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
-  width: 100%;
-  height: 4rem;
-  background-color: ${COLOR.black};
-  display: none;
-  text-align: center;
-  position: absolute;
-  top: 4.4rem;
-  ${(props) =>
-    props.clickedChallenge
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `};
-`;
-
-const DropdownTextBox = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const DropdonwText = styled.span`
-  font-family: "Pr-Bold";
-  font-size: 0.8rem;
-  margin: 5.8rem;
-  color: ${COLOR.font.disabled};
-  cursor: pointer;
-`;
-
 const Navbar = () => {
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("island");
