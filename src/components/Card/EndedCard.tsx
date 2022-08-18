@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import COLOR from "constants/color";
 
 const Container = styled.div`
@@ -9,14 +9,6 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-left: 5rem; // 잘 보이게 하려고 잠시 설정
-`;
-
-const Thumbnail = styled.img`
-  width: 16.3rem;
-  height: 12rem;
-  border-radius: 2rem 2rem 0 0;
-  margin-bottom: 1rem;
 `;
 
 const CompleteThumb = styled.img`
