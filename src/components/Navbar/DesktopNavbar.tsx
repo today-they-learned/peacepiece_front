@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useNavigate } from "react-router-dom";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Nav = styled.div`
   width: 100%;
@@ -12,6 +14,7 @@ const Nav = styled.div`
   padding: 0 10rem 0 10rem;
   background-color: ${COLOR.bg.nav};
   font-family: "Pr-ExtraBold";
+  position: relative;
 `;
 
 const Logo = styled.span`
@@ -94,39 +97,6 @@ const Challenge = styled.span<{ isClicked: string }>`
   }
 `;
 
-const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
-  width: 100vw;
-  height: 4rem;
-  background-color: ${COLOR.black};
-  display: none;
-  text-align: center;
-  position: absolute;
-  top: 2.79rem;
-  ${(props) =>
-    props.clickedChallenge
-      ? css`
-          display: block;
-        `
-      : css`
-          display: none;
-        `};
-`;
-
-const DropdownTextBox = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const DropdonwText = styled.span`
-  font-family: "Pr-Bold";
-  font-size: 0.8rem;
-  margin: 5.8rem;
-  color: ${COLOR.font.disabled};
-`;
-
 const Piece = styled.span<{ isClicked: string }>`
   font-family: "Pr-Regular";
   font-size: 1rem;
@@ -157,7 +127,7 @@ const Piece = styled.span<{ isClicked: string }>`
 `;
 
 const RightNavItems = styled.div`
-  width: 10rem;
+  width: 7rem;
   height: 3rem;
   display: flex;
   justify-content: center;
@@ -256,48 +226,54 @@ const Navbar = () => {
   }, [currentClickSubNav]);
 
   return (
-    <Nav>
-      <Logo>PeacePiece</Logo>
-      <CenterNavItems>
-        <Container>
-          <Island id="island" onClick={onClickNav} isClicked={currentClickNav}>
-            나의 섬
-          </Island>
-        </Container>
-        <Container>
-          <Challenge
-            id="challenge"
-            onClick={onClickNav}
-            isClicked={currentClickNav}
-          >
-            챌린지
-          </Challenge>
-          <DropdownBox clickedChallenge={clickedChallenge}>
-            <DropdownTextBox>
-              <DropdonwText id="proceed_challenge" onClick={onClickSubNav}>
-                진행 중인 챌린지
-              </DropdonwText>
-              <DropdonwText id="ended_challenge" onClick={onClickSubNav}>
-                지난 챌린지
-              </DropdonwText>
-              <DropdonwText id="proposal_challenge" onClick={onClickSubNav}>
-                챌린지 제안
-              </DropdonwText>
-            </DropdownTextBox>
-          </DropdownBox>
-        </Container>
-        <Container>
-          <Piece id="piece" onClick={onClickNav} isClicked={currentClickNav}>
-            피스
-          </Piece>
-        </Container>
-      </CenterNavItems>
-      <RightNavItems>
-        <Start>시작하기</Start>
-        {/* <IoIosNotificationsOutline size="35" />
-        <Profile /> */}
-      </RightNavItems>
-    </Nav>
+    <>
+      <Nav>
+        <Logo>PeacePiece</Logo>
+        <CenterNavItems>
+          <Container>
+            <Island
+              id="island"
+              onClick={onClickNav}
+              isClicked={currentClickNav}
+            >
+              나의 섬
+            </Island>
+          </Container>
+          <Container>
+            <Challenge
+              id="challenge"
+              onClick={onClickNav}
+              isClicked={currentClickNav}
+            >
+              챌린지
+            </Challenge>
+          </Container>
+          <Container>
+            <Piece id="piece" onClick={onClickNav} isClicked={currentClickNav}>
+              피스
+            </Piece>
+          </Container>
+        </CenterNavItems>
+        <RightNavItems>
+          <Start>시작하기</Start>
+          {/* <IoIosNotificationsOutline size="30" />
+          <Profile /> */}
+        </RightNavItems>
+      </Nav>
+      <DropdownBox clickedChallenge={clickedChallenge}>
+        <DropdownTextBox>
+          <DropdonwText id="proceed_challenge" onClick={onClickSubNav}>
+            진행 중인 챌린지
+          </DropdonwText>
+          <DropdonwText id="ended_challenge" onClick={onClickSubNav}>
+            지난 챌린지
+          </DropdonwText>
+          <DropdonwText id="proposal_challenge" onClick={onClickSubNav}>
+            챌린지 제안
+          </DropdonwText>
+        </DropdownTextBox>
+      </DropdownBox>
+    </>
   );
 };
 

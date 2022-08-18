@@ -8,7 +8,7 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-left: 5rem; // 잘 보이게 하려고 잠시 설정
+  margin-bottom: 2.8rem;
 `;
 
 const Thumbnail = styled.img`
@@ -18,7 +18,7 @@ const Thumbnail = styled.img`
   margin-bottom: 1rem;
 `;
 
-const ContenttBox = styled.div`
+const ContentBox = styled.div`
   margin-left: 1rem;
 `;
 
@@ -73,7 +73,7 @@ const Card = () => {
   return (
     <Container>
       <Thumbnail src="images/card.png" />
-      <ContenttBox>
+      <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
@@ -87,7 +87,7 @@ const Card = () => {
             <HashTag key={index}>#{tag}</HashTag>
           ))}
         </HashTagBox>
-      </ContenttBox>
+      </ContentBox>
     </Container>
   );
 };
