@@ -2,6 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import COLOR from "constants/color";
+import DidItIcon from "components/common/DidItIcon";
 
 const Container = styled.div`
   width: 16.3rem;
@@ -19,29 +20,7 @@ const CompleteThumb = styled.img`
   filter: brightness(50%);
 `;
 
-const CompleteBox = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: ${COLOR.font.primary};
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 50%;
-  background: ${COLOR.black};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CompleteWord = styled.span`
-  width: 2rem;
-  font-size: 0.875rem;
-  font-family: "Pr-SemiBold";
-  text-align: center;
-  line-height: 1rem;
-`;
-
-const ContenttBox = styled.div`
+const ContentBox = styled.div`
   margin-left: 1rem;
 `;
 
@@ -96,10 +75,8 @@ const EndedCard = () => {
   return (
     <Container>
       <CompleteThumb src="images/card.png" />
-      <CompleteBox>
-        <CompleteWord>내가 해냄</CompleteWord>
-      </CompleteBox>
-      <ContenttBox>
+      <DidItIcon isAbsolute top="1rem" right="1rem" />
+      <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
@@ -113,7 +90,7 @@ const EndedCard = () => {
             <HashTag key={index}>#{tag}</HashTag>
           ))}
         </HashTagBox>
-      </ContenttBox>
+      </ContentBox>
     </Container>
   );
 };
