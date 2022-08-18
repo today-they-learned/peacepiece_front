@@ -4,12 +4,13 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 
 interface Props {
-  isAbsolute: boolean;
+  isAbsolute?: boolean;
   top?: string;
   right?: string;
 }
 
 const defaultProps = {
+  isAbsolute: false,
   top: "0",
   right: "0",
 };
