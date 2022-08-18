@@ -1,5 +1,4 @@
 import React from "react";
-
 import styled from "styled-components";
 import COLOR from "constants/color";
 
@@ -9,39 +8,17 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
+  margin-bottom: 2.8rem;
 `;
 
-const CompleteThumb = styled.img`
+const Thumbnail = styled.img`
   width: 16.3rem;
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
-  filter: brightness(50%);
 `;
 
-const CompleteBox = styled.div`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  color: ${COLOR.font.primary};
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 50%;
-  background: ${COLOR.black};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CompleteWord = styled.span`
-  width: 2rem;
-  font-size: 0.875rem;
-  font-family: "Pr-SemiBold";
-  text-align: center;
-  line-height: 1rem;
-`;
-
-const ContenttBox = styled.div`
+const ContentBox = styled.div`
   margin-left: 1rem;
 `;
 
@@ -91,15 +68,12 @@ const HashTag = styled.div`
   margin-right: 0.5rem;
 `;
 
-const EndedCard = () => {
+const ChallengeCard = () => {
   const Tags = ["001a", "텀블러_챌린지"];
   return (
     <Container>
-      <CompleteThumb src="images/card.png" />
-      <CompleteBox>
-        <CompleteWord>내가 해냄</CompleteWord>
-      </CompleteBox>
-      <ContenttBox>
+      <Thumbnail src="images/card.png" />
+      <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
@@ -113,9 +87,9 @@ const EndedCard = () => {
             <HashTag key={index}>#{tag}</HashTag>
           ))}
         </HashTagBox>
-      </ContenttBox>
+      </ContentBox>
     </Container>
   );
 };
 
-export default EndedCard;
+export default ChallengeCard;

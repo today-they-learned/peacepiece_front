@@ -11,7 +11,7 @@ import Challenge from "components/Challenge/Challenge";
 import Piece from "components/Piece/Piece";
 import ResponsiveLayout from "layouts/responsive.layout";
 import EndedChallenge from "components/Challenge/EndedChallenge";
-import ProposalChallenge from "components/Challenge/ProposalChallenge";
+import ChallengeOffer from "components/Challenge/ChallengeOffer";
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/challenge" element={<Challenge />} />
             <Route path="/challenge/:id" element={<div />} />
             <Route path="/challenge/ended" element={<EndedChallenge />} />
-            <Route path="/challenge/proposal" element={<ProposalChallenge />} />
+            <Route path="/challenge/proposal" element={<ChallengeOffer />} />
             <Route path="/piece" element={<Piece />} />
             <Route path="/piece/:id" element={<div />} />
             <Route path="/piece/:keyword" element={<div />} />

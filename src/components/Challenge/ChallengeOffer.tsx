@@ -1,7 +1,7 @@
 import React from "react";
 
-const ProposalChallenge = () => {
+const ChallengeOffer = () => {
   return <div>챌린지 제안</div>;
 };
 
-export default ProposalChallenge;
+export default ChallengeOffer;
