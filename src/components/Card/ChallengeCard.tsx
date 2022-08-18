@@ -72,12 +72,12 @@ const ChallengeCard = () => {
   const Tags = ["001a", "텀블러_챌린지"];
   return (
     <Container>
-      <Thumbnail src="images/card.png" />
+      <Thumbnail src={`${process.env.PUBLIC_URL}/images/card.png`} />
       <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
-            <Person src="images/person.png" />
+            <Person src={`${process.env.PUBLIC_URL}/images/person.png`} />
             <Number>10명</Number>
           </Personnel>
           <Point>PP 100</Point>
