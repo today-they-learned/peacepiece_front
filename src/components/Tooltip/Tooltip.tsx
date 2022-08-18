@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-pascal-case */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { styled } from "@mui/material/styles";
 import HelpIcon from "@mui/icons-material/Help";
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
+import * as TooltipLib from "@mui/material/Tooltip";
+import { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 export interface Props {
   text: string;
@@ -13,11 +15,10 @@ const Icon = styled(HelpIcon)`
   cursor: pointer;
 `;
 
-const HoverTooltip = (props: Props) => {
+const Tooltip = (props: Props) => {
   const { text } = props;
-
   const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-    <Tooltip {...props} arrow classes={{ popper: className }} />
+    <TooltipLib.default {...props} arrow classes={{ popper: className }} />
   ))(({ theme }) => ({
     [`& .${tooltipClasses.arrow}`]: {
       color: theme.palette.common.black,
@@ -39,4 +40,4 @@ const HoverTooltip = (props: Props) => {
   );
 };
 
-export default HoverTooltip;
+export default Tooltip;
