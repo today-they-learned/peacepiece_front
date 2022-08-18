@@ -1,15 +1,14 @@
-import Card from "components/Card/Card";
-import EndedCard from "components/Card/EndedCard";
+import ChallengeTitle from "components/common/ChallengeTitle";
 import React from "react";
 
-import styled, { css } from "styled-components";
-
-const Title = styled.div`
-  margin-bottom: 1.5rem;
-`;
-
 const Challenge = () => {
-  return <Title>진행 중인 챌린지</Title>;
+  return (
+    <ChallengeTitle
+      title="📌 오늘의 챌린지"
+      toolTip
+      toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+    />
+  );
 };
 
 export default Challenge;
