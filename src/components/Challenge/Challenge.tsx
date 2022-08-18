@@ -1,8 +1,5 @@
-import Card from "components/Card/Card";
-import EndedCard from "components/Card/EndedCard";
 import React from "react";
-
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Title = styled.div`
   margin-bottom: 1.5rem;
