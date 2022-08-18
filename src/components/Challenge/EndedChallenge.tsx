@@ -1,5 +1,5 @@
-import Card from "components/Card/Card";
-import EndedCard from "components/Card/EndedCard";
+import ChallengeCard from "components/Card/ChallengeCard";
+import EndedChallengeCard from "components/Card/EndedChallengeCard";
 import ChallengeTitle from "components/common/ChallengeTitle";
 import React from "react";
 
@@ -23,22 +23,18 @@ const EndedChallenge = () => {
     <Container>
       <ChallengeTitle title="📌 지난 챌린지" />
       <CardContainer>
-        <EndedCard />
-        <Card />
-        <Card />
-        <Card />
-        <EndedCard />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <EndedCard />
+        <EndedChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <EndedChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
+        <EndedChallengeCard />
       </CardContainer>
     </Container>
   );
