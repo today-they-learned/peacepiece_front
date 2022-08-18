@@ -4,14 +4,17 @@ import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
 import "semantic-ui-css/semantic.min.css";
 
-import { Sign, NotFound } from "pages";
+import {
+  Sign,
+  NotFound,
+  Island,
+  Challenge,
+  EndedChallenge,
+  ChallengeOffer,
+  Piece,
+} from "pages";
 
-import Island from "components/Island/Island";
-import Challenge from "components/Challenge/Challenge";
-import Piece from "components/Piece/Piece";
 import ResponsiveLayout from "layouts/responsive.layout";
-import EndedChallenge from "components/Challenge/EndedChallenge";
-import ChallengeOffer from "components/Challenge/ChallengeOffer";
 
 const App = () => {
   return (
