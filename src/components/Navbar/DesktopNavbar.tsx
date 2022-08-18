@@ -307,10 +307,10 @@ const Navbar = () => {
           <DropdonwText id="proceed_challenge" onClick={onClickSubNav}>
             진행 중인 챌린지
           </DropdonwText>
-          <DropdonwText id="ended_challenge" onClick={onClickSubNav}>
+          <DropdonwText id="challenge/ended" onClick={onClickSubNav}>
             지난 챌린지
           </DropdonwText>
-          <DropdonwText id="proposal_challenge" onClick={onClickSubNav}>
+          <DropdonwText id="challenge/offer" onClick={onClickSubNav}>
             챌린지 제안
           </DropdonwText>
         </DropdownTextBox>
