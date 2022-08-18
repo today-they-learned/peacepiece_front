@@ -1,5 +1,6 @@
 import Card from "components/Card/Card";
 import EndedCard from "components/Card/EndedCard";
+import ChallengeTitle from "components/common/ChallengeTitle";
 import React from "react";
 
 import styled from "styled-components";
@@ -7,10 +8,6 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 73.56rem;
   margin: 1rem auto;
-`;
-
-const Title = styled.div`
-  margin-bottom: 1.5rem;
 `;
 
 const CardContainer = styled.div`
@@ -24,7 +21,7 @@ const CardContainer = styled.div`
 const EndedChallenge = () => {
   return (
     <Container>
-      <Title>지난 챌린지</Title>
+      <ChallengeTitle title="📌 지난 챌린지" />
       <CardContainer>
         <EndedCard />
         <Card />
