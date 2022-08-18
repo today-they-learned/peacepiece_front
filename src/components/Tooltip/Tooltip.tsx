@@ -1,41 +1,42 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
-import styled from "styled-components";
-import { Icon } from "semantic-ui-react";
-import ReactTooltip from "react-tooltip";
+import { styled } from "@mui/material/styles";
+import HelpIcon from "@mui/icons-material/Help";
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 export interface Props {
   text: string;
-  width?: string;
 }
 
-const defaultProps = {
-  width: "auto",
-};
+const Icon = styled(HelpIcon)`
+  font-size: 1.8rem !important;
+  cursor: pointer;
+`;
 
 const HoverTooltip = (props: Props) => {
-  const { text, width } = props;
+  const { text } = props;
 
-  const Tooltip = styled(ReactTooltip)`
-    width: ${width};
-    font-size: 13px;
-    font-family: "Pr-Bold";
-    background-color: black !important;
-    text-align: center;
-  `;
-
+  const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} arrow classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.arrow}`]: {
+      color: theme.palette.common.black,
+    },
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: theme.palette.common.black,
+      fontSize: 13,
+      fontFamily: "Pr-Bold",
+      paddingTop: 8,
+      paddingRight: 15,
+      paddingBottom: 8,
+      paddingLeft: 15,
+    },
+  }));
   return (
-    <div style={{ padding: "20%" }}>
-      <Icon
-        name="question circle"
-        size="large"
-        color="grey"
-        link
-        data-tip="React-tooltip"
-      />
-      <Tooltip effect="solid">{text}</Tooltip>
-    </div>
+    <CustomTooltip title={text} arrow placement="top-start">
+      <Icon color="action" />
+    </CustomTooltip>
   );
 };
-HoverTooltip.defaultProps = defaultProps;
 
 export default HoverTooltip;
