@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 interface Props {
   title: string;
-  toolTip: boolean;
   toolTipContent?: string;
 }
 
@@ -23,12 +22,12 @@ const Title = styled.div`
 `;
 
 const ChallengeTitle = (props: Props) => {
-  const { title, toolTip, toolTipContent } = props;
+  const { title, toolTipContent } = props;
 
   return (
     <Container>
       <Title>{title}</Title>
-      {toolTip && (
+      {toolTipContent && (
         <HoverTooltip top="-8.5rem" left="9rem">
           {toolTipContent}
         </HoverTooltip>

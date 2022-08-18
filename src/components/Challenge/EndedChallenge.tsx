@@ -21,7 +21,7 @@ const CardContainer = styled.div`
 const EndedChallenge = () => {
   return (
     <Container>
-      <ChallengeTitle title="📌 지난 챌린지" toolTip={false} />
+      <ChallengeTitle title="📌 지난 챌린지" />
       <CardContainer>
         <EndedCard />
         <Card />
