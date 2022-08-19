@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import COLOR from "constants/color";
 import FlexBox from "components/common/FlexBox";
 
 const Foot = styled.div`
   width: 100%;
-  background-color: #363636; // commit 할 때 바꾸기
 `;
 
 const Line = styled.div`
