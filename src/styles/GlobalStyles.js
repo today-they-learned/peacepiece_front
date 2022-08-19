@@ -7,8 +7,8 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
   }
   body{
-    background-color: ${COLOR.WHITE};
-    color: ${COLOR.BLACK};
+    background-color: ${COLOR.bg.default};
+    color: ${COLOR.white};
     font-family: 'NS-R';
   }
   a {
