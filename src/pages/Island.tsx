@@ -1,13 +1,7 @@
 import React from "react";
-import BannerBox from "components/common/BannerBox";
 
 const Island = () => {
-  return (
-    <div>
-      <BannerBox width="8rem" height="10rem" />
-      <BannerBox width="8rem" height="10rem" banner />
-    </div>
-  );
+  return <>나의 섬</>;
 };
 
 export default Island;
