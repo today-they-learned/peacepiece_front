@@ -1,11 +1,10 @@
 import React from "react";
-import BannerBox from "components/common/BannerBox";
+import Slider from "components/Slider/Slider";
 
 const Island = () => {
   return (
     <div>
-      <BannerBox width="8rem" height="10rem" />
-      <BannerBox width="8rem" height="10rem" banner />
+      <Slider />
     </div>
   );
 };
