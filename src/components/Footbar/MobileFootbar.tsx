@@ -22,7 +22,7 @@ const Logo = styled.img`
 const FootItems = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 65%;
 `;
 
 const Label = styled.span`
@@ -40,7 +40,7 @@ const MobileFootbar = () => {
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 1rem">
+      <FlexBox padding="2rem 1rem 1.2rem 1rem">
         <Logo src="images/logo.png" />
         <FootItems>
           <Label>서비스 소개</Label>
