@@ -1,6 +1,8 @@
 import React from "react";
+
 import styled from "styled-components";
 import COLOR from "constants/color";
+import DidItIcon from "components/common/DidItIcon";
 
 const Container = styled.div`
   width: 16.3rem;
@@ -11,11 +13,12 @@ const Container = styled.div`
   margin-bottom: 2.8rem;
 `;
 
-const Thumbnail = styled.img`
+const CompleteThumb = styled.img`
   width: 16.3rem;
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+  filter: brightness(50%);
 `;
 
 const ContentBox = styled.div`
@@ -68,16 +71,17 @@ const HashTag = styled.div`
   margin-right: 0.5rem;
 `;
 
-const Card = () => {
+const EndedChallengeCard = () => {
   const Tags = ["001a", "텀블러_챌린지"];
   return (
     <Container>
-      <Thumbnail src="images/card.png" />
+      <CompleteThumb src={`${process.env.PUBLIC_URL}/images/card.png`} />
+      <DidItIcon isAbsolute top="1rem" right="1rem" />
       <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
           <Personnel>
-            <Person src="images/person.png" />
+            <Person src={`${process.env.PUBLIC_URL}/images/person.png`} />
             <Number>10명</Number>
           </Personnel>
           <Point>PP 100</Point>
@@ -92,4 +96,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default EndedChallengeCard;
