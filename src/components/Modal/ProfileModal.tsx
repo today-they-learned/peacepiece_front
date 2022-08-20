@@ -1,4 +1,3 @@
-/* eslint-disable react/function-component-definition */
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
