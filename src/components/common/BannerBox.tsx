@@ -3,35 +3,45 @@ import COLOR from "constants/color";
 import styled from "styled-components";
 
 interface Props {
+  children: React.ReactNode;
   width?: string;
   height?: string;
+  padding?: string;
   margin?: string;
   borderRadius?: string;
-  banner?: boolean;
+  backgroundColor?: string;
 }
 
 const defaultProps = {
   width: "auto",
   height: "auto",
+  padding: "0",
   margin: "0",
   borderRadius: "1.4rem",
-  banner: false,
+  backgroundColor: COLOR.bg.secondary,
 };
 
 const BannerBox = (props: Props) => {
-  const { width, height, margin, borderRadius, banner } = props;
-
-  const dir = banner ? COLOR.bg.banner : COLOR.bg.primary;
+  const {
+    children,
+    width,
+    height,
+    margin,
+    padding,
+    borderRadius,
+    backgroundColor,
+  } = props;
 
   const BannerBox = styled.div`
     width: ${width};
     height: ${height};
     margin: ${margin};
+    padding: ${padding};
     border-radius: ${borderRadius};
-    background: ${dir};
+    background: ${backgroundColor};
   `;
 
-  return <BannerBox />;
+  return <BannerBox>{children}</BannerBox>;
 };
 BannerBox.defaultProps = defaultProps;
 
