@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import COLOR from "constants/color";
 import FlexBox from "components/common/FlexBox";
 
@@ -11,7 +10,7 @@ const Foot = styled.div`
 const Line = styled.div`
   width: 100%;
   height: 0.5px;
-  background-color: #a3a3a3;
+  background-color: ${COLOR.border.default};
   opacity: 0.4;
 `;
 
@@ -26,15 +25,14 @@ const FootItems = styled.div`
   display: flex;
   margin-left: 5%;
   justify-content: space-around;
-  width: 55%;
+  width: 53%;
 `;
 
 const Label = styled.span`
   position: relative;
   width: 10rem;
-  font-size: 15px;
-  color: #a3a3a3;
-  opacity: 0.6;
+  font-size: 1rem;
+  color: ${COLOR.font.secondary};
   text-align: center;
   cursor: pointer;
 `;
@@ -43,7 +41,7 @@ const Footbar = () => {
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 10rem">
+      <FlexBox padding="1.8rem 10rem">
         <Logo>PeacePiece</Logo>
         <FootItems>
           <Label>서비스 소개</Label>
