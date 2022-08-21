@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React from "react";
 import styled from "styled-components";
-=======
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
->>>>>>> main
 import COLOR from "constants/color";
 import Toggle from "components/common/Toggle";
 import FlexBox from "../common/FlexBox";
