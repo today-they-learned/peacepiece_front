@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import COLOR from "constants/color";
+import ChallengeFigure from "components/common/ChallengeFigure";
 
 const Container = styled.div`
   width: 16.3rem;
@@ -34,29 +35,6 @@ const ChallengeInfo = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const Personnel = styled.div`
-  display: flex;
-  margin-right: 1.2rem;
-`;
-
-const Person = styled.img`
-  width: 1.1rem;
-  height: 1rem;
-  margin-right: 0.2rem;
-`;
-
-const Number = styled.span`
-  font-size: 0.75rem;
-  font-family: "Pr-Medium";
-  color: ${COLOR.font.secondary};
-`;
-
-const Point = styled.span`
-  font-size: 0.875rem;
-  font-family: "Pr-Medium";
-  color: ${COLOR.font.secondary};
-`;
-
 const HashTagBox = styled.div`
   display: flex;
 `;
@@ -76,11 +54,7 @@ const ChallengeCard = () => {
       <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
-          <Personnel>
-            <Person src={`${process.env.PUBLIC_URL}/images/person.png`} />
-            <Number>10명</Number>
-          </Personnel>
-          <Point>PP 100</Point>
+          <ChallengeFigure person={10} point={100} />
         </ChallengeInfo>
         <HashTagBox>
           {Tags.map((tag, index) => (
