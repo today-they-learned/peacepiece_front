@@ -6,7 +6,6 @@ interface Props {
   children: React.ReactNode;
   width?: string;
   height?: string;
-  padding?: string;
   margin?: string;
   padding?: string;
   borderRadius?: string;
@@ -16,7 +15,6 @@ interface Props {
 const defaultProps = {
   width: "auto",
   height: "auto",
-  padding: "0",
   margin: "0",
   padding: "0",
   borderRadius: "1.4rem",

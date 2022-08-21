@@ -3,7 +3,7 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import FlexTextBox from "components/common/FlexTextBox";
 import BannerBox from "components/common/BannerBox";
-import HoverTooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/Tooltip";
 import FlexButton from "components/common/FlexButton";
 import FlexBox from "components/common/FlexBox";
 
@@ -15,7 +15,7 @@ interface Props {
 const TagContainer = styled.div`
   width: 24.5rem;
   height: 12rem;
-  margin-top: 2.2rem;
+  margin-top: 1.2rem;
   padding: 1.2rem 0 1.5rem 1rem;
   border-radius: 1.8rem;
   background-color: ${COLOR.bg.secondary};
@@ -28,7 +28,7 @@ const Title = styled.div`
 
 const Label = styled.label<Props>`
   font-family: "Pr-Bold";
-  font-size: 1.7rem;
+  font-size: 1.56rem;
   margin: ${(props) => (props.margin ? props.margin : 0)};
   color: ${(props) => (props.color ? props.color : COLOR.white)};
 `;
@@ -52,9 +52,7 @@ const NoticKeyword = () => {
           권소예
         </Label>
         <Label>님의 알림 키워드</Label>
-        <HoverTooltip top="-3.5rem" left="15.5rem" width="17rem" height="5rem">
-          알림 설정을 한 키워드의 챌린지가 올라왔을 때, 이메일로 알려드릴게요 😇
-        </HoverTooltip>
+        <Tooltip text="알림 설정을 한 키워드의 챌린지가 올라왔을 때, 이메일로 알려드릴게요 😇" />
       </Title>
       <TagContainer>
         <FlexButton margin="0 0 0 16rem" fontSize="15px" fontWeight="400">

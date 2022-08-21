@@ -27,11 +27,11 @@ const ChallengeTitle = (props: Props) => {
   return (
     <Container>
       <Title>{title}</Title>
-      {toolTipContent && (
-        <HoverTooltip top="-8.5rem" left="9rem">
-          {toolTipContent}
-        </HoverTooltip>
-      )}
+      {/* {toolTipContent && (
+        // <HoverTooltip top="-8.5rem" left="9rem">
+        //   {toolTipContent}
+        // </HoverTooltip>
+      )} */}
     </Container>
   );
 };
