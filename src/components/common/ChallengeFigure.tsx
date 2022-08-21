@@ -19,19 +19,19 @@ const Personal = styled.div`
 `;
 
 const Person = styled.img`
-  width: 1.1rem;
-  height: 1rem;
-  margin-right: 0.2rem;
+  width: 16.6px;
+  height: 15.8px;
+  margin: 0.1rem 0.2rem 0 0;
 `;
 
 const Number = styled.span`
-  font-size: 0.75rem;
+  font-size: 13px;
   font-family: "Pr-Medium";
   color: ${COLOR.font.secondary};
 `;
 
 const Point = styled.span`
-  font-size: 0.875rem;
+  font-size: 14px;
   font-family: "Pr-Medium";
   color: ${COLOR.font.secondary};
 `;
