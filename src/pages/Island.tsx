@@ -1,12 +1,7 @@
 import React from "react";
-import WeeklyChallengeCard from "components/Card/WeeklyChallengeCard";
 
 const Island = () => {
-  return (
-    <div>
-      <WeeklyChallengeCard />
-    </div>
-  );
+  return <div>내소개</div>;
 };
 
 export default Island;
