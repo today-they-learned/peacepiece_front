@@ -1,7 +1,7 @@
+import React from "react";
 import ChallengeCard from "components/Card/ChallengeCard";
 import EndedChallengeCard from "components/Card/EndedChallengeCard";
-import ChallengeTitle from "components/common/ChallengeTitle";
-import React from "react";
+import ChallengeTitle from "components/Challenge/ChallengeTitle";
 
 import styled from "styled-components";
 
