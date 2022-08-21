@@ -38,7 +38,7 @@ const BannerBox = (props: Props) => {
     margin: ${margin};
     padding: ${padding};
     border-radius: ${borderRadius};
-    background: ${backgroundColor};
+    background-color: ${backgroundColor};
   `;
 
   return <BannerBox>{children}</BannerBox>;
