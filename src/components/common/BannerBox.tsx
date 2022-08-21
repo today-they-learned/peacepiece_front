@@ -30,7 +30,6 @@ const BannerBox = (props: Props) => {
     border-radius: ${borderRadius};
     background: ${dir};
   `;
-
   return <BannerBox />;
 };
 BannerBox.defaultProps = defaultProps;
