@@ -17,7 +17,7 @@ const WeeklyChallengeCard = () => {
     <BannerBox
       width="21.4rem"
       height="9.25rem"
-      padding="1.2rem 1.5rem"
+      padding="1.2rem 1.5rem 1.2rem 1.5rem"
       borderRadius="1.8rem"
       backgroundColor={COLOR.bg.secondary}
     >
