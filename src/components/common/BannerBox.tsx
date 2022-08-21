@@ -9,7 +9,7 @@ interface Props {
   margin?: string;
   padding?: string;
   borderRadius?: string;
-  backgroundColor?: string;
+  theme?: string;
 }
 
 const defaultProps = {
@@ -18,19 +18,28 @@ const defaultProps = {
   margin: "0",
   padding: "0",
   borderRadius: "1.4rem",
-  backgroundColor: COLOR.bg.secondary,
+  theme: "default",
 };
 
 const BannerBox = (props: Props) => {
-  const {
-    children,
-    width,
-    height,
-    margin,
-    padding,
-    borderRadius,
-    backgroundColor,
-  } = props;
+  const defaultTheme = COLOR.bg.primary;
+  const bannerTheme = COLOR.bg.banner;
+  const secondaryTheme = COLOR.bg.secondary;
+
+  const { children, width, height, margin, padding, borderRadius, theme } =
+    props;
+  let themeColor = defaultTheme;
+
+  switch (theme) {
+    case "banner":
+      themeColor = bannerTheme;
+      break;
+    case "secondary":
+      themeColor = secondaryTheme;
+      break;
+    default:
+      themeColor = defaultTheme;
+  }
 
   const BannerBox = styled.div`
     width: ${width};
@@ -38,7 +47,7 @@ const BannerBox = (props: Props) => {
     margin: ${margin};
     padding: ${padding};
     border-radius: ${borderRadius};
-    background-color: ${backgroundColor};
+    background: ${theme ? bannerTheme : defaultTheme};
   `;
 
   return <BannerBox>{children}</BannerBox>;
@@ -46,3 +55,4 @@ const BannerBox = (props: Props) => {
 BannerBox.defaultProps = defaultProps;
 
 export default BannerBox;
+image.png;
