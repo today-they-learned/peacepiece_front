@@ -19,22 +19,23 @@ const CardContainer = styled.div`
 `;
 
 const EndedChallenge = () => {
+  const defaultMargin = "0 0 2.8rem 0";
   return (
     <Container>
       <ChallengeTitle title="📌 지난 챌린지" />
       <CardContainer>
-        <EndedChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <EndedChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
-        <EndedChallengeCard />
+        <EndedChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <EndedChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <ChallengeCard margin={defaultMargin} />
+        <EndedChallengeCard margin={defaultMargin} />
       </CardContainer>
     </Container>
   );
