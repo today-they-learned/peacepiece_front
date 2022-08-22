@@ -1,7 +1,7 @@
 import React from "react";
 import { FlexBox, FlexTextBox } from "components/common";
 import { Divider } from "semantic-ui-react";
-import ChallengeFigure from "./ChallengeFigure";
+import { ChallengeFigure } from "components/Challenge";
 
 interface Props {
   challenges: Array<{
@@ -16,7 +16,7 @@ const EndedChallengeList = (props: Props) => {
   const { challenges } = props;
 
   return (
-    <FlexBox column margin="5rem">
+    <FlexBox column>
       {challenges.slice(2).map((challenge) => {
         return (
           <>
