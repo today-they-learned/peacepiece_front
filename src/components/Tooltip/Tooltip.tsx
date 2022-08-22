@@ -8,17 +8,24 @@ import * as TooltipLib from "@mui/material/Tooltip";
 import { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 export interface Props {
-  text: string;
+  text?: string;
+  margin?: string;
 }
 
-const Icon = styled(HelpIcon)`
+const defaultProps = {
+  text: "text를 props로 전달하세요.",
+  margin: "0",
+};
+
+const Icon = styled(HelpIcon)<Props>`
   font-size: 1.8rem !important;
+  margin: ${(props) => props.margin};
   cursor: pointer;
   color: ${COLOR.btn.tooltip};
 `;
 
 const Tooltip = (props: Props) => {
-  const { text } = props;
+  const { text, margin } = props;
   const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
     <TooltipLib.default {...props} arrow classes={{ popper: className }} />
   ))(({ theme }) => ({
@@ -37,9 +44,9 @@ const Tooltip = (props: Props) => {
   }));
   return (
     <CustomTooltip title={text} arrow placement="top-start">
-      <Icon color="action" />
+      <Icon color="action" margin={margin} />
     </CustomTooltip>
   );
 };
-
+Tooltip.defaultProps = defaultProps;
 export default Tooltip;
