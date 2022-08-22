@@ -15,8 +15,8 @@ interface Props {
 const defaultProps = {
   width: "auto",
   height: "auto",
-  margin: "0",
-  padding: "0",
+  margin: "1rem",
+  padding: "1.5rem",
   borderRadius: "1.4rem",
   theme: "default",
 };
@@ -47,7 +47,7 @@ const BannerBox = (props: Props) => {
     margin: ${margin};
     padding: ${padding};
     border-radius: ${borderRadius};
-    background: ${theme ? bannerTheme : defaultTheme};
+    background: ${themeColor};
   `;
 
   return <BannerBox>{children}</BannerBox>;
@@ -55,4 +55,3 @@ const BannerBox = (props: Props) => {
 BannerBox.defaultProps = defaultProps;
 
 export default BannerBox;
-image.png;
