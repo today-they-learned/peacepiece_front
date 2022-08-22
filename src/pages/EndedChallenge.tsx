@@ -1,7 +1,7 @@
 import React from "react";
 import ChallengeCard from "components/Challenge/Card/ChallengeCard";
 import EndedChallengeCard from "components/Challenge/Card/EndedChallengeCard";
-import ChallengeTitle from "components/Challenge/ChallengeTitle";
+import { ChallengeTitle } from "components/Challenge";
 import styled from "styled-components";
 
 const Container = styled.div`
