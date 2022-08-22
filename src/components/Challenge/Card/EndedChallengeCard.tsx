@@ -1,9 +1,7 @@
 import React from "react";
-
 import styled from "styled-components";
 import COLOR from "constants/color";
-import DidItIcon from "components/Challenge/DidItIcon";
-import ChallengeFigure from "components/Challenge/ChallengeFigure";
+import { DidItIcon, ChallengeFigure } from "components/Challenge";
 
 const Container = styled.div`
   width: 16.3rem;
