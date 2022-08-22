@@ -13,7 +13,6 @@ const defaultProps = {
 
 const Container = styled.div`
   display: flex;
-  margin: 1.5rem 0;
 `;
 
 const Title = styled.div`
