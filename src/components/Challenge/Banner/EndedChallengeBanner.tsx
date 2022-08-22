@@ -17,7 +17,7 @@ const script = {
 
 export const EndedchallengeBanner = () => {
   return (
-    <ChallengeBanner tooltip="test" title={script.title} url={script.url}>
+    <ChallengeBanner title={script.title} url={script.url}>
       <EndedChallengeList challenges={dummyChallenges} />
     </ChallengeBanner>
   );
