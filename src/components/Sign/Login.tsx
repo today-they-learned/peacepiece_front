@@ -6,6 +6,7 @@ import COLOR from "constants/color";
 import { PrimaryBtn, SecondBtn } from "components/Form/Button";
 import FlexBox from "components/common/FlexBox";
 import useInput from "hooks/useInput";
+import { useSignUp } from "hooks/queries/auth/useSignUp";
 
 const ResetPassword = styled.button`
   position: absolute;
@@ -26,6 +27,8 @@ const Login = () => {
     // eslint-disable-next-line no-console
     console.log(email, password);
   };
+
+  const { mutate: signUp } = useSignUp();
 
   return (
     <Grid.Column centered>
@@ -57,7 +60,18 @@ const Login = () => {
           />
           <ResetPassword type="button">비밀번호를 잊으셨나요?</ResetPassword>
         </div>
-        <PrimaryBtn type="submit" fluid style={{ marginTop: "3rem" }}>
+        <PrimaryBtn
+          onClick={() => {
+            signUp({
+              email: "min1@test.com",
+              password1: "qlalfqjsgh123!",
+              password2: "qlalfqjsgh123!",
+            });
+          }}
+          type="submit"
+          fluid
+          style={{ marginTop: "3rem" }}
+        >
           로그인
         </PrimaryBtn>
         <SecondBtn type="button" fluid>
