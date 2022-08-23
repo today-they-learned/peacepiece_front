@@ -1,7 +1,4 @@
-import React from "react";
-
 import { useMediaQuery } from "react-responsive";
-
 import DesktopLayout from "./desktop.layout";
 import MobileLayout from "./mobile.layout";
 

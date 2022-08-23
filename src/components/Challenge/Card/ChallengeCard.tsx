@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import ChallengeFigure from "components/common/ChallengeFigure";
+import { ChallengeFigure } from "components/Challenge";
 
 interface Props {
   margin?: string;

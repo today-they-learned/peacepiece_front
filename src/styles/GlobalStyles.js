@@ -2,14 +2,17 @@ import { createGlobalStyle } from "styled-components";
 import COLOR from "constants/color";
 
 const GlobalStyles = createGlobalStyle`
+  html {
+    font-size: 16px;
+  }
   * {
     box-sizing: border-box;
-    font-size: 16px;
   }
   body{
     background-color: ${COLOR.bg.default};
-    color: ${COLOR.white};
-    font-family: 'NS-R';
+    color: ${COLOR.font.default};
+    font-family: 'Pr-Light';
+    font-size: 16px;
   }
   a {
     color: inherit;

@@ -1,9 +1,7 @@
-import React from "react";
-
 import styled from "styled-components";
 import COLOR from "constants/color";
-import ChallengeTitle from "components/common/ChallengeTitle";
-import ChallengeCard from "components/Card/ChallengeCard";
+import { ChallengeTitle } from "components/Challenge";
+import { ChallengeCard } from "./Card";
 
 const Container = styled.div`
   width: 55rem;
