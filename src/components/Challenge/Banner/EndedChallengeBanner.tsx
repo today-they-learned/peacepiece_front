@@ -1,6 +1,5 @@
-import React from "react";
 import { ChallengeBanner } from "components/Challenge";
-import EndedChallengeList from "../EndedChallengeList";
+import EndedChallengeList from "components/Challenge/EndedChallengeList";
 
 const dummyChallenges = [
   { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
@@ -15,10 +14,12 @@ const script = {
   url: "/challenge/ended",
 };
 
-export const EndedchallengeBanner = () => {
+const EndedChallengeBanner = () => {
   return (
     <ChallengeBanner title={script.title} url={script.url}>
       <EndedChallengeList challenges={dummyChallenges} />
     </ChallengeBanner>
   );
 };
+
+export default EndedChallengeBanner;

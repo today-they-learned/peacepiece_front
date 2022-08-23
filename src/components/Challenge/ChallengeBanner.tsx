@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { BannerBox, FlexBox, FlexTextBox } from "components/common";
 import { ChallengeTitle } from "components/Challenge";

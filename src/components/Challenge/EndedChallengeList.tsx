@@ -1,4 +1,3 @@
-import React from "react";
 import { FlexBox, FlexTextBox } from "components/common";
 import { Divider } from "semantic-ui-react";
 import { ChallengeFigure } from "components/Challenge";

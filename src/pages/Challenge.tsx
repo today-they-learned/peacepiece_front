@@ -1,5 +1,3 @@
-import React from "react";
-
 import ChallengeTitle from "components/Challenge/ChallengeTitle";
 
 const Challenge = () => {

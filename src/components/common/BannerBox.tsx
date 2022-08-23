@@ -1,4 +1,3 @@
-import React from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 
