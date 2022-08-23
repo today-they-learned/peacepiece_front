@@ -25,15 +25,7 @@ const ChallengeTitle = (props: Props) => {
   return (
     <Container>
       <Title>{title}</Title>
-<<<<<<< HEAD:src/components/common/ChallengeTitle.tsx
-      {/* {toolTipContent && (
-        // <HoverTooltip top="-8.5rem" left="9rem">
-        //   {toolTipContent}
-        // </HoverTooltip>
-      )} */}
-=======
       {toolTipContent && <Tooltip text={toolTipContent} />}
->>>>>>> main:src/components/Challenge/ChallengeTitle.tsx
     </Container>
   );
 };
