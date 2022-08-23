@@ -43,6 +43,7 @@ const BannerBox = (props: Props) => {
   const BannerBox = styled.div`
     width: ${width};
     height: ${height};
+    padding: ${padding};
     margin: ${margin};
     padding: ${padding};
     border-radius: ${borderRadius};
