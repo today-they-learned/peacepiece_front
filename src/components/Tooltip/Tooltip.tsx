@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+
 import { styled } from "@mui/material/styles";
 import COLOR from "constants/color";
 import HelpIcon from "@mui/icons-material/Help";

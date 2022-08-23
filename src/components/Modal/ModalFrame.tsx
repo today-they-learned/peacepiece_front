@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { AiOutlineClose } from "react-icons/ai";

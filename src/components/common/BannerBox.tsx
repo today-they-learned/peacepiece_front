@@ -1,4 +1,3 @@
-import React from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 
@@ -9,28 +8,37 @@ interface Props {
   padding?: string;
   margin?: string;
   borderRadius?: string;
-  backgroundColor?: string;
+  theme?: string;
 }
 
 const defaultProps = {
   width: "auto",
   height: "auto",
-  padding: "0",
-  margin: "0",
+  margin: "1rem",
+  padding: "1.5rem",
   borderRadius: "1.4rem",
-  backgroundColor: COLOR.bg.secondary,
+  theme: "default",
 };
 
 const BannerBox = (props: Props) => {
-  const {
-    children,
-    width,
-    height,
-    margin,
-    padding,
-    borderRadius,
-    backgroundColor,
-  } = props;
+  const defaultTheme = COLOR.bg.primary;
+  const bannerTheme = COLOR.bg.banner;
+  const secondaryTheme = COLOR.bg.secondary;
+
+  const { children, width, height, margin, padding, borderRadius, theme } =
+    props;
+  let themeColor = defaultTheme;
+
+  switch (theme) {
+    case "banner":
+      themeColor = bannerTheme;
+      break;
+    case "secondary":
+      themeColor = secondaryTheme;
+      break;
+    default:
+      themeColor = defaultTheme;
+  }
 
   const BannerBox = styled.div`
     width: ${width};
@@ -38,7 +46,7 @@ const BannerBox = (props: Props) => {
     margin: ${margin};
     padding: ${padding};
     border-radius: ${borderRadius};
-    background-color: ${backgroundColor};
+    background: ${themeColor};
   `;
 
   return <BannerBox>{children}</BannerBox>;

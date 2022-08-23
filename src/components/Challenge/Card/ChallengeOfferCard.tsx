@@ -1,5 +1,5 @@
 import COLOR from "constants/color";
-import React from "react";
+
 import styled from "styled-components";
 
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
