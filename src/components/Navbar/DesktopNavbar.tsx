@@ -158,7 +158,7 @@ const Profile = styled.div`
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
   width: 100%;
   height: 4rem;
-  background-color: ${COLOR.black};
+  background-color: ${COLOR.bg.navSecondary};
   display: none;
   text-align: center;
   position: absolute;
@@ -232,7 +232,7 @@ const Navbar = () => {
   useEffect(() => {
     if (currentClickNav !== null) {
       const current = document.getElementById(currentClickNav);
-      current.style.color = `${COLOR.font.primary}`;
+      current.style.color = `${COLOR.font.default}`;
       current.style.fontFamily = "Pr-Bold";
     }
 

@@ -1,12 +1,7 @@
-import ChallengeTitle from "components/Challenge/ChallengeTitle";
+import TodayChallenge from "components/Challenge/TodayChallenge";
 
 const Challenge = () => {
-  return (
-    <ChallengeTitle
-      title="📌 오늘의 챌린지"
-      toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
-    />
-  );
+  return <TodayChallenge />;
 };
 
 export default Challenge;
