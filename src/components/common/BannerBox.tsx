@@ -5,8 +5,8 @@ interface Props {
   children: React.ReactNode;
   width?: string;
   height?: string;
-  margin?: string;
   padding?: string;
+  margin?: string;
   borderRadius?: string;
   theme?: string;
 }
