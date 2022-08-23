@@ -1,7 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import ChallengeFigure from "components/common/ChallengeFigure";
+import { DidItIcon, ChallengeFigure } from "components/Challenge";
+
+interface Props {
+  margin?: string;
+}
+
+const defaultProps = {
+  margin: "0",
+};
 
 const Container = styled.div`
   width: 16.3rem;
@@ -9,14 +16,15 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-bottom: 2.8rem;
+  margin: ${(props: Props) => props.margin};
 `;
 
-const Thumbnail = styled.img`
+const CompleteThumb = styled.img`
   width: 16.3rem;
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+  filter: brightness(50%);
 `;
 
 const ContentBox = styled.div`
@@ -46,11 +54,13 @@ const HashTag = styled.div`
   margin-right: 0.5rem;
 `;
 
-const ChallengeCard = () => {
+const EndedChallengeCard = (props: Props) => {
+  const { margin } = props;
   const Tags = ["001a", "텀블러_챌린지"];
   return (
-    <Container>
-      <Thumbnail src={`${process.env.PUBLIC_URL}/images/card.png`} />
+    <Container margin={margin}>
+      <CompleteThumb src={`${process.env.PUBLIC_URL}/images/card.png`} />
+      <DidItIcon isAbsolute top="1rem" right="1rem" />
       <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
@@ -65,5 +75,6 @@ const ChallengeCard = () => {
     </Container>
   );
 };
+EndedChallengeCard.defaultProps = defaultProps;
 
-export default ChallengeCard;
+export default EndedChallengeCard;

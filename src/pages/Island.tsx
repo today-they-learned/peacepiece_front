@@ -1,4 +1,3 @@
-import React from "react";
 import NoticKeyword from "components/Card/NoticKeyword";
 
 const Island = () => {
