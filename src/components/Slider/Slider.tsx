@@ -21,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const Carousell = styled(Carousel)`
+const CarouselLib = styled(Carousel)`
   width: 50.5rem;
   height: 10.5rem;
   background-color: ${COLOR.bg.primary};
@@ -111,7 +111,7 @@ const Slider = () => {
       <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 1.4rem 0.8rem">
         📝 이번주 챌린지
       </FlexTextBox>
-      <Carousell
+      <CarouselLib
         height="11rem"
         animation="slide"
         indicators={false}
@@ -128,7 +128,7 @@ const Slider = () => {
         }}
       >
         {insertCard}
-      </Carousell>
+      </CarouselLib>
     </Container>
   );
 };
