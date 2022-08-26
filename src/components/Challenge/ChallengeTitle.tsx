@@ -1,6 +1,5 @@
-import HoverTooltip from "components/Tooltip/Tooltip";
-import React from "react";
 import styled from "styled-components";
+import Tooltip from "components/Tooltip/Tooltip";
 
 interface Props {
   title: string;
@@ -13,7 +12,6 @@ const defaultProps = {
 
 const Container = styled.div`
   display: flex;
-  margin: 1.5rem 0;
 `;
 
 const Title = styled.div`
@@ -27,11 +25,7 @@ const ChallengeTitle = (props: Props) => {
   return (
     <Container>
       <Title>{title}</Title>
-      {toolTipContent && (
-        <HoverTooltip top="-8.5rem" left="9rem">
-          {toolTipContent}
-        </HoverTooltip>
-      )}
+      {toolTipContent && <Tooltip text={toolTipContent} />}
     </Container>
   );
 };

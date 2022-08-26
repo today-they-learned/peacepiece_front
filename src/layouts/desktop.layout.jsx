@@ -1,7 +1,5 @@
-import React from "react";
 import DesktopNavbar from "components/Navbar/DesktopNavbar";
 import DesktopFootbar from "components/Footbar/DesktopFootbar";
-
 import styled from "styled-components";
 
 const ChildrenContainer = styled.div`

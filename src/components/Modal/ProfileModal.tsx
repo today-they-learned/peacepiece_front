@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import COLOR from "constants/color";
+import Toggle from "components/common/Toggle";
 import FlexBox from "../common/FlexBox";
-
-interface Props {
-  toggle: boolean;
-}
 
 const Container = styled.div`
   position: relative;
@@ -15,16 +11,18 @@ const Container = styled.div`
   width: 14rem;
   background: ${COLOR.white};
   border-radius: 0.6rem;
-  box-shadow: 2px 2px 6px ${COLOR.bg.modalShadow};
+  box-shadow: 2px 2px 8px ${COLOR.bg.modalShadow};
+  z-index: 10;
   :after {
     border-top: 0px solid transparent;
-    border-left: 1rem solid transparent;
-    border-right: 1rem solid transparent;
-    border-bottom: 1rem solid white;
+    border-left: 1.2rem solid transparent;
+    border-right: 1.2rem solid transparent;
+    border-bottom: 1.5rem solid white;
     content: "";
     position: absolute;
     top: -0.6rem;
-    left: 11rem;
+    left: 10.5rem;
+    z-index: 10;
   }
 `;
 
@@ -87,41 +85,7 @@ const SettingLabel = styled.label`
   cursor: pointer;
 `;
 
-export const Toggle = styled.button<Props>`
-  width: 2.8rem;
-  height: 1.4rem;
-  margin-top: 0.2rem;
-  border-radius: 1rem;
-  border: none;
-  cursor: pointer;
-  background-color: ${(props) => (!props.toggle ? "lightgray" : "#3CE87B")};
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s ease-in-out;
-`;
-
-const Circle = styled.div<Props>`
-  background-color: ${COLOR.white};
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 1rem;
-  position: absolute;
-  left: 5%;
-  transition: all 0.5s ease-in-out;
-  ${(props) =>
-    props.toggle &&
-    css`
-      transform: translate(1.35rem, 0);
-      transition: all 0.5s ease-in-out;
-    `}
-`;
 const ProfileModal = () => {
-  const [toggle, setToggle] = useState(false);
-  const clickedToggle = () => {
-    setToggle((prev) => !prev);
-  };
   return (
     <Container>
       <FlexBox padding="1rem">
@@ -138,9 +102,7 @@ const ProfileModal = () => {
       <FlexBox margin="0.1rem 0 0 0" padding="0.5rem">
         <MailIcon />
         <SettingLabel>메일 알림</SettingLabel>
-        <Toggle onClick={clickedToggle} toggle={toggle}>
-          <Circle toggle={toggle} />
-        </Toggle>
+        <Toggle checked={false} />
       </FlexBox>
       <FlexBox padding="0.5rem">
         <LogoutIcon />

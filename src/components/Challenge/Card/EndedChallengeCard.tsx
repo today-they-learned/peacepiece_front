@@ -1,8 +1,14 @@
-import React from "react";
-
 import styled from "styled-components";
 import COLOR from "constants/color";
-import DidItIcon from "components/common/DidItIcon";
+import { DidItIcon, ChallengeFigure } from "components/Challenge";
+
+interface Props {
+  margin?: string;
+}
+
+const defaultProps = {
+  margin: "0",
+};
 
 const Container = styled.div`
   width: 16.3rem;
@@ -10,7 +16,7 @@ const Container = styled.div`
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin-bottom: 2.8rem;
+  margin: ${(props: Props) => props.margin};
 `;
 
 const CompleteThumb = styled.img`
@@ -37,29 +43,6 @@ const ChallengeInfo = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-const Personnel = styled.div`
-  display: flex;
-  margin-right: 1.2rem;
-`;
-
-const Person = styled.img`
-  width: 1.1rem;
-  height: 1rem;
-  margin-right: 0.2rem;
-`;
-
-const Number = styled.span`
-  font-size: 0.75rem;
-  font-family: "Pr-Medium";
-  color: ${COLOR.font.secondary};
-`;
-
-const Point = styled.span`
-  font-size: 0.875rem;
-  font-family: "Pr-Medium";
-  color: ${COLOR.font.secondary};
-`;
-
 const HashTagBox = styled.div`
   display: flex;
 `;
@@ -71,20 +54,17 @@ const HashTag = styled.div`
   margin-right: 0.5rem;
 `;
 
-const EndedChallengeCard = () => {
+const EndedChallengeCard = (props: Props) => {
+  const { margin } = props;
   const Tags = ["001a", "텀블러_챌린지"];
   return (
-    <Container>
+    <Container margin={margin}>
       <CompleteThumb src={`${process.env.PUBLIC_URL}/images/card.png`} />
       <DidItIcon isAbsolute top="1rem" right="1rem" />
       <ContentBox>
         <Title>텀블러로 커피 마시는 멋진 나</Title>
         <ChallengeInfo>
-          <Personnel>
-            <Person src={`${process.env.PUBLIC_URL}/images/person.png`} />
-            <Number>10명</Number>
-          </Personnel>
-          <Point>PP 100</Point>
+          <ChallengeFigure person={10} point={100} />
         </ChallengeInfo>
         <HashTagBox>
           {Tags.map((tag, index) => (
@@ -95,5 +75,6 @@ const EndedChallengeCard = () => {
     </Container>
   );
 };
+EndedChallengeCard.defaultProps = defaultProps;
 
 export default EndedChallengeCard;
