@@ -20,7 +20,6 @@ export const roadTileMap = {
   edge_3: 47,
   edge_4: 46,
 };
-
 export const bankedRiverTileMap = {
   tileId: "rb",
   straightJunction_horizontal: 57,
@@ -43,7 +42,6 @@ export const bankedRiverTileMap = {
   edge_3: 57,
   edge_4: 55,
 };
-
 export const riverTileMap = {
   tileId: "rv",
   straightJunction_horizontal: 28,
@@ -66,7 +64,6 @@ export const riverTileMap = {
   edge_3: 28,
   edge_4: 18,
 };
-
 export const grassTileMap = {
   tileId: "gr",
   straightJunction_horizontal: 66,
@@ -89,7 +86,6 @@ export const grassTileMap = {
   edge_3: 66,
   edge_4: 66,
 };
-
 export const waterTileMap = {
   tileId: "w",
   straightJunction_horizontal: 3,
@@ -112,7 +108,6 @@ export const waterTileMap = {
   edge_3: 7,
   edge_4: 9,
 };
-
 export const beachTileMap = {
   tileId: "b",
   straightJunction_horizontal: 85,

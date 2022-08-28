@@ -1,23 +1,148 @@
 /* eslint-disable no-return-assign */
-import React, { useRef, useLayoutEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./Tiles.css";
 import "react-isometric-tilemap/build/css/index.css";
-import { ProcessPath } from "./TileEngine/PathProcessor";
 import { TileSwitcher } from "./TileEngine/TileSwitcher";
-import { terrainMap } from "./TileEngine/TerrainMap";
 import { items } from "./TileEngine/ItemsMap";
-import { MovableItems } from "./TileEngine/MoveableItems";
-import { terrain } from "./TileEngine/TileMapProcessor";
+import { createTerrain } from "./TileEngine/TileMapProcessor";
+
+import rock from "./IslandImages/rock.png";
+import grass from "./IslandImages/grass.png";
+import empty from "./IslandImages/empty.png";
+import selectedGrid from "./IslandImages/selectedGrid.png";
+
+import dirt from "./IslandImages/dirt.png";
+import dirtDouble from "./IslandImages/dirtDouble.png";
+
+import water from "./IslandImages/water.png";
+import waterN from "./IslandImages/waterN.png";
+import waterNE from "./IslandImages/waterNE.png";
+import waterNW from "./IslandImages/waterNW.png";
+import waterE from "./IslandImages/waterE.png";
+import waterES from "./IslandImages/waterES.png";
+import waterS from "./IslandImages/waterS.png";
+import waterSW from "./IslandImages/waterSW.png";
+import waterW from "./IslandImages/waterW.png";
+
+import waterCornerES from "./IslandImages/waterCornerES.png";
+import waterCornerNE from "./IslandImages/waterCornerNE.png";
+import waterCornerNW from "./IslandImages/waterCornerNW.png";
+import waterCornerSW from "./IslandImages/waterCornerSW.png";
+
+import road from "./IslandImages/road.png";
+import roadES from "./IslandImages/roadES.png";
+import roadEW from "./IslandImages/roadEW.png";
+import roadNE from "./IslandImages/roadNE.png";
+import roadNS from "./IslandImages/roadNS.png";
+import roadNW from "./IslandImages/roadNW.png";
+import roadSW from "./IslandImages/roadSW.png";
+
+import roadHill2E from "./IslandImages/roadHill2E.png";
+import roadHill2N from "./IslandImages/roadHill2N.png";
+import roadHill2S from "./IslandImages/roadHill2S.png";
+import roadHill2W from "./IslandImages/roadHill2W.png";
+import roadHillE from "./IslandImages/roadHillE.png";
+import roadHillN from "./IslandImages/roadHillN.png";
+import roadHillS from "./IslandImages/roadHillS.png";
+import roadHillW from "./IslandImages/roadHillW.png";
+
+import lotE from "./IslandImages/lotE.png";
+import lotES from "./IslandImages/lotES.png";
+import lotN from "./IslandImages/lotN.png";
+import lotNE from "./IslandImages/lotNE.png";
+import lotNW from "./IslandImages/lotNW.png";
+import lotS from "./IslandImages/lotS.png";
+import lotSW from "./IslandImages/lotSW.png";
+import lotW from "./IslandImages/lotW.png";
+
+import bridgeEW from "./IslandImages/bridgeEW.png";
+import bridgeNS from "./IslandImages/bridgeNS.png";
+
+import crossroad from "./IslandImages/crossroad.png";
+import crossroadESW from "./IslandImages/crossroadESW.png";
+import crossroadNES from "./IslandImages/crossroadNES.png";
+import crossroadNEW from "./IslandImages/crossroadNEW.png";
+import crossroadNSW from "./IslandImages/crossroadNSW.png";
+
+import endE from "./IslandImages/endE.png";
+import endN from "./IslandImages/endN.png";
+import endS from "./IslandImages/endS.png";
+import endW from "./IslandImages/endW.png";
+
+import exitE from "./IslandImages/exitE.png";
+import exitN from "./IslandImages/exitN.png";
+import exitS from "./IslandImages/exitS.png";
+import exitW from "./IslandImages/exitW.png";
+
+import riverBankedES from "./IslandImages/riverBankedES.png";
+import riverBankedEW from "./IslandImages/riverBankedEW.png";
+import riverBankedNE from "./IslandImages/riverBankedNE.png";
+import riverBankedNS from "./IslandImages/riverBankedNS.png";
+import riverBankedNW from "./IslandImages/riverBankedNW.png";
+import riverBankedSW from "./IslandImages/riverBankedSW.png";
+
+import riverES from "./IslandImages/riverES.png";
+import riverEW from "./IslandImages/riverEW.png";
+import riverNE from "./IslandImages/riverNE.png";
+import riverNS from "./IslandImages/riverNS.png";
+import riverNW from "./IslandImages/riverNW.png";
+import riverSW from "./IslandImages/riverSW.png";
+
+import riverBridge1 from "./IslandImages/riverBridge1.png";
+import riverBridge2 from "./IslandImages/riverBridge2.png";
+import riverBridge3 from "./IslandImages/riverBridge3.png";
+import riverBridge4 from "./IslandImages/riverBridge4.png";
+
+import grassWhole from "./IslandImages/grassWhole.png";
+
+import hillE from "./IslandImages/hillE.png";
+import hillES from "./IslandImages/hillES.png";
+import hillN from "./IslandImages/hillN.png";
+import hillNE from "./IslandImages/hillNE.png";
+import hillNW from "./IslandImages/hillNW.png";
+import hillS from "./IslandImages/hillS.png";
+import hillSW from "./IslandImages/hillSW.png";
+import hillW from "./IslandImages/hillW.png";
+
+import beach from "./IslandImages/beach.png";
+import beachE from "./IslandImages/beachE.png";
+import beachES from "./IslandImages/beachES.png";
+import beachN from "./IslandImages/beachN.png";
+import beachNE from "./IslandImages/beachNE.png";
+import beachNW from "./IslandImages/beachNW.png";
+import beachS from "./IslandImages/beachS.png";
+import beachSW from "./IslandImages/beachSW.png";
+import beachW from "./IslandImages/beachW.png";
+
+import beachCornerES from "./IslandImages/beachCornerES.png";
+import beachCornerNE from "./IslandImages/beachCornerNE.png";
+import beachCornerNW from "./IslandImages/beachCornerNW.png";
+import beachCornerSW from "./IslandImages/beachCornerSW.png";
+
+import coniferAltShort from "./IslandImages/coniferAltShort.png";
+import coniferAltTall from "./IslandImages/coniferAltTall.png";
+import coniferShort from "./IslandImages/coniferShort.png";
+import coniferTall from "./IslandImages/coniferTall.png";
+
+import treeAltShort from "./IslandImages/treeAltShort.png";
+import treeAltTall from "./IslandImages/treeAltTall.png";
+
+import treeShort from "./IslandImages/treeShort.png";
+import treeTall from "./IslandImages/treeTall.png";
+
+import tank from "./IslandImages/tank.png";
+import testtest from "./IslandImages/testtest.png";
 
 const TILE_WIDTH = 100;
 const mouseCoords = { x: 0, y: 0 };
 
-const IslandViewer = () => {
+const IslandViewer = ({ terrainMap }) => {
   const canvasRef = useRef();
   const imagesRef = useRef({});
   const modalRef = useRef();
   const modalImageRef = useRef();
   const [terrainMapState, setTerrainMapState] = useState(terrainMap);
+  const [terrainState, setTerrainState] = useState(createTerrain(terrainMap));
 
   const mapWidth = terrainMapState[0].length;
 
@@ -39,44 +164,85 @@ const IslandViewer = () => {
     }
   }
 
-  //   handleMouseMoveEvent(event) {
-  //     if (event !== undefined) {
-  //       const { x } = event;
-  //       const { y } = event;
-  //       const tiles = [];
+  const getPosition = (event) => {
+    if (event !== undefined) {
+      const { x, y } = event;
+      const tiles = [];
 
-  //       for (let i = 0; i < terrainMapState.length; i += 1) {
-  //         for (let j = 0; j < terrainMapState[i].length; j += 1) {
-  //           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-  //           const tileX = top + 50 * j - 50 * i;
-  //           const tileY = 25 * j + 25 * i;
-  //           const centreX = tileX + 50;
-  //           const centreY = tileY + 25;
-  //           const distanceToCentre =
-  //             ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-  //           tiles.push({ x: j, y: i, d: distanceToCentre });
-  //         }
-  //       }
+      for (let i = 0; i < terrainMap.length; i += 1) {
+        for (let j = 0; j < terrainMap[i].length; j += 1) {
+          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
+          const tileX = top + 50 * j - 50 * i;
+          const tileY = 25 * j + 25 * i;
+          const centreX = tileX + 50;
+          const centreY = tileY + 25;
+          const distanceToCentre =
+            ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
+          tiles.push({ x: j, y: i, d: distanceToCentre });
+        }
+      }
 
-  //       const minD = Math.min.apply(
-  //         Math,
-  //         tiles.map((d) => d.d)
-  //       );
-  //       const tile = tiles.find((x) => x.d === minD);
-  //       mouseCoords = { x: tile.x, y: tile.y };
-  //     }
-  //   }
+      // detail modal!!!!!!!!!
 
-  useLayoutEffect(() => {
+      // const minD = Math.min.apply(
+      //   Math,
+      //   tiles.map((d) => d.d)
+      // );
+      // var tile = tiles.find((x) => x.d === minD);
+      // console.log(tiles)
+      // console.log(tile)
+      // console.log("x:" + tile.x + " y:" + tile.y);
+      // const tileId = terrain[tile.y][tile.x];
+
+      // const modal = this.refs.myModal;
+      // modal.style.display = "block";
+      // this.refs.modalImage.src = TileSwitcher(tileId, this.refs).src;
+    }
+  };
+
+  const handleMouseMoveEvent = (event) => {
+    if (event !== undefined) {
+      const { x, y } = event;
+      const tiles = [];
+
+      for (let i = 0; i < terrainMapState.length; i += 1) {
+        for (let j = 0; j < terrainMapState[i].length; j += 1) {
+          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
+          const tileX = top + 50 * j - 50 * i;
+          const tileY = 25 * j + 25 * i;
+          const centreX = tileX + 50;
+          const centreY = tileY + 25;
+          const distanceToCentre =
+            ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
+          tiles.push({ x: j, y: i, d: distanceToCentre });
+        }
+      }
+
+      const minD = Math.min(tiles.map((d) => d.d));
+      const tile = tiles.find((x) => x.d === minD);
+      mouseCoords.x = tile.x;
+      mouseCoords.y = tile.y;
+    }
+  };
+
+  useEffect(() => {
     if (!canvasRef.current || !imagesRef.current) return;
-    console.log("@@@@@@@@@@@@@@@@", canvasRef.current, imagesRef.current);
+    console.log(
+      "@@@@@@@@@@@@@@@@",
+      canvasRef.current,
+      imagesRef.current,
+      terrainMapState.current
+    );
     const images = imagesRef.current;
 
-    // canvas.addEventListener("mousedown", this.getPosition, false);
-    // canvas.addEventListener("mousemove", this.handleMouseMoveEvent, false);
+    canvasRef.current.addEventListener("mousedown", getPosition, false);
+    canvasRef.current.addEventListener(
+      "mousemove",
+      handleMouseMoveEvent,
+      false
+    );
 
     const ctx = canvasRef.current.getContext("2d");
-    // let img = images.dart;
 
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
@@ -84,15 +250,9 @@ const IslandViewer = () => {
     for (let i = 0; i < bedrock.length; i += 1) {
       for (let j = 0; j < bedrock[i].length; j += 1) {
         if (bedrock[i][j] !== 0) {
-          const img = TileSwitcher(bedrock[i][j], images).cloneNode(true);
-          // const img = new Image();
-          // img.src = "/IslandImages/dart.png";
+          const img = TileSwitcher(bedrock[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          img.onload = () => {
-            // ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
-            ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
-            console.log(i, j, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
-          };
+          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
         }
       }
     }
@@ -101,76 +261,72 @@ const IslandViewer = () => {
     for (let i = 0; i < subterrain.length; i += 1) {
       for (let j = 0; j < subterrain[i].length; j += 1) {
         if (subterrain[i][j] !== 0) {
-          const img = TileSwitcher(subterrain[i][j], images).cloneNode(true);
+          const img = TileSwitcher(subterrain[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          img.onload = () => {
-            // ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
-            ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
-          };
+          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
         }
       }
     }
 
     // terrain
-    // for (let i = 0; i < terrain.length; i += 1) {
-    //   for (let j = 0; j < terrain[i].length; j += 1) {
-    //     if (terrain[i][j] !== 0) {
-    //       img = TileSwitcher(terrain[i][j], images);
-    //       const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-    //       ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-
-    //       if (i === mouseCoords.y && j === mouseCoords.x) {
-    //         img = TileSwitcher(106, images);
-    //         ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-    //       }
-    //     }
-    //   }
-    // }
+    for (let i = 0; i < terrainState.length; i += 1) {
+      for (let j = 0; j < terrainState[i].length; j += 1) {
+        if (terrainState[i][j] !== 0) {
+          const img = TileSwitcher(terrainState[i][j], images);
+          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
+          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+          if (i === mouseCoords.y && j === mouseCoords.x) {
+            const img = TileSwitcher(106, images);
+            ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+          }
+        }
+      }
+    }
 
     // items
-    // for (let i = 0; i < items.length; i += 1) {
-    //   for (let j = 0; j < items[i].length; j += 1) {
-    //     if (items[i][j] !== 0) {
-    //       img = TileSwitcher(items[i][j], images);
-    //       const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-    //       ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-    //     }
-    //   }
+    for (let i = 0; i < items.length; i += 1) {
+      for (let j = 0; j < items[i].length; j += 1) {
+        if (items[i][j] !== 0) {
+          const img = TileSwitcher(items[i][j], images);
+          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
+          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+        }
+      }
 
-    //   // moveable Items
-    //   for (let z = 0; z < MovableItems.length; z += 1) {
-    //     const item = MovableItems[z];
-    //     const { path } = item;
-    //     const realPath = ProcessPath(path, mapWidth, TILE_WIDTH);
-    //     const itemToMove = TileSwitcher(item.tileId, images);
-    //     if (item.position === undefined) {
-    //       // eslint-disable-next-line prefer-destructuring
-    //       item.position = realPath[0];
-    //     }
-    //     if (item.stage < realPath.length - 1) {
-    //       const NextPosition = realPath[item.stage + 1];
-    //       if (NextPosition.x < item.position.x) {
-    //         item.position.x -= item.speed;
-    //       } else {
-    //         item.position.x += item.speed;
-    //       }
-    //       if (NextPosition.y < item.position.y) {
-    //         item.position.y -= item.speed / 2;
-    //       } else {
-    //         item.position.y += item.speed / 2;
-    //       }
+      // moveable Items
+      // for (let z = 0; z < MovableItems.length; z += 1) {
+      //   const item = MovableItems[z];
+      //   const { path } = item;
+      //   const realPath = ProcessPath(path, mapWidth, TILE_WIDTH);
+      //   const itemToMove = TileSwitcher(item.tileId, images);
+      //   if (item.position === undefined) {
+      //     // eslint-disable-next-line prefer-destructuring
+      //     item.position = realPath[0];
+      //   }
+      //   if (item.stage < realPath.length - 1) {
+      //     const NextPosition = realPath[item.stage + 1];
+      //     if (NextPosition.x < item.position.x) {
+      //       item.position.x -= item.speed;
+      //     } else {
+      //       item.position.x += item.speed;
+      //     }
+      //     if (NextPosition.y < item.position.y) {
+      //       item.position.y -= item.speed / 2;
+      //     } else {
+      //       item.position.y += item.speed / 2;
+      //     }
 
-    //       if (
-    //         NextPosition.x === Math.round(item.position.x) &&
-    //         NextPosition.y === Math.round(item.position.y)
-    //       ) {
-    //         item.stage += 1;
-    //       }
-    //     }
-    //     ctx.drawImage(itemToMove, item.position.x, item.position.y);
-    //   }
-    // }
-  }, [canvasRef, imagesRef]);
+      //     if (
+      //       NextPosition.x === Math.round(item.position.x) &&
+      //       NextPosition.y === Math.round(item.position.y)
+      //     ) {
+      //       item.stage += 1;
+      //     }
+      //   }
+      //   ctx.drawImage(itemToMove, item.position.x, item.position.y);
+      // }
+    }
+  }, [canvasRef, imagesRef, terrainMapState]);
 
   return (
     <div className="center">
@@ -197,13 +353,13 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.grass = el)}
-        src="/IslandImages/grass.png"
+        src={grass}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.dirt = el)}
-        src="/IslandImages/dirt.png"
+        src={dirt}
         className="hidden"
       />
 
@@ -211,79 +367,79 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterN = el)}
-        src="/IslandImages/waterN.png"
+        src={waterN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterNE = el)}
-        src="/IslandImages/waterNE.png"
+        src={waterNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterE = el)}
-        src="/IslandImages/waterE.png"
+        src={waterE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterES = el)}
-        src="/IslandImages/waterES.png"
+        src={waterES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterS = el)}
-        src="/IslandImages/waterS.png"
+        src={waterS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterSW = el)}
-        src="/IslandImages/waterSW.png"
+        src={waterSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterW = el)}
-        src="/IslandImages/waterW.png"
+        src={waterW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterNW = el)}
-        src="/IslandImages/waterNW.png"
+        src={waterNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.water = el)}
-        src="/IslandImages/water.png"
+        src={water}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterCornerES = el)}
-        src="/IslandImages/waterCornerES.png"
+        src={waterCornerES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterCornerNE = el)}
-        src="/IslandImages/waterCornerNE.png"
+        src={waterCornerNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterCornerNW = el)}
-        src="/IslandImages/waterCornerNW.png"
+        src={waterCornerNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.waterCornerSW = el)}
-        src="/IslandImages/waterCornerSW.png"
+        src={waterCornerSW}
         className="hidden"
       />
 
@@ -291,231 +447,231 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.road = el)}
-        src="/IslandImages/road.png"
+        src={road}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.roadES = el)}
-        src="/IslandImages/roadES.png"
+        src={roadES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.roadEW = el)}
-        src="/IslandImages/roadEW.png"
+        src={roadEW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHill2E.png"
+        src={roadHill2E}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHill2N.png"
+        ref={(el) => (imagesRef.current.roadHill2N = el)}
+        src={roadHill2N}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHill2S.png"
+        ref={(el) => (imagesRef.current.roadHill2S = el)}
+        src={roadHill2S}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHill2W.png"
+        ref={(el) => (imagesRef.current.roadHill2W = el)}
+        src={roadHill2W}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHillE.png"
+        ref={(el) => (imagesRef.current.roadHillE = el)}
+        src={roadHillE}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHillN.png"
+        ref={(el) => (imagesRef.current.roadHillN = el)}
+        src={roadHillN}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHillS.png"
+        ref={(el) => (imagesRef.current.roadHillS = el)}
+        src={roadHillS}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadHillW.png"
+        ref={(el) => (imagesRef.current.roadHillW = el)}
+        src={roadHillW}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadNE.png"
+        ref={(el) => (imagesRef.current.roadNE = el)}
+        src={roadNE}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadNS.png"
+        ref={(el) => (imagesRef.current.roadNS = el)}
+        src={roadNS}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadNW.png"
+        ref={(el) => (imagesRef.current.roadNW = el)}
+        src={roadNW}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/roadSW.png"
+        ref={(el) => (imagesRef.current.roadSW = el)}
+        src={roadSW}
         className="hidden"
       />
 
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/lotE.png"
+        ref={(el) => (imagesRef.current.lotE = el)}
+        src={lotE}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/lotES.png"
+        ref={(el) => (imagesRef.current.lotES = el)}
+        src={lotES}
         className="hidden"
       />
       <img
         alt=""
-        ref={(el) => (imagesRef.current.roadHill2E = el)}
-        src="/IslandImages/lotN.png"
+        ref={(el) => (imagesRef.current.lotN = el)}
+        src={lotN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotNE = el)}
-        src="/IslandImages/lotNE.png"
+        src={lotNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotNW = el)}
-        src="/IslandImages/lotNW.png"
+        src={lotNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotS = el)}
-        src="/IslandImages/lotS.png"
+        src={lotS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotSW = el)}
-        src="/IslandImages/lotSW.png"
+        src={lotSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotW = el)}
-        src="/IslandImages/lotW.png"
+        src={lotW}
         className="hidden"
       />
 
       <img
         alt=""
         ref={(el) => (imagesRef.current.bridgeEW = el)}
-        src="/IslandImages/bridgeEW.png"
+        src={bridgeEW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.bridgeNS = el)}
-        src="/IslandImages/bridgeNS.png"
+        src={bridgeNS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.crossroad = el)}
-        src="/IslandImages/crossroad.png"
+        src={crossroad}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.crossroadESW = el)}
-        src="/IslandImages/crossroadESW.png"
+        src={crossroadESW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.crossroadNES = el)}
-        src="/IslandImages/crossroadNES.png"
+        src={crossroadNES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.crossroadNEW = el)}
-        src="/IslandImages/crossroadNEW.png"
+        src={crossroadNEW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.crossroadNSW = el)}
-        src="/IslandImages/crossroadNSW.png"
+        src={crossroadNSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.endE = el)}
-        src="/IslandImages/endE.png"
+        src={endE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.endN = el)}
-        src="/IslandImages/endN.png"
+        src={endN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.endS = el)}
-        src="/IslandImages/endS.png"
+        src={endS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.endW = el)}
-        src="/IslandImages/endW.png"
+        src={endW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.exitE = el)}
-        src="/IslandImages/exitE.png"
+        src={exitE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.exitN = el)}
-        src="/IslandImages/exitN.png"
+        src={exitN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.exitS = el)}
-        src="/IslandImages/exitS.png"
+        src={exitS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.exitW = el)}
-        src="/IslandImages/exitW.png"
+        src={exitW}
         className="hidden"
       />
 
@@ -523,73 +679,73 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedES = el)}
-        src="/IslandImages/riverBankedES.png"
+        src={riverBankedES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedEW = el)}
-        src="/IslandImages/riverBankedEW.png"
+        src={riverBankedEW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedNE = el)}
-        src="/IslandImages/riverBankedNE.png"
+        src={riverBankedNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedNS = el)}
-        src="/IslandImages/riverBankedNS.png"
+        src={riverBankedNS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedNW = el)}
-        src="/IslandImages/riverBankedNW.png"
+        src={riverBankedNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBankedSW = el)}
-        src="/IslandImages/riverBankedSW.png"
+        src={riverBankedSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverES = el)}
-        src="/IslandImages/riverES.png"
+        src={riverES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverEW = el)}
-        src="/IslandImages/riverEW.png"
+        src={riverEW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverNE = el)}
-        src="/IslandImages/riverNE.png"
+        src={riverNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverNS = el)}
-        src="/IslandImages/riverNS.png"
+        src={riverNS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverNW = el)}
-        src="/IslandImages/riverNW.png"
+        src={riverNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverSW = el)}
-        src="/IslandImages/riverSW.png"
+        src={riverSW}
         className="hidden"
       />
 
@@ -597,61 +753,61 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.grass = el)}
-        src="/IslandImages/grass.png"
+        src={grass}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.grassWhole = el)}
-        src="/IslandImages/grassWhole.png"
+        src={grassWhole}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillE = el)}
-        src="/IslandImages/hillE.png"
+        src={hillE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillES = el)}
-        src="/IslandImages/hillES.png"
+        src={hillES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillN = el)}
-        src="/IslandImages/hillN.png"
+        src={hillN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillNE = el)}
-        src="/IslandImages/hillNE.png"
+        src={hillNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillNW = el)}
-        src="/IslandImages/hillNW.png"
+        src={hillNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillS = el)}
-        src="/IslandImages/hillS.png"
+        src={hillS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.lotS = el)}
-        src="/IslandImages/hillSW.png"
+        src={hillSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.hillW = el)}
-        src="/IslandImages/hillW.png"
+        src={hillW}
         className="hidden"
       />
 
@@ -659,13 +815,13 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.dirt = el)}
-        src="/IslandImages/dirt.png"
+        src={dirt}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.dirtDouble = el)}
-        src="/IslandImages/dirtDouble.png"
+        src={dirtDouble}
         className="hidden"
       />
 
@@ -673,79 +829,79 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.beach = el)}
-        src="/IslandImages/beach.png"
+        src={beach}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachCornerES = el)}
-        src="/IslandImages/beachCornerES.png"
+        src={beachCornerES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachCornerNE = el)}
-        src="/IslandImages/beachCornerNE.png"
+        src={beachCornerNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachCornerNW = el)}
-        src="/IslandImages/beachCornerNW.png"
+        src={beachCornerNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachCornerSW = el)}
-        src="/IslandImages/beachCornerSW.png"
+        src={beachCornerSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachE = el)}
-        src="/IslandImages/beachE.png"
+        src={beachE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachES = el)}
-        src="/IslandImages/beachES.png"
+        src={beachES}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachN = el)}
-        src="/IslandImages/beachN.png"
+        src={beachN}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachNE = el)}
-        src="/IslandImages/beachNE.png"
+        src={beachNE}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachNW = el)}
-        src="/IslandImages/beachNW.png"
+        src={beachNW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachS = el)}
-        src="/IslandImages/beachS.png"
+        src={beachS}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachSW = el)}
-        src="/IslandImages/beachSW.png"
+        src={beachSW}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.beachW = el)}
-        src="/IslandImages/beachW.png"
+        src={beachW}
         className="hidden"
       />
 
@@ -753,25 +909,25 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.coniferAltShort = el)}
-        src="/IslandImages/coniferAltShort.png"
+        src={coniferAltShort}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.coniferAltTall = el)}
-        src="/IslandImages/coniferAltTall.png"
+        src={coniferAltTall}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.coniferShort = el)}
-        src="/IslandImages/coniferShort.png"
+        src={coniferShort}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.coniferTall = el)}
-        src="/IslandImages/coniferTall.png"
+        src={coniferTall}
         className="hidden"
       />
 
@@ -779,292 +935,88 @@ const IslandViewer = () => {
       <img
         alt=""
         ref={(el) => (imagesRef.current.treeAltShort = el)}
-        src="/IslandImages/treeAltShort.png"
+        src={treeAltShort}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.treeAltTall = el)}
-        src="/IslandImages/treeAltTall.png"
+        src={treeAltTall}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.treeShort = el)}
-        src="/IslandImages/treeShort.png"
+        src={treeShort}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.treeTall = el)}
-        src="/IslandImages/treeTall.png"
+        src={treeTall}
         className="hidden"
       />
 
       <img
         alt=""
         ref={(el) => (imagesRef.current.tank = el)}
-        src="/IslandImages/tank.png"
+        src={tank}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.empty = el)}
-        src="/IslandImages/empty.png"
+        src={empty}
         className="hidden"
       />
 
       <img
         alt=""
         ref={(el) => (imagesRef.current.rock = el)}
-        src="/IslandImages/rock.png"
+        src={rock}
         className="hidden"
       />
 
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBridge1 = el)}
-        src="/IslandImages/riverBridge1.png"
+        src={riverBridge1}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBridge2 = el)}
-        src="/IslandImages/riverBridge2.png"
+        src={riverBridge2}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBridge3 = el)}
-        src="/IslandImages/riverBridge3.png"
+        src={riverBridge3}
         className="hidden"
       />
       <img
         alt=""
         ref={(el) => (imagesRef.current.riverBridge4 = el)}
-        src="/IslandImages/riverBridge4.png"
+        src={riverBridge4}
         className="hidden"
       />
 
       <img
         alt=""
         ref={(el) => (imagesRef.current.selectedGrid = el)}
-        src="/IslandImages/selectedGrid.png"
+        src={selectedGrid}
         className="hidden"
       />
 
       <img
         alt="blob test"
         ref={(el) => (imagesRef.current.blobTest = el)}
-        src="/IslandImages/testtest.png"
+        src={testtest}
         className="hidden"
       />
     </div>
   );
 };
-
-// class IslandViewer extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.loop = this.loop.bind(this);
-//     this.draw = this.draw.bind(this);
-//     this.getPosition = this.getPosition.bind(this);
-//     this.handleMouseMoveEvent = this.handleMouseMoveEvent.bind(this);
-//   }
-
-//   componentDidMount() {
-//     requestAnimationFrame(this.loop);
-//   }
-
-//   handleMouseMoveEvent(event) {
-//     if (event !== undefined) {
-//       const { x } = event;
-//       const { y } = event;
-//       const tiles = [];
-
-//       for (let i = 0; i < terrainMapState.length; i += 1) {
-//         for (let j = 0; j < terrainMapState[i].length; j += 1) {
-//           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//           const tileX = top + 50 * j - 50 * i;
-//           const tileY = 25 * j + 25 * i;
-//           const centreX = tileX + 50;
-//           const centreY = tileY + 25;
-//           const distanceToCentre =
-//             ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-//           tiles.push({ x: j, y: i, d: distanceToCentre });
-//         }
-//       }
-
-//       const minD = Math.min.apply(
-//         Math,
-//         tiles.map((d) => d.d)
-//       );
-//       const tile = tiles.find((x) => x.d === minD);
-//       mouseCoords = { x: tile.x, y: tile.y };
-//     }
-//   }
-
-// getPosition(event) {
-//   if (event !== undefined) {
-//     const { x } = event;
-//     const { y } = event;
-//     const tiles = [];
-
-//     for (let i = 0; i < terrainMapState.length; i += 1) {
-//       for (let j = 0; j < terrainMapState[i].length; j += 1) {
-//         const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//         const tileX = top + 50 * j - 50 * i;
-//         const tileY = 25 * j + 25 * i;
-//         const centreX = tileX + 50;
-//         const centreY = tileY + 25;
-//         const distanceToCentre =
-//           ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-//         tiles.push({ x: j, y: i, d: distanceToCentre });
-//       }
-//     }
-
-// const minD = Math.min.apply(
-//   Math,
-//   tiles.map((d) => d.d)
-// );
-// var tile = tiles.find((x) => x.d === minD);
-// console.log(tiles)
-// console.log(tile)
-// console.log("x:" + tile.x + " y:" + tile.y);
-// const tileId = terrain[tile.y][tile.x];
-
-// detail modal!!!!!!!!!
-// const modal = this.refs.myModal;
-// modal.style.display = "block";
-// this.refs.modalImage.src = TileSwitcher(tileId, this.refs).src;
-//   }
-// }
-
-//   draw() {
-//     const { canvas } = this.refs;
-
-//     // canvas.addEventListener("mousedown", this.getPosition, false);
-//     canvas.addEventListener("mousemove", this.handleMouseMoveEvent, false);
-
-//     const ctx = canvas.getContext("2d");
-//     let img = this.refs.dirt;
-
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//     // bedrock
-//     for (let i = 0; i < bedrock.length; i += 1) {
-//       for (let j = 0; j < bedrock[i].length; j += 1) {
-//         if (bedrock[i][j] !== 0) {
-//           img = TileSwitcher(bedrock[i][j], this.refs);
-//           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
-//         }
-//       }
-//     }
-
-//     // subterrain
-//     for (let i = 0; i < subterrain.length; i += 1) {
-//       for (let j = 0; j < subterrain[i].length; j += 1) {
-//         if (subterrain[i][j] !== 0) {
-//           img = TileSwitcher(subterrain[i][j], this.refs);
-//           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
-//         }
-//       }
-//     }
-
-//     // terrain
-//     for (let i = 0; i < terrain.length; i += 1) {
-//       for (let j = 0; j < terrain[i].length; j += 1) {
-//         if (terrain[i][j] !== 0) {
-//           img = TileSwitcher(terrain[i][j], this.refs);
-//           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-
-//           if (i === mouseCoords.y && j === mouseCoords.x) {
-//             img = TileSwitcher(106, this.refs);
-//             ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-//           }
-//         }
-//       }
-//     }
-
-//     // items
-//     for (let i = 0; i < items.length; i += 1) {
-//       for (let j = 0; j < items[i].length; j += 1) {
-//         if (items[i][j] !== 0) {
-//           img = TileSwitcher(items[i][j], this.refs);
-//           const top = Math.ceil((mapWidth * tileWidth) / 2 / 100) * 100;
-//           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-//         }
-//       }
-
-//       // moveable Items
-//       for (let z = 0; z < MovableItems.length; z++) {
-//         const item = MovableItems[z];
-//         const { path } = item;
-//         const realPath = ProcessPath(path, mapWidth, tileWidth);
-//         const itemToMove = TileSwitcher(item.tileId, this.refs);
-//         if (item.position === undefined) {
-//           item.position = realPath[0];
-//         }
-//         if (item.stage < realPath.length - 1) {
-//           const NextPosition = realPath[item.stage + 1];
-//           if (NextPosition.x < item.position.x) {
-//             item.position.x -= item.speed;
-//           } else {
-//             item.position.x += item.speed;
-//           }
-//           if (NextPosition.y < item.position.y) {
-//             item.position.y -= item.speed / 2;
-//           } else {
-//             item.position.y += item.speed / 2;
-//           }
-
-//           if (
-//             NextPosition.x === Math.round(item.position.x) &&
-//             NextPosition.y === Math.round(item.position.y)
-//           ) {
-//             item.stage += 1;
-//           }
-//         }
-//         ctx.drawImage(itemToMove, item.position.x, item.position.y);
-//       }
-//     }
-//   }
-
-//   loop() {
-//     this.draw();
-
-//     requestAnimationFrame(this.loop);
-//   }
-
-//   render() {
-//     return (
-//       <div className="center">
-//         {/* <!-- The Modal --> */}
-//         <div ref="myModal" id="myModal" className="modal">
-//           {/* <!-- The Close Button --> */}
-//           <span
-//             className="close"
-//             onClick={() => {
-//               this.refs.myModal.style.display = "none";
-//             }}
-//           >
-//             &times;
-//           </span>
-
-//           {/* <!-- Modal Content (The Image) --> */}
-//           <img ref="modalImage" className="modal-content" id="img01" />
-
-//           {/* <!-- Modal Caption (Image Text) --> */}
-//           <div id="caption" />
-//         </div>
-
-//         <canvas ref="canvas" id="canvas" width={1000} height={600} />
-//       </div>
-//     );
-//   }
-// }
 
 export default IslandViewer;
