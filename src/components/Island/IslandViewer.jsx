@@ -3,7 +3,6 @@ import React, { useRef, useEffect, useState } from "react";
 import "./Tiles.css";
 import "react-isometric-tilemap/build/css/index.css";
 import { TileSwitcher } from "./TileEngine/TileSwitcher";
-import { items } from "./TileEngine/ItemsMap";
 import { createTerrain } from "./TileEngine/TileMapProcessor";
 
 import rock from "./IslandImages/rock.png";
@@ -135,7 +134,7 @@ import testtest from "./IslandImages/testtest.png";
 
 const TILE_WIDTH = 100;
 
-const IslandViewer = ({ terrainMap }) => {
+const IslandViewer = ({ terrainMap, items }) => {
   const canvasRef = useRef();
   const imagesRef = useRef({});
   const modalRef = useRef();
@@ -168,12 +167,15 @@ const IslandViewer = ({ terrainMap }) => {
     if (event !== undefined) {
       const { x, y } = event;
       const tiles = [];
+      const images = imagesRef.current;
+      const canvasX = canvasRef.current.getBoundingClientRect().left;
+      const canvasY = canvasRef.current.getBoundingClientRect().top;
 
       for (let i = 0; i < terrainMap.length; i += 1) {
         for (let j = 0; j < terrainMap[i].length; j += 1) {
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          const tileX = top + 50 * j - 50 * i;
-          const tileY = 25 * j + 25 * i;
+          const tileX = canvasX + top + 50 * j - 50 * i;
+          const tileY = canvasY + 25 * j + 25 * i;
           const centreX = tileX + 50;
           const centreY = tileY + 25;
           const distanceToCentre =
@@ -184,19 +186,14 @@ const IslandViewer = ({ terrainMap }) => {
 
       // detail modal!!!!!!!!!
 
-      // const minD = Math.min.apply(
-      //   Math,
-      //   tiles.map((d) => d.d)
-      // );
-      // var tile = tiles.find((x) => x.d === minD);
-      // console.log(tiles)
-      // console.log(tile)
-      // console.log("x:" + tile.x + " y:" + tile.y);
-      // const tileId = terrain[tile.y][tile.x];
+      const minD = Math.min(...tiles.map((d) => d.d));
+      const tile = tiles.find((x) => x.d === minD);
+      const tileId = terrainState[tile.y][tile.x];
 
-      // const modal = this.refs.myModal;
-      // modal.style.display = "block";
-      // this.refs.modalImage.src = TileSwitcher(tileId, this.refs).src;
+      const modal = modalRef.current;
+      modal.style.display = "block";
+      const img = TileSwitcher(tileId, images);
+      modalImageRef.current.src = img.src;
     }
   };
 
@@ -211,12 +208,12 @@ const IslandViewer = ({ terrainMap }) => {
         for (let j = 0; j < terrainMapState[i].length; j += 1) {
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           const tileX = canvasX + top + 50 * j - 50 * i;
-          const tileY = 25 * j + 25 * i + canvasY;
+          const tileY = canvasY + 25 * j + 25 * i;
           const centreX = tileX + 50;
           const centreY = tileY + 25;
           const distanceToCentre =
             ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-          tiles.push({ x: j, y: i, d: distanceToCentre, tileX, tileY, top });
+          tiles.push({ x: j, y: i, d: distanceToCentre });
         }
       }
       // console.log(x, y, tiles);
@@ -311,13 +308,15 @@ const IslandViewer = ({ terrainMap }) => {
         <button
           className="close"
           onClick={() => {
-            modalRef.style.display = "none";
+            modalRef.current.style.display = "none";
           }}
         >
           &times;
         </button>
         {/* <!-- Modal Content (The Image) --> */}
-        <img ref={modalImageRef} className="modal-content" id="img01" alt="" />
+        <div className="modal-content">
+          <img ref={modalImageRef} id="img01" alt="" />
+        </div>
 
         {/* <!-- Modal Caption (Image Text) --> */}
         <div id="caption" />

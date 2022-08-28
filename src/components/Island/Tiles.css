@@ -68,12 +68,19 @@ nav {
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
+
 .modal-content {
   margin: auto;
   display: block;
   width: 80%;
   max-width: 700px;
 }
+
+.modal-content img {
+  max-width: 100px;
+  height: auto;
+}
+
 .close {
   position: absolute;
   top: 15px;
@@ -83,6 +90,7 @@ nav {
   font-weight: bold;
   transition: 0.3s;
 }
+
 .close:hover,
 .close:focus {
   color: #bbb;
