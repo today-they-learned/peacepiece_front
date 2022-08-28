@@ -1,5 +1,5 @@
 /* eslint-disable no-return-assign */
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./Tiles.css";
 import "react-isometric-tilemap/build/css/index.css";
 import { TileSwitcher } from "./TileEngine/TileSwitcher";
@@ -139,40 +139,27 @@ const IslandViewer = ({ terrainMap, items }) => {
   const imagesRef = useRef({});
   const modalRef = useRef();
   const modalImageRef = useRef();
-  const [terrainMapState, setTerrainMapState] = useState(terrainMap);
-  const [terrainState, setTerrainState] = useState(createTerrain(terrainMap));
+
+  const [mapWidth, setMapWidth] = useState(0);
+  const [bedrockState, setBedrockState] = useState([]);
+  const [subterrainState, setSubterrainState] = useState([]);
+  const [terrainMapState, setTerrainMapState] = useState([]);
+  const [terrainState, setTerrainState] = useState([]);
+  const [itemsState, setItemsState] = useState([]);
   const [mouseCoordState, setMouseCoordState] = useState({ x: 0, y: 0 });
-
-  const mapWidth = terrainMapState[0].length;
-
-  const bedrock = new Array(terrainMapState.length);
-
-  for (let i = 0; i < terrainMapState.length; i += 1) {
-    bedrock[i] = new Array(terrainMapState[i].length);
-    for (let j = 0; j < terrainMapState[i].length; j += 1) {
-      bedrock[i][j] = 101;
-    }
-  }
-
-  const subterrain = new Array(terrainMapState.length);
-
-  for (let i = 0; i < terrainMapState.length; i += 1) {
-    subterrain[i] = new Array(terrainMapState[i].length);
-    for (let j = 0; j < terrainMapState[i].length; j += 1) {
-      subterrain[i][j] = 77;
-    }
-  }
 
   const getPosition = (event) => {
     if (event !== undefined) {
       const { x, y } = event;
       const tiles = [];
+      if (terrainMapState.length === 0) return;
+
       const images = imagesRef.current;
       const canvasX = canvasRef.current.getBoundingClientRect().left;
       const canvasY = canvasRef.current.getBoundingClientRect().top;
 
-      for (let i = 0; i < terrainMap.length; i += 1) {
-        for (let j = 0; j < terrainMap[i].length; j += 1) {
+      for (let i = 0; i < terrainMapState.length; i += 1) {
+        for (let j = 0; j < terrainMapState[i].length; j += 1) {
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           const tileX = canvasX + top + 50 * j - 50 * i;
           const tileY = canvasY + 25 * j + 25 * i;
@@ -201,6 +188,9 @@ const IslandViewer = ({ terrainMap, items }) => {
     if (event !== undefined) {
       const { x, y } = event;
       const tiles = [];
+
+      if (terrainMapState.length === 0) return;
+
       const canvasX = canvasRef.current.getBoundingClientRect().left;
       const canvasY = canvasRef.current.getBoundingClientRect().top;
 
@@ -216,10 +206,10 @@ const IslandViewer = ({ terrainMap, items }) => {
           tiles.push({ x: j, y: i, d: distanceToCentre });
         }
       }
-      // console.log(x, y, tiles);
 
       const minD = Math.min(...tiles.map((d) => d.d));
       const tile = tiles.find((x) => x.d === minD);
+
       setMouseCoordState({ x: tile.x, y: tile.y });
     }
   };
@@ -240,10 +230,10 @@ const IslandViewer = ({ terrainMap, items }) => {
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
     // bedrock
-    for (let i = 0; i < bedrock.length; i += 1) {
-      for (let j = 0; j < bedrock[i].length; j += 1) {
-        if (bedrock[i][j] !== 0) {
-          const img = TileSwitcher(bedrock[i][j], images);
+    for (let i = 0; i < bedrockState.length; i += 1) {
+      for (let j = 0; j < bedrockState[i].length; j += 1) {
+        if (bedrockState[i][j] !== 0) {
+          const img = TileSwitcher(bedrockState[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
         }
@@ -251,10 +241,10 @@ const IslandViewer = ({ terrainMap, items }) => {
     }
 
     // subterrain
-    for (let i = 0; i < subterrain.length; i += 1) {
-      for (let j = 0; j < subterrain[i].length; j += 1) {
-        if (subterrain[i][j] !== 0) {
-          const img = TileSwitcher(subterrain[i][j], images);
+    for (let i = 0; i < subterrainState.length; i += 1) {
+      for (let j = 0; j < subterrainState[i].length; j += 1) {
+        if (subterrainState[i][j] !== 0) {
+          const img = TileSwitcher(subterrainState[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
         }
@@ -278,10 +268,10 @@ const IslandViewer = ({ terrainMap, items }) => {
     }
 
     // items
-    for (let i = 0; i < items.length; i += 1) {
-      for (let j = 0; j < items[i].length; j += 1) {
-        if (items[i][j] !== 0) {
-          const img = TileSwitcher(items[i][j], images);
+    for (let i = 0; i < itemsState.length; i += 1) {
+      for (let j = 0; j < itemsState[i].length; j += 1) {
+        if (itemsState[i][j] !== 0) {
+          const img = TileSwitcher(itemsState[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
         }
@@ -289,16 +279,45 @@ const IslandViewer = ({ terrainMap, items }) => {
     }
   };
 
-  function renderer() {
-    draw();
-
-    // eslint-disable-next-line no-undef
-    requestAnimationFrame(renderer);
-  }
+  useEffect(() => {
+    setTerrainMapState(terrainMap);
+    setTerrainState(createTerrain(terrainMap));
+    setItemsState(items);
+  }, [terrainMap, items]);
 
   useEffect(() => {
-    renderer();
-  });
+    if (terrainMapState.length === 0) return;
+
+    setMapWidth(terrainMapState[0].length);
+  }, [terrainMapState]);
+
+  useEffect(() => {
+    const bedrock = new Array(terrainMapState.length);
+
+    for (let i = 0; i < terrainMapState.length; i += 1) {
+      bedrock[i] = new Array(terrainMapState[i].length);
+      for (let j = 0; j < terrainMapState[i].length; j += 1) {
+        bedrock[i][j] = 101;
+      }
+    }
+    setBedrockState(bedrock);
+  }, [terrainMapState]);
+
+  useEffect(() => {
+    const subterrain = new Array(terrainMapState.length);
+
+    for (let i = 0; i < terrainMapState.length; i += 1) {
+      subterrain[i] = new Array(terrainMapState[i].length);
+      for (let j = 0; j < terrainMapState[i].length; j += 1) {
+        subterrain[i][j] = 77;
+      }
+    }
+    setSubterrainState(subterrain);
+  }, [terrainMapState]);
+
+  useEffect(() => {
+    draw();
+  }, [mouseCoordState, mapWidth, terrainMapState]);
 
   return (
     <div className="center">
