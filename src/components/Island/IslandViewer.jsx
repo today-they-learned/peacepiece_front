@@ -134,7 +134,6 @@ import tank from "./IslandImages/tank.png";
 import testtest from "./IslandImages/testtest.png";
 
 const TILE_WIDTH = 100;
-const mouseCoords = { x: 0, y: 0 };
 
 const IslandViewer = ({ terrainMap }) => {
   const canvasRef = useRef();
@@ -143,6 +142,7 @@ const IslandViewer = ({ terrainMap }) => {
   const modalImageRef = useRef();
   const [terrainMapState, setTerrainMapState] = useState(terrainMap);
   const [terrainState, setTerrainState] = useState(createTerrain(terrainMap));
+  const [mouseCoordState, setMouseCoordState] = useState({ x: 0, y: 0 });
 
   const mapWidth = terrainMapState[0].length;
 
@@ -204,35 +204,31 @@ const IslandViewer = ({ terrainMap }) => {
     if (event !== undefined) {
       const { x, y } = event;
       const tiles = [];
+      const canvasX = canvasRef.current.getBoundingClientRect().left;
+      const canvasY = canvasRef.current.getBoundingClientRect().top;
 
       for (let i = 0; i < terrainMapState.length; i += 1) {
         for (let j = 0; j < terrainMapState[i].length; j += 1) {
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          const tileX = top + 50 * j - 50 * i;
-          const tileY = 25 * j + 25 * i;
+          const tileX = canvasX + top + 50 * j - 50 * i;
+          const tileY = 25 * j + 25 * i + canvasY;
           const centreX = tileX + 50;
           const centreY = tileY + 25;
           const distanceToCentre =
             ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-          tiles.push({ x: j, y: i, d: distanceToCentre });
+          tiles.push({ x: j, y: i, d: distanceToCentre, tileX, tileY, top });
         }
       }
+      // console.log(x, y, tiles);
 
-      const minD = Math.min(tiles.map((d) => d.d));
+      const minD = Math.min(...tiles.map((d) => d.d));
       const tile = tiles.find((x) => x.d === minD);
-      mouseCoords.x = tile.x;
-      mouseCoords.y = tile.y;
+      setMouseCoordState({ x: tile.x, y: tile.y });
     }
   };
 
-  useEffect(() => {
+  const draw = () => {
     if (!canvasRef.current || !imagesRef.current) return;
-    console.log(
-      "@@@@@@@@@@@@@@@@",
-      canvasRef.current,
-      imagesRef.current,
-      terrainMapState.current
-    );
     const images = imagesRef.current;
 
     canvasRef.current.addEventListener("mousedown", getPosition, false);
@@ -275,7 +271,8 @@ const IslandViewer = ({ terrainMap }) => {
           const img = TileSwitcher(terrainState[i][j], images);
           const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
-          if (i === mouseCoords.y && j === mouseCoords.x) {
+          // console.log(mouseCoordState);
+          if (i === mouseCoordState.y && j === mouseCoordState.x) {
             const img = TileSwitcher(106, images);
             ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
           }
@@ -292,41 +289,19 @@ const IslandViewer = ({ terrainMap }) => {
           ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
         }
       }
-
-      // moveable Items
-      // for (let z = 0; z < MovableItems.length; z += 1) {
-      //   const item = MovableItems[z];
-      //   const { path } = item;
-      //   const realPath = ProcessPath(path, mapWidth, TILE_WIDTH);
-      //   const itemToMove = TileSwitcher(item.tileId, images);
-      //   if (item.position === undefined) {
-      //     // eslint-disable-next-line prefer-destructuring
-      //     item.position = realPath[0];
-      //   }
-      //   if (item.stage < realPath.length - 1) {
-      //     const NextPosition = realPath[item.stage + 1];
-      //     if (NextPosition.x < item.position.x) {
-      //       item.position.x -= item.speed;
-      //     } else {
-      //       item.position.x += item.speed;
-      //     }
-      //     if (NextPosition.y < item.position.y) {
-      //       item.position.y -= item.speed / 2;
-      //     } else {
-      //       item.position.y += item.speed / 2;
-      //     }
-
-      //     if (
-      //       NextPosition.x === Math.round(item.position.x) &&
-      //       NextPosition.y === Math.round(item.position.y)
-      //     ) {
-      //       item.stage += 1;
-      //     }
-      //   }
-      //   ctx.drawImage(itemToMove, item.position.x, item.position.y);
-      // }
     }
-  }, [canvasRef, imagesRef, terrainMapState]);
+  };
+
+  function renderer() {
+    draw();
+
+    // eslint-disable-next-line no-undef
+    requestAnimationFrame(renderer);
+  }
+
+  useEffect(() => {
+    renderer();
+  });
 
   return (
     <div className="center">
@@ -348,7 +323,7 @@ const IslandViewer = ({ terrainMap }) => {
         <div id="caption" />
       </div>
 
-      <canvas ref={canvasRef} id="canvas" width={1200} height={600} />
+      <canvas ref={canvasRef} id="canvas" width={1000} height={600} />
 
       <img
         alt=""
