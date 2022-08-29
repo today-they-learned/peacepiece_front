@@ -1,5 +1,3 @@
-import React from "react";
-
 import styled from "styled-components";
 import COLOR from "constants/color";
 
@@ -21,7 +19,7 @@ const Personal = styled.div`
 const Person = styled.img`
   width: 1.1rem;
   height: 1rem;
-  margin-right: 0.2rem;
+  margin: 0.1rem 0.2rem 0 0;
 `;
 
 const Number = styled.span`

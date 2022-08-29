@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { Form, Grid, Icon } from "semantic-ui-react";
 import Field from "components/Form/Field";
