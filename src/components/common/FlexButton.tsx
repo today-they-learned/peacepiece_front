@@ -11,6 +11,9 @@ interface Props {
   cursor?: string;
   color?: string;
   backgroundColor?: string;
+  position?: string;
+  right?: string;
+  bottom?: string;
 }
 
 const defaultProps = {
@@ -23,6 +26,9 @@ const defaultProps = {
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
+  position: "static",
+  right: "0",
+  bottom: "0",
 };
 
 const FlexButton = (props: Props) => {
@@ -37,6 +43,9 @@ const FlexButton = (props: Props) => {
     cursor,
     color,
     backgroundColor,
+    position,
+    right,
+    bottom,
   } = props;
 
   const FlexButton = styled.button`
@@ -51,6 +60,9 @@ const FlexButton = (props: Props) => {
     background-color: ${backgroundColor};
     color: ${color};
     cursor: ${cursor ? "pointer" : cursor};
+    position: ${position};
+    right: ${right};
+    bottom: ${bottom};
   `;
 
   return <FlexButton>{children}</FlexButton>;
