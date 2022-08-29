@@ -2,20 +2,20 @@ import styled from "styled-components";
 import { Form } from "semantic-ui-react";
 
 const Field = styled(Form.Field)`
-  margin-bottom: 2rem !important;
-  font-family: "NS-R" !important;
+  margin-bottom: 1rem !important;
+  font-family: "Pr-Light" !important;
   label::after {
     visibility: hidden;
   }
   input {
-    font-family: "NS-R" !important;
+    font-family: "Pr-Light" !important;
   }
   input[type="email"] {
-    font-family: "NS-R" !important;
+    font-family: "Pr-Light" !important;
   }
   input[type="password"] {
     ::placeholder {
-      font-family: "NS-R" !important;
+      font-family: "Pr-Light" !important;
     }
   }
 `;

@@ -43,6 +43,7 @@ const Island = () => {
   const [mapState, setMapState] = useState(terrainMap);
   const [itemsState, setItemsState] = useState(items);
   const handleClick = () => {
+    // eslint-disable-next-line no-console
     console.log("click!");
     setMapState(extraTerrainMap);
     setItemsState(extraItems);

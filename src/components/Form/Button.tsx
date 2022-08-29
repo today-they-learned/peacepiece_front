@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const PrimaryBtn = styled(Button)`
   height: 2.8rem !important;
-  font-family: "NS-B" !important;
+  font-family: "Pr-SemiBold" !important;
   color: white !important;
   background: ${COLOR.font.primary} !important;
   margin-bottom: 2rem !important;
@@ -15,6 +15,6 @@ export const SecondBtn = styled(Button)`
   color: ${COLOR.font.secondary} !important;
   background: white !important;
   border: 1px solid #d9d9d9 !important;
-  font-family: "NS-B" !important;
+  font-family: "Pr-SemiBold" !important;
   margin-bottom: 2rem !important;
 `;
