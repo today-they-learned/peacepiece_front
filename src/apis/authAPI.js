@@ -2,11 +2,11 @@ import { instance } from "config/api";
 
 const authAPI = {
   signUp: (data) => {
-    return instance.post("user/", data);
+    return instance.post("users/", data);
   },
 
   signIn: (data) => {
-    return instance.post("user/login/", data);
+    return instance.post("users/login/", data);
   },
 };
 

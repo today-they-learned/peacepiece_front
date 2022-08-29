@@ -3,16 +3,16 @@ import { Form, Grid, Icon } from "semantic-ui-react";
 import Field from "components/Form/Field";
 import COLOR from "constants/color";
 import { PrimaryBtn, SecondBtn } from "components/Form/Button";
-import FlexBox from "components/common/FlexBox";
+import { FlexBox } from "components/common";
+import { useLogin } from "hooks/queries/auth";
 import useInput from "hooks/useInput";
-import { useSignUp } from "hooks/queries/auth/useSignUp";
 
 const ResetPassword = styled.button`
   position: absolute;
   top: 0;
   right: 0;
   color: ${COLOR.font.primary};
-  font-family: "NS-B";
+  font-family: "Pr-Light";
   font-size: 14px;
   padding: 0;
   cursor: pointer;
@@ -22,12 +22,14 @@ const Login = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
 
-  const handleSubmit = () => {
-    // eslint-disable-next-line no-console
-    console.log(email, password);
-  };
+  const { mutate: login } = useLogin();
 
-  const { mutate: signUp } = useSignUp();
+  const handleSubmit = () => {
+    login({
+      email,
+      password,
+    });
+  };
 
   return (
     <Grid.Column centered>
@@ -43,6 +45,7 @@ const Login = () => {
           iconPosition="left"
           value={email}
           onChange={onChangeEmail}
+          style={{ marginBottom: "2rem" }}
         />
         <div style={{ position: "relative" }}>
           <Field
@@ -59,18 +62,7 @@ const Login = () => {
           />
           <ResetPassword type="button">비밀번호를 잊으셨나요?</ResetPassword>
         </div>
-        <PrimaryBtn
-          onClick={() => {
-            signUp({
-              email: "min1@test.com",
-              password1: "qlalfqjsgh123!",
-              password2: "qlalfqjsgh123!",
-            });
-          }}
-          type="submit"
-          fluid
-          style={{ marginTop: "3rem" }}
-        >
+        <PrimaryBtn type="submit" fluid style={{ marginTop: "3rem" }}>
           로그인
         </PrimaryBtn>
         <SecondBtn type="button" fluid>

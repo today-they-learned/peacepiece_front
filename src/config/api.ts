@@ -29,22 +29,25 @@ const AxiosInterceptor = (props: Props) => {
       }
     );
 
-    // token refresh
-    // instance.interceptors.response.use(
-    //   (response) => response,
-    //   (error) => {
-    //     if (error.response && error.response.status === 403) {
-    //       return Auth.refreshToken()
-    //         .then((token) => {
-    //           originRequest.headers.Authorization = `Bearer ${token}`;
-    //           return instance.request(error.config);
-    //         })
-    //         .catch((error) => {
-    //           window.location.href = "/sign";
-    //         });
-    //     }
-    //   }
-    // );
+    // token refresh 추가 예정
+    instance.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        if (error.response && error.respon.stauts === 403) {
+          window.location.href = "/sign";
+        }
+        // if (error.response && error.response.status === 403) {
+        //   return Auth.refreshToken()
+        //     .then((token) => {
+        //       originRequest.headers.Authorization = `Bearer ${token}`;
+        //       return instance.request(error.config);
+        //     })
+        //     .catch((error) => {
+        //       window.location.href = "/sign";
+        //     });
+        // }
+      }
+    );
   }, []);
 
   return props.children;

@@ -2,19 +2,17 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import authAPI from "apis/authAPI";
 
-const useSignUpMutation = () => {
+const useLoginMutation = () => {
   const navigate = useNavigate();
 
   interface Payload {
-    username: string;
     email: string;
-    password1: string;
-    password2: string;
+    password: string;
   }
 
   return useMutation(
     (payload: Payload) => {
-      return authAPI.signUp(payload);
+      return authAPI.signIn(payload);
     },
     {
       onSuccess: ({ data }) => {
@@ -27,4 +25,4 @@ const useSignUpMutation = () => {
   );
 };
 
-export default useSignUpMutation;
+export default useLoginMutation;

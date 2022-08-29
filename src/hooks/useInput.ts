@@ -1,11 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useCallback } from "react";
+import { useState, useCallback, ChangeEvent } from "react";
 
-const useInput = (initialValue = "") => {
-  const [value, setValue] = useState(initialValue);
-  const handler = useCallback((e: any) => {
+type onChangeType = (e: ChangeEvent<HTMLInputElement>) => void;
+
+const useInput = (initValue = "") => {
+  const [value, setValue] = useState(initValue);
+  const handler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   }, []);
-  return [value, handler, setValue];
+  return [value, handler, setValue] as [string, onChangeType, typeof setValue];
 };
 export default useInput;
