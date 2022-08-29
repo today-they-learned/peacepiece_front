@@ -31,7 +31,7 @@ const CertificationBanner = () => {
           margin="0.5rem 0 0 0"
           position="relative"
         >
-          <FlexTextBox>
+          <FlexTextBox fontFamily="Pr-Bold">
             <PrimaryText>{dummyChallenge.userName}</PrimaryText>님, <br />
             <PrimaryText>{dummyChallenge.challengeTitle}</PrimaryText> <br />
             챌린지 미션을 달성하셨나요?
@@ -43,6 +43,7 @@ const CertificationBanner = () => {
             backgroundColor={COLOR.bg.primary}
             color={COLOR.font.primary}
             fontSize="1.25rem"
+            fontFamily="Pr-Bold"
             position="absolute"
             right="1rem"
             bottom="1rem"

@@ -7,7 +7,7 @@ interface Props {
   margin?: string;
   borderRadius?: string;
   fontSize?: string;
-  fontWeight?: string;
+  fontFamily?: string;
   cursor?: string;
   color?: string;
   backgroundColor?: string;
@@ -22,7 +22,7 @@ const defaultProps = {
   margin: "0",
   borderRadius: "0.3rem",
   fontSize: "0.8rem",
-  fontWeight: "bolder",
+  fontFamily: "Pr-SemiBold",
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
@@ -39,7 +39,7 @@ const FlexButton = (props: Props) => {
     margin,
     borderRadius,
     fontSize,
-    fontWeight,
+    fontFamily,
     cursor,
     color,
     backgroundColor,
@@ -56,7 +56,7 @@ const FlexButton = (props: Props) => {
     outline: 0;
     border-radius: ${borderRadius};
     font-size: ${fontSize};
-    font-weight: ${fontWeight};
+    font-family: ${fontFamily};
     background-color: ${backgroundColor};
     color: ${color};
     cursor: ${cursor ? "pointer" : cursor};
