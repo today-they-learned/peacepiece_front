@@ -13,8 +13,8 @@ const defaultProps = {
   minRow: 1,
 };
 
-const FlexInput = ({ text, width, minRow }: Props) => {
-  const Textarea = styled(TextareaAutosize)`
+const Input = ({ text, width, minRow }: Props) => {
+  const TextArea = styled(TextareaAutosize)`
     width: ${width} !important;
     border-radius: 1.25rem !important;
     border: none;
@@ -26,9 +26,9 @@ const FlexInput = ({ text, width, minRow }: Props) => {
   `;
 
   return (
-    <Textarea aria-label="empty textarea" placeholder={text} minRows={minRow} />
+    <TextArea aria-label="empty textarea" placeholder={text} minRows={minRow} />
   );
 };
-FlexInput.defaultProps = defaultProps;
+Input.defaultProps = defaultProps;
 
-export default FlexInput;
+export default Input;
