@@ -38,7 +38,7 @@ const NoticKeyword = () => {
         padding="1rem 0.3rem 1rem 0.4rem"
         theme="secondary"
       >
-        <FlexButton margin="0 0 0 15rem" fontSize="0.9rem" fontWeight="400">
+        <FlexButton margin="0 0 0 15rem" fontSize="0.9rem">
           수정하기{">"}
         </FlexButton>
         <FlexBox margin="0.5rem" wrap="wrap">

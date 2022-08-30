@@ -56,8 +56,6 @@ const ModalFrame = (props: Props) => {
 
       <FlexBox margin="15% 0 0 60%">
         <FlexButton
-          width="9rem"
-          height="2.8rem"
           margin="0 0 0 0.4rem"
           fontSize="1.5rem"
           backgroundColor={COLOR.bg.default}
@@ -65,8 +63,6 @@ const ModalFrame = (props: Props) => {
           취소
         </FlexButton>
         <FlexButton
-          width="9rem"
-          height="2.8rem"
           margin="0 0 0 0.8rem"
           color={COLOR.font.primary}
           fontSize="1.5rem"
