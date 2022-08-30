@@ -14,7 +14,7 @@ export interface Props {
 
 const defaultProps = {
   text: "text를 props로 전달하세요.",
-  margin: "0",
+  margin: "0 0 0 0.5rem",
 };
 
 const Icon = styled(HelpIcon)<Props>`

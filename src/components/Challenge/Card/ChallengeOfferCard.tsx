@@ -16,8 +16,8 @@ const Container = styled.div`
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
-  padding: 1rem 1.5rem 2rem 1.5rem;
-  margin-bottom: 3rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
 `;
 
 const User = styled.div`
