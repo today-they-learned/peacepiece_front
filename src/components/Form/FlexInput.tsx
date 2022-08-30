@@ -1,41 +1,32 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { Form } from "semantic-ui-react";
+import TextareaAutosize from "@mui/base/TextareaAutosize";
 
 interface Props {
   text: string;
   width?: string;
-  height?: string;
+  minRow?: number;
 }
 
 const defaultProps = {
   width: "45rem",
-  height: "4.5rem",
+  minRow: 1,
 };
 
-const FlexInput = (props: Props) => {
-  const { text, width, height } = props;
-
-  const FormLib = styled(Form)`
+const FlexInput = ({ text, width, minRow }: Props) => {
+  const Textarea = styled(TextareaAutosize)`
     width: ${width} !important;
-  `;
-
-  const Input = styled.input`
-    width: ${width} !important;
-    height: ${height} !important;
     border-radius: 1.25rem !important;
-    font-size: 1.25rem !important;
-    font-family: "Pr-Bold" !important;
+    border: none;
+    padding: 1.25rem;
+    font-size: 1.25rem;
+    font-family: "Pr-Bold";
     color: white !important;
-    background-color: ${COLOR.bg.secondary} !important;
+    background-color: ${COLOR.bg.secondary};
   `;
 
   return (
-    <FormLib>
-      <Form.Field>
-        <Input placeholder={text} />
-      </Form.Field>
-    </FormLib>
+    <Textarea aria-label="empty textarea" placeholder={text} minRows={minRow} />
   );
 };
 FlexInput.defaultProps = defaultProps;
