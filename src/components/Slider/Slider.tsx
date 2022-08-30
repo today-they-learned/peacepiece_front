@@ -5,8 +5,7 @@ import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ChallengeOfferCard from "components/Challenge/Card/ChallengeOfferCard";
-import FlexBox from "components/common/FlexBox";
-import { FlexTextBox } from "components/common";
+import { FlexTextBox, FlexBox } from "components/common";
 import dummyData from "./dummyData";
 
 const Container = styled.div`
