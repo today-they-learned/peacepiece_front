@@ -1,0 +1,99 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: black;
+}
+
+.App {
+  padding-left: 200px;
+  text-align: left;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+}
+/*
+nav {
+  background: black;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  h1 {
+    flex: 1;
+    margin: 0;
+    color: white;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    a {
+      padding: 100px;
+      color: Red;
+      text-decoration: none;
+    }
+  }
+} */
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.hidden{
+  visibility: hidden;
+  /* display: none; */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.modal-content img {
+  max-width: 100px;
+  height: auto;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
