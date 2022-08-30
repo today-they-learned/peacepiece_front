@@ -12,7 +12,7 @@ const useLoginMutation = () => {
 
   return useMutation(
     (payload: Payload) => {
-      return authAPI.signIn(payload);
+      return authAPI.login(payload);
     },
     {
       onSuccess: ({ data }) => {
