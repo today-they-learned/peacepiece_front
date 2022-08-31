@@ -1,17 +1,25 @@
-import { Form, Grid, Icon } from "semantic-ui-react";
-import Field from "components/Form/Field";
-import { PrimaryBtn, SecondBtn } from "components/Form/Button";
-import { FlexBox } from "components/common";
+import { useState } from "react";
 import useInput from "hooks/useInput";
 import { useSignUp } from "hooks/queries/auth";
+import { Form, Grid, Icon } from "semantic-ui-react";
+import { FlexBox } from "components/common";
+import { Field, ErrorText } from "components/Form";
+import { PrimaryBtn, SecondBtn } from "components/Form/Button";
 
 const Signup = () => {
   const [username, onChangeUsername] = useInput("");
   const [email, onChangeEmail] = useInput("");
   const [password1, onChangePassword1] = useInput("");
   const [password2, onChangePassword2] = useInput("");
+  const [errMsg, setErrMsg] = useState({
+    username: null,
+    email: null,
+    password1: null,
+    password2: null,
+  });
 
-  const { mutate: signUp } = useSignUp();
+  const { mutate: signUp } = useSignUp(setErrMsg);
+
   const handleSubmit = () => {
     signUp({
       username,
@@ -34,6 +42,7 @@ const Signup = () => {
           value={username}
           onChange={onChangeUsername}
         />
+        {errMsg.username && <ErrorText>{errMsg.username}</ErrorText>}
         <Field
           fluid
           required
@@ -45,6 +54,8 @@ const Signup = () => {
           value={email}
           onChange={onChangeEmail}
         />
+        {errMsg.email && <ErrorText>{errMsg.email}</ErrorText>}
+
         <Field
           fluid
           required
@@ -56,6 +67,8 @@ const Signup = () => {
           value={password1}
           onChange={onChangePassword1}
         />
+        {errMsg.password1 && <ErrorText>{errMsg.password1}</ErrorText>}
+
         <Field
           fluid
           required
@@ -67,6 +80,8 @@ const Signup = () => {
           value={password2}
           onChange={onChangePassword2}
         />
+        {errMsg.password2 && <ErrorText>{errMsg.password2}</ErrorText>}
+
         <PrimaryBtn type="submit" fluid style={{ marginTop: "3rem" }}>
           회원가입
         </PrimaryBtn>

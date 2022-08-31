@@ -21,6 +21,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.3.0",
     "react-icons": "^4.4.0",
     "react-isometric-grid": "^0.0.3",
     "react-isometric-tilemap": "^1.0.0",
