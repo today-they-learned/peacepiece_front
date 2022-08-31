@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
+import { AiOutlineUser } from "react-icons/ai";
 
 interface Props {
   person: number;
@@ -16,10 +17,10 @@ const Personal = styled.div`
   margin-right: 1rem;
 `;
 
-const Person = styled.img`
+const Person = styled(AiOutlineUser)`
   width: 1.1rem;
   height: 1rem;
-  margin: 0.1rem 0.2rem 0 0;
+  margin: 0.2rem 0.2rem 0 0;
 `;
 
 const Number = styled.span`
@@ -39,7 +40,7 @@ const ChallengeFigure = (props: Props) => {
   return (
     <Figure>
       <Personal>
-        <Person src={`${process.env.PUBLIC_URL}/images/person.png`} />
+        <Person />
         <Number>{person}명</Number>
       </Personal>
       <Point>PP {point}</Point>
