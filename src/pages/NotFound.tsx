@@ -1,4 +1,5 @@
 import { useArticleData } from "hooks/queries/article";
+import { FlexButton } from "components/common";
 
 const NotFound = () => {
   const { data, refetch } = useArticleData(1);
@@ -6,7 +7,7 @@ const NotFound = () => {
   return (
     <>
       404 NotFound
-      <button onClick={() => refetch()}>refetch</button>
+      <FlexButton onClick={() => refetch()}>refetch</FlexButton>
       <div style={{ marginBottom: "3rem" }} />
     </>
   );
