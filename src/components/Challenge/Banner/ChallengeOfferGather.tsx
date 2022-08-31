@@ -1,16 +1,14 @@
 import { ChallengeOfferCard } from "components/Challenge/Card";
-import { FlexBox, FlexButton, BannerBox } from "components/common";
-import { ChallengeTitle } from "components/Challenge";
+import { FlexBox } from "components/common";
+import { ChallengeBanner } from "components/Challenge";
 
-const OfferChallengeBanner = () => {
+const ChallengeOfferGather = () => {
   return (
-    <BannerBox width="52.25rem">
-      <FlexBox margin="0.5rem 0 0 0">
-        <ChallengeTitle title="🧐 이런 챌린지는 어때요?" />
-        <FlexButton margin="0 0 0 25.5rem" fontSize="0.9rem">
-          전체보기 {">"}
-        </FlexButton>
-      </FlexBox>
+    <ChallengeBanner
+      width="52.25rem"
+      title="🧐 이런 챌린지는 어때요?"
+      url="/ChallengeOfferGather"
+    >
       <FlexBox margin="1rem 0 0 0" wrap="wrap">
         <ChallengeOfferCard
           userName="SoyE"
@@ -37,8 +35,8 @@ const OfferChallengeBanner = () => {
           clicked
         />
       </FlexBox>
-    </BannerBox>
+    </ChallengeBanner>
   );
 };
 
-export default OfferChallengeBanner;
+export default ChallengeOfferGather;

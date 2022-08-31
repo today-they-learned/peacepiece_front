@@ -9,7 +9,7 @@ interface Props {
 
 const defaultProps = {
   toolTipContent: "",
-  margin: "0.22rem 0 0 0",
+  margin: "0.15rem 0 0 0",
 };
 
 const Container = styled.div`
