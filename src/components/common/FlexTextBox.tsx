@@ -14,7 +14,7 @@ const defaultProps = {
   width: "auto",
   height: "auto",
   margin: "0",
-  fontSize: "16px",
+  fontSize: "1rem",
   fontFamily: "Pr-SemiBold",
   color: "white",
 };

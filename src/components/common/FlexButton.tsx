@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 interface Props {
   children: React.ReactNode;
-  width?: string;
-  height?: string;
   margin?: string;
   borderRadius?: string;
   fontSize?: string;
@@ -17,12 +15,10 @@ interface Props {
 }
 
 const defaultProps = {
-  width: "auto",
-  height: "auto",
   margin: "0",
-  borderRadius: "0.3rem",
-  fontSize: "0.8rem",
   fontFamily: "Pr-SemiBold",
+  borderRadius: "0.62rem",
+  fontSize: "1.2rem",
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
@@ -34,12 +30,11 @@ const defaultProps = {
 const FlexButton = (props: Props) => {
   const {
     children,
-    width,
-    height,
     margin,
     borderRadius,
     fontSize,
     fontFamily,
+
     cursor,
     color,
     backgroundColor,
@@ -49,8 +44,9 @@ const FlexButton = (props: Props) => {
   } = props;
 
   const FlexButton = styled.button`
-    width: ${width};
-    height: ${height};
+    width: auto;
+    height: auto;
+    padding: 0.6rem 1.5rem;
     margin: ${margin};
     border: 0;
     outline: 0;

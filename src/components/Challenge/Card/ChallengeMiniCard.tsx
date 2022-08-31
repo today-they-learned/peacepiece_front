@@ -9,7 +9,7 @@ interface Props {
   content: string;
 }
 
-const WeeklyChallengeCard = (props: Props) => {
+const ChallengeMiniCard = (props: Props) => {
   const { title, content } = props;
   return (
     <BannerBox
@@ -35,4 +35,4 @@ const WeeklyChallengeCard = (props: Props) => {
   );
 };
 
-export default WeeklyChallengeCard;
+export default ChallengeMiniCard;
