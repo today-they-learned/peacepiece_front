@@ -1,10 +1,10 @@
-import { EndedChallengeBanner } from "components/Challenge/Banner";
+import OfferChallengeBanner from "components/Challenge/Banner/OfferChallengeBanner";
 
 const NotFound = () => {
   return (
     <>
       404 NotFound
-      <EndedChallengeBanner />
+      <OfferChallengeBanner />
       <div style={{ marginBottom: "3rem" }} />
     </>
   );

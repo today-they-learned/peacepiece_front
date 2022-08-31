@@ -8,18 +8,20 @@ interface Props {
   tooltip?: string;
   url?: string;
   theme?: string;
+  width?: string;
 }
 
 const defaultProps = {
   tooltip: "",
   url: "",
   theme: "default",
+  width: "24.5rem",
 };
 
 export const ChallengeBanner = (props: Props) => {
-  const { children, title, tooltip, url, theme } = props;
+  const { children, title, tooltip, url, theme, width } = props;
   return (
-    <BannerBox theme={theme} width="24.5rem">
+    <BannerBox theme={theme} width={width}>
       <FlexBox
         justifyContent="space-between"
         alignItems="baseline"

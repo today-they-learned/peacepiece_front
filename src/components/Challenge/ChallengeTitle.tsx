@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import Tooltip from "components/Tooltip/Tooltip";
+import { FlexBox, FlexTextBox } from "components/common";
 
 interface Props {
   title: string;
@@ -10,23 +10,16 @@ const defaultProps = {
   toolTipContent: "",
 };
 
-const Container = styled.div`
-  display: flex;
-`;
-
-const Title = styled.div`
-  font-size: 1.56rem;
-  font-family: "Pr-Bold";
-`;
-
 const ChallengeTitle = (props: Props) => {
   const { title, toolTipContent } = props;
 
   return (
-    <Container>
-      <Title>{title}</Title>
-      {toolTipContent && <Tooltip text={toolTipContent} />}
-    </Container>
+    <FlexBox alignItems="center">
+      <FlexTextBox fontSize="1.56rem" fontFamily="Pr-Bold">
+        {title}
+      </FlexTextBox>
+      {toolTipContent && <Tooltip text={toolTipContent} margin="0 0 0 1rem" />}
+    </FlexBox>
   );
 };
 ChallengeTitle.defaultProps = defaultProps;

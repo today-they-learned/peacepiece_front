@@ -1,7 +1,7 @@
-import TodayChallenge from "components/Challenge/TodayChallenge";
+import CertificationBanner from "components/Challenge/Banner/CertificationBanner";
 
 const Challenge = () => {
-  return <TodayChallenge />;
+  return <CertificationBanner />;
 };
 
 export default Challenge;
