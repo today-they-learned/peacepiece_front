@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Tooltip from "components/Tooltip/Tooltip";
 import { FlexBox, FlexTextBox } from "components/common";
 
