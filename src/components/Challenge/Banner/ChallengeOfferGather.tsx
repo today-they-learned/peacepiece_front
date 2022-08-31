@@ -20,7 +20,7 @@ const ChallengeOfferGather = () => {
           userName="SoyE"
           content="PeachPiece 최고에요 산에서 쓰레기 모아오기 챌린지는 어때요 ? "
           like={100}
-          clicked
+          clicked={false}
         />
         <ChallengeOfferCard
           userName="SoyE"

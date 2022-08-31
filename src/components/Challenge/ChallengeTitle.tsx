@@ -9,7 +9,7 @@ interface Props {
 
 const defaultProps = {
   toolTipContent: "",
-  margin: "0.15rem 0 0 0",
+  margin: "0.1rem 0 0 0",
 };
 
 const ChallengeTitle = (props: Props) => {
@@ -17,7 +17,7 @@ const ChallengeTitle = (props: Props) => {
 
   return (
     <FlexBox alignItems="center">
-      <FlexTextBox fontSize="1.56rem" fontFamily="Pr-Bold">
+      <FlexTextBox fontSize="1.56rem" fontFamily="Pr-Bold" margin={margin}>
         {title}
       </FlexTextBox>
       {toolTipContent && <Tooltip text={toolTipContent} margin="0 0 0 1rem" />}

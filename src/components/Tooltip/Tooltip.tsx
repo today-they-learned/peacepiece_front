@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
 /* eslint-disable react/jsx-props-no-spreading */
-
 import { styled } from "@mui/material/styles";
 import COLOR from "constants/color";
 import HelpIcon from "@mui/icons-material/Help";
@@ -14,7 +13,7 @@ export interface Props {
 
 const defaultProps = {
   text: "text를 props로 전달하세요.",
-  margin: "0 0 0 0.5rem",
+  margin: "0",
 };
 
 const Icon = styled(HelpIcon)<Props>`
