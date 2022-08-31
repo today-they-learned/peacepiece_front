@@ -16,7 +16,7 @@ const Container = styled.div`
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
-  padding: 1rem 1.5rem 1rem 1.5rem;
+  padding: 0.8rem 1.5rem 0.8rem 1.5rem;
   margin: 0.5rem 1rem 0.5rem 1rem;
 `;
 
@@ -28,6 +28,7 @@ const User = styled.div`
 `;
 
 const Content = styled.div`
+  height: 5rem;
   font-size: 1rem;
   font-family: "Pr-SemiBold";
   color: ${COLOR.white};
