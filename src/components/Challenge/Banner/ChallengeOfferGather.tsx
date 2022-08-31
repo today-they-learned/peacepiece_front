@@ -7,7 +7,7 @@ const ChallengeOfferGather = () => {
     <ChallengeBanner
       width="52.25rem"
       title="🧐 이런 챌린지는 어때요?"
-      url="/ChallengeOfferGather"
+      url="/challenge/offer"
     >
       <FlexBox margin="1rem 0 0 0" wrap="wrap">
         <ChallengeOfferCard
