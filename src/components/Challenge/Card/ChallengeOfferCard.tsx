@@ -1,7 +1,5 @@
 import COLOR from "constants/color";
-
 import styled from "styled-components";
-
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 interface Props {
@@ -16,8 +14,8 @@ const Container = styled.div`
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
-  padding: 1rem 1.5rem 2rem 1.5rem;
-  margin-bottom: 3rem;
+  padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
 `;
 
 const User = styled.div`
