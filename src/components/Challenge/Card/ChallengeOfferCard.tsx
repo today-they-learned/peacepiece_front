@@ -1,7 +1,5 @@
 import COLOR from "constants/color";
-
 import styled from "styled-components";
-
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 interface Props {
