@@ -9,6 +9,7 @@ interface Props {
   margin?: string;
   borderRadius?: string;
   theme?: string;
+  position?: string;
 }
 
 const defaultProps = {
@@ -18,6 +19,7 @@ const defaultProps = {
   padding: "1.5rem",
   borderRadius: "1.4rem",
   theme: "default",
+  position: "static",
 };
 
 const BannerBox = (props: Props) => {
@@ -25,8 +27,16 @@ const BannerBox = (props: Props) => {
   const bannerTheme = COLOR.bg.banner;
   const secondaryTheme = COLOR.bg.secondary;
 
-  const { children, width, height, margin, padding, borderRadius, theme } =
-    props;
+  const {
+    children,
+    width,
+    height,
+    margin,
+    padding,
+    borderRadius,
+    theme,
+    position,
+  } = props;
   let themeColor = defaultTheme;
 
   switch (theme) {
@@ -48,6 +58,7 @@ const BannerBox = (props: Props) => {
     padding: ${padding};
     border-radius: ${borderRadius};
     background: ${themeColor};
+    position: ${position};
   `;
 
   return <BannerBox>{children}</BannerBox>;
