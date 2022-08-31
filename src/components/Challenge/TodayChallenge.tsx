@@ -4,11 +4,11 @@ import { ChallengeTitle } from "components/Challenge";
 import { ChallengeCard } from "./Card";
 
 const Container = styled.div`
-  width: 55rem;
+  width: 52.25rem;
   height: 30rem;
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};
-  padding: 1rem 2rem 0 2rem;
+  padding: 1.5rem 1rem 0.5rem 1rem;
 `;
 
 const CardContainer = styled.div`

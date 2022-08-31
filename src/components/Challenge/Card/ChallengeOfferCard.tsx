@@ -26,6 +26,7 @@ const User = styled.div`
 `;
 
 const Content = styled.div`
+  height: 5rem;
   font-size: 1rem;
   font-family: "Pr-SemiBold";
   color: ${COLOR.white};

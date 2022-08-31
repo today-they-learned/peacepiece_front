@@ -37,8 +37,6 @@ const CertificationBanner = () => {
             챌린지 미션을 달성하셨나요?
           </FlexTextBox>
           <FlexButton
-            width="8.375rem"
-            height="3rem"
             borderRadius="0.625rem"
             backgroundColor={COLOR.bg.primary}
             color={COLOR.font.primary}
