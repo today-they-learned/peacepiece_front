@@ -3,7 +3,8 @@ import { Form, Grid, Icon } from "semantic-ui-react";
 import Field from "components/Form/Field";
 import COLOR from "constants/color";
 import { PrimaryBtn, SecondBtn } from "components/Form/Button";
-import FlexBox from "components/common/FlexBox";
+import { FlexBox } from "components/common";
+import { useLogin } from "hooks/queries/auth";
 import useInput from "hooks/useInput";
 
 const ResetPassword = styled.button`
@@ -11,7 +12,7 @@ const ResetPassword = styled.button`
   top: 0;
   right: 0;
   color: ${COLOR.font.primary};
-  font-family: "NS-B";
+  font-family: "Pr-Light";
   font-size: 14px;
   padding: 0;
   cursor: pointer;
@@ -21,9 +22,13 @@ const Login = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
 
+  const { mutate: login } = useLogin();
+
   const handleSubmit = () => {
-    // eslint-disable-next-line no-console
-    console.log(email, password);
+    login({
+      email,
+      password,
+    });
   };
 
   return (
@@ -40,6 +45,7 @@ const Login = () => {
           iconPosition="left"
           value={email}
           onChange={onChangeEmail}
+          style={{ marginBottom: "2rem" }}
         />
         <div style={{ position: "relative" }}>
           <Field
