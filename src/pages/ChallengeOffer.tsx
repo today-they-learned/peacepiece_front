@@ -1,7 +1,7 @@
-import AllChallengeOffer from "components/Challenge/Banner/AllChallengeOffer";
+import ChallengeOfferInput from "components/Challenge/Banner/ChallengeOfferInput";
 
 const ChallengeOffer = () => {
-  return <AllChallengeOffer />;
+  return <ChallengeOfferInput />;
 };
 
 export default ChallengeOffer;
