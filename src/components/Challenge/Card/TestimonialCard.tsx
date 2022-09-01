@@ -78,7 +78,7 @@ const TestimonialCard = (props: Props) => {
           if (idx === 2) {
             return (
               <FlexBox position="relative" background="transparent">
-                <LastImage src={image} key={idx} />
+                <LastImage src={image.image_url} key={image.id} />
                 <FlexTextBox
                   position="absolute"
                   right="50%"
@@ -91,7 +91,7 @@ const TestimonialCard = (props: Props) => {
               </FlexBox>
             );
           }
-          return <Image src={image} key={idx} />;
+          return <Image src={image.image_url} key={image.id} />;
         })}
       </FlexBox>
       <FlexButton
