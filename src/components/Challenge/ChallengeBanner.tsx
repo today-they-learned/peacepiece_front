@@ -10,6 +10,7 @@ interface Props {
   url?: string;
   theme?: string;
   width?: string;
+  background?: string;
 }
 
 const defaultProps = {
@@ -17,19 +18,24 @@ const defaultProps = {
   url: "",
   theme: "default",
   width: "24.5rem",
+  background: COLOR.bg.primary,
 };
 
 export const ChallengeBanner = (props: Props) => {
-  const { children, title, tooltip, url, theme, width } = props;
+  const { children, title, tooltip, url, theme, width, background } = props;
   return (
     <BannerBox theme={theme} width={width}>
       <FlexBox
         justifyContent="space-between"
         alignItems="baseline"
         margin="0 0.5rem 1rem 0"
-        background={COLOR.bg.primary}
+        background={background}
       >
-        <ChallengeTitle title={title} toolTipContent={tooltip} />
+        <ChallengeTitle
+          title={title}
+          toolTipContent={tooltip}
+          background={background}
+        />
         {url && (
           <Link to={url}>
             <FlexTextBox fontSize="0.95rem" fontFamily="Pr-Regular">
