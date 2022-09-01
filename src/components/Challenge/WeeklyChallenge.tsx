@@ -6,8 +6,51 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ChallengeOfferCard from "components/Challenge/Card/ChallengeOfferCard";
 import { FlexTextBox, FlexBox } from "components/common";
-import dummyData from "./dummyData";
 
+const dummyData = [
+  {
+    userName: "soye1",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye2",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: false,
+  },
+  {
+    userName: "soye3",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: false,
+  },
+  {
+    userName: "soye4",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye5",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye6",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+];
 const Container = styled.div`
   width: 52rem;
   height: 17.25rem;
@@ -18,6 +61,7 @@ const Container = styled.div`
     width: 28rem;
     padding-left: 0;
   }
+  margin-bottom: 3rem;
 `;
 
 const CarouselLib = styled(Carousel)`
@@ -100,7 +144,7 @@ const arrLoopMobile = () => {
   return newArr;
 };
 
-const Slider = () => {
+const WeeklyChallenge = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const insertCard = isDesktop ? arrLoop() : arrLoopMobile();
@@ -132,4 +176,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default WeeklyChallenge;

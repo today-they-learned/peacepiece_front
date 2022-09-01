@@ -9,6 +9,7 @@ const Container = styled.div`
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};
   padding: 1.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 3rem;
 `;
 
 const CardContainer = styled.div`
