@@ -1,5 +1,7 @@
+import ChallengeOfferInput from "components/Challenge/Banner/ChallengeOfferInput";
+
 const ChallengeOffer = () => {
-  return <div>챌린지 제안</div>;
+  return <ChallengeOfferInput />;
 };
 
 export default ChallengeOffer;

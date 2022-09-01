@@ -34,7 +34,6 @@ const FlexButton = (props: Props) => {
     borderRadius,
     fontSize,
     fontFamily,
-
     cursor,
     color,
     backgroundColor,
