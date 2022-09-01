@@ -1,5 +1,6 @@
 import { useState } from "react";
 import IslandViewer from "components/Island/IslandViewer";
+import Maps from "constants/Island/Maps";
 
 const items = [
   [0, 0, 0, 0, 0, 0, 0, 0],
@@ -12,40 +13,24 @@ const items = [
   [0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
-const terrainMap = [
-  ["gr", "gr", "gr", "gr", "gr", "gr", "rb", "gr", "gr"],
-  ["r", "gr", "rb", "rb", "rb", "rb", "rb", "gr", "gr"],
-  ["r", "gr", "rb", "gr", "gr", "gr", "gr", "gr", "gr"],
-  ["r", "gr", "rb", "rb", "rb", "w", "w", "w", "gr"],
-  ["r", "r", "r", "gr", "rb", "w", "w", "w", "gr"],
-  ["r", "gr", "r", "gr", "rb", "gr", "gr", "gr", "gr"],
-  ["r", "gr", "r", "r", "r", "r", "r", "r", "r"],
-  ["r", "gr", "r", "gr", "rb", "b", "b", "b", "gr"],
-  ["r", "gr", "r", "gr", "rb", "b", "b", "b", "gr"],
-  ["r", "gr", "r", "gr", "rb", "b", "b", "b", "gr"],
-];
-
-const extraTerrainMap = [
-  ["gr", "gr", "gr", "gr", "gr"],
-  ["r", "gr", "rb", "rb", "rb"],
-  ["r", "gr", "rb", "gr", "rb"],
-  ["r", "gr", "rb", "rb", "rb"],
-];
-
 const extraItems = [
   [0, 0, 0, 0, 0],
-  [0, 93, 0, 94, 0],
-  [0, 107, 0, 0, 0],
-  [0, 91, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
 ];
 
 const Island = () => {
-  const [mapState, setMapState] = useState(terrainMap);
-  const [itemsState, setItemsState] = useState(items);
+  const [mapState, setMapState] = useState(Maps[0]);
+  const [itemsState, setItemsState] = useState(extraItems);
+  const [mapIdx, setMapIdx] = useState(0);
+
   const handleClick = () => {
-    setMapState(extraTerrainMap);
+    setMapIdx((mapIdx + 1) % 4);
+    setMapState(Maps[mapIdx]);
     setItemsState(extraItems);
   };
+
   return (
     <div>
       내소개
