@@ -1,13 +1,7 @@
-import ChallengeDetailBanner from "components/Challenge/Banner/ChallengeDetailBanner";
-import TodayChallenge from "components/Challenge/TodayChallenge";
+import ChallengeTestimonial from "components/Challenge/Banner/ChallengeTestimonial";
 
 const Challenge = () => {
-  return (
-    <>
-      <TodayChallenge />
-      <ChallengeDetailBanner />
-    </>
-  );
+  return <ChallengeTestimonial />;
 };
 
 export default Challenge;
