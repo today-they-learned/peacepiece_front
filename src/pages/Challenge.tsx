@@ -5,7 +5,6 @@ import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallenge from "components/Challenge/TodayChallenge";
 import WeeklyChallenge from "components/Challenge/WeeklyChallenge";
 import { FlexBox } from "components/common";
-import styled from "styled-components";
 
 const Challenge = () => {
   return (

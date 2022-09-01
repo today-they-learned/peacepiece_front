@@ -2,6 +2,37 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeCard } from "./Card";
+import EndedChallengeCard from "./Card/EndedChallengeCard";
+
+const dummyChallenges = [
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: false,
+  },
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: false,
+  },
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: true,
+  },
+];
 
 const Container = styled.div`
   width: 52.25rem;
@@ -42,9 +73,13 @@ const TodayChallenge = () => {
         background={COLOR.bg.primary}
       />
       <CardContainer>
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
+        {dummyChallenges.map((challenge) =>
+          challenge.complete ? (
+            <EndedChallengeCard challenge={challenge} />
+          ) : (
+            <ChallengeCard challenge={challenge} />
+          )
+        )}
       </CardContainer>
     </Container>
   );
