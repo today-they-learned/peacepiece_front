@@ -15,7 +15,7 @@ interface Props {
 const defaultProps = {
   width: "auto",
   height: "auto",
-  margin: "1rem",
+  margin: "0 1rem 2rem 1rem",
   padding: "1.5rem",
   borderRadius: "1.4rem",
   theme: "default",

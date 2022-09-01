@@ -31,6 +31,7 @@ const EndedChallengeList = (props: Props) => {
               <ChallengeFigure
                 person={challenge.person}
                 point={challenge.point}
+                background={COLOR.bg.primary}
               />
             </FlexBox>
           </>

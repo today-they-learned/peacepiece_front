@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     height: 100%;
   }
+  
   a {
     color: inherit;
     text-decoration: none;

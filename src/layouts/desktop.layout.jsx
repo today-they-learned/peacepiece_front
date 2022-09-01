@@ -3,7 +3,7 @@ import DesktopFootbar from "components/Footbar/DesktopFootbar";
 import styled from "styled-components";
 
 const ChildrenContainer = styled.div`
-  margin-top: 6rem;
+  margin: 6rem 0 0 0;
 `;
 
 const DesktopLayout = ({ children }) => {

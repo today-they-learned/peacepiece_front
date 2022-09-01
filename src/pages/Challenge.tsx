@@ -4,40 +4,23 @@ import OfferChallengeBanner from "components/Challenge/Banner/OfferChallengeBann
 import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallenge from "components/Challenge/TodayChallenge";
 import WeeklyChallenge from "components/Challenge/WeeklyChallenge";
+import { FlexBox } from "components/common";
 import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 100%;
-`;
-
-const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const RightContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Challenge = () => {
   return (
-    <Container>
-      <LeftContainer>
+    <FlexBox justifyContent="center" height="100%">
+      <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <TodayChallenge />
         <WeeklyChallenge />
         <ChallengeOfferGather />
-      </LeftContainer>
-      <RightContainer>
+      </FlexBox>
+      <FlexBox column alignItems="center">
         <NoticKeyword />
         <OfferChallengeBanner />
         <EndedChallengeBanner />
-      </RightContainer>
-    </Container>
+      </FlexBox>
+    </FlexBox>
   );
 };
 

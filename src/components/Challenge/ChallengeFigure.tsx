@@ -6,7 +6,12 @@ import { AiOutlineUser } from "react-icons/ai";
 interface Props {
   person: number;
   point: number;
+  background?: string;
 }
+
+const defaultProps = {
+  background: COLOR.bg.default,
+};
 
 const Person = styled(AiOutlineUser)`
   width: 1.1rem;
@@ -16,10 +21,10 @@ const Person = styled(AiOutlineUser)`
 `;
 
 const ChallengeFigure = (props: Props) => {
-  const { person, point } = props;
+  const { person, point, background } = props;
   return (
-    <FlexBox margin="0 1.2rem 0 0" background={COLOR.bg.primary}>
-      <FlexBox margin="0 1rem 0 0" background={COLOR.bg.primary}>
+    <FlexBox margin="0 1.2rem 0 0" background={background}>
+      <FlexBox margin="0 1rem 0 0" background={background}>
         <Person />
         <FlexTextBox
           fontSize="0.75rem"
@@ -39,5 +44,6 @@ const ChallengeFigure = (props: Props) => {
     </FlexBox>
   );
 };
+ChallengeFigure.defaultProps = defaultProps;
 
 export default ChallengeFigure;
