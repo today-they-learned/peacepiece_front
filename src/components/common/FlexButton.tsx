@@ -34,7 +34,6 @@ const FlexButton = (props: Props) => {
     borderRadius,
     fontSize,
     fontFamily,
-
     cursor,
     color,
     backgroundColor,
@@ -53,7 +52,7 @@ const FlexButton = (props: Props) => {
     border-radius: ${borderRadius};
     font-size: ${fontSize};
     font-family: ${fontFamily};
-    background-color: ${backgroundColor};
+    background: ${backgroundColor};
     color: ${color};
     cursor: ${cursor ? "pointer" : cursor};
     position: ${position};
