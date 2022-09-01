@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BannerBox, FlexBox, FlexTextBox } from "components/common";
 import { ChallengeTitle } from "components/Challenge";
+import COLOR from "constants/color";
 
 interface Props {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export const ChallengeBanner = (props: Props) => {
         justifyContent="space-between"
         alignItems="baseline"
         margin="0 0.5rem 1rem 0"
+        background={COLOR.bg.primary}
       >
         <ChallengeTitle title={title} toolTipContent={tooltip} />
         {url && (
