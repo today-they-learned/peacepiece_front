@@ -18,8 +18,8 @@ const Person = styled(AiOutlineUser)`
 const ChallengeFigure = (props: Props) => {
   const { person, point } = props;
   return (
-    <FlexBox margin="0 1.2rem 0 0">
-      <FlexBox margin="0 1rem 0 0">
+    <FlexBox margin="0 1.2rem 0 0" background={COLOR.bg.primary}>
+      <FlexBox margin="0 1rem 0 0" background={COLOR.bg.primary}>
         <Person />
         <FlexTextBox
           fontSize="0.75rem"

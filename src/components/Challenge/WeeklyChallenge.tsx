@@ -51,6 +51,7 @@ const dummyData = [
     clicked: true,
   },
 ];
+
 const Container = styled.div`
   width: 52rem;
   height: 17.25rem;
@@ -91,30 +92,33 @@ const arrLoop = () => {
     newArr.push(
       <Page>
         {i === dummyData.length - 1 && dummyData.length % 2 === 1 ? (
-          <FlexBox margin="0 0.8rem 0 0.8rem">
+          <FlexBox margin="0 0.5rem 0 1rem" background={COLOR.bg.primary}>
             <ChallengeOfferCard
               userName={dummyData[i].userName}
               content={dummyData[i].content}
               like={dummyData[i].like}
               clicked={dummyData[i].clicked}
+              margin="0"
             />
           </FlexBox>
         ) : (
           <>
-            <FlexBox margin="0 0.5rem 0 2.2rem">
+            <FlexBox margin="0 0.5rem 0 2.2rem" background={COLOR.bg.primary}>
               <ChallengeOfferCard
                 userName={dummyData[i].userName}
                 content={dummyData[i].content}
                 like={dummyData[i].like}
                 clicked={dummyData[i].clicked}
+                margin="0"
               />
             </FlexBox>
-            <FlexBox margin="0 1rem 0 0.5rem">
+            <FlexBox margin="0 1rem 0 0.5rem" background={COLOR.bg.primary}>
               <ChallengeOfferCard
                 userName={dummyData[i + 1].userName}
                 content={dummyData[i + 1].content}
                 like={dummyData[i + 1].like}
                 clicked={dummyData[i + 1].clicked}
+                margin="0"
               />
             </FlexBox>
           </>
