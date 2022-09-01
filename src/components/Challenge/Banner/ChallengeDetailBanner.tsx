@@ -111,7 +111,7 @@ const ChallengeDetailBanner = () => {
         width="44rem"
         height="3rem"
         padding="0.7rem 3rem 0.7rem 3rem"
-        margin="1rem 2.5rem 0 2.5rem"
+        margin="1rem 2.5rem 0 3rem"
         borderRadius="10px"
         background={COLOR.bg.banner}
       >
