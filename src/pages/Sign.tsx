@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FlexBox from "components/common/FlexBox";
+import { FlexBox } from "components/common";
 import TabBtn from "components/Tab/TabBtn";
 import Login from "components/Sign/Login";
 import Signup from "components/Sign/Signup";
@@ -20,6 +20,7 @@ const Sign = () => {
         width="30rem"
         margin="10rem 0 0 0"
         borderRadius="1rem"
+        background="white"
       >
         <FlexBox width="100%">
           <TabBtn tab={signTab.login} curTab={tab} setTab={setTab}>
@@ -29,7 +30,7 @@ const Sign = () => {
             회원가입
           </TabBtn>
         </FlexBox>
-        <FlexBox width="100%" margin="2.5rem 0" center>
+        <FlexBox width="100%" margin="2.5rem 0" center background="white">
           {tab === signTab.login ? <Login /> : <Signup />}
         </FlexBox>
       </FlexBox>
