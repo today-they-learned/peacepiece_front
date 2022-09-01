@@ -6,14 +6,16 @@ interface Props {
   text: string;
   width?: string;
   minRow?: number;
+  margin?: string;
 }
 
 const defaultProps = {
   width: "45rem",
   minRow: 1,
+  margin: "0",
 };
 
-const Input = ({ text, width, minRow }: Props) => {
+const Input = ({ text, width, minRow, margin }: Props) => {
   const TextArea = styled(TextareaAutosize)`
     width: ${width} !important;
     border-radius: 1.25rem !important;
@@ -23,6 +25,7 @@ const Input = ({ text, width, minRow }: Props) => {
     font-family: "Pr-Bold";
     color: white !important;
     background-color: ${COLOR.bg.secondary};
+    margin: ${margin};
   `;
 
   return (
