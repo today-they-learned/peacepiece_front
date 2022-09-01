@@ -67,7 +67,7 @@ const script = {
 
 const AllChallengeOffer = () => {
   return (
-    <ChallengeBanner title={script.title} width="80rem">
+    <ChallengeBanner title={script.title} width="76rem">
       <AllChallengeOfferList challenges={dummyChallenges} />
     </ChallengeBanner>
   );

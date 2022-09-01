@@ -1,4 +1,5 @@
 import { FlexBox } from "components/common";
+import COLOR from "constants/color";
 import ChallengeOfferCard from "./Card/ChallengeOfferCard";
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 const AllChallengeOfferList = (props: Props) => {
   const { challenges } = props;
   return (
-    <FlexBox wrap="wrap" margin="2rem 0 0 0">
+    <FlexBox wrap="wrap" margin="2rem 0 0 0" background={COLOR.bg.primary}>
       {challenges.map((challenge) => {
         return (
           <ChallengeOfferCard
