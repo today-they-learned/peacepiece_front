@@ -1,6 +1,6 @@
 const FirstMap = [
   ["gr", "gr", "gr", "eb"],
-  ["gr", "gr", "gr", "eb"],
+  ["gr", "b", "gr", "eb"],
   ["gr", "gr", "gr", "eb"],
   ["eb", "eb", "eb", "eb"],
 ];
