@@ -14,6 +14,22 @@ export const Beach = {
   W: 90,
 };
 
+export const RiverBeach = {
+  default: 130,
+  cornerES: 131,
+  cornerNE: 132,
+  cornerNW: 133,
+  cornerSW: 134,
+  E: 135,
+  ES: 136,
+  N: 137,
+  NE: 138,
+  NW: 139,
+  S: 140,
+  SW: 141,
+  W: 142,
+};
+
 export const TileSwitcher = (tileId, context) => {
   switch (tileId) {
     // water
@@ -203,6 +219,10 @@ export const TileSwitcher = (tileId, context) => {
       return context.beachSW;
     case Beach.W:
       return context.beachW;
+
+    // river beach
+    case RiverBeach.S:
+      return context.riverBeachS;
 
     // conifer trees
     case 91:

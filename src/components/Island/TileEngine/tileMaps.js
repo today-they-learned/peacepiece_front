@@ -1,4 +1,4 @@
-import { Beach } from "./TileSwitcher";
+import { Beach, RiverBeach } from "./TileSwitcher";
 
 export const roadTileMap = {
   tileId: "r",
@@ -189,4 +189,28 @@ export const edgeBeachTileMap = {
   north_edge: Beach.N,
   east_edge: Beach.E,
   south_edge: Beach.S,
+};
+
+export const riverBeachTileMap = {
+  tileId: "rbc",
+  isolate: RiverBeach.S,
+  straightJunction_horizontal: RiverBeach.S,
+  straightJunction_vertical: RiverBeach.S,
+  bend_1: RiverBeach.S,
+  bend_2: RiverBeach.S,
+  bend_3: RiverBeach.S,
+  bend_4: RiverBeach.S,
+  tJunction_1: RiverBeach.S,
+  tJunction_2: RiverBeach.S,
+  tJunction_3: RiverBeach.S,
+  tJunction_4: RiverBeach.S,
+  cross: RiverBeach.S,
+  outJunction_bend_1: RiverBeach.S,
+  outJunction_bend_2: RiverBeach.S,
+  outJunction_bend_3: RiverBeach.S,
+  outJunction_bend_4: RiverBeach.S,
+  west_edge: RiverBeach.S,
+  north_edge: RiverBeach.S,
+  east_edge: RiverBeach.S,
+  south_edge: RiverBeach.S,
 };

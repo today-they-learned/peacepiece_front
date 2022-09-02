@@ -8,7 +8,10 @@ import {
   fullWaterTileMap,
   beachTileMap,
   edgeBeachTileMap,
+  riverBeachTileMap,
 } from "./tileMaps";
+
+import { Beach, RiverBeach } from "./TileSwitcher";
 
 const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
   const NONE = 0;
@@ -145,7 +148,10 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
     // ? ? ?
     // ◼︎ ◼︎ ◻︎
     // ? ? ?
-    return tileMap.east_edge;
+    // FIXME: 맵에서 사용하는 특수 케이스
+    if (!(tile === "eb" && F === "rbc")) {
+      return tileMap.east_edge;
+    }
   }
   if ((B === tile || H === tile) && F === NONE) {
     // ? ◼︎ X
@@ -177,6 +183,7 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
     // X ◼︎ ?
     return tileMap.west_edge;
   }
+
   if (H === tile && B !== tile) {
     // ? ◻︎ ?
     // ? ◼︎ ?
@@ -297,22 +304,23 @@ export function fillArray(dimensions, value) {
 }
 
 export const createTerrain = (terrainMap) => {
-  // process roads
-  const proecessedMap1 = ProcessMap(terrainMap, roadTileMap);
-  // process banked rivers
-  const proecessedMap2 = ProcessMap(proecessedMap1, bankedRiverTileMap);
-  // process rivers
-  const proecessedMap3 = ProcessMap(proecessedMap2, riverTileMap);
-  // process grass
-  const proecessedMap4 = ProcessMap(proecessedMap3, grassTileMap);
-  // Process Water
-  const proecessedMap5 = ProcessMap(proecessedMap4, waterTileMap);
-  // Process Full Water
-  const proecessedMap6 = ProcessMap(proecessedMap5, fullWaterTileMap);
-  // Process Beach
-  const proecessedMap7 = ProcessMap(proecessedMap6, beachTileMap);
-  // Process Edge Beach
-  const proecessedMap8 = ProcessMap(proecessedMap7, edgeBeachTileMap);
+  const processMaps = [
+    roadTileMap,
+    bankedRiverTileMap,
+    riverTileMap,
+    grassTileMap,
+    waterTileMap,
+    fullWaterTileMap,
+    beachTileMap,
+    edgeBeachTileMap,
+    riverBeachTileMap,
+  ];
 
-  return proecessedMap8;
+  let map = terrainMap;
+
+  processMaps.forEach((processMap) => {
+    map = ProcessMap(map, processMap);
+  });
+
+  return map;
 };

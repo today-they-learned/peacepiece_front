@@ -118,6 +118,8 @@ import beachCornerNE from "./IslandImages/beachCornerNE.png";
 import beachCornerNW from "./IslandImages/beachCornerNW.png";
 import beachCornerSW from "./IslandImages/beachCornerSW.png";
 
+import riverBeachS from "./IslandImages/riverBeachS.png";
+
 import coniferAltShort from "./IslandImages/coniferAltShort.png";
 import coniferAltTall from "./IslandImages/coniferAltTall.png";
 import coniferShort from "./IslandImages/coniferShort.png";
@@ -926,6 +928,13 @@ const IslandViewer = ({ terrainMap, items }) => {
         alt=""
         ref={(el) => (imagesRef.current.beachW = el)}
         src={beachW}
+        className="hidden"
+      />
+
+      <img
+        alt=""
+        ref={(el) => (imagesRef.current.riverBeachS = el)}
+        src={riverBeachS}
         className="hidden"
       />
 
