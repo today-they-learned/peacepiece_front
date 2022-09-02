@@ -19,7 +19,7 @@ const NoticKeyword = () => {
       height="18.37rem"
       padding="1.8rem 0.5rem 1.8rem 0.5rem"
     >
-      <FlexBox>
+      <FlexBox background={COLOR.bg.primary}>
         <FlexTextBox
           fontSize="1.56rem"
           color={COLOR.font.primary}
@@ -39,7 +39,7 @@ const NoticKeyword = () => {
         theme="secondary"
       >
         <FlexButton
-          margin="0 0 0 15rem"
+          margin="0 0 0 14rem"
           fontSize="0.9rem"
           fontFamily="Pr-Regular"
         >

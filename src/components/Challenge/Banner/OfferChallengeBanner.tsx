@@ -11,11 +11,17 @@ const script = {
 
 const OfferChallengeBanner = () => {
   return (
-    <ChallengeBanner theme="banner" title={script.title}>
-      <FlexTextBox width="1000px" fontSize="0.93rem">
-        {script.text}
-      </FlexTextBox>
-      <FlexBox justifyContent="flex-end" margin="3.3rem 0 0 0">
+    <ChallengeBanner
+      theme="banner"
+      title={script.title}
+      background="transparent"
+    >
+      <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
+      <FlexBox
+        justifyContent="flex-end"
+        margin="3.3rem 0 0 0"
+        background="transparent"
+      >
         <Link to={script.url}>
           <FlexButton
             color={COLOR.font.primary}

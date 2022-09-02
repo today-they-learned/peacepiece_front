@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import COLOR from "constants/color";
 
 interface Props {
   children: React.ReactNode;
@@ -16,6 +15,9 @@ interface Props {
   alignItems?: string;
   center?: boolean;
   background?: string;
+  position?: string;
+  right?: string;
+  bottom?: string;
 }
 
 const defaultProps = {
@@ -31,7 +33,10 @@ const defaultProps = {
   justifyContent: "flex-start",
   alignItems: "flex-start",
   center: false,
-  background: COLOR.bg.default,
+  position: "static",
+  background: "transparent",
+  right: "0",
+  bottom: "0",
 };
 
 const FlexBox = (props: Props) => {
@@ -50,6 +55,9 @@ const FlexBox = (props: Props) => {
     alignItems,
     center,
     background,
+    position,
+    right,
+    bottom,
   } = props;
 
   const dir = (column ? "column" : "row") + (reverse ? "-reverse" : "");
@@ -66,6 +74,9 @@ const FlexBox = (props: Props) => {
     justify-content: ${center ? "center" : justifyContent};
     align-items: ${center ? "center" : alignItems};
     background: ${background};
+    position: ${position};
+    right: ${right};
+    bottom: ${bottom};
   `;
 
   return <Flexbox dir={dir}>{children}</Flexbox>;

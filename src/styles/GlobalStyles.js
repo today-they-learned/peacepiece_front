@@ -4,16 +4,20 @@ import COLOR from "constants/color";
 const GlobalStyles = createGlobalStyle`
   html {
     font-size: 16px;
+    height: 100%;
+    background-color: ${COLOR.bg.default};
   }
   * {
     box-sizing: border-box;
   }
-  body{
+  body {
     background-color: ${COLOR.bg.default};
     color: ${COLOR.font.default};
     font-family: 'Pr-Light';
     font-size: 16px;
+    height: 100%;
   }
+  
   a {
     color: inherit;
     text-decoration: none;

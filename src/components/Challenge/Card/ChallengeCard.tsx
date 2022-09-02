@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure } from "components/Challenge";
+import { ChallengeType } from "pages/EndedChallenge";
 
 interface Props {
+  challenge: ChallengeType;
   margin?: string;
 }
 
@@ -10,13 +12,13 @@ const defaultProps = {
   margin: "0",
 };
 
-const Container = styled.div`
+const Container = styled.div<{ margin: string }>`
   width: 16.3rem;
   height: 20rem;
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
-  margin: ${(props: Props) => props.margin};
+  margin: ${(props) => props.margin};
 `;
 
 const Thumbnail = styled.img`
@@ -54,18 +56,17 @@ const HashTag = styled.div`
 `;
 
 const ChallengeCard = (props: Props) => {
-  const { margin } = props;
-  const Tags = ["001a", "텀블러_챌린지"];
+  const { challenge, margin } = props;
   return (
-    <Container margin={margin}>
-      <Thumbnail src={`${process.env.PUBLIC_URL}/images/card.png`} />
+    <Container margin={margin} key={challenge.id}>
+      <Thumbnail src={`${process.env.PUBLIC_URL}${challenge.thumbnail}`} />
       <ContentBox>
-        <Title>텀블러로 커피 마시는 멋진 나</Title>
+        <Title>{challenge.title}</Title>
         <ChallengeInfo>
-          <ChallengeFigure person={10} point={100} />
+          <ChallengeFigure person={challenge.person} point={challenge.point} />
         </ChallengeInfo>
         <HashTagBox>
-          {Tags.map((tag, index) => (
+          {challenge.tags.map((tag, index) => (
             <HashTag key={index}>#{tag}</HashTag>
           ))}
         </HashTagBox>

@@ -1,7 +1,8 @@
-import { Beach } from "./TileSwitcher";
+import { Beach, RiverBeach } from "./TileSwitcher";
 
 export const roadTileMap = {
   tileId: "r",
+  isolate: 41,
   straightJunction_horizontal: 28,
   straightJunction_vertical: 18,
   bend_1: 27,
@@ -24,6 +25,7 @@ export const roadTileMap = {
 };
 export const bankedRiverTileMap = {
   tileId: "rb",
+  isolate: 57,
   straightJunction_horizontal: 57,
   straightJunction_vertical: 55,
   bend_1: 56,
@@ -47,6 +49,7 @@ export const bankedRiverTileMap = {
 
 export const riverTileMap = {
   tileId: "rv",
+  isolate: 11,
   straightJunction_horizontal: 63,
   straightJunction_vertical: 61,
   bend_1: 62,
@@ -70,6 +73,7 @@ export const riverTileMap = {
 
 export const grassTileMap = {
   tileId: "gr",
+  isolate: 66,
   straightJunction_horizontal: 66,
   straightJunction_vertical: 66,
   bend_1: 66,
@@ -93,6 +97,7 @@ export const grassTileMap = {
 
 export const waterTileMap = {
   tileId: "w",
+  isolate: 11,
   straightJunction_horizontal: 3,
   straightJunction_vertical: 3,
   bend_1: 8,
@@ -116,6 +121,7 @@ export const waterTileMap = {
 
 export const fullWaterTileMap = {
   tileId: "fw",
+  isolate: 11,
   straightJunction_horizontal: 11,
   straightJunction_vertical: 11,
   bend_1: 11,
@@ -139,6 +145,7 @@ export const fullWaterTileMap = {
 
 export const beachTileMap = {
   tileId: "b",
+  isolate: 11,
   straightJunction_horizontal: 85,
   straightJunction_vertical: 85,
   bend_1: 86,
@@ -162,6 +169,7 @@ export const beachTileMap = {
 
 export const edgeBeachTileMap = {
   tileId: "eb",
+  isolate: 11,
   straightJunction_horizontal: 85,
   straightJunction_vertical: 85,
   bend_1: 80,
@@ -181,4 +189,28 @@ export const edgeBeachTileMap = {
   north_edge: Beach.N,
   east_edge: Beach.E,
   south_edge: Beach.S,
+};
+
+export const riverBeachTileMap = {
+  tileId: "rbc",
+  isolate: RiverBeach.S,
+  straightJunction_horizontal: RiverBeach.S,
+  straightJunction_vertical: RiverBeach.S,
+  bend_1: RiverBeach.S,
+  bend_2: RiverBeach.S,
+  bend_3: RiverBeach.S,
+  bend_4: RiverBeach.S,
+  tJunction_1: RiverBeach.S,
+  tJunction_2: RiverBeach.S,
+  tJunction_3: RiverBeach.S,
+  tJunction_4: RiverBeach.S,
+  cross: RiverBeach.S,
+  outJunction_bend_1: RiverBeach.S,
+  outJunction_bend_2: RiverBeach.S,
+  outJunction_bend_3: RiverBeach.S,
+  outJunction_bend_4: RiverBeach.S,
+  west_edge: RiverBeach.S,
+  north_edge: RiverBeach.S,
+  east_edge: RiverBeach.S,
+  south_edge: RiverBeach.S,
 };
