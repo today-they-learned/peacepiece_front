@@ -13,10 +13,10 @@ const ResponsiveLayout = ({ children }) => {
   };
 
   return (
-    <div>
+    <>
       <Desktop />
       <Mobile />
-    </div>
+    </>
   );
 };
 

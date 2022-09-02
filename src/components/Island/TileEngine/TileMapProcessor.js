@@ -5,8 +5,209 @@ import {
   riverTileMap,
   grassTileMap,
   waterTileMap,
+  fullWaterTileMap,
   beachTileMap,
+  edgeBeachTileMap,
 } from "./tileMaps";
+
+const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
+  const NONE = 0;
+  //  [A]   [B]   [C]
+
+  //  [D] [tile]  [F]
+
+  //  [G]   [H]   [I]
+
+  // ===== isolate =====
+  if (
+    A !== tile &&
+    B !== tile &&
+    C !== tile &&
+    D !== tile &&
+    F !== tile &&
+    G !== tile &&
+    H !== tile &&
+    I !== tile
+  ) {
+    // ◻︎ ◻︎ ◻︎
+    // ◻︎ ◼︎ ◻︎
+    // ◻︎ ◻︎ ◻︎
+    return tileMap.isolate;
+  }
+
+  // ===== outJunction_bend =====
+  if (
+    A !== tile &&
+    B === tile &&
+    C === tile &&
+    D === tile &&
+    F !== tile &&
+    G === tile &&
+    H !== tile &&
+    I !== tile
+  ) {
+    // ◻︎ ◼︎ ◼︎
+    // ◼︎ ◼︎ ◻︎
+    // ◼︎ ◻︎ ◻︎
+    return tileMap.outJunction_bend_1;
+  }
+
+  if (
+    A === tile &&
+    B === tile &&
+    C !== tile &&
+    D !== tile &&
+    F === tile &&
+    G !== tile &&
+    H !== tile &&
+    I === tile
+  ) {
+    // ◼︎ ◼︎ ◻︎
+    // ◻︎ ◼︎ ◼︎
+    // ◻︎ ◻︎ ◼︎
+    return tileMap.outJunction_bend_2;
+  }
+
+  if (
+    A !== tile &&
+    B !== tile &&
+    C === tile &&
+    D !== tile &&
+    F === tile &&
+    G === tile &&
+    H === tile &&
+    I !== tile
+  ) {
+    // ◻︎ ◻︎ ◼︎
+    // ◻︎ ◼︎ ◼︎
+    // ◼︎ ◼︎ ◻︎
+    return tileMap.outJunction_bend_3;
+  }
+
+  if (
+    A === tile &&
+    B !== tile &&
+    C !== tile &&
+    D === tile &&
+    F !== tile &&
+    G !== tile &&
+    H === tile &&
+    I === tile
+  ) {
+    // ◼︎ ◻︎ ◻︎
+    // ◼︎ ◼︎ ◻︎
+    // ◻︎ ◼︎ ◼︎
+    return tileMap.outJunction_bend_4;
+  }
+  // ===== outJunction_bend =====
+
+  // ===== crossroads =====
+  if (B === tile && D === tile && F === tile && H === tile) {
+    // ◻ ◼︎ ◻︎
+    // ◼︎ ◼︎ ◼︎
+    // ◻︎ ◼︎ ◻︎
+    return tileMap.cross;
+  }
+  // ===== crossroads =====
+
+  // ===== 3 way junctions =====
+  if (A !== tile && B === tile && C !== tile && D === tile && F === tile) {
+    return tileMap.tJunction_2;
+  }
+  if (B === tile && C !== tile && F === tile && H === tile && I !== tile) {
+    return tileMap.tJunction_3;
+  }
+  if (D === tile && F === tile && H === tile && G !== tile && I !== tile) {
+    return tileMap.tJunction_4;
+  }
+  if (A !== tile && B === tile && D === tile && G !== tile && H === tile) {
+    return tileMap.tJunction_1;
+  }
+  // ===== 3 way junctions =====
+
+  // ===== bend =====
+  if (B === tile && D === tile && F !== tile && H !== tile) {
+    return tileMap.bend_1;
+  }
+  if (B === tile && F === tile && D !== tile && H !== tile) {
+    return tileMap.bend_2;
+  }
+  if (F === tile && H === tile && D !== tile && B !== tile) {
+    return tileMap.bend_3;
+  }
+  if (H === tile && D === tile && B !== tile && F !== tile) {
+    return tileMap.bend_4;
+  }
+  // ===== bend =====
+
+  // ===== edge =====
+  if (D === tile && F !== tile) {
+    // ? ? ?
+    // ◼︎ ◼︎ ◻︎
+    // ? ? ?
+    return tileMap.east_edge;
+  }
+  if ((B === tile || H === tile) && F === NONE) {
+    // ? ◼︎ X
+    // ? ◼︎ X
+    // ? ◼︎ X
+    return tileMap.east_edge;
+  }
+  if (B === tile && H !== tile) {
+    // ? ◼︎ ?
+    // ? ◼︎ ?
+    // ? ◻︎ ?
+    return tileMap.south_edge;
+  }
+  if ((D === tile || F === tile) && H === NONE) {
+    // ? ? ?
+    // ◼︎ ◼︎ ◼︎
+    // X X X
+    return tileMap.south_edge;
+  }
+  if (F === tile && D !== tile) {
+    // ? ? ?
+    // ◻︎ ◼︎ ◼︎
+    // ? ? ?
+    return tileMap.west_edge;
+  }
+  if ((B === tile || H === tile) && D === NONE) {
+    // X ◼︎ ?
+    // X ◼︎ ?
+    // X ◼︎ ?
+    return tileMap.west_edge;
+  }
+  if (H === tile && B !== tile) {
+    // ? ◻︎ ?
+    // ? ◼︎ ?
+    // ? ◼︎ ?
+    return tileMap.north_edge;
+  }
+  if ((D === tile || F === tile) && B === NONE) {
+    // X X X
+    // ◼︎ ◼︎ ◼︎
+    // ? ? ?
+    return tileMap.north_edge;
+  }
+  // ===== edge =====
+
+  // ===== straight =====
+  if (B === tile && H === tile) {
+    return tileMap.straightJunction_vertical;
+  }
+  if (D === tile && F === tile) {
+    return tileMap.straightJunction_horizontal;
+  }
+  if (B === tile || H === tile) {
+    return tileMap.straightJunction_vertical;
+  }
+  if (F === tile || D === tile) {
+    return tileMap.straightJunction_horizontal;
+  }
+  // ===== straight =====
+
+  return tileMap.straightJunction_vertical;
+};
 
 function ProcessMap(map, tileMap) {
   const tiles = fillArray([map.length, map[0].length], 0);
@@ -26,7 +227,7 @@ function ProcessMap(map, tileMap) {
       //  j ->
       //  [A]   [B]   [C]
 
-      //  [D] [TILE]  [F]
+      //  [D] [tile]  [F]
 
       //  [G]   [H]   [I]
 
@@ -35,13 +236,13 @@ function ProcessMap(map, tileMap) {
       let B = 0;
       let C = 0;
       let D = 0;
-      let TILE = 0;
+      let tile = 0;
       let F = 0;
       let G = 0;
       let H = 0;
       let I = 0;
 
-      TILE = map[i][j];
+      tile = map[i][j];
 
       if (i !== 0) {
         if (j > 0) {
@@ -75,144 +276,8 @@ function ProcessMap(map, tileMap) {
         }
       }
 
-      switch (TILE) {
-        case tileId:
-          tiles[i][j] = tileMap.straightJunction_vertical;
-
-          // straight
-          if (B === tileId) {
-            tiles[i][j] = tileMap.straightJunction_vertical;
-          }
-          if (F === tileId) {
-            tiles[i][j] = tileMap.straightJunction_horizontal;
-          }
-          if (H === tileId) {
-            tiles[i][j] = tileMap.straightJunction_vertical;
-          }
-          if (D === tileId) {
-            tiles[i][j] = tileMap.straightJunction_horizontal;
-          }
-          if (B === tileId && H === tileId) {
-            tiles[i][j] = tileMap.straightJunction_vertical;
-          }
-          if (D === tileId && F === tileId) {
-            tiles[i][j] = tileMap.straightJunction_horizontal;
-          }
-
-          if (F === tileId && D !== tileId) {
-            tiles[i][j] = tileMap.edge_1;
-          }
-          if (H === tileId && B !== tileId) {
-            tiles[i][j] = tileMap.edge_2;
-          }
-          if (D === tileId && F !== tileId) {
-            tiles[i][j] = tileMap.edge_3;
-          }
-          if (B === tileId && H !== tileId) {
-            tiles[i][j] = tileMap.edge_4;
-          }
-
-          // bend
-          if (B === tileId && D === tileId && F !== tileId && H !== tileId) {
-            tiles[i][j] = tileMap.bend_1;
-          }
-          if (B === tileId && F === tileId && D !== tileId && H !== tileId) {
-            tiles[i][j] = tileMap.bend_2;
-          }
-          if (F === tileId && H === tileId && D !== tileId && B !== tileId) {
-            tiles[i][j] = tileMap.bend_3;
-          }
-
-          if (H === tileId && D === tileId && B !== tileId && F !== tileId) {
-            tiles[i][j] = tileMap.bend_4;
-          }
-
-          // 3 way junctions
-          if (
-            B === tileId &&
-            D === tileId &&
-            F === tileId &&
-            A !== tileId &&
-            C !== tileId
-          ) {
-            tiles[i][j] = tileMap.tJunction_2;
-          }
-          if (
-            B === tileId &&
-            H === tileId &&
-            F === tileId &&
-            I !== tileId &&
-            C !== tileId
-          ) {
-            tiles[i][j] = tileMap.tJunction_3;
-          }
-          if (
-            D === tileId &&
-            F === tileId &&
-            H === tileId &&
-            G !== tileId &&
-            I !== tileId
-          ) {
-            tiles[i][j] = tileMap.tJunction_4;
-          }
-          if (
-            B === tileId &&
-            D === tileId &&
-            H === tileId &&
-            A !== tileId &&
-            G !== tileId
-          ) {
-            tiles[i][j] = tileMap.tJunction_1;
-          }
-
-          // crossroads
-          if (D === tileId && B === tileId && F === tileId && H === tileId) {
-            tiles[i][j] = tileMap.cross;
-          }
-
-          if (
-            D === tileId &&
-            B === tileId &&
-            G === tileId &&
-            C === tileId &&
-            A !== tileId
-          ) {
-            tiles[i][j] = tileMap.outJunction_bend_1;
-          }
-
-          if (
-            B === tileId &&
-            F === tileId &&
-            A === tileId &&
-            I === tileId &&
-            C !== tileId
-          ) {
-            tiles[i][j] = tileMap.outJunction_bend_2;
-          }
-
-          if (
-            F === tileId &&
-            H === tileId &&
-            C === tileId &&
-            G === tileId &&
-            I !== tileId
-          ) {
-            tiles[i][j] = tileMap.outJunction_bend_3;
-          }
-
-          if (
-            D === tileId &&
-            H === tileId &&
-            A === tileId &&
-            I === tileId &&
-            G !== tileId
-          ) {
-            tiles[i][j] = tileMap.outJunction_bend_4;
-          }
-
-          break;
-
-        default:
+      if (tileId === tile) {
+        tiles[i][j] = getTile({ tile, A, B, C, D, F, G, H, I, tileMap });
       }
     }
   }
@@ -242,7 +307,12 @@ export const createTerrain = (terrainMap) => {
   const proecessedMap4 = ProcessMap(proecessedMap3, grassTileMap);
   // Process Water
   const proecessedMap5 = ProcessMap(proecessedMap4, waterTileMap);
+  // Process Full Water
+  const proecessedMap6 = ProcessMap(proecessedMap5, fullWaterTileMap);
   // Process Beach
+  const proecessedMap7 = ProcessMap(proecessedMap6, beachTileMap);
+  // Process Edge Beach
+  const proecessedMap8 = ProcessMap(proecessedMap7, edgeBeachTileMap);
 
-  return ProcessMap(proecessedMap5, beachTileMap);
+  return proecessedMap8;
 };

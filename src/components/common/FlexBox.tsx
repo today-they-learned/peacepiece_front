@@ -32,8 +32,8 @@ const defaultProps = {
   justifyContent: "flex-start",
   alignItems: "flex-start",
   center: false,
-  background: COLOR.bg.default,
   position: "static",
+  background: "transparent",
 };
 
 const FlexBox = (props: Props) => {
