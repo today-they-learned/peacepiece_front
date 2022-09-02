@@ -1,7 +1,13 @@
 import { useState, useRef } from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
-import { BannerBox, FlexBox, FlexTextBox, Toggle } from "components/common";
+import {
+  BannerBox,
+  FlexBox,
+  FlexTextBox,
+  Toggle,
+  FlexButton,
+} from "components/common";
 import Textarea from "components/Form/Textarea";
 import { Input } from "semantic-ui-react";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
@@ -78,7 +84,10 @@ const ChallengeConfirmForm = () => {
     for (let i = 0; i < dummyData.images.length; i += 1) {
       newArr.push(
         <ImgInner>
-          <Image alt="sample" src={dummyData.images[i].image_url} />
+          <Image
+            alt="sample"
+            src={`${process.env.PUBLIC_URL}${dummyData.images[i].image_url}`}
+          />
           <RemoveBtn onClick={() => deleteFileImage()} />
         </ImgInner>
       );
@@ -86,7 +95,7 @@ const ChallengeConfirmForm = () => {
     return newArr;
   };
   return (
-    <BannerBox width="52rem" padding="2rem 3rem 2rem 3rem">
+    <BannerBox width="52rem" padding="2rem 3rem 5rem 3rem" position="relative">
       <FlexBox background="transparent">
         <FlexTextBox
           color={COLOR.font.primary}
@@ -189,6 +198,19 @@ const ChallengeConfirmForm = () => {
           margin="0 60% 0 0"
         />
         <Toggle checked={false} />
+      </FlexBox>
+      <FlexBox position="absolute" right="3rem" bottom="1rem">
+        <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
+          취소하기
+        </FlexButton>
+        <FlexButton
+          margin="0 0 0 1rem"
+          color={COLOR.font.primary}
+          fontSize="1.56rem"
+          backgroundColor={COLOR.bg.primary}
+        >
+          작성하기
+        </FlexButton>
       </FlexBox>
     </BannerBox>
   );
