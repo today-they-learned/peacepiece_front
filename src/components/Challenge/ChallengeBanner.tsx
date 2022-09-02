@@ -6,25 +6,39 @@ import COLOR from "constants/color";
 interface Props {
   children: React.ReactNode;
   title: string;
+  titleColor?: string;
   tooltip?: string;
   url?: string;
   theme?: string;
   width?: string;
   background?: string;
+  padding?: string;
 }
 
 const defaultProps = {
   tooltip: "",
   url: "",
   theme: "default",
+  titleColor: "white",
   width: "24.5rem",
   background: COLOR.bg.primary,
+  padding: "1.5rem",
 };
 
 export const ChallengeBanner = (props: Props) => {
-  const { children, title, tooltip, url, theme, width, background } = props;
+  const {
+    children,
+    title,
+    titleColor,
+    tooltip,
+    url,
+    theme,
+    width,
+    background,
+    padding,
+  } = props;
   return (
-    <BannerBox theme={theme} width={width}>
+    <BannerBox theme={theme} width={width} padding={padding}>
       <FlexBox
         justifyContent="space-between"
         alignItems="baseline"
@@ -35,6 +49,7 @@ export const ChallengeBanner = (props: Props) => {
           title={title}
           toolTipContent={tooltip}
           background={background}
+          color={titleColor}
         />
         {url && (
           <Link to={url}>

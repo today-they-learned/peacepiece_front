@@ -16,6 +16,7 @@ interface Props {
   alignItems?: string;
   center?: boolean;
   background?: string;
+  position?: string;
 }
 
 const defaultProps = {
@@ -31,6 +32,7 @@ const defaultProps = {
   justifyContent: "flex-start",
   alignItems: "flex-start",
   center: false,
+  position: "static",
   background: "transparent",
 };
 
@@ -50,6 +52,7 @@ const FlexBox = (props: Props) => {
     alignItems,
     center,
     background,
+    position,
   } = props;
 
   const dir = (column ? "column" : "row") + (reverse ? "-reverse" : "");
@@ -66,6 +69,7 @@ const FlexBox = (props: Props) => {
     justify-content: ${center ? "center" : justifyContent};
     align-items: ${center ? "center" : alignItems};
     background: ${background};
+    position: ${position};
   `;
 
   return <Flexbox dir={dir}>{children}</Flexbox>;
