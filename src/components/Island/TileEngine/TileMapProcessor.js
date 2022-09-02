@@ -18,12 +18,30 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
 
   //  [G]   [H]   [I]
 
+  // ===== isolate =====
+  if (
+    A !== tile &&
+    B !== tile &&
+    C !== tile &&
+    D !== tile &&
+    F !== tile &&
+    G !== tile &&
+    H !== tile &&
+    I !== tile
+  ) {
+    // ◻︎ ◻︎ ◻︎
+    // ◻︎ ◼︎ ◻︎
+    // ◻︎ ◻︎ ◻︎
+    return tileMap.isolate;
+  }
+
   // ===== outJunction_bend =====
   if (
     A !== tile &&
     B === tile &&
     C === tile &&
     D === tile &&
+    F !== tile &&
     G === tile &&
     H !== tile &&
     I !== tile
