@@ -11,8 +11,6 @@ import {
   riverBeachTileMap,
 } from "./tileMaps";
 
-import { Beach, RiverBeach } from "./TileSwitcher";
-
 const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
   const NONE = 0;
   //  [A]   [B]   [C]

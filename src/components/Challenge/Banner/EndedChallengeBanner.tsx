@@ -1,6 +1,5 @@
 import { ChallengeBanner } from "components/Challenge";
 import EndedChallengeList from "components/Challenge/EndedChallengeList";
-import COLOR from "constants/color";
 
 const dummyChallenges = [
   { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
