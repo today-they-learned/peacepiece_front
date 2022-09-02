@@ -1,10 +1,13 @@
-import { EndedChallengeBanner } from "components/Challenge/Banner";
+import { useArticleData } from "hooks/queries/article";
+import { FlexButton } from "components/common";
 
 const NotFound = () => {
+  const { data, refetch } = useArticleData(1);
+
   return (
     <>
       404 NotFound
-      <EndedChallengeBanner />
+      <FlexButton onClick={() => refetch()}>refetch</FlexButton>
       <div style={{ marginBottom: "3rem" }} />
     </>
   );

@@ -51,6 +51,7 @@ const AxiosInterceptor = (props: Props) => {
               window.location.href = "/sign";
             });
         }
+        return Promise.reject(error);
       }
     );
   }, []);

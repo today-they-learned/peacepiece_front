@@ -1,19 +1,19 @@
 import styled from "styled-components";
-import { Form, Grid, Icon } from "semantic-ui-react";
-import Field from "components/Form/Field";
-import COLOR from "constants/color";
-import { PrimaryBtn, SecondBtn } from "components/Form/Button";
-import { FlexBox } from "components/common";
-import { useLogin } from "hooks/queries/auth";
 import useInput from "hooks/useInput";
+import { useLogin } from "hooks/queries/auth";
+import { Form, Grid, Icon } from "semantic-ui-react";
+import { FlexBox } from "components/common";
+import { Field, ErrorText } from "components/Form";
+import { PrimaryBtn, SecondBtn } from "components/Form/Button";
+import COLOR from "constants/color";
 
 const ResetPassword = styled.button`
   position: absolute;
-  top: 0;
+  top: 0.25rem;
   right: 0;
   color: ${COLOR.font.primary};
-  font-family: "Pr-Light";
-  font-size: 14px;
+  font-family: "Pr-Medium";
+  font-size: 0.85rem;
   padding: 0;
   cursor: pointer;
 `;
@@ -22,7 +22,7 @@ const Login = () => {
   const [email, onChangeEmail] = useInput("");
   const [password, onChangePassword] = useInput("");
 
-  const { mutate: login } = useLogin();
+  const { mutate: login, isError } = useLogin();
 
   const handleSubmit = () => {
     login({
@@ -62,7 +62,16 @@ const Login = () => {
           />
           <ResetPassword type="button">비밀번호를 잊으셨나요?</ResetPassword>
         </div>
-        <PrimaryBtn type="submit" fluid style={{ marginTop: "3rem" }}>
+        {isError && (
+          <ErrorText margin="1.5rem 0 0 0">
+            이메일 또는 비밀번호를 다시 확인하세요.
+          </ErrorText>
+        )}
+        <PrimaryBtn
+          type="submit"
+          fluid
+          style={{ marginTop: isError ? "1rem" : "3rem" }}
+        >
           로그인
         </PrimaryBtn>
         <SecondBtn type="button" fluid>

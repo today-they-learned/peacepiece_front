@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AxiosInterceptor } from "config/api";
+import { Toaster } from "react-hot-toast";
 import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
 import "semantic-ui-css/semantic.min.css";
@@ -22,10 +23,6 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 0,
-      useErrorBoundary: true,
-    },
-    mutations: {
-      useErrorBoundary: true,
     },
   },
 });
@@ -34,6 +31,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
+      <Toaster position="top-center" />
       <AxiosInterceptor>
         <Router>
           <ResponsiveLayout>

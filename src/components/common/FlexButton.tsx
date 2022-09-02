@@ -11,6 +11,9 @@ interface Props {
   cursor?: string;
   color?: string;
   backgroundColor?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // onclick 타입은 React.MouseEventHandler<HTMLButtonElement>가 맞는데 default를 모르겠습니다.
+  onClick?: any;
 }
 
 const defaultProps = {
@@ -23,6 +26,7 @@ const defaultProps = {
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
+  onClick: "",
 };
 
 const FlexButton = (props: Props) => {
@@ -37,6 +41,7 @@ const FlexButton = (props: Props) => {
     cursor,
     color,
     backgroundColor,
+    onClick,
   } = props;
 
   const FlexButton = styled.button`
@@ -53,7 +58,7 @@ const FlexButton = (props: Props) => {
     cursor: ${cursor ? "pointer" : cursor};
   `;
 
-  return <FlexButton>{children}</FlexButton>;
+  return <FlexButton onClick={onClick}>{children}</FlexButton>;
 };
 FlexButton.defaultProps = defaultProps;
 
