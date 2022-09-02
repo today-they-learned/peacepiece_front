@@ -2,7 +2,7 @@ import { instance } from "config/api";
 
 const articleAPI = {
   get: (id) => {
-    return instance.get(`articles/${id}`);
+    return instance.get(`articles/${id}/`);
   },
   post: (data) => {
     return instance.post("articles/", data);
@@ -11,7 +11,7 @@ const articleAPI = {
     return instance.patch(`articles/${id}/`, data);
   },
   delete: (id) => {
-    return instance.delete(`articles/${id}`);
+    return instance.delete(`articles/${id}/`);
   },
 };
 

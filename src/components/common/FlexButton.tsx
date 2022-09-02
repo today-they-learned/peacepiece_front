@@ -11,8 +11,8 @@ interface Props {
   cursor?: string;
   color?: string;
   backgroundColor?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // onclick 타입은 React.MouseEventHandler<HTMLButtonElement>가 맞는데 default를 모르겠습니다.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: any;
 }
 
