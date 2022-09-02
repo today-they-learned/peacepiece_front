@@ -1,3 +1,19 @@
+export const Beach = {
+  default: 78,
+  cornerES: 79,
+  cornerNE: 80,
+  cornerNW: 81,
+  cornerSW: 82,
+  E: 83,
+  ES: 84,
+  N: 85,
+  NE: 86,
+  NW: 87,
+  S: 88,
+  SW: 89,
+  W: 90,
+};
+
 export const TileSwitcher = (tileId, context) => {
   switch (tileId) {
     // water
@@ -161,31 +177,31 @@ export const TileSwitcher = (tileId, context) => {
       return context.dirtDouble;
 
     // beach
-    case 78:
+    case Beach.default:
       return context.beach;
-    case 79:
+    case Beach.cornerES:
       return context.beachCornerES;
-    case 80:
+    case Beach.cornerNE:
       return context.beachCornerNE;
-    case 81:
+    case Beach.cornerNW:
       return context.beachCornerNW;
-    case 82:
+    case Beach.cornerSW:
       return context.beachCornerSW;
-    case 83:
+    case Beach.E:
       return context.beachE;
-    case 84:
+    case Beach.ES:
       return context.beachES;
-    case 85:
+    case Beach.N:
       return context.beachN;
-    case 86:
+    case Beach.NE:
       return context.beachNE;
-    case 87:
+    case Beach.NW:
       return context.beachNW;
-    case 88:
+    case Beach.S:
       return context.beachS;
-    case 89:
+    case Beach.SW:
       return context.beachSW;
-    case 90:
+    case Beach.W:
       return context.beachW;
 
     // conifer trees
