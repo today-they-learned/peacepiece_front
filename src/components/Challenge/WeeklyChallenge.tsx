@@ -6,7 +6,51 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ChallengeOfferCard from "components/Challenge/Card/ChallengeOfferCard";
 import { FlexTextBox, FlexBox } from "components/common";
-import dummyData from "./dummyData";
+
+const dummyData = [
+  {
+    userName: "soye1",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye2",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: false,
+  },
+  {
+    userName: "soye3",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: false,
+  },
+  {
+    userName: "soye4",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye5",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+  {
+    userName: "soye6",
+    content:
+      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
+    like: 100,
+    clicked: true,
+  },
+];
 
 const Container = styled.div`
   width: 52rem;
@@ -18,6 +62,7 @@ const Container = styled.div`
     width: 28rem;
     padding-left: 0;
   }
+  margin-bottom: 3rem;
 `;
 
 const CarouselLib = styled(Carousel)`
@@ -47,30 +92,33 @@ const arrLoop = () => {
     newArr.push(
       <Page>
         {i === dummyData.length - 1 && dummyData.length % 2 === 1 ? (
-          <FlexBox margin="0 0.8rem 0 0.8rem">
+          <FlexBox margin="0 0.5rem 0 1rem" background={COLOR.bg.primary}>
             <ChallengeOfferCard
               userName={dummyData[i].userName}
               content={dummyData[i].content}
               like={dummyData[i].like}
               clicked={dummyData[i].clicked}
+              margin="0"
             />
           </FlexBox>
         ) : (
           <>
-            <FlexBox margin="0 0.5rem 0 2.2rem">
+            <FlexBox margin="0 0.5rem 0 2.2rem" background={COLOR.bg.primary}>
               <ChallengeOfferCard
                 userName={dummyData[i].userName}
                 content={dummyData[i].content}
                 like={dummyData[i].like}
                 clicked={dummyData[i].clicked}
+                margin="0"
               />
             </FlexBox>
-            <FlexBox margin="0 1rem 0 0.5rem">
+            <FlexBox margin="0 1rem 0 0.5rem" background={COLOR.bg.primary}>
               <ChallengeOfferCard
                 userName={dummyData[i + 1].userName}
                 content={dummyData[i + 1].content}
                 like={dummyData[i + 1].like}
                 clicked={dummyData[i + 1].clicked}
+                margin="0"
               />
             </FlexBox>
           </>
@@ -100,14 +148,14 @@ const arrLoopMobile = () => {
   return newArr;
 };
 
-const Slider = () => {
+const WeeklyChallenge = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const insertCard = isDesktop ? arrLoop() : arrLoopMobile();
 
   return (
     <Container>
-      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 1.4rem 0.8rem">
+      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 0.8rem">
         📝 이번주 챌린지
       </FlexTextBox>
       <CarouselLib
@@ -132,4 +180,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default WeeklyChallenge;
