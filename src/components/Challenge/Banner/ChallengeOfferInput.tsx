@@ -1,5 +1,5 @@
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
-import Input from "components/Form/Input";
+import Input from "components/Form/Textarea";
 import COLOR from "constants/color";
 import ChallengeBanner from "../ChallengeBanner";
 
