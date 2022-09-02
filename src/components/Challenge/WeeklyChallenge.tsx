@@ -80,6 +80,8 @@ const Page = styled(Paper)`
   display: flex;
   border: none !important;
   background-color: ${COLOR.bg.primary} !important;
+  box-shadow: none !important;
+
   @media only screen and (max-width: 768px) {
     width: 24rem;
     margin-left: 0.6rem;
