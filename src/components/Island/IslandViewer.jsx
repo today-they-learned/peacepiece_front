@@ -132,8 +132,6 @@ import treeTall from "./IslandImages/treeTall.png";
 import tank from "./IslandImages/tank.png";
 import testtest from "./IslandImages/testtest.png";
 
-const TILE_WIDTH = 100;
-
 const IslandViewer = ({ terrainMap, items }) => {
   const canvasRef = useRef();
   const imagesRef = useRef({});
