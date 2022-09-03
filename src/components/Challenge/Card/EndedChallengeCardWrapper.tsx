@@ -19,11 +19,10 @@ const Wrapper = styled.div<{ gap: string }>`
     max-width: ${(props) => `calc((100% - ${props.gap} * 3) / 4)`};
   }
 
-  /* NOTE: 화면이 줄어들었을 때, 2개짜리 row를 보여줘야 할지 정해야 함. */
-  /* @media (max-width: 700px) {
+  @media (max-width: 700px) {
     flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
     max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
-  } */
+  }
 
   @media (max-width: 400px) {
     flex: 1 1 100%;
