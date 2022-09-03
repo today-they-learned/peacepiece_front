@@ -58,10 +58,6 @@ const ChallengeTestimonial = () => {
   const { id } = useParams();
   const { hasNextPage, fetchNextPage } = useChallengeArticleData(id);
 
-  useEffect(() => {
-    fetchNextPage();
-  }, []);
-
   // useEffect(() => {
   //   console.log(data);
   // }, [data]);
