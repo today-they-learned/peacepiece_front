@@ -132,7 +132,10 @@ import treeShort from "./IslandImages/treeShort.png";
 import treeTall from "./IslandImages/treeTall.png";
 
 import tank from "./IslandImages/tank.png";
-import testtest from "./IslandImages/testtest.png";
+import koala from "./IslandImages/koala.png";
+import redPanda from "./IslandImages/red_panda.png";
+import disabled from "./IslandImages/disabled.png";
+import disabled2 from "./IslandImages/disabled2.png";
 
 const IslandViewer = ({ terrainMap, items }) => {
   const canvasRef = useRef();
@@ -290,7 +293,7 @@ const IslandViewer = ({ terrainMap, items }) => {
           ctx.drawImage(
             img,
             mapPadding.left + 50 * j - 50 * i,
-            mapPadding.top + 25 * j + 25 * i - 5
+            mapPadding.top + 25 * j + 25 * i - 15
           );
         }
       }
@@ -350,7 +353,7 @@ const IslandViewer = ({ terrainMap, items }) => {
 
   useEffect(() => {
     draw();
-  }, [mouseCoordState, mapWidth, terrainMapState, mapPadding]);
+  }, [mouseCoordState, mapWidth, terrainMapState, mapPadding, itemsState]);
 
   return (
     <div className="center">
@@ -374,7 +377,7 @@ const IslandViewer = ({ terrainMap, items }) => {
         <div id="caption" />
       </div>
 
-      <canvas ref={canvasRef} id="canvas" width={1000} height={600} />
+      <canvas ref={canvasRef} id="canvas" width={1200} height={650} />
 
       <img
         alt=""
@@ -1043,9 +1046,30 @@ const IslandViewer = ({ terrainMap, items }) => {
       />
 
       <img
-        alt="blob test"
-        ref={(el) => (imagesRef.current.blobTest = el)}
-        src={testtest}
+        alt="koala"
+        ref={(el) => (imagesRef.current.koala = el)}
+        src={koala}
+        className="hidden"
+      />
+
+      <img
+        alt="redPanda"
+        ref={(el) => (imagesRef.current.redPanda = el)}
+        src={redPanda}
+        className="hidden"
+      />
+
+      <img
+        alt="disabled"
+        ref={(el) => (imagesRef.current.disabled = el)}
+        src={disabled}
+        className="hidden"
+      />
+
+      <img
+        alt="disabled2"
+        ref={(el) => (imagesRef.current.disabled2 = el)}
+        src={disabled2}
         className="hidden"
       />
     </div>

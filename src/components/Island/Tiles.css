@@ -97,3 +97,7 @@ nav {
   text-decoration: none;
   cursor: pointer;
 }
+
+canvas {
+  max-width: 100%;
+}
