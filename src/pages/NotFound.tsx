@@ -1,5 +1,9 @@
-import { useRef, useState } from "react";
-import { useAddArticle } from "hooks/queries/article";
+import React, { useRef, useState } from "react";
+import {
+  useAddArticle,
+  useDeleteArticle,
+  useUpdateArticle,
+} from "hooks/queries/article";
 
 const NotFound = () => {
   const formData = new FormData();
@@ -7,8 +11,10 @@ const NotFound = () => {
   // 이미지 파일들 담아둘 리스트
   const [imageList, setimageList] = useState([]);
 
-  // api 호출코드 (mutate에 formdata 넣어서 보내면 됨, mutate: 함수이름지정)
+  // api
   const { mutate: addArticle } = useAddArticle();
+  const { mutate: updateArticle } = useUpdateArticle();
+  const { mutate: deleteArticle } = useDeleteArticle();
 
   // form 제출
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,6 +34,13 @@ const NotFound = () => {
     setimageList([...imageList, e.target.files[0]]);
   };
 
+  const handleUpdate = (e: React.FormEvent) => {
+    e.preventDefault();
+    const updateData = new FormData();
+    updateData.append("content", "수정zz");
+    updateArticle({ id: 15, data: updateData });
+  };
+
   return (
     <>
       404 NotFound
@@ -44,6 +57,13 @@ const NotFound = () => {
           style={{ display: "none" }}
         />
       </form>
+      <div>
+        <form onSubmit={handleUpdate}>
+          <div>수정테스트</div>
+          <button type="submit"> 수정버튼 </button>
+        </form>
+      </div>
+      <button onClick={() => deleteArticle(15)}>삭제버튼</button>
       <div style={{ marginBottom: "3rem" }} />
     </>
   );
