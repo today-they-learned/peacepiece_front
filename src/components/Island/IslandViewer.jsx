@@ -290,7 +290,7 @@ const IslandViewer = ({ terrainMap, items }) => {
           ctx.drawImage(
             img,
             mapPadding.left + 50 * j - 50 * i,
-            mapPadding.top + 25 * j + 25 * i
+            mapPadding.top + 25 * j + 25 * i - 5
           );
         }
       }
