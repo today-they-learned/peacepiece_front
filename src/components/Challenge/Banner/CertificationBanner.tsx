@@ -11,10 +11,15 @@ const script = {
 const dummyChallenge = {
   userName: "김신건",
   challengeTitle: "일회용품 No! 다시 쓰기 Yes!",
+  isCertified: true,
 };
 
 const PrimaryText = styled.span`
   color: ${COLOR.font.primary};
+`;
+
+const CertifiedText = styled.span`
+  color: ${COLOR.font.info};
 `;
 
 const CertificationBanner = () => {
@@ -34,19 +39,29 @@ const CertificationBanner = () => {
           <FlexTextBox fontFamily="Pr-Bold">
             <PrimaryText>{dummyChallenge.userName}</PrimaryText>님, <br />
             <PrimaryText>{dummyChallenge.challengeTitle}</PrimaryText> <br />
-            챌린지 미션을 달성하셨나요?
+            {dummyChallenge.isCertified ? (
+              <FlexTextBox>
+                챌린지 미션은 이미 <CertifiedText>인증</CertifiedText>하셨네요!
+              </FlexTextBox>
+            ) : (
+              <FlexTextBox>챌린지 미션을 달성하셨나요?</FlexTextBox>
+            )}
           </FlexTextBox>
           <FlexButton
             borderRadius="0.625rem"
             backgroundColor={COLOR.bg.primary}
-            color={COLOR.font.primary}
+            color={
+              dummyChallenge.isCertified
+                ? COLOR.font.primaryDisabled
+                : COLOR.font.primary
+            }
             fontSize="1.25rem"
             fontFamily="Pr-Bold"
             position="absolute"
             right="1rem"
             bottom="1rem"
           >
-            인증하기
+            {dummyChallenge.isCertified ? "인증완료" : "인증하기"}
           </FlexButton>
         </BannerBox>
       </FlexBox>
