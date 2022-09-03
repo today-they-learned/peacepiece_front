@@ -59,8 +59,11 @@ const ChallengeTestimonial = () => {
   const { data, hasNextPage, fetchNextPage } = useChallengeArticleData(id);
 
   useEffect(() => {
+    fetchNextPage();
+  }, []);
+
+  useEffect(() => {
     console.log(data);
-    console.log(hasNextPage);
   }, [data]);
 
   return (
@@ -94,9 +97,10 @@ const ChallengeTestimonial = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {/* {dummyPieces.map((piece) => (
+        {dummyPieces.map((piece) => (
           <TestimonialCard key={piece.id} piece={piece} />
-        ))} */}
+        ))}
+        <button onClick={() => hasNextPage && fetchNextPage()}>더보기</button>
       </FlexBox>
     </ChallengeBanner>
   );

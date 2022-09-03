@@ -13,6 +13,8 @@ const useChallengeArticleQuery = (challengeId: string) => {
         return currentPage < totalPages && currentPage + 1;
       },
       keepPreviousData: true,
+      enabled: false,
+      // select: ({ data }) => data.data,
     }
   );
 };
