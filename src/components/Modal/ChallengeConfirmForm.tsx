@@ -39,8 +39,9 @@ export const PhotoInput = styled(Input)`
 `;
 
 export const PhotoButton = styled(AddPhotoAlternateIcon)`
-  width: 5em !important;
-  height: 5rem !important;
+  width: 4.5em !important;
+  height: 5.2rem !important;
+  margin-top: 0.3rem !important;
   cursor: pointer;
 `;
 
