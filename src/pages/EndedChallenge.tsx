@@ -78,7 +78,7 @@ const dummyChallenges: ChallengeType[] = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: false,
+    isProved: false,
   },
   {
     id: "1",
