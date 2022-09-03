@@ -13,6 +13,7 @@ const useArticleSearchQuery = (keyword: string) => {
         return currentPage < totalPages && currentPage + 1;
       },
       keepPreviousData: true,
+      staleTime: 0,
     }
   );
 };

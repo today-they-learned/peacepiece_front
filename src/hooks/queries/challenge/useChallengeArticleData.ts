@@ -14,7 +14,6 @@ const useChallengeArticleQuery = (challengeId: string) => {
       },
       keepPreviousData: true,
       staleTime: 0,
-      // select: ({ data }) => data.data,
     }
   );
 };
