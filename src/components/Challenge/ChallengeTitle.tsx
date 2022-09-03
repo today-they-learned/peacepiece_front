@@ -1,32 +1,37 @@
-import styled from "styled-components";
 import Tooltip from "components/Tooltip/Tooltip";
+import { FlexBox, FlexTextBox } from "components/common";
+import COLOR from "constants/color";
 
 interface Props {
   title: string;
   toolTipContent?: string;
+  margin?: string;
+  background?: string;
+  color?: string;
 }
 
 const defaultProps = {
   toolTipContent: "",
+  margin: "0.1rem 0 0 0",
+  background: COLOR.bg.default,
+  color: "white",
 };
 
-const Container = styled.div`
-  display: flex;
-`;
-
-const Title = styled.div`
-  font-size: 1.56rem;
-  font-family: "Pr-Bold";
-`;
-
 const ChallengeTitle = (props: Props) => {
-  const { title, toolTipContent } = props;
+  const { title, toolTipContent, margin, background, color } = props;
 
   return (
-    <Container>
-      <Title>{title}</Title>
-      {toolTipContent && <Tooltip text={toolTipContent} />}
-    </Container>
+    <FlexBox alignItems="center" background={background}>
+      <FlexTextBox
+        fontSize="1.56rem"
+        fontFamily="Pr-Bold"
+        margin={margin}
+        color={color}
+      >
+        {title}
+      </FlexTextBox>
+      {toolTipContent && <Tooltip text={toolTipContent} margin="0 0 0 1rem" />}
+    </FlexBox>
   );
 };
 ChallengeTitle.defaultProps = defaultProps;

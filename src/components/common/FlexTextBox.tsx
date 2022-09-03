@@ -8,20 +8,36 @@ interface Props {
   fontSize?: string;
   fontFamily?: string;
   color?: string;
+  position?: string;
+  right?: string;
+  bottom?: string;
 }
 
 const defaultProps = {
   width: "auto",
   height: "auto",
   margin: "0",
-  fontSize: "16px",
+  fontSize: "1rem",
   fontFamily: "Pr-SemiBold",
   color: "white",
+  position: "static",
+  right: "0",
+  bottom: "0",
 };
 
 const FlexTextBox = (props: Props) => {
-  const { children, width, height, margin, fontSize, fontFamily, color } =
-    props;
+  const {
+    children,
+    width,
+    height,
+    margin,
+    fontSize,
+    fontFamily,
+    color,
+    position,
+    right,
+    bottom,
+  } = props;
 
   const FlexTextBox = styled.div`
     width: ${width};
@@ -32,6 +48,9 @@ const FlexTextBox = (props: Props) => {
     font-family: ${fontFamily};
     text-align: left;
     color: ${color};
+    position: ${position};
+    right: ${right};
+    bottom: ${bottom};
   `;
 
   return <FlexTextBox>{children}</FlexTextBox>;

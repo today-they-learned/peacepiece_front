@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Form } from "semantic-ui-react";
 
 const Field = styled(Form.Field)`
-  margin: 1rem 0 0.3rem 0 !important;
+  margin-bottom: 1rem !important;
   font-family: "Pr-Light" !important;
   label::after {
     visibility: hidden;

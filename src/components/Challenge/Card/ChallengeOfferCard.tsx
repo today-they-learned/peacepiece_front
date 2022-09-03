@@ -1,7 +1,5 @@
 import COLOR from "constants/color";
-
 import styled from "styled-components";
-
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 interface Props {
@@ -9,15 +7,20 @@ interface Props {
   content: string;
   like: number;
   clicked: boolean;
+  margin?: string;
 }
 
-const Container = styled.div`
+const defaultProps = {
+  margin: "0.5rem 1rem 0.5rem 1rem",
+};
+
+const Container = styled.div<{ margin: string }>`
   width: 22rem;
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
-  padding: 1rem 1.5rem 2rem 1.5rem;
-  margin-bottom: 3rem;
+  padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+  margin: ${(props) => props.margin};
 `;
 
 const User = styled.div`
@@ -28,6 +31,7 @@ const User = styled.div`
 `;
 
 const Content = styled.div`
+  height: 5rem;
   font-size: 1rem;
   font-family: "Pr-SemiBold";
   color: ${COLOR.white};
@@ -49,9 +53,9 @@ const LikeNumber = styled.span`
 `;
 
 const ChallengeOfferCard = (props: Props) => {
-  const { userName, content, like, clicked } = props;
+  const { userName, content, like, clicked, margin } = props;
   return (
-    <Container>
+    <Container margin={margin}>
       <User>{userName}</User>
       <Content>{content}</Content>
       <LikeContainer>
@@ -65,5 +69,6 @@ const ChallengeOfferCard = (props: Props) => {
     </Container>
   );
 };
+ChallengeOfferCard.defaultProps = defaultProps;
 
 export default ChallengeOfferCard;

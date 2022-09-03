@@ -118,6 +118,8 @@ import beachCornerNE from "./IslandImages/beachCornerNE.png";
 import beachCornerNW from "./IslandImages/beachCornerNW.png";
 import beachCornerSW from "./IslandImages/beachCornerSW.png";
 
+import riverBeachS from "./IslandImages/riverBeachS.png";
+
 import coniferAltShort from "./IslandImages/coniferAltShort.png";
 import coniferAltTall from "./IslandImages/coniferAltTall.png";
 import coniferShort from "./IslandImages/coniferShort.png";
@@ -132,8 +134,6 @@ import treeTall from "./IslandImages/treeTall.png";
 import tank from "./IslandImages/tank.png";
 import testtest from "./IslandImages/testtest.png";
 
-const TILE_WIDTH = 100;
-
 const IslandViewer = ({ terrainMap, items }) => {
   const canvasRef = useRef();
   const imagesRef = useRef({});
@@ -141,12 +141,13 @@ const IslandViewer = ({ terrainMap, items }) => {
   const modalImageRef = useRef();
 
   const [mapWidth, setMapWidth] = useState(0);
+  const [mapPadding, setMapPadding] = useState({ left: 0, top: 0 });
   const [bedrockState, setBedrockState] = useState([]);
   const [subterrainState, setSubterrainState] = useState([]);
   const [terrainMapState, setTerrainMapState] = useState([]);
   const [terrainState, setTerrainState] = useState([]);
   const [itemsState, setItemsState] = useState([]);
-  const [mouseCoordState, setMouseCoordState] = useState({ x: 0, y: 0 });
+  const [mouseCoordState, setMouseCoordState] = useState({ x: null, y: null });
 
   const getPosition = (event) => {
     if (event !== undefined) {
@@ -160,9 +161,8 @@ const IslandViewer = ({ terrainMap, items }) => {
 
       for (let i = 0; i < terrainMapState.length; i += 1) {
         for (let j = 0; j < terrainMapState[i].length; j += 1) {
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          const tileX = canvasX + top + 50 * j - 50 * i;
-          const tileY = canvasY + 25 * j + 25 * i;
+          const tileX = canvasX + mapPadding.left + 50 * j - 50 * i;
+          const tileY = canvasY + mapPadding.top + 25 * j + 25 * i;
           const centreX = tileX + 50;
           const centreY = tileY + 25;
           const distanceToCentre =
@@ -196,9 +196,8 @@ const IslandViewer = ({ terrainMap, items }) => {
 
       for (let i = 0; i < terrainMapState.length; i += 1) {
         for (let j = 0; j < terrainMapState[i].length; j += 1) {
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          const tileX = canvasX + top + 50 * j - 50 * i;
-          const tileY = canvasY + 25 * j + 25 * i;
+          const tileX = canvasX + mapPadding.left + 50 * j - 50 * i;
+          const tileY = canvasY + mapPadding.top + 25 * j + 25 * i;
           const centreX = tileX + 50;
           const centreY = tileY + 25;
           const distanceToCentre =
@@ -227,15 +226,21 @@ const IslandViewer = ({ terrainMap, items }) => {
 
     const ctx = canvasRef.current.getContext("2d");
 
-    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    const canvasWidth = canvasRef.current.width;
+    const canvasHeight = canvasRef.current.height;
+
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // bedrock
     for (let i = 0; i < bedrockState.length; i += 1) {
       for (let j = 0; j < bedrockState[i].length; j += 1) {
         if (bedrockState[i][j] !== 0) {
           const img = TileSwitcher(bedrockState[i][j], images);
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 30);
+          ctx.drawImage(
+            img,
+            mapPadding.left + 50 * j - 50 * i,
+            mapPadding.top + 25 * j + 25 * i + 30
+          );
         }
       }
     }
@@ -245,8 +250,11 @@ const IslandViewer = ({ terrainMap, items }) => {
       for (let j = 0; j < subterrainState[i].length; j += 1) {
         if (subterrainState[i][j] !== 0) {
           const img = TileSwitcher(subterrainState[i][j], images);
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i + 15);
+          ctx.drawImage(
+            img,
+            mapPadding.left + 50 * j - 50 * i,
+            mapPadding.top + 25 * j + 25 * i + 15
+          );
         }
       }
     }
@@ -256,12 +264,19 @@ const IslandViewer = ({ terrainMap, items }) => {
       for (let j = 0; j < terrainState[i].length; j += 1) {
         if (terrainState[i][j] !== 0) {
           const img = TileSwitcher(terrainState[i][j], images);
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+          ctx.drawImage(
+            img,
+            mapPadding.left + 50 * j - 50 * i,
+            mapPadding.top + 25 * j + 25 * i
+          );
           // console.log(mouseCoordState);
           if (i === mouseCoordState.y && j === mouseCoordState.x) {
             const img = TileSwitcher(106, images);
-            ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+            ctx.drawImage(
+              img,
+              mapPadding.left + 50 * j - 50 * i,
+              mapPadding.top + 25 * j + 25 * i
+            );
           }
         }
       }
@@ -272,8 +287,11 @@ const IslandViewer = ({ terrainMap, items }) => {
       for (let j = 0; j < itemsState[i].length; j += 1) {
         if (itemsState[i][j] !== 0) {
           const img = TileSwitcher(itemsState[i][j], images);
-          const top = Math.ceil((mapWidth * TILE_WIDTH) / 2 / 100) * 100;
-          ctx.drawImage(img, top + 50 * j - 50 * i, 25 * j + 25 * i);
+          ctx.drawImage(
+            img,
+            mapPadding.left + 50 * j - 50 * i,
+            mapPadding.top + 25 * j + 25 * i - 5
+          );
         }
       }
     }
@@ -289,6 +307,21 @@ const IslandViewer = ({ terrainMap, items }) => {
     if (terrainMapState.length === 0) return;
 
     setMapWidth(terrainMapState[0].length);
+  }, [terrainMapState]);
+
+  useEffect(() => {
+    if (terrainMapState.length === 0) return;
+    if (!canvasRef.current) return;
+
+    const canvasWidth = canvasRef.current.width;
+    const canvasHeight = canvasRef.current.height;
+    const terrainYCount = terrainState.length;
+    const terrainXCount = terrainState[0].length;
+
+    setMapPadding({
+      left: Math.max(canvasWidth - terrainXCount * 11, 0) / 2,
+      top: Math.max(canvasHeight - terrainYCount * 60, 0) / 2,
+    });
   }, [terrainMapState]);
 
   useEffect(() => {
@@ -317,7 +350,7 @@ const IslandViewer = ({ terrainMap, items }) => {
 
   useEffect(() => {
     draw();
-  }, [mouseCoordState, mapWidth, terrainMapState]);
+  }, [mouseCoordState, mapWidth, terrainMapState, mapPadding]);
 
   return (
     <div className="center">
@@ -895,6 +928,13 @@ const IslandViewer = ({ terrainMap, items }) => {
         alt=""
         ref={(el) => (imagesRef.current.beachW = el)}
         src={beachW}
+        className="hidden"
+      />
+
+      <img
+        alt=""
+        ref={(el) => (imagesRef.current.riverBeachS = el)}
+        src={riverBeachS}
         className="hidden"
       />
 

@@ -2,13 +2,45 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeCard } from "./Card";
+import EndedChallengeCard from "./Card/EndedChallengeCard";
+
+const dummyChallenges = [
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: false,
+  },
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: false,
+  },
+  {
+    id: "1",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    complete: true,
+  },
+];
 
 const Container = styled.div`
-  width: 55rem;
+  width: 52.25rem;
   height: 30rem;
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};
-  padding: 1rem 2rem 0 2rem;
+  padding: 1.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 3rem;
 `;
 
 const CardContainer = styled.div`
@@ -38,11 +70,16 @@ const TodayChallenge = () => {
       <ChallengeTitle
         title={randomTitle}
         toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+        background={COLOR.bg.primary}
       />
       <CardContainer>
-        <ChallengeCard />
-        <ChallengeCard />
-        <ChallengeCard />
+        {dummyChallenges.map((challenge) =>
+          challenge.complete ? (
+            <EndedChallengeCard challenge={challenge} />
+          ) : (
+            <ChallengeCard challenge={challenge} />
+          )
+        )}
       </CardContainer>
     </Container>
   );

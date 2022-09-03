@@ -1,10 +1,10 @@
 import { useState } from "react";
 import useInput from "hooks/useInput";
 import { useSignUp } from "hooks/queries/auth";
-import { Form, Grid, Icon } from "semantic-ui-react";
 import { FlexBox } from "components/common";
 import { Field, ErrorText } from "components/Form";
 import { PrimaryBtn, SecondBtn } from "components/Form/Button";
+import { Form, Grid, Icon } from "semantic-ui-react";
 
 const Signup = () => {
   const [username, onChangeUsername] = useInput("");

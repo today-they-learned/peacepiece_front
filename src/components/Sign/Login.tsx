@@ -12,8 +12,8 @@ const ResetPassword = styled.button`
   top: 0.25rem;
   right: 0;
   color: ${COLOR.font.primary};
-  font-family: "Pr-Medium";
-  font-size: 0.85rem;
+  font-family: "Pr-Light";
+  font-size: 14px;
   padding: 0;
   cursor: pointer;
 `;
