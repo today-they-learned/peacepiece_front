@@ -50,7 +50,7 @@ const items = [
 ];
 
 const Island = () => {
-  const [mapState, setMapState] = useState(Maps[0]);
+  const [mapState] = useState(Maps[0]);
   const [itemsState, setItemsState] = useState(items[0]);
   const [mapIdx, setMapIdx] = useState(0);
 
