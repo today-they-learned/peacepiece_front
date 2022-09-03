@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { useChallengeArticleData } from "hooks/queries/challenge";
@@ -58,11 +58,11 @@ const ChallengeTestimonial = () => {
       >
         {isFetched &&
           data.pages.map((page) => (
-            <>
+            <Fragment key={page.data.current_page}>
               {page.data.results.map((article: ArticleType) => (
                 <TestimonialCard key={article.id} piece={article} />
               ))}
-            </>
+            </Fragment>
           ))}
       </FlexBox>
       <div ref={ref}>{isFetchingNextPage && "Loading more..."}</div>
