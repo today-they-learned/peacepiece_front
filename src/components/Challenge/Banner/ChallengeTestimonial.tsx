@@ -56,15 +56,15 @@ const script = {
 
 const ChallengeTestimonial = () => {
   const { id } = useParams();
-  const { data, hasNextPage, fetchNextPage } = useChallengeArticleData(id);
+  const { hasNextPage, fetchNextPage } = useChallengeArticleData(id);
 
   useEffect(() => {
     fetchNextPage();
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
 
   return (
     <ChallengeBanner
