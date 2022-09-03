@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useChallengeArticleData } from "hooks/queries/challenge";
 import { FlexBox, FlexTextBox } from "components/common";
