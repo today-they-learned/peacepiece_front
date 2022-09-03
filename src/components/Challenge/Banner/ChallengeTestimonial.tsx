@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useChallengeArticleData } from "hooks/queries/challenge";
 import { FlexBox, FlexTextBox } from "components/common";
 import COLOR from "constants/color";
 import { Divider } from "semantic-ui-react";
@@ -52,6 +55,17 @@ const script = {
 };
 
 const ChallengeTestimonial = () => {
+  const { id } = useParams();
+  const { data, hasNextPage, fetchNextPage } = useChallengeArticleData(id);
+
+  useEffect(() => {
+    fetchNextPage();
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <ChallengeBanner
       title={script.title}
@@ -86,6 +100,7 @@ const ChallengeTestimonial = () => {
         {dummyPieces.map((piece) => (
           <TestimonialCard key={piece.id} piece={piece} />
         ))}
+        <button onClick={() => hasNextPage && fetchNextPage()}>더보기</button>
       </FlexBox>
     </ChallengeBanner>
   );
