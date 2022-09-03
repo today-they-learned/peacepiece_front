@@ -5,8 +5,12 @@ const authAPI = {
     return instance.post("users/", data);
   },
 
-  signIn: (data) => {
+  login: (data) => {
     return instance.post("users/login/", data);
+  },
+
+  refresh: (data) => {
+    return instance.post("users/token/refresh/", data);
   },
 };
 
