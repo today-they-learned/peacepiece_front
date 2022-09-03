@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 import { useChallengeArticleData } from "hooks/queries/challenge";
 import { FlexBox, FlexTextBox } from "components/common";
 import COLOR from "constants/color";
@@ -55,11 +57,15 @@ const script = {
 
 const ChallengeTestimonial = () => {
   const { id } = useParams();
-  const { hasNextPage, fetchNextPage } = useChallengeArticleData(id);
+  const { ref, inView } = useInView();
+  const { isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useChallengeArticleData(id);
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView]);
 
   return (
     <ChallengeBanner
@@ -68,7 +74,7 @@ const ChallengeTestimonial = () => {
       titleColor={COLOR.font.primary}
       padding="2rem 3rem"
     >
-      <FlexBox
+      {/* <FlexBox
         width="45rem"
         height="4.8rem"
         borderRadius="1.2rem"
@@ -76,27 +82,34 @@ const ChallengeTestimonial = () => {
         padding="0 0 0 2rem"
         margin="2rem 0 0 0"
         background={COLOR.bg.default}
-      >
-        <FlexTextBox
-          fontSize="1.25rem"
-          fontFamily="Pr-Bold"
-          color={COLOR.font.disabled}
         >
-          챌린지를 달성했나요? 모두에게 인증해주세요!
+        <FlexTextBox
+        fontSize="1.25rem"
+        fontFamily="Pr-Bold"
+        color={COLOR.font.disabled}
+        >
+        챌린지를 달성했나요? 모두에게 인증해주세요!
         </FlexTextBox>
       </FlexBox>
       <Divider style={{ width: "100%", margin: "2rem 0 " }} />
       <FlexBox
-        column
-        background="transparent"
-        justifyContent="center"
-        alignItems="center"
+      column
+      background="transparent"
+      justifyContent="center"
+      alignItems="center"
       >
-        {dummyPieces.map((piece) => (
-          <TestimonialCard key={piece.id} piece={piece} />
+      {dummyPieces.map((piece) => (
+        <TestimonialCard key={piece.id} piece={piece} />
         ))}
-        <button onClick={() => hasNextPage && fetchNextPage()}>더보기</button>
-      </FlexBox>
+      </FlexBox> */}
+      <div style={{ marginTop: "100rem" }} />
+      <button
+        ref={ref}
+        onClick={() => fetchNextPage()}
+        disabled={!hasNextPage || isFetchingNextPage}
+      >
+        {isFetchingNextPage && "Loading more..."}
+      </button>
     </ChallengeBanner>
   );
 };

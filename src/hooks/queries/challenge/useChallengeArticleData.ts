@@ -13,6 +13,7 @@ const useChallengeArticleQuery = (challengeId: string) => {
         return currentPage < totalPages && currentPage + 1;
       },
       keepPreviousData: true,
+      staleTime: 0,
       // select: ({ data }) => data.data,
     }
   );
