@@ -147,7 +147,7 @@ const IslandViewer = ({ terrainMap, items }) => {
   const [terrainMapState, setTerrainMapState] = useState([]);
   const [terrainState, setTerrainState] = useState([]);
   const [itemsState, setItemsState] = useState([]);
-  const [mouseCoordState, setMouseCoordState] = useState({ x: 0, y: 0 });
+  const [mouseCoordState, setMouseCoordState] = useState({ x: null, y: null });
 
   const getPosition = (event) => {
     if (event !== undefined) {
