@@ -5,15 +5,18 @@ import { Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { DidItIcon } from "..";
 
 const dummyData = {
   title: "일회용품 No! 다시 쓰기 Yes",
   description:
     "여기는 챌린지 description이 들어가는 자리입니다. 이 챌린지는 블라블라 ~~~~ 이 챌린지는 블라블라 ~~~~ 이 챌린지는 블라블라 ~~~~ 이 챌린지 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~",
   categories: ["일회용품_줄이기", "재활용_캠페인"],
-  images: ["images/image1.png", "images/image2.png", "images/image3.png"],
+  images: ["/images/image1.png", "/images/image2.png", "/images/image3.png"],
   prover_cnt: 34,
   point: 100,
+  userDone: true,
+  ended: true,
 };
 
 const Thumbnail = styled.img`
@@ -78,14 +81,23 @@ const ChallengeDetailBanner = () => {
   const insertBtn = loopBtn();
   return (
     <BannerBox width="52.25rem" padding="1rem">
-      <Thumbnail src="images/thumbnail.png" />
-      <FlexTextBox
-        fontSize="1.8rem"
-        fontFamily="Pr-Bold"
-        margin="1.5rem 0 0.5rem 1.3rem"
-      >
-        {dummyData.title}
-      </FlexTextBox>
+      <Thumbnail src="/images/thumbnail.png" />
+      <FlexBox alignItems="center" margin="1.5rem 0 0.5rem 1.3rem">
+        {dummyData.ended && (
+          <FlexTextBox
+            fontSize="1.56rem"
+            fontFamily="Pr-SemiBold"
+            color={COLOR.font.info}
+            margin="0 0.5rem 0 0"
+          >
+            [종료]
+          </FlexTextBox>
+        )}
+        <FlexTextBox fontSize="1.8rem" fontFamily="Pr-Bold" margin="0 1rem 0 0">
+          {dummyData.title}
+        </FlexTextBox>
+        {dummyData.userDone && <DidItIcon />}
+      </FlexBox>
       <FlexBox background="transparent" margin="1rem 0 1rem 0">
         {insertBtn}
       </FlexBox>

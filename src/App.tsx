@@ -14,6 +14,7 @@ import {
   EndedChallenge,
   ChallengeOffer,
   Piece,
+  ChallengeDetail,
 } from "pages";
 
 import ResponsiveLayout from "layouts/responsive.layout";
@@ -41,7 +42,7 @@ const App = () => {
               <Route path="/" element={<Island />} />
               <Route path="/sign" element={<Sign />} />
               <Route path="/challenge" element={<Challenge />} />
-              <Route path="/challenge/:id" element={<div />} />
+              <Route path="/challenge/:id" element={<ChallengeDetail />} />
               <Route path="/challenge/ended" element={<EndedChallenge />} />
               <Route path="/challenge/offer" element={<ChallengeOffer />} />
               <Route path="/piece" element={<Piece />} />

@@ -10,6 +10,7 @@ const COLOR = {
     info: "#37f0e5",
     link: "#37f0e5",
     danger: "#ff4d4d",
+    primaryDisabled: "#1E9048",
   },
   btn: {
     default: "#f6f6f6",
