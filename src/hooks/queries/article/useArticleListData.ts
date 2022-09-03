@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from "react-query";
-import challengeArticleAPI from "apis/challengeArticleAPI";
+import articleListAPI from "apis/articleListAPI";
 import * as queryKeys from "constants/queryKeys";
 
-const useChallengeArticleQuery = (challengeId: string) => {
+const useArticleListQuery = () => {
   return useInfiniteQuery(
-    [queryKeys.CHALLENGE_ARTICLE_LIST, challengeId],
-    ({ pageParam = 1 }) => challengeArticleAPI.get(challengeId, pageParam),
+    [queryKeys.ARTICLE_LIST],
+    ({ pageParam = 1 }) => articleListAPI.list(pageParam),
     {
       getNextPageParam: (lastPage) => {
         const currentPage = lastPage.data.current_page;
@@ -17,4 +17,4 @@ const useChallengeArticleQuery = (challengeId: string) => {
   );
 };
 
-export default useChallengeArticleQuery;
+export default useArticleListQuery;
