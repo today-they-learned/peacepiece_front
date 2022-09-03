@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { AxiosInterceptor } from "config/api";
+import { AxiosInterceptor, queryClient } from "config";
 import { Toaster } from "react-hot-toast";
 import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
@@ -18,14 +18,6 @@ import {
 } from "pages";
 
 import ResponsiveLayout from "layouts/responsive.layout";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-    },
-  },
-});
 
 const App = () => {
   return (

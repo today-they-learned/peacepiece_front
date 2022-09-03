@@ -1,17 +1,17 @@
-import { QueryClient, useMutation } from "react-query";
+import { useMutation } from "react-query";
 import articleAPI from "apis/articleAPI";
-import * as queryKeys from "constants/queryKeys";
+// import { queryClient } from "config";
+// import * as queryKeys from "constants/queryKeys";
 
 const useAddArticle = () => {
   return useMutation(
-    (payload: any) => {
+    (payload: FormData) => {
       return articleAPI.post(payload);
     },
     {
-      onSuccess: (data, variables, context) => {
-        // 쿼리 즉시 업데이트 (내용추가)
-        // QueryClient.setQueryData([queryKeys.CHALLENGE_ARTICLE_LIST]);
-        console.log(data, variables, context);
+      onSuccess: () => {
+        // 쿼리 즉시 업데이트 (setQueryData 이용하여 response 데이터 즉시 추가)
+        // queryClient.setQueryData([queryKeys.ARTICLE_LIST]);
       },
     }
   );
