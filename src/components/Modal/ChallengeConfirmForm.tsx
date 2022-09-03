@@ -177,27 +177,48 @@ const ChallengeConfirmForm = () => {
         </FlexBox>
       </FlexBox>
 
-      <FlexBox background="transparent" margin="1rem 2.5rem">
-        <FlexTextBox fontSize="1.5rem" margin="0.15rem 42% 0 0">
+      <FlexBox
+        background="transparent"
+        margin="1rem 2.5rem 1.5rem 2.5rem"
+        position="relative"
+        height="2rem"
+      >
+        <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
           이 글을 피스에도 같이 올릴까요?
         </FlexTextBox>
-        <Toggle checked={false} />
+        <FlexBox position="absolute">
+          <Toggle checked={false} />
+        </FlexBox>
       </FlexBox>
-      <FlexBox background="transparent" margin="1rem 2.5rem">
-        <FlexTextBox fontSize="1.5rem" margin="0.15rem 68.5% 0 0">
+      <FlexBox
+        background="transparent"
+        margin="1.4rem 2.5rem"
+        position="relative"
+        height="2rem"
+      >
+        <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
           페이스북 공유
         </FlexTextBox>
-        <Toggle checked={false} />
+        <FlexBox position="absolute">
+          <Toggle checked={false} />
+        </FlexBox>
       </FlexBox>
-      <FlexBox background="transparent" margin="1rem 2.5rem">
-        <FlexTextBox fontSize="1.5rem" margin="0.15rem 0.5rem 0 0">
+      <FlexBox
+        background="transparent"
+        margin="0.5rem 2.5rem 1rem 2.5rem"
+        position="relative"
+        height="2rem"
+      >
+        <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
           인스타그램 공유
         </FlexTextBox>
         <Tooltip
           text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
-          margin="0 60% 0 0"
+          margin="0 0 0 0.5rem"
         />
-        <Toggle checked={false} />
+        <FlexBox position="absolute">
+          <Toggle checked={false} />
+        </FlexBox>
       </FlexBox>
       <FlexBox position="absolute" right="3rem" bottom="1rem">
         <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
