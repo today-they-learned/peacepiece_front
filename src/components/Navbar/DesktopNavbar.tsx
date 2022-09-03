@@ -226,8 +226,16 @@ const Navbar = () => {
 
   useEffect(() => {
     const url = location.pathname;
+    console.log(url.slice(11));
+
     if (url.slice(0, 11) === "/challenge/") {
-      setCurrentClickSubNav(url);
+      if (url.slice(11) === "offer") {
+        setCurrentClickSubNav("/challenge/offer");
+      } else if (url.slice(11) === "ended") {
+        setCurrentClickSubNav("/challenge/ended");
+      } else {
+        setCurrentClickNav("challenge");
+      }
     } else if (url === "/challenge") {
       setCurrentClickNav("challenge");
     } else if (url === "/") {
