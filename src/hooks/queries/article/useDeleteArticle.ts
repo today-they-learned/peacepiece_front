@@ -1,8 +1,8 @@
 import { useMutation } from "react-query";
 import articleAPI from "apis/articleAPI";
 
-const useDeleteArticle = () => {
-  return useMutation((id: number) => {
+const useDeleteArticle = (id: number) => {
+  return useMutation(() => {
     return articleAPI.delete(id);
   });
 };

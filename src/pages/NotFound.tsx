@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import {
   useAddArticle,
+  // useArticleData,
   useDeleteArticle,
   useUpdateArticle,
 } from "hooks/queries/article";
@@ -12,9 +13,10 @@ const NotFound = () => {
   const [imageList, setimageList] = useState([]);
 
   // api
+  // const { data } = useArticleData(16);
   const { mutate: addArticle } = useAddArticle();
-  const { mutate: updateArticle } = useUpdateArticle();
-  const { mutate: deleteArticle } = useDeleteArticle();
+  const { mutate: updateArticle } = useUpdateArticle(14);
+  const { mutate: deleteArticle } = useDeleteArticle(14);
 
   // form 제출
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,8 +39,8 @@ const NotFound = () => {
   const handleUpdate = (e: React.FormEvent) => {
     e.preventDefault();
     const updateData = new FormData();
-    updateData.append("content", "수정zz");
-    updateArticle({ id: 15, data: updateData });
+    updateData.append("content", "ㄹㅇㅋㅋ");
+    updateArticle(updateData);
   };
 
   return (
@@ -63,7 +65,7 @@ const NotFound = () => {
           <button type="submit"> 수정버튼 </button>
         </form>
       </div>
-      <button onClick={() => deleteArticle(15)}>삭제버튼</button>
+      <button onClick={() => deleteArticle()}>삭제버튼</button>
       <div style={{ marginBottom: "3rem" }} />
     </>
   );

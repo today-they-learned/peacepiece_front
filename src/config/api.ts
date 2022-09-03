@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "constants/url";
@@ -36,10 +37,10 @@ const AxiosInterceptor = (props: Props) => {
       (error) => {
         const {
           config,
-          response: { status, data },
+          response: { data },
         } = error;
-
-        if (status === 403 && data.details.code === "token_not_valid") {
+        const res = data.error;
+        if (res.status_code === 403 && res.details.code === "token_not_valid") {
           const originRequest = config;
           authAPI
             .refresh({ refresh: localStorage.getItem("refresh_token") })
@@ -51,7 +52,6 @@ const AxiosInterceptor = (props: Props) => {
               window.location.href = "/sign";
             });
         }
-        return Promise.reject(error);
       }
     );
   }, []);

@@ -1,14 +1,9 @@
 import { useMutation } from "react-query";
 import articleAPI from "apis/articleAPI";
 
-interface Payload {
-  id: number;
-  data: FormData;
-}
-
-const useUpdateArticle = () => {
-  return useMutation((payload: Payload) => {
-    return articleAPI.patch(payload.id, payload.data);
+const useUpdateArticle = (id: number) => {
+  return useMutation((payload: FormData) => {
+    return articleAPI.patch(id, payload);
   });
 };
 
