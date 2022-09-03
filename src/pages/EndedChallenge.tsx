@@ -1,22 +1,13 @@
 import ChallengeCard from "components/Challenge/Card/ChallengeCard";
-import EndedChallengeCard from "components/Challenge/Card/EndedChallengeCard";
 import { ChallengeTitle } from "components/Challenge";
 import { FlexBox } from "components/common";
+import { ChallengeType } from "types/challenge";
 
 const script = {
   title: "📌 지난 챌린지",
 };
 
-export type ChallengeType = {
-  id: string;
-  thumbnail: string;
-  title: string;
-  person: number;
-  point: number;
-  tags: string[];
-};
-
-const dummyChallenges = [
+const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
     thumbnail: "/images/card.png",
@@ -24,7 +15,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    isProved: true,
   },
   {
     id: "1",
@@ -33,7 +24,43 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    isProved: true,
+  },
+  {
+    id: "2",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    isProved: false,
+  },
+  {
+    id: "3",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    isProved: false,
+  },
+  {
+    id: "4",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    isProved: true,
+  },
+  {
+    id: "5",
+    thumbnail: "/images/card.png",
+    title: "텀블러로 커피 마시는 멋진 나는..",
+    person: 10,
+    point: 100,
+    tags: ["001a", "텀블러_챌린지"],
+    isProved: false,
   },
   {
     id: "1",
@@ -42,43 +69,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: false,
-  },
-  {
-    id: "1",
-    thumbnail: "/images/card.png",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
-    point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: false,
-  },
-  {
-    id: "1",
-    thumbnail: "/images/card.png",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
-    point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: true,
-  },
-  {
-    id: "1",
-    thumbnail: "/images/card.png",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
-    point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: false,
-  },
-  {
-    id: "1",
-    thumbnail: "/images/card.png",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
-    point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    isProved: true,
   },
   {
     id: "1",
@@ -96,7 +87,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    isProved: true,
   },
 ];
 
@@ -119,13 +110,13 @@ const EndedChallenge = () => {
         wrap="wrap"
         margin="2rem 0 0 0"
       >
-        {dummyChallenges.map((challenge) =>
-          challenge.complete ? (
-            <EndedChallengeCard challenge={challenge} margin={defaultMargin} />
-          ) : (
-            <ChallengeCard challenge={challenge} margin={defaultMargin} />
-          )
-        )}
+        {dummyChallenges.map((challenge) => (
+          <ChallengeCard
+            key={`ended-challenge-${challenge.id}`}
+            challenge={challenge}
+            margin={defaultMargin}
+          />
+        ))}
       </FlexBox>
     </FlexBox>
   );

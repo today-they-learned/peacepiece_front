@@ -1,15 +1,22 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { ChallengeFigure } from "components/Challenge";
-import { ChallengeType } from "pages/EndedChallenge";
+import { ChallengeFigure, DidItIcon } from "components/Challenge";
+import { ChallengeType } from "types/challenge";
 
 interface Props {
   challenge: ChallengeType;
   margin?: string;
+  isProved?: boolean;
+}
+
+interface ThumbnailImageProps {
+  src: string;
+  isProved?: boolean;
 }
 
 const defaultProps = {
   margin: "0",
+  isProved: false,
 };
 
 const Container = styled.div<{ margin: string }>`
@@ -21,11 +28,13 @@ const Container = styled.div<{ margin: string }>`
   margin: ${(props) => props.margin};
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.img<ThumbnailImageProps>`
   width: 16.3rem;
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+
+  ${({ isProved }) => isProved && "filter: brightness(50%);"};
 `;
 
 const ContentBox = styled.div`
@@ -59,7 +68,11 @@ const ChallengeCard = (props: Props) => {
   const { challenge, margin } = props;
   return (
     <Container margin={margin} key={challenge.id}>
-      <Thumbnail src={`${process.env.PUBLIC_URL}${challenge.thumbnail}`} />
+      <Thumbnail
+        src={`${process.env.PUBLIC_URL}${challenge.thumbnail}`}
+        isProved={challenge.isProved}
+      />
+      {challenge.isProved && <DidItIcon isAbsolute top="1rem" right="1rem" />}
       <ContentBox>
         <Title>{challenge.title}</Title>
         <ChallengeInfo>
