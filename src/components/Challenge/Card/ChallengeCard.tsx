@@ -20,7 +20,7 @@ const defaultProps = {
 };
 
 const Container = styled.div<{ margin: string }>`
-  width: 16.3rem;
+  width: 100%;
   height: 20rem;
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
@@ -29,7 +29,6 @@ const Container = styled.div<{ margin: string }>`
 `;
 
 const Thumbnail = styled.img<ThumbnailImageProps>`
-  width: 16.3rem;
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;

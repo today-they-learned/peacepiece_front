@@ -18,6 +18,7 @@ interface Props {
   position?: string;
   right?: string;
   bottom?: string;
+  gap?: string;
 }
 
 const defaultProps = {
@@ -37,6 +38,7 @@ const defaultProps = {
   background: "transparent",
   right: "0",
   bottom: "0",
+  gap: "0",
 };
 
 const FlexBox = (props: Props) => {
@@ -58,6 +60,7 @@ const FlexBox = (props: Props) => {
     position,
     right,
     bottom,
+    gap,
   } = props;
 
   const dir = (column ? "column" : "row") + (reverse ? "-reverse" : "");
@@ -77,6 +80,7 @@ const FlexBox = (props: Props) => {
     position: ${position};
     right: ${right};
     bottom: ${bottom};
+    gap: ${gap};
   `;
 
   return <Flexbox dir={dir}>{children}</Flexbox>;

@@ -3,6 +3,7 @@ import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeType } from "types/challenge";
 import { ChallengeCard } from "./Card";
+import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
 const dummyChallenges: ChallengeType[] = [
   {
@@ -50,6 +51,7 @@ const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
+  gap: 2rem;
 `;
 
 const TodayChallengeList = () => {
@@ -74,10 +76,12 @@ const TodayChallengeList = () => {
       />
       <CardContainer>
         {dummyChallenges.map((challenge) => (
-          <ChallengeCard
+          <TodayChallengeCardWrapper
             key={`today-challenges${challenge.id}`}
-            challenge={challenge}
-          />
+            gap="2rem"
+          >
+            <ChallengeCard challenge={challenge} />
+          </TodayChallengeCardWrapper>
         ))}
       </CardContainer>
     </Container>
