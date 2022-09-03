@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Nav = styled.div`
@@ -56,7 +56,7 @@ const Island = styled.span<{ isClicked: string }>`
   }
 
   ${(props) =>
-    props.isClicked === "island" &&
+    props.isClicked === "/island" &&
     css`
       &::after {
         width: 5rem;
@@ -114,7 +114,7 @@ const Piece = styled.span<{ isClicked: string }>`
   }
 
   ${(props) =>
-    props.isClicked === "piece" &&
+    props.isClicked === "/piece" &&
     css`
       &::after {
         width: 5rem;
@@ -191,22 +191,22 @@ const DropdonwText = styled.span`
 
 const Navbar = () => {
   const [clickedChallenge, setClickedChallenge] = useState(false);
-  const [currentClickNav, setCurrentClickNav] = useState("island");
+  const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
-  const [currentClickSubNav, setCurrentClickSubNav] =
-    useState("proceed_challenge");
+  const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
   const [prevClickSubNav, setPrevClickSubNav] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onClickNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickNav(e.target.id);
 
-      if (e.target.id === "island") {
+      if (e.target.id === "/island") {
         navigate("/");
       } else {
-        navigate(`/${e.target.id}`);
+        navigate(`${e.target.id}`);
       }
 
       if (e.target.id === "challenge") {
@@ -220,14 +220,22 @@ const Navbar = () => {
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickSubNav(e.target.id);
-
-      if (e.target.id === "proceed_challenge") {
-        navigate("/challenge");
-      } else {
-        navigate(`/${e.target.id}`);
-      }
+      navigate(`${e.target.id}`);
     }
   };
+
+  useEffect(() => {
+    const url = location.pathname;
+    if (url.slice(0, 11) === "/challenge/") {
+      setCurrentClickSubNav(url);
+    } else if (url === "/challenge") {
+      setCurrentClickNav("challenge");
+    } else if (url === "/") {
+      setCurrentClickNav("/island");
+    } else {
+      setCurrentClickNav(url);
+    }
+  });
 
   useEffect(() => {
     if (currentClickNav !== null) {
@@ -244,10 +252,10 @@ const Navbar = () => {
 
     if (prevClickSubNav) {
       const prev = document.getElementById(prevClickSubNav);
-      const proceedChallenge = document.getElementById("proceed_challenge");
+      const proceedChallenge = document.getElementById("/challenge");
       prev.style.color = `${COLOR.font.disabled}`;
       proceedChallenge.style.color = `${COLOR.font.primary}`;
-      setCurrentClickSubNav("proceed_challenge");
+      setCurrentClickSubNav("/challenge");
     }
 
     setPrevClickNav(currentClickNav);
@@ -274,7 +282,7 @@ const Navbar = () => {
         <CenterNavItems>
           <Container>
             <Island
-              id="island"
+              id="/island"
               onClick={onClickNav}
               isClicked={currentClickNav}
             >
@@ -291,7 +299,7 @@ const Navbar = () => {
             </Challenge>
           </Container>
           <Container>
-            <Piece id="piece" onClick={onClickNav} isClicked={currentClickNav}>
+            <Piece id="/piece" onClick={onClickNav} isClicked={currentClickNav}>
               피스
             </Piece>
           </Container>
@@ -304,13 +312,13 @@ const Navbar = () => {
       </Nav>
       <DropdownBox clickedChallenge={clickedChallenge}>
         <DropdownTextBox>
-          <DropdonwText id="proceed_challenge" onClick={onClickSubNav}>
+          <DropdonwText id="/challenge" onClick={onClickSubNav}>
             진행 중인 챌린지
           </DropdonwText>
-          <DropdonwText id="challenge/ended" onClick={onClickSubNav}>
+          <DropdonwText id="/challenge/ended" onClick={onClickSubNav}>
             지난 챌린지
           </DropdonwText>
-          <DropdonwText id="challenge/offer" onClick={onClickSubNav}>
+          <DropdonwText id="/challenge/offer" onClick={onClickSubNav}>
             챌린지 제안
           </DropdonwText>
         </DropdownTextBox>
