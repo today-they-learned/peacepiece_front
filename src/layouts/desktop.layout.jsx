@@ -1,5 +1,5 @@
 import DesktopNavbar from "components/Navbar/DesktopNavbar";
-import DesktopFootbar from "components/Footbar/DesktopFootbar";
+import DesktopFooter from "components/Footer/DesktopFooter";
 import styled from "styled-components";
 import MaxWidthLayout from "./maxWidth.layout";
 
@@ -17,7 +17,7 @@ const DesktopLayout = ({ children }) => {
       <ChildrenContainer>
         <MaxWidthLayout>{children}</MaxWidthLayout>
       </ChildrenContainer>
-      <DesktopFootbar />
+      <DesktopFooter />
     </>
   );
 };
