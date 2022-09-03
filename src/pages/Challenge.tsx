@@ -3,7 +3,7 @@ import ChallengeOfferGather from "components/Challenge/Banner/ChallengeOfferGath
 import OfferChallengeBanner from "components/Challenge/Banner/OfferChallengeBanner";
 import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallenge from "components/Challenge/TodayChallenge";
-import WeeklyChallenge from "components/Challenge/WeeklyChallenge";
+import WeeklyChallengeList from "components/Challenge/WeeklyChallengeList";
 import { FlexBox } from "components/common";
 
 const Challenge = () => {
@@ -11,7 +11,7 @@ const Challenge = () => {
     <FlexBox justifyContent="center" height="100%">
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <TodayChallenge />
-        <WeeklyChallenge />
+        <WeeklyChallengeList />
         <ChallengeOfferGather />
       </FlexBox>
       <FlexBox column alignItems="center">
