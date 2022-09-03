@@ -1,6 +1,5 @@
 import ChallengeCard from "components/Challenge/Card/ChallengeCard";
 import EndedChallengeCard from "components/Challenge/Card/EndedChallengeCard";
-import ChallengeConfirmForm from "components/Modal/ChallengeConfirmForm";
 import { ChallengeTitle } from "components/Challenge";
 import { FlexBox } from "components/common";
 
@@ -128,7 +127,6 @@ const EndedChallenge = () => {
           )
         )}
       </FlexBox>
-      <ChallengeConfirmForm />
     </FlexBox>
   );
 };
