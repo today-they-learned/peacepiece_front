@@ -3,7 +3,7 @@ import { ImageType } from "types";
 type ChallengeInterface = {
   id: string;
   title: string;
-  desciption: string;
+  description: string;
   categories: string[];
   prover_cnt: number;
   point: number;

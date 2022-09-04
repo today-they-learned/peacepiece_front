@@ -2,7 +2,7 @@ import { FlexBox } from "components/common";
 import Input from "components/Form/Input";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import dummyData from "./dummyData";
+import dummyData from "./dummyArticle";
 
 const defaultProps = {
   backgroundColor: "white",
