@@ -27,7 +27,7 @@ const defaultProps = {
   position: "static",
   right: "0",
   bottom: "0",
-  onClick: "",
+  onClick: Function,
 };
 
 const FlexButton = (props: Props) => {
