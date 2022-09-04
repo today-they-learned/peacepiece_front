@@ -1,6 +1,9 @@
 import { FlexBox, FlexTextBox } from "components/common";
+import Modal from "components/Modal/exModal";
 import COLOR from "constants/color";
+import { useState } from "react";
 import { Divider } from "semantic-ui-react";
+import styled from "styled-components";
 import TestimonialCard from "../Card/TestimonialCard";
 import ChallengeBanner from "../ChallengeBanner";
 
@@ -47,47 +50,65 @@ const dummyPieces = [
   },
 ];
 
+const TemporaryContainer = styled.div`
+  width: 45rem;
+  height: 4.8rem;
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 2rem;
+  margin: 2rem 0 0 0;
+  background: ${COLOR.bg.default};
+`;
+
 const script = {
   title: "챌린지 인증",
 };
 
 const ChallengeTestimonial = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => {
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
-    <ChallengeBanner
-      title={script.title}
-      width="52.25rem"
-      titleColor={COLOR.font.primary}
-      padding="2rem 3rem"
-    >
-      <FlexBox
-        width="45rem"
-        height="4.8rem"
-        borderRadius="1.2rem"
-        alignItems="center"
-        padding="0 0 0 2rem"
-        margin="2rem 0 0 0"
-        background={COLOR.bg.default}
+    <>
+      <ChallengeBanner
+        title={script.title}
+        width="52.25rem"
+        titleColor={COLOR.font.primary}
+        padding="2rem 3rem"
       >
-        <FlexTextBox
-          fontSize="1.25rem"
-          fontFamily="Pr-Bold"
-          color={COLOR.font.disabled}
+        <TemporaryContainer role="none" onClick={openModal}>
+          <FlexTextBox
+            fontSize="1.25rem"
+            fontFamily="Pr-Bold"
+            color={COLOR.font.disabled}
+          >
+            챌린지를 달성했나요? 모두에게 인증해주세요!
+          </FlexTextBox>
+        </TemporaryContainer>
+        <Divider style={{ width: "100%", margin: "2rem 0 " }} />
+        <FlexBox
+          column
+          background="transparent"
+          justifyContent="center"
+          alignItems="center"
         >
-          챌린지를 달성했나요? 모두에게 인증해주세요!
-        </FlexTextBox>
-      </FlexBox>
-      <Divider style={{ width: "100%", margin: "2rem 0 " }} />
-      <FlexBox
-        column
-        background="transparent"
-        justifyContent="center"
-        alignItems="center"
-      >
-        {dummyPieces.map((piece) => (
-          <TestimonialCard key={piece.id} piece={piece} />
-        ))}
-      </FlexBox>
-    </ChallengeBanner>
+          {dummyPieces.map((piece) => (
+            <TestimonialCard key={piece.id} piece={piece} />
+          ))}
+        </FlexBox>
+      </ChallengeBanner>
+      {modalVisible && (
+        <Modal visible={modalVisible} onClose={closeModal}>
+          Hello
+        </Modal>
+      )}
+    </>
   );
 };
 

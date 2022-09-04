@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <App />
-    <div id="modal" />
+    <div id="modal-root" />
   </StrictMode>
 );

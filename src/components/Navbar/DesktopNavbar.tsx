@@ -226,7 +226,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const url = location.pathname;
-    console.log(url.slice(11));
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "offer") {
