@@ -61,6 +61,8 @@ const AxiosInterceptor = (props: Props) => {
               localStorage.setItem("access_token", data.data.access);
               isTokenRefreshing = false;
               // 쌓인 요청 새 토큰으로 실행
+              config.headers.Authorization = `Bearer ${data.data.access}`;
+              axios(config);
               onTokenRefreshed(data.data.access);
             })
             .catch(() => {
