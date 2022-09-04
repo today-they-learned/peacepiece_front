@@ -1,5 +1,5 @@
 import { FlexBox, FlexTextBox } from "components/common";
-import Modal from "components/Modal/exModal";
+import CloseWarningModal from "components/Modal/CloseWarningModal";
 import COLOR from "constants/color";
 import { useState } from "react";
 import { Divider } from "semantic-ui-react";
@@ -67,6 +67,7 @@ const script = {
 
 const ChallengeTestimonial = () => {
   const [modalVisible, setModalVisible] = useState(false);
+
   const openModal = () => {
     setModalVisible(true);
   };
@@ -104,9 +105,7 @@ const ChallengeTestimonial = () => {
         </FlexBox>
       </ChallengeBanner>
       {modalVisible && (
-        <Modal visible={modalVisible} onClose={closeModal}>
-          Hello
-        </Modal>
+        <CloseWarningModal onClose={closeModal} visible={modalVisible} />
       )}
     </>
   );
