@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "constants/url";
+import authAPI from "apis/authAPI";
 
 const createInstance = () => {
   return axios.create({
@@ -14,41 +14,43 @@ const createInstance = () => {
 const instance = createInstance();
 
 const AxiosInterceptor = (props: Props) => {
-  useEffect(() => {
-    instance.interceptors.request.use(
-      (config) => {
-        const accessToken = localStorage.getItem("accessToken");
-        const newConfig = { ...config };
-        if (accessToken) {
-          newConfig.headers.Authorization = `Bearer ${accessToken}`;
-        }
-        return newConfig;
-      },
-      (error) => {
-        return Promise.reject(error);
+  instance.interceptors.request.use(
+    async (config) => {
+      const accessToken = localStorage.getItem("access_token");
+      const newConfig = { ...config };
+      if (accessToken) {
+        newConfig.headers.Authorization = `Bearer ${accessToken}`;
       }
-    );
+      return newConfig;
+    },
+    async (error) => {
+      return Promise.reject(error);
+    }
+  );
 
-    // token refresh 추가 예정
-    instance.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        if (error.response && error.respon.stauts === 403) {
-          window.location.href = "/sign";
-        }
-        // if (error.response && error.response.status === 403) {
-        //   return Auth.refreshToken()
-        //     .then((token) => {
-        //       originRequest.headers.Authorization = `Bearer ${token}`;
-        //       return instance.request(error.config);
-        //     })
-        //     .catch((error) => {
-        //       window.location.href = "/sign";
-        //     });
-        // }
+  // token refresh 추가 예정
+  instance.interceptors.response.use(
+    async (response) => response,
+    async (error) => {
+      const {
+        config,
+        response: { data },
+      } = error;
+      const res = data.error;
+      if (res.status_code === 403 && res.details.code === "token_not_valid") {
+        const originRequest = config;
+        authAPI
+          .refresh({ refresh: localStorage.getItem("refresh_token") })
+          .then((data) => {
+            localStorage.setItem("access_token", data.data.access);
+            return instance.request(originRequest);
+          })
+          .catch(() => {
+            window.location.href = "/sign";
+          });
       }
-    );
-  }, []);
+    }
+  );
 
   return props.children;
 };

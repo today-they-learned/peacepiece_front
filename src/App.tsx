@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { AxiosInterceptor } from "config/api";
+import { AxiosInterceptor, queryClient } from "config";
 import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
 import "semantic-ui-css/semantic.min.css";
@@ -14,21 +14,10 @@ import {
   EndedChallenge,
   ChallengeOffer,
   Piece,
+  ChallengeDetail,
 } from "pages";
 
 import ResponsiveLayout from "layouts/responsive.layout";
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: 0,
-      useErrorBoundary: true,
-    },
-    mutations: {
-      useErrorBoundary: true,
-    },
-  },
-});
 
 const App = () => {
   return (
@@ -41,7 +30,7 @@ const App = () => {
               <Route path="/" element={<Island />} />
               <Route path="/sign" element={<Sign />} />
               <Route path="/challenge" element={<Challenge />} />
-              <Route path="/challenge/:id" element={<div />} />
+              <Route path="/challenge/:id" element={<ChallengeDetail />} />
               <Route path="/challenge/ended" element={<EndedChallenge />} />
               <Route path="/challenge/offer" element={<ChallengeOffer />} />
               <Route path="/piece" element={<Piece />} />

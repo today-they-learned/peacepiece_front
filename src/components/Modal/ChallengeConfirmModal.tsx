@@ -53,7 +53,7 @@ const RemoveBtn = styled(CloseIcon)`
   color: white;
 `;
 
-const ChallengeConfirmForm = () => {
+const ChallengeConfirmModal = () => {
   const [imageList, setimageList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -201,4 +201,4 @@ const ChallengeConfirmForm = () => {
   );
 };
 
-export default ChallengeConfirmForm;
+export default ChallengeConfirmModal;

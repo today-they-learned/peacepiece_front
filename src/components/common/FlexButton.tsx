@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 interface Props {
   children: React.ReactNode;
@@ -42,25 +43,29 @@ const FlexButton = (props: Props) => {
     bottom,
   } = props;
 
-  const FlexButton = styled.button`
-    width: auto;
-    height: auto;
-    padding: 0.6rem 1.5rem;
-    margin: ${margin};
-    border: 0;
-    outline: 0;
-    border-radius: ${borderRadius};
-    font-size: ${fontSize};
-    font-family: ${fontFamily};
-    background: ${backgroundColor};
-    color: ${color};
-    cursor: ${cursor ? "pointer" : cursor};
-    position: ${position};
-    right: ${right};
-    bottom: ${bottom};
-  `;
-
-  return <FlexButton>{children}</FlexButton>;
+  return (
+    <button
+      css={css`
+        width: auto;
+        height: auto;
+        padding: 0.6rem 1.5rem;
+        margin: ${margin};
+        border: 0;
+        outline: 0;
+        border-radius: ${borderRadius};
+        font-size: ${fontSize};
+        font-family: ${fontFamily};
+        background: ${backgroundColor};
+        color: ${color};
+        cursor: ${cursor ? "pointer" : cursor};
+        position: ${position};
+        right: ${right};
+        bottom: ${bottom};
+      `}
+    >
+      {children}
+    </button>
+  );
 };
 FlexButton.defaultProps = defaultProps;
 

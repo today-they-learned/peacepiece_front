@@ -1,36 +1,58 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
+import { ChallengeType } from "types";
 import { ChallengeCard } from "./Card";
-import EndedChallengeCard from "./Card/EndedChallengeCard";
+import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
-const dummyChallenges = [
+const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: false,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: true,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: false,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: false,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: true,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
 ];
 
@@ -50,9 +72,10 @@ const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
+  gap: 2rem;
 `;
 
-const TodayChallenge = () => {
+const TodayChallengeList = () => {
   const todayChallengeTitleList = [
     "📌 오늘의 챌린지",
     "😇 오늘은 이런 챌린지 어때요?",
@@ -73,16 +96,17 @@ const TodayChallenge = () => {
         background={COLOR.bg.primary}
       />
       <CardContainer>
-        {dummyChallenges.map((challenge) =>
-          challenge.complete ? (
-            <EndedChallengeCard challenge={challenge} />
-          ) : (
+        {dummyChallenges.map((challenge) => (
+          <TodayChallengeCardWrapper
+            key={`today-challenges${challenge.id}`}
+            gap="2rem"
+          >
             <ChallengeCard challenge={challenge} />
-          )
-        )}
+          </TodayChallengeCardWrapper>
+        ))}
       </CardContainer>
     </Container>
   );
 };
 
-export default TodayChallenge;
+export default TodayChallengeList;

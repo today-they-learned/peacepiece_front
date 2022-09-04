@@ -30,6 +30,17 @@ export const RiverBeach = {
   W: 142,
 };
 
+export const Character = {
+  koala: 200,
+  tank: 210,
+  redPanda: 220,
+};
+
+export const Item = {
+  disabled: 998,
+  disabled2: 999,
+};
+
 export const TileSwitcher = (tileId, context) => {
   switch (tileId) {
     // water
@@ -244,9 +255,6 @@ export const TileSwitcher = (tileId, context) => {
     case 98:
       return context.treeTall;
 
-    case 99:
-      return context.tank;
-
     case 100:
       return context.empty;
 
@@ -265,8 +273,16 @@ export const TileSwitcher = (tileId, context) => {
     case 106:
       return context.selectedGrid;
 
-    case 107:
-      return context.blobTest;
+    case Character.koala:
+      return context.koala;
+    case Character.tank:
+      return context.tank;
+    case Character.redPanda:
+      return context.redPanda;
+    case Item.disabled:
+      return context.disabled;
+    case Item.disabled2:
+      return context.disabled2;
 
     default:
       return context.empty;
