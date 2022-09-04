@@ -2,6 +2,7 @@ import ChallengeCard from "components/Challenge/Card/ChallengeCard";
 import EndedChallengeCard from "components/Challenge/Card/EndedChallengeCard";
 import { ChallengeTitle } from "components/Challenge";
 import { FlexBox } from "components/common";
+import Communication from "components/Peace/Post/Communication";
 
 const script = {
   title: "📌 지난 챌린지",
@@ -127,6 +128,7 @@ const EndedChallenge = () => {
           )
         )}
       </FlexBox>
+      <Communication />
     </FlexBox>
   );
 };

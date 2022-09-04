@@ -5,26 +5,40 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 interface Props {
   text: string;
   width?: string;
+  fontSize?: string;
   minRow?: number;
   margin?: string;
+  padding?: string;
+  backgroundColor?: string;
 }
 
 const defaultProps = {
   width: "45rem",
+  fontSize: "1.25rem",
   minRow: 1,
   margin: "0",
+  padding: "1.2rem",
+  backgroundColor: COLOR.bg.secondary,
 };
 
-const Input = ({ text, width, minRow, margin }: Props) => {
+const Input = ({
+  text,
+  width,
+  fontSize,
+  minRow,
+  margin,
+  backgroundColor,
+  padding,
+}: Props) => {
   const TextArea = styled(TextareaAutosize)`
     width: ${width} !important;
     border-radius: 1.25rem !important;
     border: none;
-    padding: 1.25rem;
-    font-size: 1.25rem;
+    padding: ${padding};
+    font-size: ${fontSize};
     font-family: "Pr-Bold";
     color: white !important;
-    background-color: ${COLOR.bg.secondary};
+    background-color: ${backgroundColor};
     margin: ${margin};
   `;
 
