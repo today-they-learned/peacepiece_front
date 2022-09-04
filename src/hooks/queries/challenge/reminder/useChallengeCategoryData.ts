@@ -10,6 +10,9 @@ const useChallengeCategoryQuery = (keyword: string) => {
       enabled: !!keyword,
       staleTime: 10 * 1000,
       keepPreviousData: true,
+      select: (data) => {
+        return data.data;
+      },
     }
   );
 };
