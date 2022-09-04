@@ -36,7 +36,7 @@ const Label = styled.span`
   cursor: pointer;
 `;
 
-const Footbar = () => {
+const Footer = () => {
   return (
     <Foot>
       <Line />
@@ -59,4 +59,4 @@ const Footbar = () => {
   );
 };
 
-export default Footbar;
+export default Footer;

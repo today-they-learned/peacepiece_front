@@ -15,7 +15,7 @@ const defaultProps = {
   margin: "0",
 };
 
-const Input = ({ text, width, minRow, margin }: Props) => {
+const Textarea = ({ text, width, minRow, margin }: Props) => {
   const TextArea = styled(TextareaAutosize)`
     width: ${width} !important;
     border-radius: 1.25rem !important;
@@ -32,6 +32,6 @@ const Input = ({ text, width, minRow, margin }: Props) => {
     <TextArea aria-label="empty textarea" placeholder={text} minRows={minRow} />
   );
 };
-Input.defaultProps = defaultProps;
+Textarea.defaultProps = defaultProps;
 
-export default Input;
+export default Textarea;
