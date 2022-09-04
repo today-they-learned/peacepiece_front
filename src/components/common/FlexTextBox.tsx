@@ -1,4 +1,5 @@
-import styled from "styled-components";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 interface Props {
   children: React.ReactNode;
@@ -42,22 +43,26 @@ const FlexTextBox = (props: Props) => {
     background,
   } = props;
 
-  const FlexTextBox = styled.div`
-    width: ${width};
-    height: ${height};
-    margin: ${margin};
-    padding: 0;
-    font-size: ${fontSize};
-    font-family: ${fontFamily};
-    text-align: left;
-    color: ${color};
-    position: ${position};
-    right: ${right};
-    bottom: ${bottom};
-    background: ${background};
-  `;
-
-  return <FlexTextBox>{children}</FlexTextBox>;
+  return (
+    <div
+      css={css`
+        width: ${width};
+        height: ${height};
+        margin: ${margin};
+        padding: 0;
+        font-size: ${fontSize};
+        font-family: ${fontFamily};
+        text-align: left;
+        color: ${color};
+        position: ${position};
+        right: ${right};
+        bottom: ${bottom};
+        background: ${background};
+      `}
+    >
+      {children}
+    </div>
+  );
 };
 FlexTextBox.defaultProps = defaultProps;
 

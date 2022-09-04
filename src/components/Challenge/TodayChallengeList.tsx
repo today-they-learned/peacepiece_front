@@ -1,37 +1,58 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
-import { ChallengeType } from "types/challenge";
+import { ChallengeType } from "types";
 import { ChallengeCard } from "./Card";
 import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
 const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    isProved: false,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: true,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    isProved: false,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: false,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
   {
     id: "1",
-    thumbnail: "/images/card.png",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    person: 10,
+    desciption: "내용",
+    categories: ["001a", "텀블러_챌린지"],
+    prover_cnt: 10,
     point: 100,
-    tags: ["001a", "텀블러_챌린지"],
-    isProved: true,
+    thumbnail: {
+      id: 1,
+      file: "/images/card.png",
+      created_at: "2022-08-30T01:10:53.265788+09:00",
+    },
+    is_proved: true,
+    start_at: "2022-08-30T01:10:53.265788+09:00",
+    end_at: "2022-08-30T01:10:53.265788+09:00",
   },
 ];
 

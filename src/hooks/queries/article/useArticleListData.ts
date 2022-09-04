@@ -13,6 +13,7 @@ const useArticleListQuery = () => {
         return currentPage < totalPages && currentPage + 1;
       },
       keepPreviousData: true,
+      staleTime: 0,
     }
   );
 };

@@ -1,5 +1,5 @@
 import { FlexBox } from "components/common";
-import { ChallengeType } from "types/challenge";
+import { ChallengeType } from "types";
 import styled from "styled-components";
 import ChallengeCard from "./Card/ChallengeCard";
 import EndedChallengeCardWrapper from "./Card/EndedChallengeCardWrapper";
