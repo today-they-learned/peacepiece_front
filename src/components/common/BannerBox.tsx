@@ -27,6 +27,7 @@ const BannerBox = (props: Props) => {
   const defaultTheme = COLOR.bg.primary;
   const bannerTheme = COLOR.bg.banner;
   const secondaryTheme = COLOR.bg.secondary;
+  const transparentTheme = "transparent";
 
   const {
     children,
@@ -46,6 +47,9 @@ const BannerBox = (props: Props) => {
       break;
     case "secondary":
       themeColor = secondaryTheme;
+      break;
+    case "transparent":
+      themeColor = transparentTheme;
       break;
     default:
       themeColor = defaultTheme;

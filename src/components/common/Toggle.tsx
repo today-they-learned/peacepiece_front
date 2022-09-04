@@ -7,8 +7,8 @@ interface Props {
 }
 
 export const ToggleBtn = styled.button<Props>`
-  width: 2.8rem;
-  height: 1.4rem;
+  width: 3.7rem;
+  height: 1.8rem;
   margin-top: 0.2rem;
   border-radius: 1rem;
   border: none;
@@ -24,8 +24,8 @@ export const ToggleBtn = styled.button<Props>`
 
 const Circle = styled.div<Props>`
   background-color: ${COLOR.white};
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   border-radius: 1rem;
   position: absolute;
   left: 5%;
@@ -33,7 +33,7 @@ const Circle = styled.div<Props>`
   ${(props) =>
     props.checked &&
     css`
-      transform: translate(1.35rem, 0);
+      transform: translate(1.7rem, 0);
       transition: all 0.5s ease-in-out;
     `}
 `;
