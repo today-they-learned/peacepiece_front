@@ -35,7 +35,8 @@ const AutoComplete = () => {
   const debouncedKeyword = useQueryDebounce(keyword, 200);
   const { data, isLoading } = useChallengeCategoryData(debouncedKeyword);
 
-  const handleResultSelect = (e: Event, data: any) => {
+  const handleResultSelect = () => {
+    // e: Event, data: any
     setKeyword("");
   };
 
