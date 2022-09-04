@@ -1,5 +1,7 @@
+import PieceSearchBanner from "components/Challenge/Banner/PieceSearchBanner";
+
 const Piece = () => {
-  return <div>피스</div>;
+  return <PieceSearchBanner />;
 };
 
 export default Piece;
