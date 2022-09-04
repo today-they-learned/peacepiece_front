@@ -27,6 +27,21 @@ const defaultProps = {
   background: "transparent",
 };
 
+const Container = styled.div<Props>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin: ${(props) => props.margin};
+  padding: 0;
+  font-size: ${(props) => props.fontSize};
+  font-family: ${(props) => props.fontFamily};
+  text-align: left;
+  color: ${(props) => props.color};
+  position: ${(props) => props.position};
+  right: ${(props) => props.right};
+  bottom: ${(props) => props.bottom};
+  background: ${(props) => props.background};
+`;
+
 const FlexTextBox = (props: Props) => {
   const {
     children,
@@ -42,22 +57,22 @@ const FlexTextBox = (props: Props) => {
     background,
   } = props;
 
-  const FlexTextBox = styled.div`
-    width: ${width};
-    height: ${height};
-    margin: ${margin};
-    padding: 0;
-    font-size: ${fontSize};
-    font-family: ${fontFamily};
-    text-align: left;
-    color: ${color};
-    position: ${position};
-    right: ${right};
-    bottom: ${bottom};
-    background: ${background};
-  `;
-
-  return <FlexTextBox>{children}</FlexTextBox>;
+  return (
+    <Container
+      width={width}
+      height={height}
+      margin={margin}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      color={color}
+      position={position}
+      right={right}
+      bottom={bottom}
+      background={background}
+    >
+      {children}
+    </Container>
+  );
 };
 FlexTextBox.defaultProps = defaultProps;
 

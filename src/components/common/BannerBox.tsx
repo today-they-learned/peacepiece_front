@@ -22,6 +22,21 @@ const defaultProps = {
   position: "static",
 };
 
+interface ContainerProps extends Props {
+  themeColor: string;
+}
+
+const Container = styled.div<ContainerProps>`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
+  border-radius: ${(props) => props.borderRadius};
+  background: ${(props) => props.themeColor};
+  position: ${(props) => props.position};
+`;
+
 const BannerBox = (props: Props) => {
   const defaultTheme = COLOR.bg.primary;
   const bannerTheme = COLOR.bg.banner;
@@ -37,6 +52,7 @@ const BannerBox = (props: Props) => {
     theme,
     position,
   } = props;
+
   let themeColor = defaultTheme;
 
   switch (theme) {
@@ -50,18 +66,19 @@ const BannerBox = (props: Props) => {
       themeColor = defaultTheme;
   }
 
-  const BannerBox = styled.div`
-    width: ${width};
-    height: ${height};
-    padding: ${padding};
-    margin: ${margin};
-    padding: ${padding};
-    border-radius: ${borderRadius};
-    background: ${themeColor};
-    position: ${position};
-  `;
-
-  return <BannerBox>{children}</BannerBox>;
+  return (
+    <Container
+      width={width}
+      height={height}
+      margin={margin}
+      padding={padding}
+      borderRadius={borderRadius}
+      themeColor={themeColor}
+      position={position}
+    >
+      {children}
+    </Container>
+  );
 };
 BannerBox.defaultProps = defaultProps;
 

@@ -41,6 +41,27 @@ const defaultProps = {
   gap: "0",
 };
 
+const Flexbox = styled.div<Props>`
+  display: flex;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
+  box-shadow: ${(props) =>
+    props.shadow ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" : ""};
+  border-radius: ${(props) => props.borderRadius};
+  flex-direction: ${(props) => props.dir};
+  flex-wrap: ${(props) => props.wrap};
+  justify-content: ${(props) =>
+    props.center ? "center" : props.justifyContent};
+  align-items: ${(props) => (props.center ? "center" : props.alignItems)};
+  background: ${(props) => props.background};
+  position: ${(props) => props.position};
+  right: ${(props) => props.right};
+  bottom: ${(props) => props.bottom};
+  gap: ${(props) => props.gap};
+`;
+
 const FlexBox = (props: Props) => {
   const {
     children,
@@ -64,26 +85,29 @@ const FlexBox = (props: Props) => {
   } = props;
 
   const dir = (column ? "column" : "row") + (reverse ? "-reverse" : "");
-  const Flexbox = styled.div`
-    display: flex;
-    width: ${width};
-    height: ${height};
-    margin: ${margin};
-    padding: ${padding};
-    box-shadow: ${shadow ? "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px" : ""};
-    border-radius: ${borderRadius};
-    flex-direction: ${dir};
-    flex-wrap: ${wrap};
-    justify-content: ${center ? "center" : justifyContent};
-    align-items: ${center ? "center" : alignItems};
-    background: ${background};
-    position: ${position};
-    right: ${right};
-    bottom: ${bottom};
-    gap: ${gap};
-  `;
 
-  return <Flexbox dir={dir}>{children}</Flexbox>;
+  return (
+    <Flexbox
+      dir={dir}
+      width={width}
+      height={height}
+      margin={margin}
+      padding={padding}
+      shadow={shadow}
+      borderRadius={borderRadius}
+      wrap={wrap}
+      justifyContent={justifyContent}
+      alignItems={alignItems}
+      center={center}
+      background={background}
+      position={position}
+      right={right}
+      bottom={bottom}
+      gap={gap}
+    >
+      {children}
+    </Flexbox>
+  );
 };
 FlexBox.defaultProps = defaultProps;
 

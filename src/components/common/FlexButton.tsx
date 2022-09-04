@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
 interface Props {
@@ -9,9 +10,7 @@ interface Props {
   cursor?: string;
   color?: string;
   backgroundColor?: string;
-  // onclick 타입은 React.MouseEventHandler<HTMLButtonElement>가 맞는데 default를 모르겠습니다.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onClick?: any;
+  onClick?: MouseEventHandler | undefined;
   position?: string;
   right?: string;
   bottom?: string;
@@ -25,11 +24,30 @@ const defaultProps = {
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
-  onClick: "",
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onClick: () => {},
   position: "static",
   right: "0",
   bottom: "0",
 };
+
+const Button = styled.button<Props>`
+  width: auto;
+  height: auto;
+  padding: 0.6rem 1.5rem;
+  margin: ${(props) => props.margin};
+  border: 0;
+  outline: 0;
+  border-radius: ${(props) => props.borderRadius};
+  font-size: ${(props) => props.fontSize};
+  font-family: ${(props) => props.fontFamily};
+  background: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
+  cursor: ${(props) => (props.cursor ? "pointer" : props.cursor)};
+  position: ${(props) => props.position};
+  right: ${(props) => props.right};
+  bottom: ${(props) => props.bottom};
+`;
 
 const FlexButton = (props: Props) => {
   const {
@@ -47,25 +65,23 @@ const FlexButton = (props: Props) => {
     bottom,
   } = props;
 
-  const FlexButton = styled.button`
-    width: auto;
-    height: auto;
-    padding: 0.6rem 1.5rem;
-    margin: ${margin};
-    border: 0;
-    outline: 0;
-    border-radius: ${borderRadius};
-    font-size: ${fontSize};
-    font-family: ${fontFamily};
-    background: ${backgroundColor};
-    color: ${color};
-    cursor: ${cursor ? "pointer" : cursor};
-    position: ${position};
-    right: ${right};
-    bottom: ${bottom};
-  `;
-
-  return <FlexButton onClick={onClick}>{children}</FlexButton>;
+  return (
+    <Button
+      onClick={onClick}
+      margin={margin}
+      borderRadius={borderRadius}
+      fontSize={fontSize}
+      fontFamily={fontFamily}
+      cursor={cursor}
+      color={color}
+      backgroundColor={backgroundColor}
+      position={position}
+      right={right}
+      bottom={bottom}
+    >
+      {children}
+    </Button>
+  );
 };
 FlexButton.defaultProps = defaultProps;
 
