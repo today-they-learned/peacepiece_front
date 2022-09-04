@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import useQueryDebounce from "hooks/useQueryDebounce";
+import useInput from "hooks/useInput";
 import { Search } from "semantic-ui-react";
+import { useChallengeCategoryData } from "hooks/queries/challenge/reminder";
 
 const AutoCompleteInput = styled(Search)`
   .input > input {
@@ -27,21 +30,23 @@ const resultRenderer = (category: Category) => (
   </span>
 );
 
-const categories = [
-  { id: 1, title: "이_세상에는_다시_쓸_수_있는_물건이_많다" },
-  { id: 2, title: "일회용품_안_쓰기" },
-  { id: 3, title: "텀블러" },
-];
-
 const AutoComplete = () => {
+  const [keyword, onChangeKeyword, setKeyword] = useInput("");
+  const debouncedKeyword = useQueryDebounce(keyword, 200);
+  const { data, isLoading } = useChallengeCategoryData(debouncedKeyword);
+
+  const handleResultSelect = (e: Event, data: any) => {
+    setKeyword("");
+  };
+
   return (
     <AutoCompleteInput
       placeholder="알림 키워드를 입력하세요."
-      // value={tech}
-      // onSearchChange={onChangeTech}
-      results={categories}
-      // onResultSelect={handleResultSelect}
-      // loading={loadTechstacksLoading}
+      value={keyword}
+      onSearchChange={onChangeKeyword}
+      results={data}
+      onResultSelect={handleResultSelect}
+      loading={isLoading}
       resultRenderer={resultRenderer}
     />
   );

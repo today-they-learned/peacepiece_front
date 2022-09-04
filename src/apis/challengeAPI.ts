@@ -1,7 +1,7 @@
 import { instance } from "config/api";
 
 const challengeAPI = {
-  get: (id: number) => {
+  get: (id: string) => {
     return instance.get(`challenges/${id}/`);
   },
   category: (keyword: string) => {
