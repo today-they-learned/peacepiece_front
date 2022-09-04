@@ -40,9 +40,12 @@ interface Props {
 }
 
 const ChallengeDetailBanner = ({ challenge }: Props) => {
+  const len = challenge.images.length;
+  const lenq = len / 3;
+  const lenr = len % 3;
   const loopImg = () => {
     const newArr = [];
-    for (let i = 0; i < challenge?.images.length; i += 3) {
+    for (let i = 0; i < lenq; i += 3) {
       newArr.push(
         <Page key={i}>
           <Img src={challenge?.images[i].file} alt="image1" />
@@ -51,6 +54,21 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
         </Page>
       );
     }
+    if (lenr === 1) {
+      newArr.push(
+        <Page key={len - 1}>
+          <Img src={challenge?.images[len - 1].file} alt="image1" />
+        </Page>
+      );
+    } else {
+      newArr.push(
+        <Page key={len - 2}>
+          <Img src={challenge?.images[len - 2].file} alt="image1" />
+          <Img src={challenge?.images[len - 1].file} alt="image1" />
+        </Page>
+      );
+    }
+
     return newArr;
   };
 
@@ -92,7 +110,7 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
         </FlexTextBox>
         {challenge?.is_proved && <DidItIcon />}
       </FlexBox>
-      <FlexBox background="transparent" margin="1rem 0 1rem 0">
+      <FlexBox background="white" margin="1rem 0 1rem 0">
         {insertBtn}
       </FlexBox>
       <CarouselLib

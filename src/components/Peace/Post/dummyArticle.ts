@@ -9,6 +9,18 @@ const dummyArticle: ArticleType = {
     categories: ["일회용품_줄이기"],
     prover_cnt: 10,
     point: 100,
+    images: [
+      {
+        id: 1,
+        file: "images/image3.png",
+        created_at: "2022-08-30T01:10:53.265788+09:00",
+      },
+      {
+        id: 2,
+        file: "images/image4.png",
+        created_at: "2022-08-30T01:10:53.265788+09:00",
+      },
+    ],
     thumbnail: {
       id: 1,
       file: "/images/card.png",
