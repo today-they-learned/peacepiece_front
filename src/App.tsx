@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AxiosInterceptor, queryClient } from "config";
-import { Toaster } from "react-hot-toast";
 import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
 import "semantic-ui-css/semantic.min.css";
@@ -24,7 +23,6 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
-      <Toaster position="top-center" />
       <AxiosInterceptor>
         <Router>
           <ResponsiveLayout>

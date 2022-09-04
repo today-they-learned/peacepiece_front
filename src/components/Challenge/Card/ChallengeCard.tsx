@@ -1,19 +1,26 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { ChallengeFigure } from "components/Challenge";
-import { ChallengeType } from "pages/EndedChallenge";
+import { ChallengeFigure, DidItIcon } from "components/Challenge";
+import { ChallengeType } from "types";
 
 interface Props {
   challenge: ChallengeType;
   margin?: string;
+  is_proved?: boolean;
+}
+
+interface ThumbnailImageProps {
+  src: string;
+  isProved?: boolean;
 }
 
 const defaultProps = {
   margin: "0",
+  is_proved: false,
 };
 
 const Container = styled.div<{ margin: string }>`
-  width: 16.3rem;
+  width: 100%;
   height: 20rem;
   border-radius: 2rem;
   background-color: ${COLOR.bg.secondary};
@@ -21,11 +28,12 @@ const Container = styled.div<{ margin: string }>`
   margin: ${(props) => props.margin};
 `;
 
-const Thumbnail = styled.img`
-  width: 16.3rem;
+const Thumbnail = styled.img<ThumbnailImageProps>`
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+
+  ${({ isProved }) => isProved && "filter: brightness(50%);"};
 `;
 
 const ContentBox = styled.div`
@@ -59,15 +67,22 @@ const ChallengeCard = (props: Props) => {
   const { challenge, margin } = props;
   return (
     <Container margin={margin} key={challenge.id}>
-      <Thumbnail src={`${process.env.PUBLIC_URL}${challenge.thumbnail}`} />
+      <Thumbnail
+        src={`${process.env.PUBLIC_URL}${challenge.thumbnail.file}`}
+        isProved={challenge.is_proved}
+      />
+      {challenge.is_proved && <DidItIcon isAbsolute top="1rem" right="1rem" />}
       <ContentBox>
         <Title>{challenge.title}</Title>
         <ChallengeInfo>
-          <ChallengeFigure person={challenge.person} point={challenge.point} />
+          <ChallengeFigure
+            person={challenge.prover_cnt}
+            point={challenge.point}
+          />
         </ChallengeInfo>
         <HashTagBox>
-          {challenge.tags.map((tag, index) => (
-            <HashTag key={index}>#{tag}</HashTag>
+          {challenge.categories.map((category, index) => (
+            <HashTag key={index}>#{category}</HashTag>
           ))}
         </HashTagBox>
       </ContentBox>

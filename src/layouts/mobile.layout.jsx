@@ -1,12 +1,12 @@
 import MobileNavbar from "components/Navbar/MobileNavbar";
-import MobileFootbar from "components/Footbar/MobileFootbar";
+import MobileFooter from "components/Footer/MobileFooter";
 
 const MobileLayout = ({ children }) => {
   return (
     <>
       <MobileNavbar />
       <div>{children}</div>
-      <MobileFootbar />
+      <MobileFooter />
     </>
   );
 };
