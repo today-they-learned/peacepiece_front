@@ -1,6 +1,5 @@
 import { FlexBox } from "components/common";
 import { ChallengeType } from "types";
-import styled from "styled-components";
 import ChallengeCard from "./Card/ChallengeCard";
 import EndedChallengeCardWrapper from "./Card/EndedChallengeCardWrapper";
 
@@ -8,15 +7,13 @@ interface Props {
   challenges?: ChallengeType[];
 }
 
-const Container = styled(FlexBox)``;
-
 const defaultProps: Props = {
   challenges: [],
 };
 
 const EndedChallengeCardList = ({ challenges }: Props) => {
   return (
-    <Container
+    <FlexBox
       width="100%"
       height="100%"
       justifyContent="flex-start"
@@ -33,7 +30,7 @@ const EndedChallengeCardList = ({ challenges }: Props) => {
           <ChallengeCard challenge={challenge} />
         </EndedChallengeCardWrapper>
       ))}
-    </Container>
+    </FlexBox>
   );
 };
 
