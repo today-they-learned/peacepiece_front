@@ -57,13 +57,15 @@ const ChallengeTestimonial = () => {
         alignItems="center"
       >
         {isFetched &&
-          data.pages.map((page) => (
-            <Fragment key={page.data.current_page}>
-              {page.data.results.map((article: ArticleType) => (
-                <TestimonialCard key={article.id} piece={article} />
-              ))}
-            </Fragment>
-          ))}
+          data.pages.map((page, index) => {
+            return (
+              <Fragment key={page?.data.current_page || index}>
+                {page?.data.results.map((article: ArticleType) => (
+                  <TestimonialCard key={article.id} piece={article} />
+                ))}
+              </Fragment>
+            );
+          })}
       </FlexBox>
       <div ref={ref}>{isFetchingNextPage && "Loading more..."}</div>
     </ChallengeBanner>

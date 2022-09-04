@@ -8,9 +8,12 @@ const useChallengeArticleQuery = (challengeId: string) => {
     ({ pageParam = 1 }) => challengeArticleAPI.get(challengeId, pageParam),
     {
       getNextPageParam: (lastPage) => {
-        const currentPage = lastPage.data.current_page;
-        const totalPages = lastPage.data.total_pages;
-        return currentPage < totalPages && currentPage + 1;
+        if (lastPage) {
+          const currentPage = lastPage.data.current_page;
+          const totalPages = lastPage.data.total_pages;
+          return currentPage < totalPages && currentPage + 1;
+        }
+        return 1;
       },
       keepPreviousData: true,
       staleTime: 0,

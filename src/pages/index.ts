@@ -6,3 +6,4 @@ export { default as ChallengeOffer } from "./ChallengeOffer";
 export { default as EndedChallenge } from "./EndedChallenge";
 export { default as ChallengeDetail } from "./ChallengeDetail";
 export { default as Piece } from "./Piece";
+export { default as Test } from "./Test";

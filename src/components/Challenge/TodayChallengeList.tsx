@@ -9,10 +9,11 @@ const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    desciption: "내용",
+    description: "내용",
     categories: ["001a", "텀블러_챌린지"],
     prover_cnt: 10,
     point: 100,
+    images: [],
     thumbnail: {
       id: 1,
       file: "/images/card.png",
@@ -25,10 +26,11 @@ const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    desciption: "내용",
+    description: "내용",
     categories: ["001a", "텀블러_챌린지"],
     prover_cnt: 10,
     point: 100,
+    images: [],
     thumbnail: {
       id: 1,
       file: "/images/card.png",
@@ -41,10 +43,11 @@ const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
-    desciption: "내용",
+    description: "내용",
     categories: ["001a", "텀블러_챌린지"],
     prover_cnt: 10,
     point: 100,
+    images: [],
     thumbnail: {
       id: 1,
       file: "/images/card.png",

@@ -15,6 +15,7 @@ import {
   ChallengeOffer,
   Piece,
   ChallengeDetail,
+  Test,
 } from "pages";
 
 import ResponsiveLayout from "layouts/responsive.layout";
@@ -41,6 +42,7 @@ const App = () => {
               <Route path="/privacy" element={<div />} />
               <Route path="/team" element={<div />} />
               <Route path="/*" element={<NotFound />} />
+              <Route path="/test" element={<Test />} />
             </Routes>
           </ResponsiveLayout>
         </Router>

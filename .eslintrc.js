@@ -31,10 +31,6 @@ module.exports = {
       2,
       { namedComponents: "arrow-function" },
     ],
-    "react/no-unstable-nested-components": [
-      "off" | "warn" | "error",
-      { allowAsProps: true | false },
-    ],
     "react/button-has-type": 0,
   },
   settings: {

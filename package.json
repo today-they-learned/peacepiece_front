@@ -30,7 +30,6 @@
     "react-isometric-grid": "^0.0.3",
     "react-isometric-tilemap": "^1.0.0",
     "react-material-ui-carousel": "^3.4.2",
-    "react-modal": "^3.15.1",
     "react-query": "^3.39.2",
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "^6.3.0",
@@ -67,7 +66,7 @@
     ]
   },
   "devDependencies": {
-    "@semantic-ui-react/css-patch": "^1.0.0",
+    "@semantic-ui-react/css-patch": "^1.1.2",
     "@types/styled-components": "^5.1.25",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
