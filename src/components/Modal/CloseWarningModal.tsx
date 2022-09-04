@@ -2,7 +2,12 @@ import { FlexTextBox } from "components/common";
 import COLOR from "constants/color";
 import ModalFrame from "./ModalFrame";
 
-const CloseWarningModal = () => (
+interface Props {
+  visible: boolean;
+  onClose: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
+const CloseWarningModal = ({ onClose, visible }: Props) => (
   <ModalFrame
     modalMainColor={COLOR.font.danger}
     width="52.25rem"
@@ -10,6 +15,8 @@ const CloseWarningModal = () => (
     title="작성하던 내용이 사라질 수 있어요!"
     btnTitle1="다시 작성하러 가기"
     btnTitle2="괜찮아요"
+    onClose={onClose}
+    visible={visible}
   >
     <FlexTextBox
       fontSize="1.25rem"

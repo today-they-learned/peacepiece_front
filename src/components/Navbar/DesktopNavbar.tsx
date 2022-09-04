@@ -226,6 +226,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const url = location.pathname;
+
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "offer") {
         setCurrentClickSubNav("/challenge/offer");
