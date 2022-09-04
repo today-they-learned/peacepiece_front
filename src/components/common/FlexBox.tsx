@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface Props {
   children: React.ReactNode;
   width?: string;
+  maxWidth?: string;
   height?: string;
   margin?: string;
   padding?: string;
@@ -16,6 +17,8 @@ interface Props {
   center?: boolean;
   background?: string;
   position?: string;
+  top?: string;
+  left?: string;
   right?: string;
   bottom?: string;
   float?: string;
@@ -24,6 +27,7 @@ interface Props {
 
 const defaultProps = {
   width: "auto",
+  maxWidth: "none",
   height: "auto",
   margin: "0",
   padding: "0",
@@ -37,6 +41,8 @@ const defaultProps = {
   center: false,
   position: "static",
   background: "transparent",
+  top: "0",
+  left: "0",
   right: "0",
   bottom: "0",
   float: "none",
@@ -47,6 +53,7 @@ const FlexBox = (props: Props) => {
   const {
     children,
     width,
+    maxWidth,
     height,
     margin,
     padding,
@@ -60,6 +67,8 @@ const FlexBox = (props: Props) => {
     center,
     background,
     position,
+    top,
+    left,
     right,
     bottom,
     float,
@@ -70,6 +79,7 @@ const FlexBox = (props: Props) => {
   const Flexbox = styled.div`
     display: flex;
     width: ${width};
+    max-width: ${maxWidth};
     height: ${height};
     margin: ${margin};
     padding: ${padding};
@@ -81,6 +91,8 @@ const FlexBox = (props: Props) => {
     align-items: ${center ? "center" : alignItems};
     background: ${background};
     position: ${position};
+    top: ${top};
+    left: ${left};
     right: ${right};
     bottom: ${bottom};
     float: ${float};
