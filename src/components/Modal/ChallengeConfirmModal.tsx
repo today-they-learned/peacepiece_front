@@ -91,6 +91,9 @@ const ChallengeConfirmModal = () => {
       subTitle="챌린지 인증하기"
       btnTitle1="취소하기"
       btnTitle2="작성하기"
+      // 수정필요
+      onClose={undefined}
+      visible={undefined}
     >
       <BannerBox position="relative" theme="transparent" padding="0" margin="0">
         <FlexBox

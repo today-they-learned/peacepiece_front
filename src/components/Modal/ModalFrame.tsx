@@ -1,8 +1,7 @@
 import COLOR from "constants/color";
+import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
-import { FlexTextBox } from "components/common";
-import FlexBox from "../common/FlexBox";
-import FlexButton from "../common/FlexButton";
+import { FlexBox, FlexButton, FlexTextBox } from "components/common";
 import Portal from "./Portal";
 
 interface AreaElement {
