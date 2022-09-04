@@ -1,6 +1,4 @@
-import { CommentsType } from "types";
-
-export const dummyComments: CommentsType = {
+export const dummyComments = {
   count: 3,
   next: "",
   previous: "",
