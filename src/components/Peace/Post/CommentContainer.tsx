@@ -2,7 +2,6 @@ import { useState } from "react";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import useDate from "hooks/useDate";
 import dummyComments from "./dummyCommemts";
 
 const Avatar = styled.img<{ size: string }>`
@@ -106,8 +105,6 @@ const CommentContainer = () => {
   const clickedBtn = () => {
     setCmtMore((prev) => !prev);
   };
-  const date = useDate(dummyComments.results[0].created_at);
-  console.log(date);
   return (
     <FlexBox
       width="48rem"

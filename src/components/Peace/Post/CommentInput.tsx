@@ -1,5 +1,5 @@
 import { FlexBox } from "components/common";
-import Input from "components/Form/Input";
+import Input from "components/Form/Textarea";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import dummyData from "./dummyArticle";
@@ -45,7 +45,7 @@ const CommentInput = () => {
       />
       <Input
         text="글에 대한 의견을 남겨주세요 🌱"
-        backgroundColor={COLOR.bg.nav}
+        background={COLOR.bg.nav}
         width="39.5rem"
         padding="0.5rem 1rem"
         fontSize="1rem"

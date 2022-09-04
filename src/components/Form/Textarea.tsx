@@ -8,15 +8,29 @@ interface Props {
   width?: string;
   minRow?: number;
   margin?: string;
+  padding?: string;
+  fontSize?: string;
+  background?: string;
 }
 
 const defaultProps = {
   width: "45rem",
   minRow: 1,
   margin: "0",
+  padding: "1.25rem",
+  fontSize: "1.25rem",
+  background: COLOR.bg.secondary,
 };
 
-const Textarea = ({ text, width, minRow, margin }: Props) => {
+const Textarea = ({
+  text,
+  width,
+  minRow,
+  margin,
+  padding,
+  fontSize,
+  background,
+}: Props) => {
   return (
     <TextareaAutosize
       aria-label="empty textarea"
@@ -26,11 +40,11 @@ const Textarea = ({ text, width, minRow, margin }: Props) => {
         width: ${width} !important;
         border-radius: 1.25rem !important;
         border: none;
-        padding: 1.25rem;
-        font-size: 1.25rem;
+        padding: ${padding};
+        font-size: ${fontSize};
         font-family: "Pr-Bold";
         color: white !important;
-        background-color: ${COLOR.bg.secondary};
+        background-color: ${background} !important;
         margin: ${margin};
       `}
     />
