@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
+import useDate from "hooks/useDate";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { PieceType } from "../Banner/ChallengeTestimonial";
+import { ArticleType } from "types";
 
 interface Props {
-  piece: PieceType;
+  piece: ArticleType;
 }
 
 const Avatar = styled.img`
@@ -47,7 +49,7 @@ const TestimonialCard = (props: Props) => {
         alignItems="center"
         margin="0 0 0.5rem 0"
       >
-        <Avatar src={piece.avatar} />
+        <Avatar src={piece.writer.avatar} />
         <FlexBox
           column
           justifyContent="center"
@@ -59,14 +61,14 @@ const TestimonialCard = (props: Props) => {
             fontFamily="Pr-Bold"
             color={COLOR.font.primary}
           >
-            {piece.userName}
+            {piece.writer.username}
           </FlexTextBox>
           <FlexTextBox
             fontSize="0.625rem"
             fontFamily="Pr-Medium"
             color={COLOR.font.secondary}
           >
-            {piece.date}
+            {useDate(piece.created_at)}
           </FlexTextBox>
         </FlexBox>
       </FlexBox>
@@ -78,7 +80,7 @@ const TestimonialCard = (props: Props) => {
           if (idx === 2) {
             return (
               <FlexBox position="relative" background="transparent">
-                <LastImage src={image.image_url} key={image.id} />
+                <LastImage src={image.file} key={image.id} />
                 <FlexTextBox
                   position="absolute"
                   right="50%"
@@ -91,19 +93,21 @@ const TestimonialCard = (props: Props) => {
               </FlexBox>
             );
           }
-          return <Image src={image.image_url} key={image.id} />;
+          return <Image src={image.file} key={image.id} />;
         })}
       </FlexBox>
-      <FlexButton
-        position="absolute"
-        right="1rem"
-        bottom="1rem"
-        color={COLOR.font.link}
-        fontSize="0.8rem"
-        fontFamily="Pr-Bold"
-      >
-        자세히 보러가기
-      </FlexButton>
+      <Link to={`/piece/${piece.id}`}>
+        <FlexButton
+          position="absolute"
+          right="1rem"
+          bottom="1rem"
+          color={COLOR.font.link}
+          fontSize="0.8rem"
+          fontFamily="Pr-Bold"
+        >
+          자세히 보러가기
+        </FlexButton>
+      </Link>
     </FlexBox>
   );
 };

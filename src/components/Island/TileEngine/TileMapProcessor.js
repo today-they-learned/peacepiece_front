@@ -151,7 +151,10 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
       return tileMap.east_edge;
     }
   }
-  if ((B === tile || H === tile) && F === NONE) {
+  if (
+    (B === tile || H === tile) &&
+    (F === NONE || (tile === "eb" && F === 11))
+  ) {
     // ? ◼︎ X
     // ? ◼︎ X
     // ? ◼︎ X
@@ -163,7 +166,10 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
     // ? ◻︎ ?
     return tileMap.south_edge;
   }
-  if ((D === tile || F === tile) && H === NONE) {
+  if (
+    (D === tile || F === tile) &&
+    (H === NONE || (tile === "eb" && H === 11))
+  ) {
     // ? ? ?
     // ◼︎ ◼︎ ◼︎
     // X X X
@@ -175,7 +181,10 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
     // ? ? ?
     return tileMap.west_edge;
   }
-  if ((B === tile || H === tile) && D === NONE) {
+  if (
+    (B === tile || H === tile) &&
+    (D === NONE || (tile === "eb" && D === 11))
+  ) {
     // X ◼︎ ?
     // X ◼︎ ?
     // X ◼︎ ?
@@ -188,7 +197,10 @@ const getTile = ({ tile, A, B, C, D, F, G, H, I, tileMap }) => {
     // ? ◼︎ ?
     return tileMap.north_edge;
   }
-  if ((D === tile || F === tile) && B === NONE) {
+  if (
+    (D === tile || F === tile) &&
+    (B === NONE || (tile === "eb" && B === 11))
+  ) {
     // X X X
     // ◼︎ ◼︎ ◼︎
     // ? ? ?
@@ -303,12 +315,12 @@ export function fillArray(dimensions, value) {
 
 export const createTerrain = (terrainMap) => {
   const processMaps = [
+    waterTileMap,
+    fullWaterTileMap,
     roadTileMap,
     bankedRiverTileMap,
     riverTileMap,
     grassTileMap,
-    waterTileMap,
-    fullWaterTileMap,
     beachTileMap,
     edgeBeachTileMap,
     riverBeachTileMap,

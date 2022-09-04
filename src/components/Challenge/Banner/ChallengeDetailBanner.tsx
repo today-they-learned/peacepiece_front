@@ -5,19 +5,8 @@ import { Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { DidItIcon } from "..";
-
-const dummyData = {
-  title: "일회용품 No! 다시 쓰기 Yes",
-  description:
-    "여기는 챌린지 description이 들어가는 자리입니다. 이 챌린지는 블라블라 ~~~~ 이 챌린지는 블라블라 ~~~~ 이 챌린지는 블라블라 ~~~~ 이 챌린지 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~이 챌린지는 블라블라 ~~~~",
-  categories: ["일회용품_줄이기", "재활용_캠페인"],
-  images: ["/images/image1.png", "/images/image2.png", "/images/image3.png"],
-  prover_cnt: 34,
-  point: 100,
-  userDone: true,
-  ended: true,
-};
+import { ChallengeType } from "types";
+import { DidItIcon } from "components/Challenge";
 
 const Thumbnail = styled.img`
   width: 47.5rem;
@@ -46,44 +35,49 @@ const Page = styled(Paper)`
   background-color: ${COLOR.bg.primary} !important;
 `;
 
-const loopImg = () => {
-  const newArr = [];
-  for (let i = 0; i < dummyData.images.length; i += 3) {
-    newArr.push(
-      <Page>
-        <Img src={dummyData.images[i]} alt="image1" />
-        <Img src={dummyData.images[i + 1]} alt="image2" />
-        <Img src={dummyData.images[i + 2]} alt="image3" />
-      </Page>
-    );
-  }
-  return newArr;
-};
+interface Props {
+  challenge: ChallengeType;
+}
 
-const loopBtn = () => {
-  const newArr = [];
-  for (let i = 0; i < dummyData.categories.length; i += 1) {
-    newArr.push(
-      <FlexButton
-        backgroundColor={COLOR.bg.banner}
-        margin="0 0.5rem 0 1.3rem"
-        fontSize="1rem"
-      >
-        {dummyData.categories[i]}
-      </FlexButton>
-    );
-  }
-  return newArr;
-};
+const ChallengeDetailBanner = ({ challenge }: Props) => {
+  const loopImg = () => {
+    const newArr = [];
+    for (let i = 0; i < challenge?.images.length; i += 3) {
+      newArr.push(
+        <Page key={i}>
+          <Img src={challenge?.images[i].file} alt="image1" />
+          <Img src={challenge?.images[i + 1].file} alt="image2" />
+          <Img src={challenge?.images[i + 2].file} alt="image3" />
+        </Page>
+      );
+    }
+    return newArr;
+  };
 
-const ChallengeDetailBanner = () => {
+  const loopBtn = () => {
+    const newArr = [];
+    for (let i = 0; i < challenge?.categories.length; i += 1) {
+      newArr.push(
+        <FlexButton
+          key={i}
+          backgroundColor={COLOR.bg.banner}
+          margin="0 0.5rem 0 1.3rem"
+          fontSize="1rem"
+        >
+          {challenge?.categories[i]}
+        </FlexButton>
+      );
+    }
+    return newArr;
+  };
   const insertImg = loopImg();
   const insertBtn = loopBtn();
+
   return (
     <BannerBox width="52.25rem" padding="1rem">
-      <Thumbnail src="/images/thumbnail.png" />
+      <Thumbnail src={challenge?.thumbnail.file} />
       <FlexBox alignItems="center" margin="1.5rem 0 0.5rem 1.3rem">
-        {dummyData.ended && (
+        {challenge?.end_at && (
           <FlexTextBox
             fontSize="1.56rem"
             fontFamily="Pr-SemiBold"
@@ -94,9 +88,9 @@ const ChallengeDetailBanner = () => {
           </FlexTextBox>
         )}
         <FlexTextBox fontSize="1.8rem" fontFamily="Pr-Bold" margin="0 1rem 0 0">
-          {dummyData.title}
+          {challenge?.title}
         </FlexTextBox>
-        {dummyData.userDone && <DidItIcon />}
+        {challenge?.is_proved && <DidItIcon />}
       </FlexBox>
       <FlexBox background="transparent" margin="1rem 0 1rem 0">
         {insertBtn}
@@ -128,12 +122,12 @@ const ChallengeDetailBanner = () => {
         background={COLOR.bg.banner}
       >
         <FlexTextBox>
-          이 챌린지에 참가하면 {dummyData.point} PP를 획득할 수 있어요! 벌써{" "}
-          {dummyData.prover_cnt}
+          이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수 있어요! 벌써{" "}
+          {challenge?.prover_cnt}
           명의 사람들이 함께했어요 😇
         </FlexTextBox>
       </FlexBox>
-      <FlexTextBox margin="2rem">{dummyData.description}</FlexTextBox>
+      <FlexTextBox margin="2rem">{challenge?.description}</FlexTextBox>
     </BannerBox>
   );
 };

@@ -150,7 +150,7 @@ const arrLoopMobile = () => {
   return newArr;
 };
 
-const WeeklyChallenge = () => {
+const WeeklyChallengeList = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const insertCard = isDesktop ? arrLoop() : arrLoopMobile();
@@ -182,4 +182,4 @@ const WeeklyChallenge = () => {
   );
 };
 
-export default WeeklyChallenge;
+export default WeeklyChallengeList;

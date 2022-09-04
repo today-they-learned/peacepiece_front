@@ -239,7 +239,7 @@ const Navbar = () => {
       setCurrentClickNav("challenge");
     } else if (url === "/") {
       setCurrentClickNav("/island");
-    } else {
+    } else if (url === "/piece") {
       setCurrentClickNav(url);
     }
   });
