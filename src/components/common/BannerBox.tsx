@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import COLOR from "constants/color";
-import styled from "styled-components";
 
 interface Props {
   children: React.ReactNode;
@@ -50,18 +51,22 @@ const BannerBox = (props: Props) => {
       themeColor = defaultTheme;
   }
 
-  const BannerBox = styled.div`
-    width: ${width};
-    height: ${height};
-    padding: ${padding};
-    margin: ${margin};
-    padding: ${padding};
-    border-radius: ${borderRadius};
-    background: ${themeColor};
-    position: ${position};
-  `;
-
-  return <BannerBox>{children}</BannerBox>;
+  return (
+    <div
+      css={css`
+        width: ${width};
+        height: ${height};
+        padding: ${padding};
+        margin: ${margin};
+        padding: ${padding};
+        border-radius: ${borderRadius};
+        background: ${themeColor};
+        position: ${position};
+      `}
+    >
+      {children}
+    </div>
+  );
 };
 BannerBox.defaultProps = defaultProps;
 

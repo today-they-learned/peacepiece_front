@@ -50,7 +50,7 @@ const loopImg = () => {
   const newArr = [];
   for (let i = 0; i < dummyData.images.length; i += 3) {
     newArr.push(
-      <Page>
+      <Page key={i}>
         <Img src={dummyData.images[i]} alt="image1" />
         <Img src={dummyData.images[i + 1]} alt="image2" />
         <Img src={dummyData.images[i + 2]} alt="image3" />
@@ -65,6 +65,7 @@ const loopBtn = () => {
   for (let i = 0; i < dummyData.categories.length; i += 1) {
     newArr.push(
       <FlexButton
+        key={i}
         backgroundColor={COLOR.bg.banner}
         margin="0 0.5rem 0 1.3rem"
         fontSize="1rem"

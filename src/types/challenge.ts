@@ -1,9 +1,16 @@
-export type ChallengeType = {
+import { ImageType } from "types";
+
+type ChallengeInterface = {
   id: string;
-  thumbnail: string;
   title: string;
-  person: number;
+  desciption: string;
+  categories: string[];
+  prover_cnt: number;
   point: number;
-  tags: string[];
-  isProved?: boolean;
+  thumbnail: ImageType;
+  is_proved: boolean;
+  start_at: string;
+  end_at: string;
 };
+
+export default ChallengeInterface;

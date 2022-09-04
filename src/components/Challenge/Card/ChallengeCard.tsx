@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
-import { ChallengeType } from "types/challenge";
+import { ChallengeType } from "types";
 
 interface Props {
   challenge: ChallengeType;
   margin?: string;
-  isProved?: boolean;
+  is_proved?: boolean;
 }
 
 interface ThumbnailImageProps {
@@ -16,7 +16,7 @@ interface ThumbnailImageProps {
 
 const defaultProps = {
   margin: "0",
-  isProved: false,
+  is_proved: false,
 };
 
 const Container = styled.div<{ margin: string }>`
@@ -68,18 +68,21 @@ const ChallengeCard = (props: Props) => {
   return (
     <Container margin={margin} key={challenge.id}>
       <Thumbnail
-        src={`${process.env.PUBLIC_URL}${challenge.thumbnail}`}
-        isProved={challenge.isProved}
+        src={`${process.env.PUBLIC_URL}${challenge.thumbnail.file}`}
+        isProved={challenge.is_proved}
       />
-      {challenge.isProved && <DidItIcon isAbsolute top="1rem" right="1rem" />}
+      {challenge.is_proved && <DidItIcon isAbsolute top="1rem" right="1rem" />}
       <ContentBox>
         <Title>{challenge.title}</Title>
         <ChallengeInfo>
-          <ChallengeFigure person={challenge.person} point={challenge.point} />
+          <ChallengeFigure
+            person={challenge.prover_cnt}
+            point={challenge.point}
+          />
         </ChallengeInfo>
         <HashTagBox>
-          {challenge.tags.map((tag, index) => (
-            <HashTag key={index}>#{tag}</HashTag>
+          {challenge.categories.map((category, index) => (
+            <HashTag key={index}>#{category}</HashTag>
           ))}
         </HashTagBox>
       </ContentBox>
