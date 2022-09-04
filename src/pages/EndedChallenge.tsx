@@ -1,11 +1,7 @@
 import { ChallengeTitle } from "components/Challenge";
 import { FlexBox } from "components/common";
-<<<<<<< HEAD
-import Communication from "components/Peace/Post/Communication";
-=======
 import { ChallengeType } from "types/challenge";
 import EndedChallengeCardList from "components/Challenge/EndedChallengeCardList";
->>>>>>> main
 
 const script = {
   title: "📌 지난 챌린지",
@@ -106,27 +102,7 @@ const EndedChallenge = () => {
       column
     >
       <ChallengeTitle title={script.title} />
-<<<<<<< HEAD
-      <FlexBox
-        width="100%"
-        height="100%"
-        justifyContent="space-between"
-        alignItems="center"
-        wrap="wrap"
-        margin="2rem 0 0 0"
-      >
-        {dummyChallenges.map((challenge) =>
-          challenge.complete ? (
-            <EndedChallengeCard challenge={challenge} margin={defaultMargin} />
-          ) : (
-            <ChallengeCard challenge={challenge} margin={defaultMargin} />
-          )
-        )}
-      </FlexBox>
-      <Communication />
-=======
       <EndedChallengeCardList challenges={dummyChallenges} />
->>>>>>> main
     </FlexBox>
   );
 };

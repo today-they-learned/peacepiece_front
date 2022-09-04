@@ -1,4 +1,4 @@
-const dummyData = {
+const dummyArticles = {
   writer: {
     id: 1,
     username: "홍길동",
@@ -20,4 +20,4 @@ const dummyData = {
   ],
 };
 
-export default dummyData;
+export default dummyArticles;

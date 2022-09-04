@@ -29,10 +29,10 @@ const SummitBtn = styled.button`
   cursor: pointer;
 `;
 
-const Communication = () => {
+const CommentInput = () => {
   return (
     <FlexBox
-      width="45rem"
+      width="48rem"
       height="auto"
       background={COLOR.bg.secondary}
       borderRadius="1.25rem"
@@ -46,7 +46,7 @@ const Communication = () => {
       <Input
         text="글에 대한 의견을 남겨주세요 🌱"
         backgroundColor={COLOR.bg.nav}
-        width="37rem"
+        width="39.5rem"
         padding="0.5rem 1rem"
         fontSize="1rem"
         margin="0 0.3rem 0 0.8rem"
@@ -55,6 +55,6 @@ const Communication = () => {
     </FlexBox>
   );
 };
-Communication.defaultProps = defaultProps;
+CommentInput.defaultProps = defaultProps;
 
-export default Communication;
+export default CommentInput;

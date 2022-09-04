@@ -24,15 +24,15 @@ const Avatar = styled.img<{ size: string }>`
 `;
 
 const Image = styled.img`
-  width: 8.125rem;
-  height: 5rem;
+  width: 10rem;
+  height: 6.4rem;
   border-radius: 0.625rem;
   margin-right: 1rem;
 `;
 
 const LastImage = styled.img`
-  width: 8.125rem;
-  height: 5rem;
+  width: 10rem;
+  height: 6.4rem;
   border-radius: 0.625rem;
   margin-right: 1rem;
   opacity: 0.3;
@@ -56,7 +56,7 @@ const Button = styled.button`
 
 const Post = ({ backgroundColor, color, size }: Props) => {
   const [isShowMore, setIsShowMore] = useState<boolean>(false);
-  const textLimit = useRef<number>(149);
+  const textLimit = useRef<number>(150);
 
   const contentMore = useMemo(() => {
     const shortReview: string = dummyData.content.slice(0, textLimit.current);
@@ -78,7 +78,7 @@ const Post = ({ backgroundColor, color, size }: Props) => {
         {"] "}챌린지
       </FlexTextBox>
       <FlexBox
-        width="45rem"
+        width="48rem"
         height="auto"
         background={COLOR.bg.secondary}
         borderRadius="1.25rem"
@@ -121,11 +121,11 @@ const Post = ({ backgroundColor, color, size }: Props) => {
 
         <FlexTextBox fontSize="0.8rem" fontFamily="Pr-Medium">
           {contentMore}
+          <Button onClick={() => setIsShowMore(!isShowMore)}>
+            {dummyData.content.length > textLimit.current &&
+              (isShowMore ? "닫기" : "더보기")}
+          </Button>
         </FlexTextBox>
-        <Button onClick={() => setIsShowMore(!isShowMore)}>
-          {dummyData.content.length > textLimit.current &&
-            (isShowMore ? "닫기" : "더보기")}
-        </Button>
 
         <FlexBox background="transparent" margin="0.5rem 0 1rem 0">
           {dummyData.images.slice(0, 3).map((image, idx) => {
