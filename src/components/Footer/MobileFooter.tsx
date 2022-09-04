@@ -34,7 +34,7 @@ const Label = styled.span`
   cursor: pointer;
 `;
 
-const MobileFootbar = () => {
+const MobileFooter = () => {
   return (
     <Foot>
       <Line />
@@ -57,4 +57,4 @@ const MobileFootbar = () => {
   );
 };
 
-export default MobileFootbar;
+export default MobileFooter;

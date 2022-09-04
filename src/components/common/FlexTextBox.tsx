@@ -11,7 +11,7 @@ interface Props {
   position?: string;
   right?: string;
   bottom?: string;
-  backgroundColor?: string;
+  background?: string;
 }
 
 const defaultProps = {
@@ -24,7 +24,7 @@ const defaultProps = {
   position: "static",
   right: "0",
   bottom: "0",
-  backgroundColor: "transparent",
+  background: "transparent",
 };
 
 const FlexTextBox = (props: Props) => {
@@ -39,7 +39,7 @@ const FlexTextBox = (props: Props) => {
     position,
     right,
     bottom,
-    backgroundColor,
+    background,
   } = props;
 
   const FlexTextBox = styled.div`
@@ -54,7 +54,7 @@ const FlexTextBox = (props: Props) => {
     position: ${position};
     right: ${right};
     bottom: ${bottom};
-    background-color: ${backgroundColor};
+    background: ${background};
   `;
 
   return <FlexTextBox>{children}</FlexTextBox>;

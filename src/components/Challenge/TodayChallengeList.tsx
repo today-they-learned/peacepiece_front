@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
+import { ChallengeType } from "types/challenge";
 import { ChallengeCard } from "./Card";
-import EndedChallengeCard from "./Card/EndedChallengeCard";
+import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
-const dummyChallenges = [
+const dummyChallenges: ChallengeType[] = [
   {
     id: "1",
     thumbnail: "/images/card.png",
@@ -12,7 +13,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: false,
+    isProved: false,
   },
   {
     id: "1",
@@ -21,7 +22,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: false,
+    isProved: false,
   },
   {
     id: "1",
@@ -30,7 +31,7 @@ const dummyChallenges = [
     person: 10,
     point: 100,
     tags: ["001a", "텀블러_챌린지"],
-    complete: true,
+    isProved: true,
   },
 ];
 
@@ -50,9 +51,10 @@ const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
+  gap: 2rem;
 `;
 
-const TodayChallenge = () => {
+const TodayChallengeList = () => {
   const todayChallengeTitleList = [
     "📌 오늘의 챌린지",
     "😇 오늘은 이런 챌린지 어때요?",
@@ -73,16 +75,17 @@ const TodayChallenge = () => {
         background={COLOR.bg.primary}
       />
       <CardContainer>
-        {dummyChallenges.map((challenge) =>
-          challenge.complete ? (
-            <EndedChallengeCard challenge={challenge} />
-          ) : (
+        {dummyChallenges.map((challenge) => (
+          <TodayChallengeCardWrapper
+            key={`today-challenges${challenge.id}`}
+            gap="2rem"
+          >
             <ChallengeCard challenge={challenge} />
-          )
-        )}
+          </TodayChallengeCardWrapper>
+        ))}
       </CardContainer>
     </Container>
   );
 };
 
-export default TodayChallenge;
+export default TodayChallengeList;
