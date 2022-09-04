@@ -13,6 +13,18 @@ const createInstance = () => {
 
 const instance = createInstance();
 
+type callbackFunction = (token: string) => void;
+
+let isTokenRefreshing = false;
+const refreshSubscribers: callbackFunction[] = [];
+
+const onTokenRefreshed = (accessToken: string) => {
+  refreshSubscribers.map((callback: callbackFunction) => callback(accessToken));
+};
+const addRefreshSubscriber = (callback: callbackFunction) => {
+  refreshSubscribers.push(callback);
+};
+
 const AxiosInterceptor = (props: Props) => {
   instance.interceptors.request.use(
     async (config) => {
@@ -28,7 +40,7 @@ const AxiosInterceptor = (props: Props) => {
     }
   );
 
-  // token refresh 추가 예정
+  // token refresh
   instance.interceptors.response.use(
     async (response) => response,
     async (error) => {
@@ -37,18 +49,35 @@ const AxiosInterceptor = (props: Props) => {
         response: { data },
       } = error;
       const res = data.error;
+      const originalRequest = config;
+
+      // 토큰 만료시 refresh 요청
       if (res.status_code === 403 && res.details.code === "token_not_valid") {
-        const originRequest = config;
-        authAPI
-          .refresh({ refresh: localStorage.getItem("refresh_token") })
-          .then((data) => {
-            localStorage.setItem("access_token", data.data.access);
-            return instance.request(originRequest);
-          })
-          .catch(() => {
-            window.location.href = "/sign";
+        if (!isTokenRefreshing) {
+          isTokenRefreshing = true;
+          await authAPI
+            .refresh({ refresh: localStorage.getItem("refresh_token") })
+            .then((data) => {
+              localStorage.setItem("access_token", data.data.access);
+              isTokenRefreshing = false;
+              // 쌓인 요청 새 토큰으로 실행
+              onTokenRefreshed(data.data.access);
+            })
+            .catch(() => {
+              window.location.href = "/sign";
+            });
+        }
+
+        // token 재발급 될 동안 쌓인 요청 저장
+        const retryOriginalRequest = new Promise((resolve) => {
+          addRefreshSubscriber((accessToken: string) => {
+            originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+            resolve(axios(originalRequest));
           });
+        });
+        return retryOriginalRequest;
       }
+      return Promise.reject(error);
     }
   );
 
