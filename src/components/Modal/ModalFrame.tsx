@@ -4,8 +4,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FlexTextBox } from "components/common";
 import FlexBox from "../common/FlexBox";
 import FlexButton from "../common/FlexButton";
+import Portal from "./Portal";
 
-interface Props {
+interface AreaElement {
   children: React.ReactNode;
   modalMainColor?: string;
   width: string;
@@ -15,6 +16,8 @@ interface Props {
   btnTitle2: string;
   subTitle?: string;
   background?: string;
+  visible: boolean;
+  onClose: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
 const defaultProps = {
@@ -23,7 +26,32 @@ const defaultProps = {
   background: COLOR.bg.default,
 };
 
-const ModalFrame = (props: Props) => {
+const ModalWrapper = styled.div<{ visible: boolean }>`
+  box-sizing: border-box;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
+`;
+
+const ModalOverlay = styled.div<{ visible: boolean }>`
+  box-sizing: border-box;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: ${COLOR.bg.modalShadow};
+  z-index: 999;
+`;
+
+const ModalFrame = (props: AreaElement) => {
   const {
     children,
     modalMainColor,
@@ -34,64 +62,94 @@ const ModalFrame = (props: Props) => {
     btnTitle2,
     subTitle,
     background,
+    visible,
+    onClose,
   } = props;
 
-  return (
-    <FlexBox
-      background={background}
-      width={width}
-      height={height}
-      column
-      padding="3rem"
-      borderRadius="1.25rem"
-      position="absolute"
-      right="50%"
-      bottom="50%"
-      transform="translate(-50%, -50%)"
-    >
-      <FlexBox
-        width="100%"
-        justifyContent="space-between"
-        alignItems="center"
-        margin="0 0 2rem 0"
-      >
-        <FlexBox>
-          <FlexTextBox
-            color={modalMainColor}
-            fontSize="1.875rem"
-            fontFamily="Pr-Bold"
-          >
-            {title}
-          </FlexTextBox>
-          {subTitle && (
-            <FlexTextBox
-              color={COLOR.white}
-              fontSize="1.875rem"
-              fontFamily="Pr-Bold"
-              margin="0 0 0 1rem"
-            >
-              {subTitle}
-            </FlexTextBox>
-          )}
-        </FlexBox>
+  const closable = true;
+  const maskClosable = true;
 
-        <AiOutlineClose color={COLOR.white} size="28" />
-      </FlexBox>
-      <FlexBox>{children}</FlexBox>
-      <FlexBox float="right">
-        <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
-          {btnTitle1}
-        </FlexButton>
-        <FlexButton
-          margin="0 0 0 1rem"
-          color={modalMainColor}
-          fontSize="1.56rem"
-          backgroundColor={COLOR.bg.primary}
+  const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose(e);
+    }
+  };
+
+  const close = (e: React.MouseEvent<HTMLElement>) => {
+    if (onClose) {
+      onClose(e);
+    }
+  };
+
+  return (
+    <Portal elementId="modal-root">
+      <ModalOverlay visible={visible}>
+        <ModalWrapper
+          visible={visible}
+          className="modal-wrapper"
+          onClick={maskClosable ? onMaskClick : null}
         >
-          {btnTitle2}
-        </FlexButton>
-      </FlexBox>
-    </FlexBox>
+          <FlexBox
+            background={background}
+            width={width}
+            height={height}
+            column
+            padding="3rem"
+            borderRadius="1.25rem"
+            position="relative"
+            top="50%"
+            left="25%"
+            transform="translateY(-50%)"
+          >
+            <FlexBox
+              width="100%"
+              justifyContent="space-between"
+              alignItems="center"
+              margin="0 0 2rem 0"
+            >
+              <FlexBox>
+                <FlexTextBox
+                  color={modalMainColor}
+                  fontSize="1.875rem"
+                  fontFamily="Pr-Bold"
+                >
+                  {title}
+                </FlexTextBox>
+                {subTitle && (
+                  <FlexTextBox
+                    color={COLOR.white}
+                    fontSize="1.875rem"
+                    fontFamily="Pr-Bold"
+                    margin="0 0 0 1rem"
+                  >
+                    {subTitle}
+                  </FlexTextBox>
+                )}
+              </FlexBox>
+              {closable && (
+                <button onClick={close}>
+                  {closable && <AiOutlineClose color={COLOR.white} size="28" />}
+                </button>
+              )}
+            </FlexBox>
+            <FlexBox>{children}</FlexBox>
+            <FlexBox position="absolute" top="18rem" left="25rem" bottom="0">
+              <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
+                {btnTitle1}
+              </FlexButton>
+              <FlexButton
+                margin="0 0 0 1rem"
+                color={modalMainColor}
+                fontSize="1.56rem"
+                backgroundColor={COLOR.bg.primary}
+              >
+                {btnTitle2}
+              </FlexButton>
+            </FlexBox>
+          </FlexBox>
+        </ModalWrapper>
+      </ModalOverlay>
+    </Portal>
   );
 };
 ModalFrame.defaultProps = defaultProps;
