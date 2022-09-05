@@ -2,7 +2,9 @@ import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
+import { useState } from "react";
 import Portal from "./Portal";
+import CloseWarningModal from "./CloseWarningModal";
 
 interface AreaElement {
   children: React.ReactNode;
@@ -67,8 +69,14 @@ const ModalFrame = (props: AreaElement) => {
     subTitle,
   } = props;
 
-  const closable = true;
-  const maskClosable = true;
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
@@ -81,6 +89,17 @@ const ModalFrame = (props: AreaElement) => {
       onClose(e);
     }
   };
+
+  const onClickSubBtn = (e: React.MouseEvent<HTMLElement>) => {
+    if (btnTitle1 === "취소하기") {
+      openModal();
+    } else if (btnTitle1 === "다시 작성하러 가기") {
+      close(e);
+    }
+  };
+
+  const closable = true;
+  const maskClosable = true;
 
   return (
     <Portal elementId="modal-root">
@@ -139,7 +158,11 @@ const ModalFrame = (props: AreaElement) => {
               left={type === "warning" ? "23rem" : "27rem"}
               top={type === "warning" ? "7rem" : "1rem"}
             >
-              <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
+              <FlexButton
+                fontSize="1.56rem"
+                backgroundColor={COLOR.bg.default}
+                onClick={onClickSubBtn}
+              >
                 {btnTitle1}
               </FlexButton>
               <FlexButton
@@ -152,6 +175,9 @@ const ModalFrame = (props: AreaElement) => {
               </FlexButton>
             </FlexBox>
           </FlexBox>
+          {modalVisible && (
+            <CloseWarningModal onClose={closeModal} visible={modalVisible} />
+          )}
         </ModalWrapper>
       </ModalOverlay>
     </Portal>
