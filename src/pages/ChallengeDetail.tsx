@@ -19,7 +19,7 @@ const ChallengeDetail = () => {
       </FlexBox>
       <FlexBox column alignItems="center">
         <CertificationBanner title={data?.title} isProved={data?.is_proved} />
-        <SimilarChallengeBanner />
+        <SimilarChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
       </FlexBox>
     </FlexBox>
   );

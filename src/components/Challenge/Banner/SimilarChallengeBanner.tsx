@@ -1,6 +1,10 @@
 import { ChallengeBanner } from "components/Challenge";
 import SimilarChallengeList from "../SimilarChallengeList";
 
+interface Props {
+  title: string;
+}
+
 const dummyChallenges = [
   {
     id: 1,
@@ -28,13 +32,10 @@ const dummyChallenges = [
   },
 ];
 
-const script = {
-  title: "🧐 비슷한 챌린지가 있어요!",
-};
-
-const SimilarChallengeBanner = () => {
+const SimilarChallengeBanner = (props: Props) => {
+  const { title } = props;
   return (
-    <ChallengeBanner title={script.title}>
+    <ChallengeBanner title={title}>
       <SimilarChallengeList challenges={dummyChallenges} />
     </ChallengeBanner>
   );
