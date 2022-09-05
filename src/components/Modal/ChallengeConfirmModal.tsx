@@ -9,6 +9,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "components/Tooltip/Tooltip";
 import ModalFrame from "./ModalFrame";
 
+interface Props {
+  visible: boolean;
+  onClose: (e: React.MouseEvent<HTMLElement>) => void;
+}
+
 const dummyData = {
   id: "1",
   avatar: "images/man.png",
@@ -53,7 +58,7 @@ const RemoveBtn = styled(CloseIcon)`
   color: white;
 `;
 
-const ChallengeConfirmModal = () => {
+const ChallengeConfirmModal = ({ onClose, visible }: Props) => {
   const [imageList, setimageList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -91,9 +96,9 @@ const ChallengeConfirmModal = () => {
       subTitle="챌린지 인증하기"
       btnTitle1="취소하기"
       btnTitle2="작성하기"
-      // 수정필요
-      onClose={undefined}
-      visible={undefined}
+      onClose={onClose}
+      visible={visible}
+      type="writing"
     >
       <BannerBox position="relative" theme="transparent" padding="0" margin="0">
         <FlexBox
@@ -159,44 +164,57 @@ const ChallengeConfirmModal = () => {
         <FlexBox
           background="transparent"
           margin="2rem 2.5rem 1.5rem 2.5rem"
-          position="relative"
           height="2rem"
         >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            이 글을 피스에도 같이 올릴까요?
-          </FlexTextBox>
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
+          <FlexBox
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+              이 글을 피스에도 같이 올릴까요?
+            </FlexTextBox>
+            <FlexBox>
+              <Toggle checked={false} />
+            </FlexBox>
           </FlexBox>
         </FlexBox>
-        <FlexBox
-          background="transparent"
-          margin="1.4rem 2.5rem"
-          position="relative"
-          height="2rem"
-        >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            페이스북 공유
-          </FlexTextBox>
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
+        <FlexBox background="transparent" margin="1.4rem 2.5rem" height="2rem">
+          <FlexBox
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+              페이스북 공유
+            </FlexTextBox>
+            <FlexBox>
+              <Toggle checked={false} />
+            </FlexBox>
           </FlexBox>
         </FlexBox>
         <FlexBox
           background="transparent"
           margin="0.5rem 2.5rem 4rem 2.5rem"
-          position="relative"
           height="2rem"
         >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            인스타그램 공유
-          </FlexTextBox>
-          <Tooltip
-            text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
-            margin="0 0 0 0.5rem"
-          />
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
+          <FlexBox
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FlexBox>
+              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+                인스타그램 공유
+              </FlexTextBox>
+              <Tooltip
+                text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
+                margin="0 0 0 0.5rem"
+              />
+            </FlexBox>
+            <FlexBox>
+              <Toggle checked={false} />
+            </FlexBox>
           </FlexBox>
         </FlexBox>
       </BannerBox>

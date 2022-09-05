@@ -16,12 +16,14 @@ interface AreaElement {
   background?: string;
   visible: boolean;
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
+  type?: string;
 }
 
 const defaultProps = {
   modalMainColor: COLOR.font.primary,
   subTitle: "",
   background: COLOR.bg.default,
+  type: "warning",
 };
 
 const ModalWrapper = styled.div<{ visible: boolean }>`
@@ -62,6 +64,7 @@ const ModalFrame = (props: AreaElement) => {
     background,
     visible,
     onClose,
+    type,
   } = props;
 
   const closable = true;
@@ -131,7 +134,11 @@ const ModalFrame = (props: AreaElement) => {
               )}
             </FlexBox>
             <FlexBox>{children}</FlexBox>
-            <FlexBox position="absolute" top="18rem" left="25rem" bottom="0">
+            <FlexBox
+              position="relative"
+              left={type === "warning" ? "23rem" : "27rem"}
+              top={type === "warning" ? "7rem" : "1rem"}
+            >
               <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
                 {btnTitle1}
               </FlexButton>
