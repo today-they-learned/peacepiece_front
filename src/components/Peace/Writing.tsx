@@ -44,7 +44,12 @@ const Writing = () => {
         </TemporaryContainer>
       </ChallengeBanner>
       {modalVisible && (
-        <ChallengeConfirmModal onClose={closeModal} visible={modalVisible} />
+        <ChallengeConfirmModal
+          onClose={closeModal}
+          visible={modalVisible}
+          title="피스 글 작성하기"
+          type="writing"
+        />
       )}
     </>
   );

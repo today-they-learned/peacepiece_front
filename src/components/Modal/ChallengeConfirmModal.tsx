@@ -12,12 +12,21 @@ import ModalFrame from "./ModalFrame";
 interface Props {
   visible: boolean;
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
+  title: string;
+  type?: string;
+  subTitle?: boolean;
 }
+
+const defaultProps = {
+  type: "warning",
+  subTitle: false,
+};
 
 const dummyData = {
   id: "1",
   avatar: "images/man.png",
   userName: "홍길동",
+  subTitle: false,
 };
 
 const Avatar = styled.img`
@@ -58,7 +67,13 @@ const RemoveBtn = styled(CloseIcon)`
   color: white;
 `;
 
-const ChallengeConfirmModal = ({ onClose, visible }: Props) => {
+const ChallengeConfirmModal = ({
+  onClose,
+  visible,
+  title,
+  type,
+  subTitle,
+}: Props) => {
   const [imageList, setimageList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -92,13 +107,13 @@ const ChallengeConfirmModal = ({ onClose, visible }: Props) => {
     <ModalFrame
       width="52.25rem"
       height="auto"
-      title="일회용품 No! 다시쓰기 Yes!"
-      subTitle="챌린지 인증하기"
+      title={title}
       btnTitle1="취소하기"
       btnTitle2="작성하기"
       onClose={onClose}
       visible={visible}
-      type="writing"
+      type={type}
+      subTitle={subTitle}
     >
       <BannerBox position="relative" theme="transparent" padding="0" margin="0">
         <FlexBox
@@ -166,18 +181,20 @@ const ChallengeConfirmModal = ({ onClose, visible }: Props) => {
           margin="2rem 2.5rem 1.5rem 2.5rem"
           height="2rem"
         >
-          <FlexBox
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-          >
-            <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-              이 글을 피스에도 같이 올릴까요?
-            </FlexTextBox>
-            <FlexBox>
-              <Toggle checked={false} />
+          {subTitle && (
+            <FlexBox
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+                이 글을 피스에도 같이 올릴까요?
+              </FlexTextBox>
+              <FlexBox>
+                <Toggle checked={false} />
+              </FlexBox>
             </FlexBox>
-          </FlexBox>
+          )}
         </FlexBox>
         <FlexBox background="transparent" margin="1.4rem 2.5rem" height="2rem">
           <FlexBox
@@ -221,5 +238,6 @@ const ChallengeConfirmModal = ({ onClose, visible }: Props) => {
     </ModalFrame>
   );
 };
+ChallengeConfirmModal.defaultProps = defaultProps;
 
 export default ChallengeConfirmModal;

@@ -12,18 +12,18 @@ interface AreaElement {
   title: string;
   btnTitle1: string;
   btnTitle2: string;
-  subTitle?: string;
   background?: string;
   visible: boolean;
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
   type?: string;
+  subTitle?: boolean;
 }
 
 const defaultProps = {
   modalMainColor: COLOR.font.primary,
-  subTitle: "",
   background: COLOR.bg.default,
   type: "warning",
+  subTitle: false,
 };
 
 const ModalWrapper = styled.div<{ visible: boolean }>`
@@ -60,11 +60,11 @@ const ModalFrame = (props: AreaElement) => {
     title,
     btnTitle1,
     btnTitle2,
-    subTitle,
     background,
     visible,
     onClose,
     type,
+    subTitle,
   } = props;
 
   const closable = true;
@@ -123,7 +123,7 @@ const ModalFrame = (props: AreaElement) => {
                     fontFamily="Pr-Bold"
                     margin="0 0 0 1rem"
                   >
-                    {subTitle}
+                    챌린지 인증하기
                   </FlexTextBox>
                 )}
               </FlexBox>

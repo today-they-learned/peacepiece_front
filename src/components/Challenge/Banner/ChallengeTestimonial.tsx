@@ -9,7 +9,7 @@ import { ArticleType } from "types";
 import { ChallengeBanner } from "components/Challenge";
 import TestimonialCard from "components/Challenge/Card/TestimonialCard";
 import COLOR from "constants/color";
-import CloseWarningModal from "components/Modal/CloseWarningModal";
+import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
 
 const TemporaryContainer = styled.div`
   width: 45rem;
@@ -85,7 +85,13 @@ const ChallengeTestimonial = () => {
         <div ref={ref}>{isFetchingNextPage && "Loading more..."}</div>
       </ChallengeBanner>
       {modalVisible && (
-        <CloseWarningModal onClose={closeModal} visible={modalVisible} />
+        <ChallengeConfirmModal
+          onClose={closeModal}
+          visible={modalVisible}
+          title="일회용품 No! 다시 쓰기 Yes!"
+          type="writing"
+          subTitle
+        />
       )}
     </>
   );
