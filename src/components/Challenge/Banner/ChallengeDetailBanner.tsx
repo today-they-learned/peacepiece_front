@@ -11,12 +11,14 @@ import { DidItIcon } from "components/Challenge";
 const Thumbnail = styled.img`
   width: 47.5rem;
   height: 16.5rem;
+  object-fit: cover;
   margin: 1rem 0 0 1.3rem;
 `;
 
 const Img = styled.img`
   width: 13rem;
   height: 9.3rem;
+  object-fit: cover;
   margin: 1rem;
 `;
 

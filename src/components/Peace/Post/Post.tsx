@@ -26,6 +26,7 @@ const Avatar = styled.img<{ size: string }>`
 const Image = styled.img`
   width: 10rem;
   height: 6.4rem;
+  object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
 `;
@@ -33,6 +34,7 @@ const Image = styled.img`
 const LastImage = styled.img`
   width: 10rem;
   height: 6.4rem;
+  object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
   opacity: 0.3;
