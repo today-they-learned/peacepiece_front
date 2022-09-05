@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /** @jsxImportSource @emotion/react */
 import COLOR from "constants/color";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -11,6 +12,7 @@ interface Props {
   padding?: string;
   fontSize?: string;
   background?: string;
+  onChange?: (arg: any) => void;
 }
 
 const defaultProps = {
@@ -20,6 +22,7 @@ const defaultProps = {
   padding: "1.25rem",
   fontSize: "1.25rem",
   background: COLOR.bg.secondary,
+  onChange: Function,
 };
 
 const Textarea = ({
@@ -30,12 +33,14 @@ const Textarea = ({
   padding,
   fontSize,
   background,
+  onChange,
 }: Props) => {
   return (
     <TextareaAutosize
       aria-label="empty textarea"
       placeholder={text}
       minRows={minRow}
+      onChange={onChange}
       css={css`
         width: ${width} !important;
         border-radius: 1.25rem !important;

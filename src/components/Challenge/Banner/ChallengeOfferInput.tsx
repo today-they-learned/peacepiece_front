@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
+import Input from "components/Form/Textarea";
 import COLOR from "constants/color";
-import styled from "styled-components";
 import ChallengeBanner from "../ChallengeBanner";
 
 const script = {
@@ -9,24 +10,16 @@ const script = {
   text: "어떤 챌린지가 PeacePiece에서 열리면 좋을까요? 다양한 생각을 공유해주세요",
 };
 
-const Textarea = styled.textarea`
-  width: 72rem !important;
-  height: 15rem !important;
-  border-radius: 1.25rem !important;
-  border: none;
-  padding: 1.25rem;
-  font-size: 1rem;
-  font-family: "Pr-Bold";
-  color: white !important;
-  background-color: ${COLOR.bg.secondary} !important;
-  margin: 1rem 0 0 0;
-`;
-
 const ChallengeOfferInput = () => {
-  const [cnt, setCnt] = useState(0);
+  const [inputValue, setInputValue] = useState("");
   return (
     <ChallengeBanner title={script.title} width="76rem">
-      <Textarea id="text" onChange={(e) => setCnt(e.target.value.length)} />
+      <Input
+        width="72rem"
+        text={script.text}
+        minRow={6}
+        onChange={(event: any) => setInputValue(event.target.value)}
+      />
       <FlexBox
         justifyContent="space-between"
         alignItems="center"
@@ -38,10 +31,10 @@ const ChallengeOfferInput = () => {
           fontFamily="Pr-Bold"
           color={COLOR.font.disabled}
         >
-          글자 수 {cnt} / 100
+          글자 수 {inputValue.length} / 100
         </FlexTextBox>
         <FlexButton
-          fontSize="1.25rem"
+          fontSize="1.1rem"
           fontFamily="Pr-Bold"
           backgroundColor={COLOR.bg.banner}
           color={COLOR.font.default}
