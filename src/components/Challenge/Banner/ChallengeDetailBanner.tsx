@@ -40,7 +40,7 @@ interface Props {
 }
 
 const ChallengeDetailBanner = ({ challenge }: Props) => {
-  const len = challenge.images.length;
+  const len = challenge?.images?.length;
   const lenq = len / 3;
   const lenr = len % 3;
   const loopImg = () => {

@@ -19,7 +19,7 @@ const Container = styled.div<{ margin: string }>`
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
-  padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+  padding: 0.7rem 1.5rem 0.7rem 1.5rem;
   margin: ${(props) => props.margin};
 `;
 
@@ -35,7 +35,7 @@ const Content = styled.div`
   font-size: 1rem;
   font-family: "Pr-SemiBold";
   color: ${COLOR.white};
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 `;
 
 const LikeContainer = styled.div`
