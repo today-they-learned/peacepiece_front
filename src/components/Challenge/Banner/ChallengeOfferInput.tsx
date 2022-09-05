@@ -18,6 +18,7 @@ const ChallengeOfferInput = () => {
         width="72rem"
         text={script.text}
         minRow={6}
+        maxLength={100}
         onChange={(event: any) => setInputValue(event.target.value)}
       />
       <FlexBox

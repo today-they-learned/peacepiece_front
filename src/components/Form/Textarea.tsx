@@ -12,6 +12,7 @@ interface Props {
   padding?: string;
   fontSize?: string;
   background?: string;
+  maxLength?: number;
   onChange?: (arg: any) => void;
 }
 
@@ -22,6 +23,7 @@ const defaultProps = {
   padding: "1.25rem",
   fontSize: "1.25rem",
   background: COLOR.bg.secondary,
+  maxLength: 900000,
   onChange: Function,
 };
 
@@ -33,6 +35,7 @@ const Textarea = ({
   padding,
   fontSize,
   background,
+  maxLength,
   onChange,
 }: Props) => {
   return (
@@ -41,6 +44,7 @@ const Textarea = ({
       placeholder={text}
       minRows={minRow}
       onChange={onChange}
+      maxLength={maxLength}
       css={css`
         width: ${width} !important;
         border-radius: 1.25rem !important;
