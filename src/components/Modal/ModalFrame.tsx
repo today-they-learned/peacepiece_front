@@ -2,9 +2,7 @@ import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
-import { useState } from "react";
 import Portal from "./Portal";
-import CloseWarningModal from "./CloseWarningModal";
 
 interface AreaElement {
   children: React.ReactNode;
@@ -69,15 +67,6 @@ const ModalFrame = (props: AreaElement) => {
     subTitle,
   } = props;
 
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const openModal = () => {
-    setModalVisible(true);
-  };
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
       onClose(e);
@@ -87,14 +76,6 @@ const ModalFrame = (props: AreaElement) => {
   const close = (e: React.MouseEvent<HTMLElement>) => {
     if (onClose) {
       onClose(e);
-    }
-  };
-
-  const onClickSubBtn = (e: React.MouseEvent<HTMLElement>) => {
-    if (btnTitle1 === "취소하기") {
-      openModal();
-    } else if (btnTitle1 === "다시 작성하러 가기") {
-      close(e);
     }
   };
 
@@ -161,7 +142,7 @@ const ModalFrame = (props: AreaElement) => {
               <FlexButton
                 fontSize="1.56rem"
                 backgroundColor={COLOR.bg.default}
-                onClick={onClickSubBtn}
+                onClick={onClose}
               >
                 {btnTitle1}
               </FlexButton>
@@ -175,9 +156,6 @@ const ModalFrame = (props: AreaElement) => {
               </FlexButton>
             </FlexBox>
           </FlexBox>
-          {modalVisible && (
-            <CloseWarningModal onClose={closeModal} visible={modalVisible} />
-          )}
         </ModalWrapper>
       </ModalOverlay>
     </Portal>
