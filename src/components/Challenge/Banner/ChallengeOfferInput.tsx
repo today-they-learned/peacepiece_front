@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
 import Input from "components/Form/Textarea";
@@ -19,7 +18,9 @@ const ChallengeOfferInput = () => {
         text={script.text}
         minRow={6}
         maxLength={100}
-        onChange={(event: any) => setInputValue(event.target.value)}
+        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setInputValue(event.target.value)
+        }
       />
       <FlexBox
         justifyContent="space-between"

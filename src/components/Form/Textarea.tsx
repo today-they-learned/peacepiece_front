@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /** @jsxImportSource @emotion/react */
 import COLOR from "constants/color";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
@@ -13,7 +12,7 @@ interface Props {
   fontSize?: string;
   background?: string;
   maxLength?: number;
-  onChange?: (arg: any) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const defaultProps = {
