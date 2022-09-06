@@ -5,9 +5,9 @@ import ChallengeOfferCard from "./Card/ChallengeOfferCard";
 interface Props {
   challenges: Array<{
     id: number;
-    userName: string;
+    suggester: string;
     content: string;
-    like: number;
+    feedbackCount: number;
     clicked: boolean;
   }>;
 }
@@ -20,9 +20,9 @@ const AllChallengeOfferList = (props: Props) => {
         return (
           <ChallengeOfferCard
             key={challenge.id}
-            userName={challenge.userName}
+            suggester={challenge.suggester}
             content={challenge.content}
-            like={challenge.like}
+            feedbackCount={challenge.feedbackCount}
             clicked={challenge.clicked}
           />
         );

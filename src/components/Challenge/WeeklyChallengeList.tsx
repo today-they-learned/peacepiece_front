@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { FlexTextBox, FlexBox } from "components/common";
 import WeeklyChallengeCard from "./Card/WeeklyChallengeCard";
 
-const dummyData = [
+const dummyChallenges = [
   {
     title: "일회용컵 No! 텀블러 Yes!",
     description:
@@ -90,34 +90,35 @@ const Page = styled(Paper)`
 
 const arrLoop = () => {
   const newArr = [];
-  for (let i = 0; i <= dummyData.length - 1; i += 2) {
+  for (let i = 0; i <= dummyChallenges.length - 1; i += 2) {
     newArr.push(
       <Page>
-        {i === dummyData.length - 1 && dummyData.length % 2 === 1 ? (
+        {i === dummyChallenges.length - 1 &&
+        dummyChallenges.length % 2 === 1 ? (
           <FlexBox margin="1rem 0.5rem 0 1rem" background={COLOR.bg.primary}>
             <WeeklyChallengeCard
-              title={dummyData[i].title}
-              description={dummyData[i].description}
-              proverCnt={dummyData[i].proverCnt}
-              point={dummyData[i].point}
+              title={dummyChallenges[i].title}
+              description={dummyChallenges[i].description}
+              proverCnt={dummyChallenges[i].proverCnt}
+              point={dummyChallenges[i].point}
             />
           </FlexBox>
         ) : (
           <>
             <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
               <WeeklyChallengeCard
-                title={dummyData[i].title}
-                description={dummyData[i].description}
-                proverCnt={dummyData[i].proverCnt}
-                point={dummyData[i].point}
+                title={dummyChallenges[i].title}
+                description={dummyChallenges[i].description}
+                proverCnt={dummyChallenges[i].proverCnt}
+                point={dummyChallenges[i].point}
               />
             </FlexBox>
             <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>
               <WeeklyChallengeCard
-                title={dummyData[i + 1].title}
-                description={dummyData[i + 1].description}
-                proverCnt={dummyData[i + 1].proverCnt}
-                point={dummyData[i].point}
+                title={dummyChallenges[i + 1].title}
+                description={dummyChallenges[i + 1].description}
+                proverCnt={dummyChallenges[i + 1].proverCnt}
+                point={dummyChallenges[i].point}
               />
             </FlexBox>
           </>
@@ -130,15 +131,15 @@ const arrLoop = () => {
 
 const arrLoopMobile = () => {
   const newArr = [];
-  for (let i = 0; i < dummyData.length; i += 1) {
+  for (let i = 0; i < dummyChallenges.length; i += 1) {
     newArr.push(
       <Page>
         <FlexBox margin="0 0.5rem 0 2rem">
           <WeeklyChallengeCard
-            title={dummyData[i].title}
-            description={dummyData[i].description}
-            proverCnt={dummyData[i].proverCnt}
-            point={dummyData[i].point}
+            title={dummyChallenges[i].title}
+            description={dummyChallenges[i].description}
+            proverCnt={dummyChallenges[i].proverCnt}
+            point={dummyChallenges[i].point}
           />
         </FlexBox>
       </Page>
