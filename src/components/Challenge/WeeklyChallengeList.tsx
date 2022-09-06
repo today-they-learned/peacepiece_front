@@ -155,7 +155,7 @@ const WeeklyChallengeList = () => {
 
   return (
     <Container>
-      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 0.8rem">
+      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 2rem">
         📝 이번주 챌린지
       </FlexTextBox>
       <CarouselLib

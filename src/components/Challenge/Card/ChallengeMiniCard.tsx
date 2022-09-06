@@ -6,11 +6,11 @@ import ChallengeFigure from "components/Challenge/ChallengeFigure";
 
 interface Props {
   title: string;
-  content: string;
+  description: string;
 }
 
 const ChallengeMiniCard = (props: Props) => {
-  const { title, content } = props;
+  const { title, description } = props;
   return (
     <BannerBox
       width="21.4rem"
@@ -29,7 +29,7 @@ const ChallengeMiniCard = (props: Props) => {
 
       <ChallengeFigure proverCnt={10} point={100} />
       <FlexTextBox fontSize="1rem" margin="0.4rem 0 0 0">
-        {content}
+        {description}
       </FlexTextBox>
     </BannerBox>
   );
