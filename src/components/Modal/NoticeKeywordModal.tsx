@@ -5,6 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import FlexBox from "components/common/FlexBox";
 import AutoComplete from "components/Form/AutoComplete";
 import { Icon, Label } from "semantic-ui-react";
+import { FlexTextBox } from "components/common";
 
 interface Props {
   onClick: () => void;
@@ -59,10 +60,11 @@ const NoticKeywordModal = ({ onClick }: Props) => {
         style={{ position: "absolute", right: 0, cursor: "pointer" }}
         onClick={onClick}
       />
+      <FlexTextBox fontSize="1.5rem">알림 키워드</FlexTextBox>
       <FlexBox wrap="wrap" margin="2rem 0 1rem 0">
         {insertTags()}
       </FlexBox>
-      <FlexBox>
+      <FlexBox margin="0 0 0 18rem">
         <AutoComplete />
       </FlexBox>
     </FlexBox>
