@@ -27,7 +27,7 @@ const ChallengeMiniCard = (props: Props) => {
         {title}
       </FlexTextBox>
 
-      <ChallengeFigure person={10} point={100} />
+      <ChallengeFigure proverCnt={10} point={100} />
       <FlexTextBox fontSize="1rem" margin="0.4rem 0 0 0">
         {content}
       </FlexTextBox>
