@@ -8,7 +8,7 @@ import { FlexBox } from "components/common";
 
 const Challenge = () => {
   return (
-    <FlexBox justifyContent="center" height="100%">
+    <FlexBox justifyContent="center" height="100%" margin="2rem 0 0 0">
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <TodayChallengeList />
         <WeeklyChallengeList />
