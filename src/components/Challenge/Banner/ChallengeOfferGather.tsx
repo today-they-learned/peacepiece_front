@@ -40,6 +40,7 @@ const ChallengeOfferGather = () => {
   return (
     <ChallengeBanner
       width="52.25rem"
+      padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
       url="/challenge/offer"
     >

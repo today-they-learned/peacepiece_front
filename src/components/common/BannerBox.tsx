@@ -66,6 +66,8 @@ const BannerBox = (props: Props) => {
         border-radius: ${borderRadius};
         background: ${themeColor};
         position: ${position};
+        display: flex;
+        flex-direction: column;
       `}
     >
       {children}

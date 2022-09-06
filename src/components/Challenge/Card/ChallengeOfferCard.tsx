@@ -11,7 +11,7 @@ interface Props {
 }
 
 const defaultProps = {
-  margin: "0.5rem 1rem 0.5rem 1rem",
+  margin: "0.5rem 1rem 0.5rem 0rem",
 };
 
 const Container = styled.div<{ margin: string }>`
