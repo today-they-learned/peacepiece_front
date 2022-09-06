@@ -2,7 +2,7 @@ import { FlexBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { HiOutlineSearch } from "react-icons/hi";
-import ChallengeBanner from "../ChallengeBanner";
+import ChallengeBanner from "../Challenge/ChallengeBanner";
 
 const script = {
   title: "글 검색하기",

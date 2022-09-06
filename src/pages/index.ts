@@ -7,3 +7,5 @@ export { default as EndedChallenge } from "./EndedChallenge";
 export { default as ChallengeDetail } from "./ChallengeDetail";
 export { default as Piece } from "./Piece";
 export { default as Test } from "./Test";
+export { default as PieceSearch } from "./PieceSearch";
+export { default as PieceDetail } from "./PieceDetail";
