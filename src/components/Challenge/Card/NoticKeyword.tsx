@@ -5,8 +5,28 @@ import BannerBox from "components/common/BannerBox";
 import Tooltip from "components/Tooltip/Tooltip";
 import FlexButton from "components/common/FlexButton";
 import FlexBox from "components/common/FlexBox";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import NoticKeywordModal from "components/Modal/NoticeKeywordModal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "40rem",
+  height: "25rem",
+  borderRadius: "1rem",
+  bgcolor: COLOR.bg.default,
+  color: "#efefef",
+  boxShadow: 24,
+  p: 4,
+};
 
 const NoticKeyword = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [keywords] = useState([
     "일회용품_안_쓰기",
     "텀블러",
@@ -42,9 +62,20 @@ const NoticKeyword = () => {
           margin="0 0 0 14rem"
           fontSize="0.9rem"
           fontFamily="Pr-Regular"
+          onClick={handleOpen}
         >
           수정하기{">"}
         </FlexButton>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <NoticKeywordModal onClick={handleClose} />
+          </Box>
+        </Modal>
         <FlexBox margin="0.5rem" wrap="wrap">
           {keywords.map((keyword: string) => (
             <FlexTextBox
