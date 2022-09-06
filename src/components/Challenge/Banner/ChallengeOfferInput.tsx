@@ -12,9 +12,10 @@ const script = {
 const ChallengeOfferInput = () => {
   const [inputValue, setInputValue] = useState("");
   return (
-    <ChallengeBanner title={script.title} width="76rem">
+    <ChallengeBanner title={script.title} width="76rem" padding="2rem">
       <Input
         width="72rem"
+        margin="1rem 0 0 0"
         text={script.text}
         minRow={6}
         maxLength={100}

@@ -89,7 +89,7 @@ const TodayChallengeList = () => {
       height="30rem"
       borderRadius="1.25rem"
       background={COLOR.bg.primary}
-      padding="1.5rem 1.5rem 0.5rem 2rem"
+      padding="1.5rem 2.5rem 0rem 2.5rem"
       margin="0 0 3rem 0"
     >
       <ChallengeTitle
