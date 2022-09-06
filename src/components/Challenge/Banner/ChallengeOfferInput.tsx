@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
 import Input from "components/Form/Textarea";
 import COLOR from "constants/color";
@@ -9,9 +10,18 @@ const script = {
 };
 
 const ChallengeOfferInput = () => {
+  const [inputValue, setInputValue] = useState("");
   return (
     <ChallengeBanner title={script.title} width="76rem">
-      <Input width="72rem" text={script.text} minRow={6} margin="1rem 0 0 0" />
+      <Input
+        width="72rem"
+        text={script.text}
+        minRow={6}
+        maxLength={100}
+        onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+          setInputValue(event.target.value)
+        }
+      />
       <FlexBox
         justifyContent="space-between"
         alignItems="center"
@@ -23,10 +33,10 @@ const ChallengeOfferInput = () => {
           fontFamily="Pr-Bold"
           color={COLOR.font.disabled}
         >
-          글자 수 10 / 100
+          글자 수 {inputValue.length} / 100
         </FlexTextBox>
         <FlexButton
-          fontSize="1.25rem"
+          fontSize="1.1rem"
           fontFamily="Pr-Bold"
           backgroundColor={COLOR.bg.banner}
           color={COLOR.font.default}

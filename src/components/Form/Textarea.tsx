@@ -11,6 +11,8 @@ interface Props {
   padding?: string;
   fontSize?: string;
   background?: string;
+  maxLength?: number;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const defaultProps = {
@@ -20,6 +22,8 @@ const defaultProps = {
   padding: "1.25rem",
   fontSize: "1.25rem",
   background: COLOR.bg.secondary,
+  maxLength: 900000,
+  onChange: Function,
 };
 
 const Textarea = ({
@@ -30,12 +34,16 @@ const Textarea = ({
   padding,
   fontSize,
   background,
+  maxLength,
+  onChange,
 }: Props) => {
   return (
     <TextareaAutosize
       aria-label="empty textarea"
       placeholder={text}
       minRows={minRow}
+      onChange={onChange}
+      maxLength={maxLength}
       css={css`
         width: ${width} !important;
         border-radius: 1.25rem !important;
