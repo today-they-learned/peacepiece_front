@@ -22,7 +22,7 @@ const AllChallengeOffer = () => {
   return (
     <ChallengeBanner title={script.title} width="76rem">
       {isFetched &&
-        data.pages.map((page, index) => {
+        data?.pages.map((page, index) => {
           return (
             <AllChallengeOfferList
               key={page?.data.current_page || index}
