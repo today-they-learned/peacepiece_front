@@ -9,3 +9,7 @@ export { default as Piece } from "./Piece";
 export { default as Test } from "./Test";
 export { default as PieceSearch } from "./PieceSearch";
 export { default as PieceDetail } from "./PieceDetail";
+export { default as Tos } from "./Tos";
+export { default as Privacy } from "./Privacy";
+export { default as ServiceIntro } from "./ServiceIntro";
+export { default as CrewIntro } from "./CrewIntro";
