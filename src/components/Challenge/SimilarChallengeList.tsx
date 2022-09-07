@@ -5,9 +5,9 @@ interface Props {
   challenges: Array<{
     id: number;
     title: string;
-    person: number;
+    proverCnt: number;
     point: number;
-    content: string;
+    description: string;
   }>;
 }
 
@@ -20,7 +20,7 @@ const SimilarChallengeList = (props: Props) => {
           <ChallengeMiniCard
             key={challenge.id}
             title={challenge.title}
-            content={challenge.content}
+            description={challenge.description}
           />
         );
       })}

@@ -4,7 +4,7 @@ import { FlexBox, FlexTextBox } from "components/common";
 import { AiOutlineUser } from "react-icons/ai";
 
 interface Props {
-  person: number;
+  proverCnt: number;
   point: number;
   background?: string;
 }
@@ -21,7 +21,7 @@ const Person = styled(AiOutlineUser)`
 `;
 
 const ChallengeFigure = (props: Props) => {
-  const { person, point, background } = props;
+  const { proverCnt, point, background } = props;
   return (
     <FlexBox margin="0 1.2rem 0 0" background={background}>
       <FlexBox margin="0 1rem 0 0" background={background}>
@@ -31,7 +31,7 @@ const ChallengeFigure = (props: Props) => {
           fontFamily="Pr-Medium"
           color={COLOR.font.secondary}
         >
-          {person}명
+          {proverCnt}명
         </FlexTextBox>
       </FlexBox>
       <FlexTextBox

@@ -2,11 +2,11 @@ import { ChallengeBanner } from "components/Challenge";
 import EndedChallengeList from "components/Challenge/EndedChallengeList";
 
 const dummyChallenges = [
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", person: 10, point: 100 },
+  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
+  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
+  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
+  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
+  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
 ];
 
 const script = {

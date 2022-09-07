@@ -15,9 +15,9 @@ const AllChallengeOfferList = (props: Props) => {
         return (
           <ChallengeOfferCard
             key={suggestion.id}
-            userName={suggestion.suggester.username}
+            suggester={suggestion.suggester.username}
             content={suggestion.content}
-            like={suggestion.feedback_count}
+            feedbackCount={suggestion.feedback_count}
             clicked={suggestion.is_feedbacked}
           />
         );

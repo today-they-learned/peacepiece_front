@@ -27,15 +27,15 @@ const ChallengeOfferInput = () => {
   const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
 
   return (
-    <ChallengeBanner title={script.title} width="76rem">
+    <ChallengeBanner title={script.title} width="76rem" padding="2rem">
       <Textarea
         value={value}
         onChange={onChangeValue}
         width="72rem"
+        margin="1rem 0 0 0"
         text={script.text}
         minRow={6}
         maxLength={100}
-        margin="1rem 0 0 0"
       />
       <FlexBox
         justifyContent="space-between"

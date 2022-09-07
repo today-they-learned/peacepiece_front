@@ -2,6 +2,7 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeType } from "types";
+import { FlexBox } from "components/common";
 import { ChallengeCard } from "./Card";
 import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
@@ -59,15 +60,6 @@ const dummyChallenges: ChallengeType[] = [
   },
 ];
 
-const Container = styled.div`
-  width: 52.25rem;
-  height: 30rem;
-  border-radius: 1.25rem;
-  background-color: ${COLOR.bg.primary};
-  padding: 1.5rem 1rem 0.5rem 1rem;
-  margin-bottom: 3rem;
-`;
-
 const CardContainer = styled.div`
   width: 100%;
   height: 20rem;
@@ -75,7 +67,6 @@ const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
-  gap: 2rem;
 `;
 
 const TodayChallengeList = () => {
@@ -92,7 +83,15 @@ const TodayChallengeList = () => {
     ];
 
   return (
-    <Container>
+    <FlexBox
+      column
+      width="52.25rem"
+      height="30rem"
+      borderRadius="1.25rem"
+      background={COLOR.bg.primary}
+      padding="1.5rem 2.5rem 0rem 2.5rem"
+      margin="0 0 3rem 0"
+    >
       <ChallengeTitle
         title={randomTitle}
         toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
@@ -108,7 +107,7 @@ const TodayChallengeList = () => {
           </TodayChallengeCardWrapper>
         ))}
       </CardContainer>
-    </Container>
+    </FlexBox>
   );
 };
 
