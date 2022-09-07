@@ -12,7 +12,8 @@ interface Props {
   fontSize?: string;
   background?: string;
   maxLength?: number;
-  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
 }
 
 const defaultProps = {
@@ -23,26 +24,31 @@ const defaultProps = {
   fontSize: "1.25rem",
   background: COLOR.bg.secondary,
   maxLength: 900000,
-  onChange: Function,
 };
 
-const Textarea = ({
-  text,
-  width,
-  minRow,
-  margin,
-  padding,
-  fontSize,
-  background,
-  maxLength,
-  onChange,
-}: Props) => {
+const Textarea = (props: Props) => {
+  const {
+    text,
+    width,
+    minRow,
+    margin,
+    padding,
+    fontSize,
+    background,
+    maxLength,
+    value,
+    onChange,
+  } = props;
+
+  // 글자수 제한 props로 길이 받아서 처리
+
   return (
     <TextareaAutosize
+      value={value}
+      onChange={onChange}
       aria-label="empty textarea"
       placeholder={text}
       minRows={minRow}
-      onChange={onChange}
       maxLength={maxLength}
       css={css`
         width: ${width} !important;
@@ -54,6 +60,7 @@ const Textarea = ({
         color: white !important;
         background-color: ${background} !important;
         margin: ${margin};
+        resize: none;
       `}
     />
   );

@@ -3,6 +3,7 @@ import { css } from "@emotion/react";
 
 interface Props {
   children: React.ReactNode;
+  type?: "submit" | "reset" | "button" | undefined;
   margin?: string;
   borderRadius?: string;
   fontSize?: string;
@@ -17,6 +18,7 @@ interface Props {
 }
 
 const defaultProps = {
+  type: "button",
   margin: "0",
   fontFamily: "Pr-SemiBold",
   borderRadius: "0.62rem",
@@ -33,6 +35,7 @@ const defaultProps = {
 const FlexButton = (props: Props) => {
   const {
     children,
+    type,
     margin,
     borderRadius,
     fontSize,
@@ -48,6 +51,7 @@ const FlexButton = (props: Props) => {
 
   return (
     <button
+      type={type}
       onClick={onClick}
       css={css`
         width: auto;
