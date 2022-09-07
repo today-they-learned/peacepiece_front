@@ -1,18 +1,33 @@
 import { useState, useRef } from "react";
+import { useTextArea } from "hooks";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { BannerBox, FlexBox, FlexTextBox, Toggle } from "components/common";
-import Textarea from "components/Form/Textarea";
+import { Textarea } from "components/Form";
 import { Input } from "semantic-ui-react";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "components/Tooltip/Tooltip";
 import ModalFrame from "./ModalFrame";
 
+interface Props {
+  visible: boolean;
+  onClose: (e: React.MouseEvent<HTMLElement>) => void;
+  title: string;
+  type?: string;
+  subTitle?: boolean;
+}
+
+const defaultProps = {
+  type: "warning",
+  subTitle: false,
+};
+
 const dummyData = {
   id: "1",
   avatar: "images/man.png",
   userName: "홍길동",
+  subTitle: false,
 };
 
 const Avatar = styled.img`
@@ -53,7 +68,14 @@ const RemoveBtn = styled(CloseIcon)`
   color: white;
 `;
 
-const ChallengeConfirmModal = () => {
+const ChallengeConfirmModal = ({
+  onClose,
+  visible,
+  title,
+  type,
+  subTitle,
+}: Props) => {
+  const [content, onChangeContent] = useTextArea("");
   const [imageList, setimageList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -87,13 +109,13 @@ const ChallengeConfirmModal = () => {
     <ModalFrame
       width="52.25rem"
       height="auto"
-      title="일회용품 No! 다시쓰기 Yes!"
-      subTitle="챌린지 인증하기"
+      title={title}
       btnTitle1="취소하기"
       btnTitle2="작성하기"
-      // 수정필요
-      onClose={undefined}
-      visible={undefined}
+      onClose={onClose}
+      visible={visible}
+      type={type}
+      subTitle={subTitle}
     >
       <BannerBox position="relative" theme="transparent" padding="0" margin="0">
         <FlexBox
@@ -114,6 +136,8 @@ const ChallengeConfirmModal = () => {
             </FlexTextBox>
           </FlexBox>
           <Textarea
+            value={content}
+            onChange={onChangeContent}
             text="챌린지 인증 글을 입력해주세요"
             width="43rem"
             minRow={2}
@@ -159,49 +183,65 @@ const ChallengeConfirmModal = () => {
         <FlexBox
           background="transparent"
           margin="2rem 2.5rem 1.5rem 2.5rem"
-          position="relative"
           height="2rem"
         >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            이 글을 피스에도 같이 올릴까요?
-          </FlexTextBox>
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
-          </FlexBox>
+          {subTitle && (
+            <FlexBox
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+                이 글을 피스에도 같이 올릴까요?
+              </FlexTextBox>
+              <FlexBox>
+                <Toggle checked={false} />
+              </FlexBox>
+            </FlexBox>
+          )}
         </FlexBox>
-        <FlexBox
-          background="transparent"
-          margin="1.4rem 2.5rem"
-          position="relative"
-          height="2rem"
-        >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            페이스북 공유
-          </FlexTextBox>
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
+        <FlexBox background="transparent" margin="1.4rem 2.5rem" height="2rem">
+          <FlexBox
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+              페이스북 공유
+            </FlexTextBox>
+            <FlexBox>
+              <Toggle checked={false} />
+            </FlexBox>
           </FlexBox>
         </FlexBox>
         <FlexBox
           background="transparent"
           margin="0.5rem 2.5rem 4rem 2.5rem"
-          position="relative"
           height="2rem"
         >
-          <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-            인스타그램 공유
-          </FlexTextBox>
-          <Tooltip
-            text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
-            margin="0 0 0 0.5rem"
-          />
-          <FlexBox position="absolute">
-            <Toggle checked={false} />
+          <FlexBox
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <FlexBox>
+              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
+                인스타그램 공유
+              </FlexTextBox>
+              <Tooltip
+                text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
+                margin="0 0 0 0.5rem"
+              />
+            </FlexBox>
+            <FlexBox>
+              <Toggle checked={false} />
+            </FlexBox>
           </FlexBox>
         </FlexBox>
       </BannerBox>
     </ModalFrame>
   );
 };
+ChallengeConfirmModal.defaultProps = defaultProps;
 
 export default ChallengeConfirmModal;

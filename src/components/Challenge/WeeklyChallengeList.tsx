@@ -4,51 +4,51 @@ import COLOR from "constants/color";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ChallengeOfferCard from "components/Challenge/Card/ChallengeOfferCard";
 import { FlexTextBox, FlexBox } from "components/common";
+import WeeklyChallengeCard from "./Card/WeeklyChallengeCard";
 
-const dummyData = [
+const dummyChallenges = [
   {
-    userName: "soye1",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: true,
+    proverCnt: 10,
+    point: 100,
   },
   {
-    userName: "soye2",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: false,
+    proverCnt: 10,
+    point: 100,
   },
   {
-    userName: "soye3",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: false,
+    proverCnt: 10,
+    point: 100,
   },
   {
-    userName: "soye4",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: true,
+    proverCnt: 10,
+    point: 100,
   },
   {
-    userName: "soye5",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: true,
+    proverCnt: 10,
+    point: 100,
   },
   {
-    userName: "soye6",
-    content:
+    title: "일회용컵 No! 텀블러 Yes!",
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    like: 100,
-    clicked: true,
+    proverCnt: 10,
+    point: 100,
   },
 ];
 
@@ -90,37 +90,35 @@ const Page = styled(Paper)`
 
 const arrLoop = () => {
   const newArr = [];
-  for (let i = 0; i <= dummyData.length - 1; i += 2) {
+  for (let i = 0; i <= dummyChallenges.length - 1; i += 2) {
     newArr.push(
       <Page>
-        {i === dummyData.length - 1 && dummyData.length % 2 === 1 ? (
-          <FlexBox margin="0 0.5rem 0 1rem" background={COLOR.bg.primary}>
-            <ChallengeOfferCard
-              userName={dummyData[i].userName}
-              content={dummyData[i].content}
-              like={dummyData[i].like}
-              clicked={dummyData[i].clicked}
-              margin="0"
+        {i === dummyChallenges.length - 1 &&
+        dummyChallenges.length % 2 === 1 ? (
+          <FlexBox margin="1rem 0.5rem 0 1rem" background={COLOR.bg.primary}>
+            <WeeklyChallengeCard
+              title={dummyChallenges[i].title}
+              description={dummyChallenges[i].description}
+              proverCnt={dummyChallenges[i].proverCnt}
+              point={dummyChallenges[i].point}
             />
           </FlexBox>
         ) : (
           <>
-            <FlexBox margin="0 0.5rem 0 2.2rem" background={COLOR.bg.primary}>
-              <ChallengeOfferCard
-                userName={dummyData[i].userName}
-                content={dummyData[i].content}
-                like={dummyData[i].like}
-                clicked={dummyData[i].clicked}
-                margin="0"
+            <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
+              <WeeklyChallengeCard
+                title={dummyChallenges[i].title}
+                description={dummyChallenges[i].description}
+                proverCnt={dummyChallenges[i].proverCnt}
+                point={dummyChallenges[i].point}
               />
             </FlexBox>
-            <FlexBox margin="0 1rem 0 0.5rem" background={COLOR.bg.primary}>
-              <ChallengeOfferCard
-                userName={dummyData[i + 1].userName}
-                content={dummyData[i + 1].content}
-                like={dummyData[i + 1].like}
-                clicked={dummyData[i + 1].clicked}
-                margin="0"
+            <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>
+              <WeeklyChallengeCard
+                title={dummyChallenges[i + 1].title}
+                description={dummyChallenges[i + 1].description}
+                proverCnt={dummyChallenges[i + 1].proverCnt}
+                point={dummyChallenges[i].point}
               />
             </FlexBox>
           </>
@@ -133,15 +131,15 @@ const arrLoop = () => {
 
 const arrLoopMobile = () => {
   const newArr = [];
-  for (let i = 0; i < dummyData.length; i += 1) {
+  for (let i = 0; i < dummyChallenges.length; i += 1) {
     newArr.push(
       <Page>
         <FlexBox margin="0 0.5rem 0 2rem">
-          <ChallengeOfferCard
-            userName={dummyData[i].userName}
-            content={dummyData[i].content}
-            like={dummyData[i].like}
-            clicked={dummyData[i].clicked}
+          <WeeklyChallengeCard
+            title={dummyChallenges[i].title}
+            description={dummyChallenges[i].description}
+            proverCnt={dummyChallenges[i].proverCnt}
+            point={dummyChallenges[i].point}
           />
         </FlexBox>
       </Page>
@@ -157,7 +155,7 @@ const WeeklyChallengeList = () => {
 
   return (
     <Container>
-      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 0.8rem">
+      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 2rem">
         📝 이번주 챌린지
       </FlexTextBox>
       <CarouselLib

@@ -12,16 +12,18 @@ interface AreaElement {
   title: string;
   btnTitle1: string;
   btnTitle2: string;
-  subTitle?: string;
   background?: string;
   visible: boolean;
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
+  type?: string;
+  subTitle?: boolean;
 }
 
 const defaultProps = {
   modalMainColor: COLOR.font.primary,
-  subTitle: "",
   background: COLOR.bg.default,
+  type: "warning",
+  subTitle: false,
 };
 
 const ModalWrapper = styled.div<{ visible: boolean }>`
@@ -58,14 +60,12 @@ const ModalFrame = (props: AreaElement) => {
     title,
     btnTitle1,
     btnTitle2,
-    subTitle,
     background,
     visible,
     onClose,
+    type,
+    subTitle,
   } = props;
-
-  const closable = true;
-  const maskClosable = true;
 
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target === e.currentTarget) {
@@ -78,6 +78,9 @@ const ModalFrame = (props: AreaElement) => {
       onClose(e);
     }
   };
+
+  const closable = true;
+  const maskClosable = true;
 
   return (
     <Portal elementId="modal-root">
@@ -120,7 +123,7 @@ const ModalFrame = (props: AreaElement) => {
                     fontFamily="Pr-Bold"
                     margin="0 0 0 1rem"
                   >
-                    {subTitle}
+                    챌린지 인증하기
                   </FlexTextBox>
                 )}
               </FlexBox>
@@ -131,8 +134,16 @@ const ModalFrame = (props: AreaElement) => {
               )}
             </FlexBox>
             <FlexBox>{children}</FlexBox>
-            <FlexBox position="absolute" top="18rem" left="25rem" bottom="0">
-              <FlexButton fontSize="1.56rem" backgroundColor={COLOR.bg.default}>
+            <FlexBox
+              position="relative"
+              left={type === "warning" ? "23rem" : "27rem"}
+              top={type === "warning" ? "7rem" : "1rem"}
+            >
+              <FlexButton
+                fontSize="1.56rem"
+                backgroundColor={COLOR.bg.default}
+                onClick={onClose}
+              >
                 {btnTitle1}
               </FlexButton>
               <FlexButton

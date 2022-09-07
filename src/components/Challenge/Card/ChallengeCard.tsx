@@ -76,7 +76,7 @@ const ChallengeCard = (props: Props) => {
         <Title>{challenge.title}</Title>
         <ChallengeInfo>
           <ChallengeFigure
-            person={challenge.prover_cnt}
+            proverCnt={challenge.prover_cnt}
             point={challenge.point}
           />
         </ChallengeInfo>

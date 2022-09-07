@@ -1,40 +1,41 @@
 import { ChallengeBanner } from "components/Challenge";
 import SimilarChallengeList from "../SimilarChallengeList";
 
+interface Props {
+  title: string;
+}
+
 const dummyChallenges = [
   {
     id: 1,
     title: "일회용컵 No! 텀블러 Yes!",
-    person: 10,
+    proverCnt: 10,
     point: 100,
-    content:
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
   },
   {
     id: 2,
     title: "일회용컵 No! 텀블러 Yes!",
-    person: 10,
+    proverCnt: 10,
     point: 100,
-    content:
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
   },
   {
     id: 3,
     title: "일회용컵 No! 텀블러 Yes!",
-    person: 10,
+    proverCnt: 10,
     point: 100,
-    content:
+    description:
       "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
   },
 ];
 
-const script = {
-  title: "🧐 비슷한 챌린지가 있어요!",
-};
-
-const SimilarChallengeBanner = () => {
+const SimilarChallengeBanner = (props: Props) => {
+  const { title } = props;
   return (
-    <ChallengeBanner title={script.title}>
+    <ChallengeBanner title={title}>
       <SimilarChallengeList challenges={dummyChallenges} />
     </ChallengeBanner>
   );

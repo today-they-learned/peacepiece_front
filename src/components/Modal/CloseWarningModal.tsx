@@ -17,6 +17,7 @@ const CloseWarningModal = ({ onClose, visible }: Props) => (
     btnTitle2="괜찮아요"
     onClose={onClose}
     visible={visible}
+    subTitle={false}
   >
     <FlexTextBox
       fontSize="1.25rem"

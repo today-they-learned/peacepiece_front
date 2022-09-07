@@ -7,7 +7,7 @@ interface Props {
   challenges: Array<{
     id: number;
     title: string;
-    person: number;
+    proverCnt: number;
     point: number;
   }>;
 }
@@ -29,7 +29,7 @@ const EndedChallengeList = (props: Props) => {
             >
               <FlexTextBox fontSize="0.95rem">{challenge.title}</FlexTextBox>
               <ChallengeFigure
-                person={challenge.person}
+                proverCnt={challenge.proverCnt}
                 point={challenge.point}
                 background={COLOR.bg.primary}
               />

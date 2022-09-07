@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 interface Props {
-  userName: string;
+  suggester: string;
   content: string;
-  like: number;
+  feedbackCount: number;
   clicked: boolean;
   margin?: string;
 }
 
 const defaultProps = {
-  margin: "0.5rem 1rem 0.5rem 1rem",
+  margin: "0.5rem 1rem 0.5rem 0rem",
 };
 
 const Container = styled.div<{ margin: string }>`
@@ -53,10 +53,10 @@ const LikeNumber = styled.span`
 `;
 
 const ChallengeOfferCard = (props: Props) => {
-  const { userName, content, like, clicked, margin } = props;
+  const { suggester, content, feedbackCount, clicked, margin } = props;
   return (
     <Container margin={margin}>
-      <User>{userName}</User>
+      <User>{suggester}</User>
       <Content>{content}</Content>
       <LikeContainer>
         {clicked ? (
@@ -64,7 +64,7 @@ const ChallengeOfferCard = (props: Props) => {
         ) : (
           <AiOutlineLike color={COLOR.font.primary} size="20" />
         )}
-        <LikeNumber>{like}</LikeNumber>
+        <LikeNumber>{feedbackCount}</LikeNumber>
       </LikeContainer>
     </Container>
   );

@@ -1,14 +1,14 @@
-import PieceSearchBanner from "components/Peace/PieceSearchBanner";
+import PieceSearchResult from "components/Challenge/Banner/PieceSearchResult";
 import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallengeBanner";
 import { FlexBox } from "components/common";
+import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import PostContainer from "components/Peace/Post/PostContainer";
-import Writing from "components/Peace/Writing";
 
-const Piece = () => {
+const PieceSearch = () => {
   return (
     <FlexBox justifyContent="center" height="100%">
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
-        <Writing />
+        <PieceSearchResult />
         <PostContainer />
       </FlexBox>
       <FlexBox column alignItems="center">
@@ -19,4 +19,4 @@ const Piece = () => {
   );
 };
 
-export default Piece;
+export default PieceSearch;

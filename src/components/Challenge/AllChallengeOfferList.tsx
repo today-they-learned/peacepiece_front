@@ -1,29 +1,24 @@
 import { FlexBox } from "components/common";
 import COLOR from "constants/color";
+import { ChallengeSuggestionType } from "types";
 import ChallengeOfferCard from "./Card/ChallengeOfferCard";
 
 interface Props {
-  challenges: Array<{
-    id: number;
-    userName: string;
-    content: string;
-    like: number;
-    clicked: boolean;
-  }>;
+  suggestions: ChallengeSuggestionType[];
 }
 
 const AllChallengeOfferList = (props: Props) => {
-  const { challenges } = props;
+  const { suggestions } = props;
   return (
     <FlexBox wrap="wrap" margin="2rem 0 0 0" background={COLOR.bg.primary}>
-      {challenges.map((challenge) => {
+      {suggestions.map((suggestion) => {
         return (
           <ChallengeOfferCard
-            key={challenge.id}
-            userName={challenge.userName}
-            content={challenge.content}
-            like={challenge.like}
-            clicked={challenge.clicked}
+            key={suggestion.id}
+            suggester={suggestion.suggester.username}
+            content={suggestion.content}
+            feedbackCount={suggestion.feedback_count}
+            clicked={suggestion.is_feedbacked}
           />
         );
       })}
