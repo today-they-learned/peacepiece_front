@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
+import { useTextArea } from "hooks";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { BannerBox, FlexBox, FlexTextBox, Toggle } from "components/common";
-import Textarea from "components/Form/Textarea";
+import { Textarea } from "components/Form";
 import { Input } from "semantic-ui-react";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CloseIcon from "@mui/icons-material/Close";
@@ -54,6 +55,7 @@ const RemoveBtn = styled(CloseIcon)`
 `;
 
 const ChallengeConfirmModal = () => {
+  const [content, onChangeContent] = useTextArea("");
   const [imageList, setimageList] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -114,6 +116,8 @@ const ChallengeConfirmModal = () => {
             </FlexTextBox>
           </FlexBox>
           <Textarea
+            value={content}
+            onChange={onChangeContent}
             text="챌린지 인증 글을 입력해주세요"
             width="43rem"
             minRow={2}

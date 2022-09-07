@@ -1,5 +1,6 @@
+import { useTextArea } from "hooks";
 import { FlexBox } from "components/common";
-import Input from "components/Form/Textarea";
+import { Textarea } from "components/Form";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import dummyData from "./dummyArticle";
@@ -30,6 +31,7 @@ const SummitBtn = styled.button`
 `;
 
 const CommentInput = () => {
+  const [comment, onChnageComment] = useTextArea("");
   return (
     <FlexBox
       width="48rem"
@@ -43,7 +45,9 @@ const CommentInput = () => {
         src={`${process.env.PUBLIC_URL}/${dummyData.writer.avatar}`}
         size="2rem"
       />
-      <Input
+      <Textarea
+        value={comment}
+        onChange={onChnageComment}
         text="글에 대한 의견을 남겨주세요 🌱"
         background={COLOR.bg.nav}
         width="39.5rem"

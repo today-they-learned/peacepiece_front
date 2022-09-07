@@ -1,7 +1,9 @@
+import { useTextArea } from "hooks";
+import { useAddChallengeSuggestion } from "hooks/queries/challenge/suggestion";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
-import Input from "components/Form/Textarea";
+import { Textarea } from "components/Form";
+import { ChallengeBanner } from "components/Challenge";
 import COLOR from "constants/color";
-import ChallengeBanner from "../ChallengeBanner";
 
 const script = {
   title: "🌱 챌린지 제안하기",
@@ -9,9 +11,31 @@ const script = {
 };
 
 const ChallengeOfferInput = () => {
+  const [value, onChangeValue, setValue] = useTextArea("");
+
+  const handleSubmit = () => {
+    const data = {
+      content: value,
+    };
+    addSuggestion(data);
+  };
+
+  const onSuccess = () => {
+    setValue("");
+  };
+
+  const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
+
   return (
     <ChallengeBanner title={script.title} width="76rem">
-      <Input width="72rem" text={script.text} minRow={6} margin="1rem 0 0 0" />
+      <Textarea
+        value={value}
+        onChange={onChangeValue}
+        width="72rem"
+        text={script.text}
+        minRow={6}
+        margin="1rem 0 0 0"
+      />
       <FlexBox
         justifyContent="space-between"
         alignItems="center"
@@ -26,6 +50,7 @@ const ChallengeOfferInput = () => {
           글자 수 10 / 100
         </FlexTextBox>
         <FlexButton
+          onClick={handleSubmit}
           fontSize="1.25rem"
           fontFamily="Pr-Bold"
           backgroundColor={COLOR.bg.banner}

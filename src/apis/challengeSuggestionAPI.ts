@@ -1,10 +1,11 @@
 import { instance } from "config/api";
+import { ChallengeSuggestionType } from "types";
 
 const challengeSuggestionAPI = {
   get: (id: string) => {
     return instance.get(`challenges/suggestions/${id}/`);
   },
-  post: (data: FormData) => {
+  post: (data: ChallengeSuggestionType) => {
     return instance.post("challenges/suggestions/", data);
   },
   patch: (id: string, data: FormData) => {
