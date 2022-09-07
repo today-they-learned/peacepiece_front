@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
+import { useUser } from "hooks";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -145,6 +146,7 @@ const Start = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const Profile = styled.div`
@@ -190,6 +192,7 @@ const DropdonwText = styled.span`
 `;
 
 const Navbar = () => {
+  const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
@@ -312,9 +315,20 @@ const Navbar = () => {
           </Container>
         </CenterNavItems>
         <RightNavItems>
-          <Start>시작하기</Start>
-          {/* <IoIosNotificationsOutline size="30" />
-          <Profile /> */}
+          {user ? (
+            <>
+              <IoIosNotificationsOutline size="30" />
+              <Profile />
+            </>
+          ) : (
+            <Start
+              onClick={() => {
+                navigate(`/sign`);
+              }}
+            >
+              시작하기
+            </Start>
+          )}
         </RightNavItems>
       </Nav>
       <DropdownBox clickedChallenge={clickedChallenge}>
