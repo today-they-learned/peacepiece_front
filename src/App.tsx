@@ -18,9 +18,13 @@ import {
   Test,
   PieceSearch,
   PieceDetail,
+  Tos,
+  ServiceIntro,
+  CrewIntro,
 } from "pages";
 
 import ResponsiveLayout from "layouts/responsive.layout";
+import Privacy from "pages/Privacy";
 
 const App = () => {
   return (
@@ -39,10 +43,10 @@ const App = () => {
               <Route path="/piece" element={<Piece />} />
               <Route path="/piece/:id" element={<PieceDetail />} />
               <Route path="/piece/:keyword" element={<PieceSearch />} />
-              <Route path="/intro" element={<div />} />
-              <Route path="/terms" element={<div />} />
-              <Route path="/privacy" element={<div />} />
-              <Route path="/team" element={<div />} />
+              <Route path="/intro" element={<ServiceIntro />} />
+              <Route path="/terms" element={<Tos />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/team" element={<CrewIntro />} />
               <Route path="/*" element={<NotFound />} />
               <Route path="/test" element={<Test />} />
             </Routes>

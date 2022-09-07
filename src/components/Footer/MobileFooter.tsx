@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FlexBox from "components/common/FlexBox";
 
@@ -35,16 +36,41 @@ const Label = styled.span`
 `;
 
 const MobileFooter = () => {
+  const navigate = useNavigate();
   return (
     <Foot>
       <Line />
       <FlexBox padding="2rem 1rem 1.2rem 1rem">
         <Logo src="images/logo.png" />
         <FootItems>
-          <Label>서비스 소개</Label>
-          <Label>이용약관</Label>
-          <Label>개인정보처리방침</Label>
-          <Label>팀원 소개</Label>
+          <Label
+            onClick={() => {
+              navigate(`/intro`);
+            }}
+          >
+            서비스 소개
+          </Label>
+          <Label
+            onClick={() => {
+              navigate(`/terms`);
+            }}
+          >
+            이용약관
+          </Label>
+          <Label
+            onClick={() => {
+              navigate(`/privacy`);
+            }}
+          >
+            개인정보처리방침
+          </Label>
+          <Label
+            onClick={() => {
+              navigate(`/team`);
+            }}
+          >
+            팀원 소개
+          </Label>
         </FootItems>
       </FlexBox>
       <FlexBox padding="0rem 1rem">
