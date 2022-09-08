@@ -56,7 +56,7 @@ const insertCmt = (cmtMore: boolean, clickedBtn: () => void) => {
             <EmojiBtn backgroundColor="white" color="black">
               👍 1
             </EmojiBtn>
-            <Button>답글 달기</Button>
+            {/* <Button>답글 달기</Button> */}
           </FlexBox>
         </FlexBox>
       </FlexBox>
@@ -88,7 +88,7 @@ const insertCmt = (cmtMore: boolean, clickedBtn: () => void) => {
                 <EmojiBtn backgroundColor="white" color="black">
                   👍 1
                 </EmojiBtn>
-                <Button>답글 달기</Button>
+                {/* <Button>답글 달기</Button> */}
               </FlexBox>
             </FlexBox>
           </FlexBox>
