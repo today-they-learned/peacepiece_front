@@ -7,7 +7,7 @@ interface Props {
   suggester: string;
   content: string;
   feedbackCount: number;
-  clicked: boolean;
+  isFeedbacked: boolean;
   margin?: string;
 }
 
@@ -54,8 +54,13 @@ const LikeNumber = styled.span`
 `;
 
 const ChallengeOfferCard = (props: Props) => {
-  const { suggester, content, feedbackCount, clicked, margin } = props;
-  const [like, setLike] = useState(0);
+  const { suggester, content, feedbackCount, isFeedbacked, margin } = props;
+  const [clicked, setClicked] = useState(isFeedbacked);
+  const [like, setLike] = useState(feedbackCount);
+  const clickedLike = () => {
+    setLike((prev) => prev + 1);
+    setClicked((prev) => !prev);
+  };
   return (
     <Container margin={margin}>
       <User>{suggester}</User>
@@ -64,9 +69,14 @@ const ChallengeOfferCard = (props: Props) => {
         {clicked ? (
           <AiFillLike color={COLOR.font.primary} size="20" />
         ) : (
-          <AiOutlineLike color={COLOR.font.primary} size="20" />
+          <AiOutlineLike
+            color={COLOR.font.primary}
+            size="20"
+            onClick={clickedLike}
+            style={{ cursor: "pointer" }}
+          />
         )}
-        <LikeNumber>{feedbackCount}</LikeNumber>
+        <LikeNumber>{like}</LikeNumber>
       </LikeContainer>
     </Container>
   );

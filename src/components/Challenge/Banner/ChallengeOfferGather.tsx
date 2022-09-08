@@ -51,7 +51,7 @@ const ChallengeOfferGather = () => {
             suggester={challenge.suggester}
             content={challenge.content}
             feedbackCount={challenge.feedbackCount}
-            clicked={challenge.clicked}
+            isFeedbacked={challenge.clicked}
           />
         ))}
       </FlexBox>
