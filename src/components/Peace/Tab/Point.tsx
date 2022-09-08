@@ -7,22 +7,25 @@ import styled from "styled-components";
 import * as TooltipLib from "@mui/material/Tooltip";
 import { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
-const dummyPoint = [
+type point = {
+  title: string;
+  point: number;
+  date: string;
+};
+
+const dummyPoints: point[] = [
   {
     title: "오늘은 쓰레기를 한 개만 버려보자",
-    isPlus: true,
     point: 10,
     date: "09-08 12:30",
   },
   {
     title: "섬 넓히기 1단계",
-    isPlus: false,
-    point: 10,
+    point: -10,
     date: "09-08 12:30",
   },
   {
     title: "재활용 습관 들이기",
-    isPlus: true,
     point: 10,
     date: "09-08 12:30",
   },
@@ -59,9 +62,9 @@ const CustomTooltip = style(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const insert = () => {
+const insertJSX = (points: point[]) => {
   const newArr = [];
-  for (let i = 0; i < dummyPoint.length; i += 1) {
+  for (let i = 0; i < dummyPoints.length; i += 1) {
     newArr.push(
       <FlexBox
         width="280px"
@@ -73,29 +76,25 @@ const insert = () => {
         column
       >
         <FlexBox margin="0 0 0.6rem 0">
-          <CustomTooltip
-            title={dummyPoint[i].title}
-            arrow
-            placement="top-start"
-          >
-            <Title>{dummyPoint[i].title}</Title>
+          <CustomTooltip title={points[i].title} arrow placement="top-start">
+            <Title>{points[i].title}</Title>
           </CustomTooltip>
           <FlexTextBox fontFamily="Pr-Bold" fontSize="1.1rem">
             챌린지 인증
           </FlexTextBox>
         </FlexBox>
         <FlexBox>
-          {dummyPoint[i].isPlus ? (
+          {points[i].point > 0 ? (
             <FlexTextBox color={COLOR.font.primary} fontSize="1.1rem">
-              +{dummyPoint[i].point}PP
+              +{points[i].point} PP
             </FlexTextBox>
           ) : (
             <FlexTextBox color={COLOR.font.danger} fontSize="1.1rem">
-              -{dummyPoint[i].point}PP
+              {points[i].point} PP
             </FlexTextBox>
           )}
           <FlexTextBox fontSize="0.75rem" margin="0 0 0 7.5rem">
-            {dummyPoint[i].date}
+            {points[i].date}
           </FlexTextBox>
         </FlexBox>
       </FlexBox>
@@ -105,7 +104,7 @@ const insert = () => {
 };
 
 const Point = () => {
-  return <>{insert()}</>;
+  return <>{insertJSX(dummyPoints)}</>;
 };
 
 export default Point;

@@ -18,7 +18,7 @@ const Img = styled.div`
   background: #d9d9d9;
 `;
 
-const insert = () => {
+const insertJSX = () => {
   const newArr = [];
   for (let i = 0; i < dummyData.length; i += 1) {
     newArr.push(
@@ -98,7 +98,7 @@ const Item = () => {
       <FlexTextBox fontSize="1.25rem" margin="0.2rem 0 0.9rem 0.5rem">
         🌴 아이템 구매하기
       </FlexTextBox>
-      {insert()}
+      {insertJSX()}
     </FlexBox>
   );
 };
