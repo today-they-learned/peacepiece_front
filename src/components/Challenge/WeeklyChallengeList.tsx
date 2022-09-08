@@ -162,6 +162,7 @@ const WeeklyChallengeList = () => {
         height="11rem"
         animation="slide"
         indicators={false}
+        duration={1000}
         cycleNavigation
         navButtonsAlwaysVisible
         NextIcon={<ArrowForwardIosIcon />}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
@@ -54,6 +55,7 @@ const LikeNumber = styled.span`
 
 const ChallengeOfferCard = (props: Props) => {
   const { suggester, content, feedbackCount, clicked, margin } = props;
+  const [like, setLike] = useState(0);
   return (
     <Container margin={margin}>
       <User>{suggester}</User>
