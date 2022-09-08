@@ -20,15 +20,7 @@ const AllChallengeOffer = () => {
   }, [inView]);
 
   return (
-    <ChallengeBanner
-      title={script.title}
-      width="76rem"
-      maxWidthTablet="1250px"
-      widthTablet="51rem"
-      maxWidthMobile="768px"
-      widthMobile="26.5rem"
-      padding="2rem"
-    >
+    <ChallengeBanner title={script.title} width="100%" padding="2rem">
       {isFetched &&
         data?.pages.map((page, index) => {
           return (
