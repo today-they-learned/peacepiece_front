@@ -288,7 +288,6 @@ const EndedChallenge = () => {
       width="100%"
       height="100%"
       justifyContent="center"
-      margin="2rem auto"
       padding="1rem"
       column
     >
