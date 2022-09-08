@@ -27,11 +27,19 @@ const ChallengeOfferInput = () => {
   const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
 
   return (
-    <ChallengeBanner title={script.title} width="76rem" padding="2rem">
+    <ChallengeBanner
+      title={script.title}
+      width="76rem"
+      padding="2rem"
+      maxWidthTablet="1250px"
+      widthTablet="51rem"
+      maxWidthMobile="768px"
+      widthMobile="26.5rem"
+    >
       <Textarea
         value={value}
         onChange={onChangeValue}
-        width="72rem"
+        width="98%"
         margin="1rem 0 0 0"
         text={script.text}
         minRow={6}

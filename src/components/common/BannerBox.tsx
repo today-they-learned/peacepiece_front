@@ -11,6 +11,10 @@ interface Props {
   borderRadius?: string;
   theme?: string;
   position?: string;
+  maxWidthTablet?: string;
+  widthTablet?: string;
+  maxWidthMobile?: string;
+  widthMobile?: string;
 }
 
 const defaultProps = {
@@ -21,6 +25,10 @@ const defaultProps = {
   borderRadius: "1.4rem",
   theme: "default",
   position: "static",
+  maxWidthTablet: "0",
+  widthTablet: "0",
+  maxWidthMobile: "0",
+  widthMobile: "0",
 };
 
 const BannerBox = (props: Props) => {
@@ -38,6 +46,10 @@ const BannerBox = (props: Props) => {
     borderRadius,
     theme,
     position,
+    maxWidthTablet,
+    widthTablet,
+    maxWidthMobile,
+    widthMobile,
   } = props;
   let themeColor = defaultTheme;
 
@@ -68,6 +80,12 @@ const BannerBox = (props: Props) => {
         position: ${position};
         display: flex;
         flex-direction: column;
+        @media only screen and (max-width: ${maxWidthTablet}) {
+          width: ${widthTablet};
+        }
+        @media only screen and (max-width: ${maxWidthMobile}) {
+          width: ${widthMobile};
+        }
       `}
     >
       {children}
