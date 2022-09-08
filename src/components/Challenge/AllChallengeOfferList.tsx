@@ -18,7 +18,7 @@ const AllChallengeOfferList = (props: Props) => {
             suggester={suggestion.suggester.username}
             content={suggestion.content}
             feedbackCount={suggestion.feedback_count}
-            clicked={suggestion.is_feedbacked}
+            isFeedbacked={suggestion.is_feedbacked}
           />
         );
       })}

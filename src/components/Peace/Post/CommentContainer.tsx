@@ -23,7 +23,7 @@ const EmojiBtn = styled.button<{ color: string; backgroundColor: string }>`
 const Button = styled.button`
   font-family: "Pr-SemiBold";
   font-size: 10px;
-  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
   color: ${COLOR.font.secondary};
   cursor: pointer;
 `;
@@ -56,7 +56,7 @@ const insertCmt = (cmtMore: boolean, clickedBtn: () => void) => {
             <EmojiBtn backgroundColor="white" color="black">
               👍 1
             </EmojiBtn>
-            <Button>답글 달기</Button>
+            {/* <Button>답글 달기</Button> */}
           </FlexBox>
         </FlexBox>
       </FlexBox>
@@ -88,7 +88,7 @@ const insertCmt = (cmtMore: boolean, clickedBtn: () => void) => {
                 <EmojiBtn backgroundColor="white" color="black">
                   👍 1
                 </EmojiBtn>
-                <Button>답글 달기</Button>
+                {/* <Button>답글 달기</Button> */}
               </FlexBox>
             </FlexBox>
           </FlexBox>

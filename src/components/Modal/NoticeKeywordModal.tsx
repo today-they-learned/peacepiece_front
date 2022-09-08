@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Box = styled.div`
-  max-width: 12.5rem;
+  max-width: 10rem;
   margin-right: 0.2rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -64,7 +64,7 @@ const NoticKeywordModal = ({ onClick }: Props) => {
       <FlexBox wrap="wrap" margin="2rem 0 1rem 0">
         {insertTags()}
       </FlexBox>
-      <FlexBox margin="0 0 0 18rem">
+      <FlexBox margin="0 0 0 50%">
         <AutoComplete />
       </FlexBox>
     </FlexBox>

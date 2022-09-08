@@ -11,6 +11,8 @@ const script = {
 const SearchInput = styled.input`
   width: 22rem;
   height: 2.875rem;
+  color: ${COLOR.font.secondary};
+  font-family: "Pr-Medium";
   background-color: ${COLOR.bg.secondary};
   border-radius: 1rem;
   margin-top: 1rem;

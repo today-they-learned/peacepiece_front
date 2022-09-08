@@ -6,13 +6,13 @@ import { useChallengeCategoryData } from "hooks/queries/challenge/reminder";
 
 const AutoCompleteInput = styled(Search)`
   .input > input {
-    width: 15vw !important;
+    width: 16.6rem !important;
     height: 3rem;
     border-radius: 0.5rem !important;
     font-family: "Pr-Regular" !important;
   }
   .results {
-    width: 15vw !important;
+    width: 16.6rem !important;
     border-radius: 0.5rem !important;
     font-family: "Pr-Regular" !important;
     font-size: 0.9rem;
