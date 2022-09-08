@@ -23,7 +23,7 @@ const EmojiBtn = styled.button<{ color: string; backgroundColor: string }>`
 const Button = styled.button`
   font-family: "Pr-SemiBold";
   font-size: 10px;
-  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
   color: ${COLOR.font.secondary};
   cursor: pointer;
 `;
