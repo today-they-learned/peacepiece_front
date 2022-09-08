@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
+import { useUser } from "hooks";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -145,6 +146,7 @@ const Start = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 const Profile = styled.div`
@@ -190,6 +192,7 @@ const DropdonwText = styled.span`
 `;
 
 const Navbar = () => {
+  const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
@@ -211,6 +214,7 @@ const Navbar = () => {
 
       if (e.target.id === "challenge") {
         setClickedChallenge(true);
+        setCurrentClickSubNav("/challenge");
       } else {
         setClickedChallenge(false);
       }
@@ -225,24 +229,37 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const url = location.pathname;
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "offer") {
+        setCurrentClickNav("challenge");
         setCurrentClickSubNav("/challenge/offer");
+        setClickedChallenge(true);
       } else if (url.slice(11) === "ended") {
+        setCurrentClickNav("challenge");
         setCurrentClickSubNav("/challenge/ended");
+        setClickedChallenge(true);
       } else {
         setCurrentClickNav("challenge");
+        setClickedChallenge(true);
       }
     } else if (url === "/challenge") {
       setCurrentClickNav("challenge");
+      setCurrentClickSubNav("/challenge");
+      setClickedChallenge(true);
     } else if (url === "/") {
       setCurrentClickNav("/island");
-    } else if (url === "/piece") {
-      setCurrentClickNav(url);
+    } else if (url.slice(0, 6) === "/piece") {
+      setCurrentClickNav("/piece");
+    } else {
+      setCurrentClickNav(null);
+      setPrevClickNav(null);
+      setCurrentClickSubNav(null);
+      setPrevClickSubNav(null);
     }
-  });
+  }, [location]);
 
   useEffect(() => {
     if (currentClickNav !== null) {
@@ -255,14 +272,6 @@ const Navbar = () => {
       const prev = document.getElementById(prevClickNav);
       prev.style.color = `${COLOR.font.disabled}`;
       prev.style.fontFamily = "Pr-Regular";
-    }
-
-    if (prevClickSubNav) {
-      const prev = document.getElementById(prevClickSubNav);
-      const proceedChallenge = document.getElementById("/challenge");
-      prev.style.color = `${COLOR.font.disabled}`;
-      proceedChallenge.style.color = `${COLOR.font.primary}`;
-      setCurrentClickSubNav("/challenge");
     }
 
     setPrevClickNav(currentClickNav);
@@ -312,9 +321,20 @@ const Navbar = () => {
           </Container>
         </CenterNavItems>
         <RightNavItems>
-          <Start>시작하기</Start>
-          {/* <IoIosNotificationsOutline size="30" />
-          <Profile /> */}
+          {user ? (
+            <>
+              <IoIosNotificationsOutline size="30" />
+              <Profile />
+            </>
+          ) : (
+            <Start
+              onClick={() => {
+                navigate(`/sign`);
+              }}
+            >
+              시작하기
+            </Start>
+          )}
         </RightNavItems>
       </Nav>
       <DropdownBox clickedChallenge={clickedChallenge}>
