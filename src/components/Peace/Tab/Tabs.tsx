@@ -16,7 +16,7 @@ const TabPane = styled(semanticTab.Pane)`
   height: 42rem;
   margin: 0 !important;
   padding: 0.6rem !important;
-  overflow: scroll;
+  overflow-y: scroll;
   background: ${COLOR.bg.secondary} !important;
   border: none !important;
 `;
