@@ -231,6 +231,7 @@ const Navbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const url = location.pathname;
+    console.log(url);
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "offer") {
@@ -255,9 +256,8 @@ const Navbar = () => {
       setCurrentClickNav("/piece");
     } else {
       setCurrentClickNav(null);
-      setPrevClickNav(null);
       setCurrentClickSubNav(null);
-      setPrevClickSubNav(null);
+      setClickedChallenge(false);
     }
   }, [location]);
 
