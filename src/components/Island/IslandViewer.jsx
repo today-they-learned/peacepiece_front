@@ -222,12 +222,12 @@ const IslandViewer = ({ terrainMap, items }) => {
     if (!canvasRef.current || !imagesRef.current) return;
     const images = imagesRef.current;
 
-    canvasRef.current.addEventListener("mousedown", getPosition, false);
-    canvasRef.current.addEventListener(
-      "mousemove",
-      handleMouseMoveEvent,
-      false
-    );
+    // canvasRef.current.addEventListener("mousedown", getPosition, false);
+    // canvasRef.current.addEventListener(
+    //   "mousemove",
+    //   handleMouseMoveEvent,
+    //   false
+    // );
 
     const ctx = canvasRef.current.getContext("2d");
 
