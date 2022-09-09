@@ -57,7 +57,7 @@ const CustomTooltip = style(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const ChallengeOfferInput = () => {
+const ChallengeSuggestionInput = () => {
   const { user } = useUser();
   const [value, onChangeValue, setValue] = useTextArea("");
 
@@ -116,4 +116,4 @@ const ChallengeOfferInput = () => {
   );
 };
 
-export default ChallengeOfferInput;
+export default ChallengeSuggestionInput;

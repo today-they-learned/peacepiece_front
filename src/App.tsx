@@ -12,7 +12,7 @@ import {
   Island,
   Challenge,
   EndedChallenge,
-  ChallengeOffer,
+  ChallengeSuggestion,
   Piece,
   ChallengeDetail,
   Test,
@@ -39,7 +39,10 @@ const App = () => {
               <Route path="/challenge" element={<Challenge />} />
               <Route path="/challenge/:id" element={<ChallengeDetail />} />
               <Route path="/challenge/ended" element={<EndedChallenge />} />
-              <Route path="/challenge/offer" element={<ChallengeOffer />} />
+              <Route
+                path="/challenge/suggestion"
+                element={<ChallengeSuggestion />}
+              />
               <Route path="/piece" element={<Piece />} />
               <Route path="/piece/:id" element={<PieceDetail />} />
               <Route path="/piece/:keyword" element={<PieceSearch />} />

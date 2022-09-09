@@ -1,4 +1,4 @@
-import { ChallengeOfferCard } from "components/Challenge/Card";
+import { ChallengeSuggestionCard } from "components/Challenge/Card";
 import { FlexBox } from "components/common";
 import { ChallengeBanner } from "components/Challenge";
 import COLOR from "constants/color";
@@ -36,17 +36,17 @@ const dummyChallenges = [
   },
 ];
 
-const ChallengeOfferGather = () => {
+const ChallengeSuggestionGather = () => {
   return (
     <ChallengeBanner
       width="52.25rem"
       padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
-      url="/challenge/offer"
+      url="/challenge/suggestion"
     >
       <FlexBox margin="1rem 0 0 0" wrap="wrap" background={COLOR.bg.primary}>
         {dummyChallenges.map((challenge) => (
-          <ChallengeOfferCard
+          <ChallengeSuggestionCard
             key={challenge.id}
             suggester={challenge.suggester}
             content={challenge.content}
@@ -59,4 +59,4 @@ const ChallengeOfferGather = () => {
   );
 };
 
-export default ChallengeOfferGather;
+export default ChallengeSuggestionGather;

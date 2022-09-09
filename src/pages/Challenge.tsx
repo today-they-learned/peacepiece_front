@@ -1,7 +1,7 @@
 import { useUser } from "hooks";
 import { EndedChallengeBanner } from "components/Challenge/Banner";
-import ChallengeOfferGather from "components/Challenge/Banner/ChallengeOfferGather";
-import OfferChallengeBanner from "components/Challenge/Banner/OfferChallengeBanner";
+import ChallengeSuggestionGather from "components/Challenge/Banner/ChallengeSuggestionGather";
+import ChallengeSuggestionBanner from "components/Challenge/Banner/ChallengeSuggestionBanner";
 import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallengeList from "components/Challenge/TodayChallengeList";
 import WeeklyChallengeList from "components/Challenge/WeeklyChallengeList";
@@ -14,11 +14,11 @@ const Challenge = () => {
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <TodayChallengeList />
         <WeeklyChallengeList />
-        <ChallengeOfferGather />
+        <ChallengeSuggestionGather />
       </FlexBox>
       <FlexBox column alignItems="center">
         {user && <NoticKeyword />}
-        <OfferChallengeBanner />
+        <ChallengeSuggestionBanner />
         <EndedChallengeBanner />
       </FlexBox>
     </FlexBox>

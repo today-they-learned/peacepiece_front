@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useChallengeSuggestionListData } from "hooks/queries/challenge/suggestion";
 import { ChallengeBanner } from "components/Challenge";
-import AllChallengeOfferList from "components/Challenge/AllChallengeOfferList";
+import AllChallengeSuggestionList from "components/Challenge/AllChallengeSuggestionList";
 
 const script = {
   title: "😎 챌린지 제안 모아보기",
 };
 
-const AllChallengeOffer = () => {
+const AllChallengeSuggestion = () => {
   const { ref, inView } = useInView();
   const { data, isFetched, isFetchingNextPage, hasNextPage, fetchNextPage } =
     useChallengeSuggestionListData();
@@ -24,7 +24,7 @@ const AllChallengeOffer = () => {
       {isFetched &&
         data?.pages.map((page, index) => {
           return (
-            <AllChallengeOfferList
+            <AllChallengeSuggestionList
               key={page?.data.current_page || index}
               suggestions={page?.data.results}
             />
@@ -35,4 +35,4 @@ const AllChallengeOffer = () => {
   );
 };
 
-export default AllChallengeOffer;
+export default AllChallengeSuggestion;

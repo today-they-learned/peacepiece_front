@@ -233,9 +233,9 @@ const Navbar = () => {
     const url = location.pathname;
 
     if (url.slice(0, 11) === "/challenge/") {
-      if (url.slice(11) === "offer") {
+      if (url.slice(11) === "suggestion") {
         setCurrentClickNav("challenge");
-        setCurrentClickSubNav("/challenge/offer");
+        setCurrentClickSubNav("/challenge/suggestion");
         setClickedChallenge(true);
       } else if (url.slice(11) === "ended") {
         setCurrentClickNav("challenge");
@@ -344,7 +344,7 @@ const Navbar = () => {
           <DropdonwText id="/challenge/ended" onClick={onClickSubNav}>
             지난 챌린지
           </DropdonwText>
-          <DropdonwText id="/challenge/offer" onClick={onClickSubNav}>
+          <DropdonwText id="/challenge/suggestion" onClick={onClickSubNav}>
             챌린지 제안
           </DropdonwText>
         </DropdownTextBox>

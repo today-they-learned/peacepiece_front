@@ -6,10 +6,10 @@ import COLOR from "constants/color";
 const script = {
   title: "챌린지 제안하기",
   text: "환경을 위한 여러분만의 챌린지를 제안해주세요!",
-  url: "/challenge/offer",
+  url: "/challenge/suggestion",
 };
 
-const OfferChallengeBanner = () => {
+const ChallengeSuggestionBanner = () => {
   return (
     <ChallengeBanner
       theme="banner"
@@ -35,4 +35,4 @@ const OfferChallengeBanner = () => {
   );
 };
 
-export default OfferChallengeBanner;
+export default ChallengeSuggestionBanner;

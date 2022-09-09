@@ -1,13 +1,13 @@
 import { FlexBox } from "components/common";
 import COLOR from "constants/color";
 import { ChallengeSuggestionType } from "types";
-import ChallengeOfferCard from "./Card/ChallengeOfferCard";
+import ChallengeSuggestionCard from "./Card/ChallengeSuggestionCard";
 
 interface Props {
   suggestions: ChallengeSuggestionType[];
 }
 
-const AllChallengeOfferList = (props: Props) => {
+const AllChallengeSuggestionList = (props: Props) => {
   const { suggestions } = props;
   return (
     <FlexBox
@@ -18,7 +18,7 @@ const AllChallengeOfferList = (props: Props) => {
     >
       {suggestions.map((suggestion) => {
         return (
-          <ChallengeOfferCard
+          <ChallengeSuggestionCard
             key={suggestion.id}
             suggester={suggestion.suggester.username}
             content={suggestion.content}
@@ -32,4 +32,4 @@ const AllChallengeOfferList = (props: Props) => {
   );
 };
 
-export default AllChallengeOfferList;
+export default AllChallengeSuggestionList;
