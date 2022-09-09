@@ -34,7 +34,7 @@ const CommentInput = () => {
   const [comment, onChnageComment] = useTextArea("");
   return (
     <FlexBox
-      width="48rem"
+      width="100%"
       height="auto"
       background={COLOR.bg.secondary}
       borderRadius="1.25rem"
@@ -50,7 +50,7 @@ const CommentInput = () => {
         onChange={onChnageComment}
         text="글에 대한 의견을 남겨주세요 🌱"
         background={COLOR.bg.nav}
-        width="39.5rem"
+        width="100%"
         padding="0.5rem 1rem"
         fontSize="1rem"
         margin="0 0.3rem 0 0.8rem"

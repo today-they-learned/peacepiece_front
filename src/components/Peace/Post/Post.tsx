@@ -3,12 +3,13 @@ import { useState, useRef, useMemo } from "react";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import dummyArticle from "./dummyArticle";
+import ArticleInterface from "types/article";
 
 interface Props {
   backgroundColor?: string;
   color?: string;
   size?: string;
+  article: ArticleInterface;
 }
 
 const defaultProps = {
@@ -24,7 +25,8 @@ const Avatar = styled.img<{ size: string }>`
 `;
 
 const Image = styled.img`
-  width: 10rem;
+  flex: 1;
+  max-width: 10rem;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
@@ -32,7 +34,7 @@ const Image = styled.img`
 `;
 
 const LastImage = styled.img`
-  width: 10rem;
+  width: 100%;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
@@ -41,7 +43,7 @@ const LastImage = styled.img`
   position: relative;
 `;
 
-const Emoji = styled.div<Props>`
+const Emoji = styled.div<{ color?: string; backgroundColor: string }>`
   padding: 0.15rem 0.5rem;
   border-radius: 10px;
   color: ${(props) => props.color};
@@ -56,49 +58,56 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Post = ({ backgroundColor, color, size }: Props) => {
+const ImageListContainer = styled.div`
+  display: flex;
+  margin: 0.5rem 0 1rem 0;
+
+  max-width: 100%;
+`;
+
+const LastImageContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex: 1;
+  max-width: 10rem;
+`;
+
+const Post = ({ backgroundColor, color, size, article }: Props) => {
   const [isShowMore, setIsShowMore] = useState<boolean>(false);
   const textLimit = useRef<number>(200);
 
   const contentMore = useMemo(() => {
-    const shortReview: string = dummyArticle.content.slice(
-      0,
-      textLimit.current
-    );
+    const shortReview: string = article.content.slice(0, textLimit.current);
 
-    if (dummyArticle.content.length > textLimit.current) {
+    if (article.content.length > textLimit.current) {
       if (isShowMore) {
-        return dummyArticle.content;
+        return article.content;
       }
       return shortReview;
     }
-    return dummyArticle.content;
+    return article.content;
   }, [isShowMore]);
 
   return (
     <>
       <FlexTextBox color={COLOR.font.link}>
         {"["}
-        {dummyArticle.challenge.title}
+        {article.challenge.title}
         {"] "}챌린지
       </FlexTextBox>
       <FlexBox
-        width="48rem"
+        width="100%"
         height="auto"
         background={COLOR.bg.secondary}
         borderRadius="1.25rem"
         column
         padding="1rem"
         position="relative"
-        margin="1rem 0 2rem 0"
+        margin="0"
       >
-        <FlexBox
-          background="transparent"
-          alignItems="center"
-          margin="0 0 0.5rem 0"
-        >
+        <FlexBox background="transparent" alignItems="center" margin="0">
           <Avatar
-            src={`${process.env.PUBLIC_URL}/${dummyArticle.writer.avatar}`}
+            src={`${process.env.PUBLIC_URL}/${article.writer.avatar}`}
             size={size}
           />
           <FlexBox
@@ -112,31 +121,31 @@ const Post = ({ backgroundColor, color, size }: Props) => {
               fontFamily="Pr-Bold"
               color={COLOR.font.primary}
             >
-              {dummyArticle.writer.username}
+              {article.writer.username}
             </FlexTextBox>
             <FlexTextBox
               fontSize="0.625rem"
               fontFamily="Pr-Medium"
               color={COLOR.font.secondary}
             >
-              {dummyArticle.created_at}
+              {article.created_at}
             </FlexTextBox>
           </FlexBox>
         </FlexBox>
 
-        <FlexTextBox fontSize="0.8rem" fontFamily="Pr-Medium">
+        <FlexTextBox fontSize="1rem" fontFamily="Pr-Medium" padding="1rem 0">
           {contentMore}
           <Button onClick={() => setIsShowMore(!isShowMore)}>
-            {dummyArticle.content.length > textLimit.current &&
+            {article.content.length > textLimit.current &&
               (isShowMore ? "닫기" : "더보기")}
           </Button>
         </FlexTextBox>
 
-        <FlexBox background="transparent" margin="0.5rem 0 1rem 0">
-          {dummyArticle.images.slice(0, 3).map((image, idx) => {
+        <ImageListContainer>
+          {article.images.slice(0, 3).map((image, idx) => {
             if (idx === 2) {
               return (
-                <FlexBox position="relative" background="transparent">
+                <LastImageContainer>
                   <LastImage
                     src={`${process.env.PUBLIC_URL}/${image.file}`}
                     key={image.id}
@@ -148,9 +157,9 @@ const Post = ({ backgroundColor, color, size }: Props) => {
                     fontSize="0.8rem"
                     fontFamily="Pr-Bold"
                   >
-                    +{dummyArticle.images.length - 3}
+                    +{article.images.length - 3}
                   </FlexTextBox>
-                </FlexBox>
+                </LastImageContainer>
               );
             }
             return (
@@ -160,7 +169,7 @@ const Post = ({ backgroundColor, color, size }: Props) => {
               />
             );
           })}
-        </FlexBox>
+        </ImageListContainer>
 
         <FlexBox background="transparent">
           <Emoji backgroundColor={COLOR.btn.tooltip}>👍1</Emoji>

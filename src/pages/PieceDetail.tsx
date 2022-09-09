@@ -1,5 +1,5 @@
-import PostContainer from "components/Peace/Post/PostContainer";
+import PostCard from "components/Peace/Post/PostCard";
 
-const PieceDetail = () => <PostContainer />;
+const PieceDetail = () => <PostCard />;
 
 export default PieceDetail;

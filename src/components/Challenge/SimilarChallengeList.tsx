@@ -1,4 +1,5 @@
 import { FlexBox } from "components/common";
+import styled from "styled-components";
 import ChallengeMiniCard from "./Card/ChallengeMiniCard";
 
 interface Props {
@@ -11,10 +12,19 @@ interface Props {
   }>;
 }
 
+const SimilarChallengeListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 0 0;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+`;
+
 const SimilarChallengeList = (props: Props) => {
   const { challenges } = props;
   return (
-    <FlexBox column justifyContent="center" alignItems="center">
+    <SimilarChallengeListContainer>
       {challenges.slice(-2).map((challenge) => {
         return (
           <ChallengeMiniCard
@@ -24,7 +34,7 @@ const SimilarChallengeList = (props: Props) => {
           />
         );
       })}
-    </FlexBox>
+    </SimilarChallengeListContainer>
   );
 };
 
