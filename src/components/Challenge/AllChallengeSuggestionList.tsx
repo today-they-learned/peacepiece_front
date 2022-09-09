@@ -1,14 +1,11 @@
 import { FlexBox } from "components/common";
 import COLOR from "constants/color";
-import { ChallengeSuggestionType } from "types";
-import ChallengeSuggestionCard from "./Card/ChallengeSuggestionCard";
 
 interface Props {
-  suggestions: ChallengeSuggestionType[];
+  children: React.ReactNode;
 }
 
-const AllChallengeSuggestionList = (props: Props) => {
-  const { suggestions } = props;
+const AllChallengeSuggestionList = ({ children }: Props) => {
   return (
     <FlexBox
       wrap="wrap"
@@ -16,18 +13,7 @@ const AllChallengeSuggestionList = (props: Props) => {
       background={COLOR.bg.primary}
       gap="1rem"
     >
-      {suggestions.map((suggestion) => {
-        return (
-          <ChallengeSuggestionCard
-            key={suggestion.id}
-            suggester={suggestion.suggester.username}
-            content={suggestion.content}
-            feedbackCount={suggestion.feedback_count}
-            isFeedbacked={suggestion.is_feedbacked}
-            gap="1rem"
-          />
-        );
-      })}
+      {children}
     </FlexBox>
   );
 };
