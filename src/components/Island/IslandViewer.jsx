@@ -132,8 +132,10 @@ import treeShort from "./IslandImages/treeShort.png";
 import treeTall from "./IslandImages/treeTall.png";
 
 import tank from "./IslandImages/tank.png";
-import koala from "./IslandImages/koala.png";
-import redPanda from "./IslandImages/red_panda.png";
+import koala from "./IslandImages/koala/koala.png";
+import redPanda from "./IslandImages/red_panda/red_panda.png";
+import flyingSquirrel from "./IslandImages/flying_squirrel/flying_squirrel.png";
+import sandCat from "./IslandImages/sand_cat/sand_cat.png";
 import disabled from "./IslandImages/disabled.png";
 import disabled2 from "./IslandImages/disabled2.png";
 
@@ -1056,6 +1058,20 @@ const IslandViewer = ({ terrainMap, items }) => {
         alt="redPanda"
         ref={(el) => (imagesRef.current.redPanda = el)}
         src={redPanda}
+        className="hidden"
+      />
+
+      <img
+        alt="flyingSquirrel"
+        ref={(el) => (imagesRef.current.flyingSquirrel = el)}
+        src={flyingSquirrel}
+        className="hidden"
+      />
+
+      <img
+        alt="sandCat"
+        ref={(el) => (imagesRef.current.sandCat = el)}
+        src={sandCat}
         className="hidden"
       />
 

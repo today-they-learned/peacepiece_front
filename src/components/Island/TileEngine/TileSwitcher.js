@@ -34,6 +34,8 @@ export const Character = {
   koala: 200,
   tank: 210,
   redPanda: 220,
+  flyingSquirrel: 230,
+  sandCat: 240,
 };
 
 export const Item = {
@@ -279,6 +281,10 @@ export const TileSwitcher = (tileId, context) => {
       return context.tank;
     case Character.redPanda:
       return context.redPanda;
+    case Character.flyingSquirrel:
+      return context.flyingSquirrel;
+    case Character.sandCat:
+      return context.sandCat;
     case Item.disabled:
       return context.disabled;
     case Item.disabled2:
