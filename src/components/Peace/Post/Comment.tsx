@@ -13,15 +13,15 @@ const Avatar = styled.img<{ size: string }>`
   border-radius: 50%;
 `;
 
-const EmojiBtn = styled.button<{ color: string; backgroundColor: string }>`
-  padding: 0.2rem 0.4rem;
-  border-radius: 10px;
-  font-size: 8px;
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
-  margin-right: 0.5rem;
-  cursor: pointer;
-`;
+// const EmojiBtn = styled.button<{ color: string; backgroundColor: string }>`
+//   padding: 0.2rem 0.4rem;
+//   border-radius: 10px;
+//   font-size: 8px;
+//   color: ${(props) => props.color};
+//   background-color: ${(props) => props.backgroundColor};
+//   margin-right: 0.5rem;
+//   cursor: pointer;
+// `;
 
 const Comment = ({ comment }: Props) => {
   return (
@@ -41,12 +41,13 @@ const Comment = ({ comment }: Props) => {
             {comment.content}
           </FlexTextBox>
         </FlexBox>
-        <FlexBox margin="0">
+        {/* 우선순위 하위 기획 */}
+        {/* <FlexBox margin="0">
           <EmojiBtn backgroundColor="white" color="black">
             👍 1
           </EmojiBtn>
-          {/* <Button>답글 달기</Button> */}
-        </FlexBox>
+          <Button>답글 달기</Button>
+        </FlexBox> */}
       </FlexBox>
     </FlexBox>
   );
