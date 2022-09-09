@@ -6,6 +6,7 @@ import { css } from "@emotion/react";
 interface Props {
   text: string;
   width?: string;
+  mobileWidth?: string;
   minRow?: number;
   margin?: string;
   padding?: string;
@@ -18,6 +19,7 @@ interface Props {
 
 const defaultProps = {
   width: "45rem",
+  mobileWidth: "100%",
   minRow: 1,
   margin: "0",
   padding: "1.25rem",
@@ -30,6 +32,7 @@ const Textarea = (props: Props) => {
   const {
     text,
     width,
+    mobileWidth,
     minRow,
     margin,
     padding,
@@ -61,6 +64,10 @@ const Textarea = (props: Props) => {
         background-color: ${background} !important;
         margin: ${margin};
         resize: none;
+
+        @media only screen and (max-width: 767px) {
+          width: ${mobileWidth} !important;
+        }
       `}
     />
   );

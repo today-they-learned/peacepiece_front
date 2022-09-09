@@ -36,6 +36,15 @@ const Circle = styled.div<Props>`
       transform: translate(1.7rem, 0);
       transition: all 0.5s ease-in-out;
     `}
+
+  @media only screen and (max-width: 767px) {
+    ${(props) =>
+      props.checked &&
+      css`
+        transform: translate(1.3rem, 0);
+        transition: all 0.5s ease-in-out;
+      `}
+  }
 `;
 
 const Toggle = (props: Props) => {

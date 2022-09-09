@@ -27,7 +27,7 @@ const dummyData = {
   id: "1",
   avatar: "images/man.png",
   userName: "홍길동",
-  subTitle: false,
+  subTitle: true,
 };
 
 const Avatar = styled.img`
@@ -117,7 +117,13 @@ const ChallengeConfirmModal = ({
       type={type}
       subTitle={subTitle}
     >
-      <BannerBox position="relative" theme="transparent" padding="0" margin="0">
+      <BannerBox
+        position="relative"
+        theme="transparent"
+        padding="0"
+        margin="0"
+        widthMobile="15rem"
+      >
         <FlexBox
           background={COLOR.bg.nav}
           borderRadius="1.25rem"
@@ -140,6 +146,7 @@ const ChallengeConfirmModal = ({
             onChange={onChangeContent}
             text="챌린지 인증 글을 입력해주세요"
             width="43rem"
+            mobileWidth="13rem"
             minRow={2}
           />
         </FlexBox>
@@ -180,60 +187,83 @@ const ChallengeConfirmModal = ({
           </FlexBox>
         </FlexBox>
 
-        <FlexBox
-          background="transparent"
-          margin="2rem 2.5rem 1.5rem 2.5rem"
-          height="2rem"
-        >
-          {subTitle && (
+        <FlexBox column padding="0 2rem" mobilePadding="0.1rem">
+          <FlexBox
+            background="transparent"
+            width="100%"
+            mobileWidth="100%"
+            margin="2rem 0 0.5rem 0"
+            height="2rem"
+          >
+            {subTitle && (
+              <FlexBox
+                justifyContent="space-between"
+                alignItems="center"
+                width="100%"
+                mobileWidth="100%"
+              >
+                <FlexTextBox
+                  fontSize="1.5rem"
+                  mobileFontSize="0.8rem"
+                  margin="0.1rem 0 0 0"
+                  width="100%"
+                >
+                  이 글을 피스에도 같이 올릴까요?
+                </FlexTextBox>
+                <Toggle checked={false} />
+              </FlexBox>
+            )}
+          </FlexBox>
+          <FlexBox
+            background="transparent"
+            margin="1.4rem 0"
+            height="2rem"
+            width="100%"
+            mobileWidth="100%"
+          >
             <FlexBox
               justifyContent="space-between"
               alignItems="center"
               width="100%"
+              mobileWidth="100%"
             >
-              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-                이 글을 피스에도 같이 올릴까요?
+              <FlexTextBox
+                fontSize="1.5rem"
+                mobileFontSize="0.8rem"
+                margin="0.1rem 0 0 0"
+                width="100%"
+              >
+                페이스북 공유
               </FlexTextBox>
-              <FlexBox>
-                <Toggle checked={false} />
-              </FlexBox>
-            </FlexBox>
-          )}
-        </FlexBox>
-        <FlexBox background="transparent" margin="1.4rem 2.5rem" height="2rem">
-          <FlexBox
-            justifyContent="space-between"
-            alignItems="center"
-            width="100%"
-          >
-            <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-              페이스북 공유
-            </FlexTextBox>
-            <FlexBox>
               <Toggle checked={false} />
             </FlexBox>
           </FlexBox>
-        </FlexBox>
-        <FlexBox
-          background="transparent"
-          margin="0.5rem 2.5rem 4rem 2.5rem"
-          height="2rem"
-        >
           <FlexBox
-            justifyContent="space-between"
-            alignItems="center"
+            background="transparent"
+            margin="0.5rem 0 4rem 0"
+            height="2rem"
             width="100%"
+            mobileWidth="100%"
           >
-            <FlexBox>
-              <FlexTextBox fontSize="1.5rem" margin="0.1rem 0 0 0">
-                인스타그램 공유
-              </FlexTextBox>
-              <Tooltip
-                text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
-                margin="0 0 0 0.5rem"
-              />
-            </FlexBox>
-            <FlexBox>
+            <FlexBox
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+              mobileWidth="100%"
+            >
+              <FlexBox width="100%">
+                <FlexTextBox
+                  fontSize="1.5rem"
+                  margin="0.1rem 0 0 0"
+                  mobileFontSize="0.8rem"
+                >
+                  인스타그램 공유
+                </FlexTextBox>
+                <Tooltip
+                  text="인스타그램 공유는 계정 연동 후 사용할 수 있어요 🥺"
+                  margin="0"
+                />
+              </FlexBox>
               <Toggle checked={false} />
             </FlexBox>
           </FlexBox>
