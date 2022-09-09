@@ -83,7 +83,7 @@ const BannerBox = (props: Props) => {
         @media only screen and (max-width: ${maxWidthTablet}) {
           width: ${widthTablet};
         }
-        @media only screen and (max-width: 767px) {
+        @media only screen and (max-width: ${maxWidthMobile || "767px"}) {
           width: ${widthMobile};
         }
       `}

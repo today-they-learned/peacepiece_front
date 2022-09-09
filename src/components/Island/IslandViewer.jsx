@@ -154,80 +154,9 @@ const IslandViewer = ({ terrainMap, items }) => {
   const [itemsState, setItemsState] = useState([]);
   const [mouseCoordState, setMouseCoordState] = useState({ x: null, y: null });
 
-  const getPosition = (event) => {
-    if (event !== undefined) {
-      const { x, y } = event;
-      const tiles = [];
-      if (terrainMapState.length === 0) return;
-
-      const images = imagesRef.current;
-      const canvasX = canvasRef.current.getBoundingClientRect().left;
-      const canvasY = canvasRef.current.getBoundingClientRect().top;
-
-      for (let i = 0; i < terrainMapState.length; i += 1) {
-        for (let j = 0; j < terrainMapState[i].length; j += 1) {
-          const tileX = canvasX + mapPadding.left + 50 * j - 50 * i;
-          const tileY = canvasY + mapPadding.top + 25 * j + 25 * i;
-          const centreX = tileX + 50;
-          const centreY = tileY + 25;
-          const distanceToCentre =
-            ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-          tiles.push({ x: j, y: i, d: distanceToCentre });
-        }
-      }
-
-      // detail modal!!!!!!!!!
-
-      const minD = Math.min(...tiles.map((d) => d.d));
-      const tile = tiles.find((x) => x.d === minD);
-      const tileId = terrainState[tile.y][tile.x];
-
-      const modal = modalRef.current;
-      modal.style.display = "block";
-      const img = TileSwitcher(tileId, images);
-      modalImageRef.current.src = img.src;
-    }
-  };
-
-  const handleMouseMoveEvent = (event) => {
-    if (event !== undefined) {
-      const { x, y } = event;
-      const tiles = [];
-
-      if (terrainMapState.length === 0) return;
-
-      const canvasX = canvasRef.current.getBoundingClientRect().left;
-      const canvasY = canvasRef.current.getBoundingClientRect().top;
-
-      for (let i = 0; i < terrainMapState.length; i += 1) {
-        for (let j = 0; j < terrainMapState[i].length; j += 1) {
-          const tileX = canvasX + mapPadding.left + 50 * j - 50 * i;
-          const tileY = canvasY + mapPadding.top + 25 * j + 25 * i;
-          const centreX = tileX + 50;
-          const centreY = tileY + 25;
-          const distanceToCentre =
-            ((x - centreX) ** 2 + (y - centreY) ** 2) ** 0.5;
-          tiles.push({ x: j, y: i, d: distanceToCentre });
-        }
-      }
-
-      const minD = Math.min(...tiles.map((d) => d.d));
-      const tile = tiles.find((x) => x.d === minD);
-
-      setMouseCoordState({ x: tile.x, y: tile.y });
-    }
-  };
-
   const draw = () => {
     if (!canvasRef.current || !imagesRef.current) return;
     const images = imagesRef.current;
-
-    // canvasRef.current.addEventListener("mousedown", getPosition, false);
-    // canvasRef.current.addEventListener(
-    //   "mousemove",
-    //   handleMouseMoveEvent,
-    //   false
-    // );
 
     const ctx = canvasRef.current.getContext("2d");
 
@@ -274,7 +203,6 @@ const IslandViewer = ({ terrainMap, items }) => {
             mapPadding.left + 50 * j - 50 * i,
             mapPadding.top + 25 * j + 25 * i
           );
-          // console.log(mouseCoordState);
           if (i === mouseCoordState.y && j === mouseCoordState.x) {
             const img = TileSwitcher(106, images);
             ctx.drawImage(

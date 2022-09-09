@@ -61,6 +61,7 @@ const Island = () => {
   // };
 
   useEffect(() => {
+    setMapIdx(0);
     setItemsState(items[mapIdx]);
   }, [mapIdx]);
 

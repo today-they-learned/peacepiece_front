@@ -231,7 +231,6 @@ const Navbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const url = location.pathname;
-    console.log(url);
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "offer") {
