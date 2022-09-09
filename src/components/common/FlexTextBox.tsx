@@ -6,6 +6,7 @@ interface Props {
   width?: string;
   height?: string;
   margin?: string;
+  padding?: string;
   fontSize?: string;
   fontFamily?: string;
   color?: string;
@@ -21,6 +22,7 @@ const defaultProps = {
   width: "auto",
   height: "auto",
   margin: "0",
+  padding: "0",
   fontSize: "1rem",
   fontFamily: "Pr-SemiBold",
   color: "white",
@@ -38,6 +40,7 @@ const FlexTextBox = (props: Props) => {
     width,
     mobileFontSize,
     height,
+    padding,
     margin,
     fontSize,
     fontFamily,
@@ -55,7 +58,7 @@ const FlexTextBox = (props: Props) => {
         width: ${width};
         height: ${height};
         margin: ${margin};
-        padding: 0;
+        padding: ${padding};
         font-size: ${fontSize};
         font-family: ${fontFamily};
         text-align: left;

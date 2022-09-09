@@ -13,6 +13,7 @@ interface Props {
   width?: string;
   background?: string;
   padding?: string;
+  margin?: string;
   maxWidthTablet?: string;
   widthTablet?: string;
   maxWidthMobile?: string;
@@ -27,6 +28,7 @@ const defaultProps = {
   width: "24.5rem",
   background: COLOR.bg.primary,
   padding: "1.5rem",
+  margin: "",
   maxWidthTablet: "0",
   widthTablet: "0",
   maxWidthMobile: "0",
@@ -44,6 +46,7 @@ export const ChallengeBanner = (props: Props) => {
     width,
     background,
     padding,
+    margin,
     maxWidthTablet,
     widthTablet,
     maxWidthMobile,
@@ -54,6 +57,7 @@ export const ChallengeBanner = (props: Props) => {
       theme={theme}
       width={width}
       padding={padding}
+      margin={margin}
       maxWidthTablet={maxWidthTablet}
       widthTablet={widthTablet}
       maxWidthMobile={maxWidthMobile}

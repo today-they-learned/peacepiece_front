@@ -10,13 +10,18 @@ import { FlexBox } from "components/common";
 const Challenge = () => {
   const { user } = useUser();
   return (
-    <FlexBox justifyContent="center" height="100%" margin="2rem 0 0 0">
+    <FlexBox
+      justifyContent="center"
+      height="100%"
+      margin="2rem 0 0 0"
+      gap="2rem"
+    >
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <TodayChallengeList />
         <WeeklyChallengeList />
         <ChallengeSuggestionGather />
       </FlexBox>
-      <FlexBox column alignItems="center">
+      <FlexBox column alignItems="center" gap="2rem">
         {user && <NoticKeyword />}
         <ChallengeSuggestionBanner />
         <EndedChallengeBanner />
