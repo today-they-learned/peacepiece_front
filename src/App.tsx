@@ -47,7 +47,10 @@ const App = () => {
                 />
                 <Route path="/piece" element={<Piece />} />
                 <Route path="/piece/:id" element={<PieceDetail />} />
-                <Route path="/piece/:keyword" element={<PieceSearch />} />
+                <Route
+                  path="/piece/search/:keyword"
+                  element={<PieceSearch />}
+                />
                 <Route path="/intro" element={<ServiceIntro />} />
                 <Route path="/terms" element={<Tos />} />
                 <Route path="/privacy" element={<Privacy />} />

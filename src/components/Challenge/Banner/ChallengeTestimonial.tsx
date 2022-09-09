@@ -82,7 +82,7 @@ const ChallengeTestimonial = () => {
               );
             })}
         </FlexBox>
-        <div ref={ref}>{isFetchingNextPage && "Loading more..."}</div>
+        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
       </ChallengeBanner>
       {modalVisible && (
         <ChallengeConfirmModal
