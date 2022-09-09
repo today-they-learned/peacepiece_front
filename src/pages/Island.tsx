@@ -56,9 +56,9 @@ const Island = () => {
   const [itemsState, setItemsState] = useState(items[0]);
   const [mapIdx, setMapIdx] = useState(0);
 
-  const handleClick = () => {
-    setMapIdx((mapIdx + 1) % 4);
-  };
+  // const handleClick = () => {
+  //   setMapIdx((mapIdx + 1) % 4);
+  // };
 
   useEffect(() => {
     setItemsState(items[mapIdx]);
