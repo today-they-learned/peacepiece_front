@@ -32,6 +32,7 @@ module.exports = {
       { namedComponents: "arrow-function" },
     ],
     "react/button-has-type": 0,
+    "no-extra-boolean-cast": 0,
   },
   settings: {
     "import/resolver": {

@@ -1,10 +1,9 @@
-import { BannerBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
+import { ArticleType } from "types";
 import Post from "./Post";
 import CommentInput from "./CommentInput";
 import CommentContainer from "./CommentContainer";
-import dummyArticle from "./dummyArticle";
 
 const PostCardContainer = styled.div`
   display: flex;
@@ -22,10 +21,15 @@ const PostCardContainer = styled.div`
   }
 `;
 
-const PostCard = () => {
+interface Props {
+  article: ArticleType;
+}
+
+const PostCard = (props: Props) => {
+  const { article } = props;
   return (
     <PostCardContainer>
-      <Post article={dummyArticle} />
+      <Post article={article} />
       <CommentInput />
       <CommentContainer />
     </PostCardContainer>

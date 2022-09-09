@@ -32,7 +32,7 @@ const AllChallengeSuggestion = () => {
               />
             );
           })}
-        <div ref={ref}>{isFetchingNextPage && "Loading more..."}</div>
+        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
       </AllChallengeSuggestionList>
     </ChallengeBanner>
   );

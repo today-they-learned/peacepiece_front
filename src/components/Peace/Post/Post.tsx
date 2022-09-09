@@ -1,26 +1,17 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-import { useState, useRef, useMemo } from "react";
+import { useState } from "react";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import ArticleInterface from "types/article";
+import { ArticleType } from "types";
+import { useDate } from "hooks";
 
 interface Props {
-  backgroundColor?: string;
-  color?: string;
-  size?: string;
-  article: ArticleInterface;
+  article: ArticleType;
 }
 
-const defaultProps = {
-  backgroundColor: "white",
-  color: "black",
-  size: "3.2rem",
-};
-
-const Avatar = styled.img<{ size: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
+const Avatar = styled.img`
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 `;
 
@@ -43,12 +34,14 @@ const LastImage = styled.img`
   position: relative;
 `;
 
-const Emoji = styled.div<{ color?: string; backgroundColor: string }>`
-  padding: 0.15rem 0.5rem;
+const Emoji = styled.div<{ isFeedbacked: boolean }>`
+  padding: 0.25rem 0.5rem;
   border-radius: 10px;
-  color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
+  color: ${(isFeedbacked) =>
+    isFeedbacked ? COLOR.white : COLOR.font.darkDefault};
   margin-right: 0.7rem;
+  background: ${(isFeedbacked) =>
+    isFeedbacked ? COLOR.btn.active : COLOR.white};
 `;
 
 const Button = styled.button`
@@ -72,29 +65,19 @@ const LastImageContainer = styled.div`
   max-width: 10rem;
 `;
 
-const Post = ({ backgroundColor, color, size, article }: Props) => {
-  const [isShowMore, setIsShowMore] = useState<boolean>(false);
-  const textLimit = useRef<number>(200);
-
-  const contentMore = useMemo(() => {
-    const shortReview: string = article.content.slice(0, textLimit.current);
-
-    if (article.content.length > textLimit.current) {
-      if (isShowMore) {
-        return article.content;
-      }
-      return shortReview;
-    }
-    return article.content;
-  }, [isShowMore]);
+const Post = (props: Props) => {
+  const { article } = props;
+  const [textLimit, setTextLimit] = useState(
+    Math.min(200, article.content.length)
+  );
 
   return (
     <>
-      <FlexTextBox color={COLOR.font.link}>
-        {"["}
-        {article.challenge.title}
-        {"] "}챌린지
-      </FlexTextBox>
+      {article.challenge && (
+        <FlexTextBox margin="0.5rem 0 0 0 " color={COLOR.font.link}>
+          [{article.challenge.title}] 챌린지
+        </FlexTextBox>
+      )}
       <FlexBox
         width="100%"
         height="auto"
@@ -106,10 +89,7 @@ const Post = ({ backgroundColor, color, size, article }: Props) => {
         margin="0"
       >
         <FlexBox background="transparent" alignItems="center" margin="0">
-          <Avatar
-            src={`${process.env.PUBLIC_URL}/${article.writer.avatar}`}
-            size={size}
-          />
+          <Avatar src={`${process.env.PUBLIC_URL}/${article.writer.avatar}`} />
           <FlexBox
             column
             justifyContent="center"
@@ -128,16 +108,20 @@ const Post = ({ backgroundColor, color, size, article }: Props) => {
               fontFamily="Pr-Medium"
               color={COLOR.font.secondary}
             >
-              {article.created_at}
+              {useDate(article.created_at)}
             </FlexTextBox>
           </FlexBox>
         </FlexBox>
 
         <FlexTextBox fontSize="1rem" fontFamily="Pr-Medium" padding="1rem 0">
-          {contentMore}
-          <Button onClick={() => setIsShowMore(!isShowMore)}>
-            {article.content.length > textLimit.current &&
-              (isShowMore ? "닫기" : "더보기")}
+          {article.content.slice(0, textLimit)}
+          <Button
+            onClick={() => setTextLimit(article.content.length)}
+            style={{
+              display: textLimit === article.content.length && "none",
+            }}
+          >
+            더보기
           </Button>
         </FlexTextBox>
 
@@ -172,21 +156,14 @@ const Post = ({ backgroundColor, color, size, article }: Props) => {
         </ImageListContainer>
 
         <FlexBox background="transparent">
-          <Emoji backgroundColor={COLOR.btn.tooltip}>👍1</Emoji>
-          <Emoji backgroundColor={backgroundColor} color={color}>
-            🌱0
-          </Emoji>
-          <Emoji backgroundColor={backgroundColor} color={color}>
-            ❤️0
-          </Emoji>
-          <Emoji backgroundColor={backgroundColor} color={color}>
-            🚀0
-          </Emoji>
+          <Emoji isFeedbacked>👍 1</Emoji>
+          <Emoji isFeedbacked>🌱 0</Emoji>
+          <Emoji isFeedbacked>❤️ 0</Emoji>
+          <Emoji isFeedbacked>🚀 0</Emoji>
         </FlexBox>
       </FlexBox>
     </>
   );
 };
-Post.defaultProps = defaultProps;
 
 export default Post;
