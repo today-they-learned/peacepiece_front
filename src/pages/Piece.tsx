@@ -1,8 +1,11 @@
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallengeBanner";
 import PostCardList from "components/Peace/Post/PostCardList";
 import Writing from "components/Peace/Writing";
 import styled from "styled-components";
+import { useArticleListData } from "hooks/queries/article";
 
 const PieceContainer = styled.div`
   display: flex;
@@ -35,6 +38,15 @@ const SubMenuContainer = styled.div`
 `;
 
 const Piece = () => {
+  const { ref, inView } = useInView();
+  const { data, isFetched, isFetchingNextPage, hasNextPage, fetchNextPage } =
+    useArticleListData();
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView]);
   return (
     <PieceContainer>
       <SubMenuContainer>
@@ -43,7 +55,14 @@ const Piece = () => {
       </SubMenuContainer>
       <PostContainer>
         <Writing />
-        <PostCardList />
+        {isFetched &&
+          data.pages.map((page) => (
+            <PostCardList
+              key={`PostCardList_${page?.data.current_page}`}
+              articles={page?.data.results}
+            />
+          ))}
+        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
       </PostContainer>
     </PieceContainer>
   );

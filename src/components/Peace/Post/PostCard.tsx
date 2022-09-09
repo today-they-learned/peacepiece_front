@@ -25,8 +25,7 @@ interface Props {
   article: ArticleType;
 }
 
-const PostCard = (props: Props) => {
-  const { article } = props;
+const PostCard = ({ article }: Props) => {
   return (
     <PostCardContainer>
       <Post article={article} />

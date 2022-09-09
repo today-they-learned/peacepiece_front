@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ArticleType } from "types";
 import PostCard from "./PostCard";
 
 const PostCardListWrapper = styled.div`
@@ -7,11 +8,16 @@ const PostCardListWrapper = styled.div`
   gap: 2rem;
 `;
 
-const PostCardList = () => {
+interface Props {
+  articles: ArticleType[];
+}
+
+const PostCardList = ({ articles }: Props) => {
   return (
     <PostCardListWrapper>
-      <PostCard />
-      <PostCard />
+      {articles.map((article) => {
+        return <PostCard key={`Article_${article.id}`} article={article} />;
+      })}
     </PostCardListWrapper>
   );
 };

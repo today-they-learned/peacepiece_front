@@ -25,10 +25,18 @@ const PieceSearch = () => {
     <FlexBox justifyContent="center" height="100%">
       <FlexBox column alignItems="center" margin="0 0 10rem 0">
         <PieceSearchResult
+          isFetched={isFetched}
           keyword={keyword}
-          numOfPiece={data.pages[0].data.total_pages}
+          numOfPiece={data?.pages[0].data.total_count}
         />
-        <PostCardList />
+        {isFetched &&
+          data?.pages.map((page) => (
+            <PostCardList
+              key={`PostCardList_${page?.data.current_page}`}
+              articles={page?.data.results}
+            />
+          ))}
+        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
       </FlexBox>
       <FlexBox column alignItems="center">
         <PieceSearchBanner />

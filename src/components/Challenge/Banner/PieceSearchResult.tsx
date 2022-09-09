@@ -10,10 +10,10 @@ const PrimaryText = styled.span`
 interface Props {
   keyword: string;
   numOfPiece: number;
+  isFetched: boolean;
 }
 
-const PieceSearchResult = (props: Props) => {
-  const { keyword, numOfPiece } = props;
+const PieceSearchResult = ({ keyword, numOfPiece, isFetched }: Props) => {
   return (
     <BannerBox width="52.5rem" height="4.875rem" padding="1.5rem">
       <FlexTextBox fontSize="1.56rem" fontFamily="Pr-Bold">
@@ -23,7 +23,9 @@ const PieceSearchResult = (props: Props) => {
             <PrimaryText>{numOfPiece}</PrimaryText>개의 글)
           </>
         ) : (
-          <PrimaryText>{keyword}에 대한 검색결과가 없습니다.</PrimaryText>
+          isFetched && (
+            <PrimaryText>{keyword}에 대한 검색결과가 없습니다.</PrimaryText>
+          )
         )}
       </FlexTextBox>
     </BannerBox>
