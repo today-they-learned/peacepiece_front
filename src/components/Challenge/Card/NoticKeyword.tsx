@@ -54,7 +54,8 @@ const NoticKeyword = () => {
       <BannerBox
         width="21.6rem"
         height="10.75rem"
-        padding="1rem 0.3rem 1rem 0.4rem"
+        margin="1rem"
+        padding="0.5rem 0.3rem 0.5rem 0.4rem"
         theme="secondary"
       >
         <FlexButton
@@ -75,7 +76,7 @@ const NoticKeyword = () => {
             <NoticKeywordModal onClick={handleClose} />
           </Box>
         </Modal>
-        <FlexBox margin="0.5rem" wrap="wrap">
+        <FlexBox margin="0.2rem 0.5rem 0.5rem 0.5rem" wrap="wrap">
           {keywords.map((keyword: string) => (
             <FlexTextBox
               key={keyword}
