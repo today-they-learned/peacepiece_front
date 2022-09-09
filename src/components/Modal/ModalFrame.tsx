@@ -93,9 +93,10 @@ const ModalFrame = (props: AreaElement) => {
           <FlexBox
             background={background}
             width={width}
+            mobileWidth="20rem"
             height={height}
             column
-            padding="3rem"
+            padding="2.5rem"
             borderRadius="1.25rem"
             margin="auto"
           >
@@ -109,6 +110,7 @@ const ModalFrame = (props: AreaElement) => {
                 <FlexTextBox
                   color={modalMainColor}
                   fontSize="1.875rem"
+                  mobileFontSize="1.2rem"
                   fontFamily="Pr-Bold"
                 >
                   {title}
@@ -117,8 +119,10 @@ const ModalFrame = (props: AreaElement) => {
                   <FlexTextBox
                     color={COLOR.white}
                     fontSize="1.875rem"
+                    mobileFontSize="1rem"
                     fontFamily="Pr-Bold"
                     margin="0 0 0 1rem"
+                    mobileDisplay="none"
                   >
                     챌린지 인증하기
                   </FlexTextBox>
@@ -134,6 +138,7 @@ const ModalFrame = (props: AreaElement) => {
             <FlexBox
               position="relative"
               left={type === "warning" ? "23rem" : "27rem"}
+              mobileLeft={type === "warning" ? "0" : "0rem"}
               top={type === "warning" ? "7rem" : "1rem"}
             >
               <FlexButton
