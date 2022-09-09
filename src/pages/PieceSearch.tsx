@@ -4,7 +4,6 @@ import { useInView } from "react-intersection-observer";
 import { useArticleSearchData } from "hooks/queries/article";
 import PieceSearchResult from "components/Challenge/Banner/PieceSearchResult";
 import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallengeBanner";
-import { FlexBox } from "components/common";
 import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import PostCardList from "components/Peace/Post/PostCardList";
 import { PieceContainer, PostContainer, SubMenuContainer } from "./Piece";
