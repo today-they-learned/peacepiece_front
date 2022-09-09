@@ -26,5 +26,3 @@ export const Mobile = ({
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return isMobile ? children : null;
 };
-
-// export default { Desktop, Tablet, Mobile };

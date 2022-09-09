@@ -9,7 +9,7 @@ import { Desktop, Tablet, Mobile } from "hooks/mediaQuery";
 
 const Challenge = () => {
   return (
-    <>
+    <div style={{ height: "100%" }}>
       <Desktop>
         <FlexBox justifyContent="center" height="100%" margin="2rem 0 0 0">
           <FlexBox column alignItems="center" margin="0 0 10rem 0">
@@ -25,7 +25,7 @@ const Challenge = () => {
         </FlexBox>
       </Desktop>
       <Tablet>
-        <FlexBox column>
+        <FlexBox column alignItems="center" height="100%" margin="2rem 0 0 0">
           <FlexBox justifyContent="center" alignItems="center">
             <NoticKeyword />
             <OfferChallengeBanner />
@@ -35,7 +35,7 @@ const Challenge = () => {
           <ChallengeOfferGather />
         </FlexBox>
       </Tablet>
-    </>
+    </div>
   );
 };
 

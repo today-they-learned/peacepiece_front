@@ -26,7 +26,7 @@ const defaultProps = {
   theme: "default",
   titleColor: "white",
   width: "24.5rem",
-  height: "12.8rem",
+  height: "auto",
   background: COLOR.bg.primary,
   padding: "1.5rem",
   maxWidthTablet: "0",

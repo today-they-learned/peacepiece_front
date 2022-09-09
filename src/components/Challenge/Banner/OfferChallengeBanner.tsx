@@ -47,6 +47,7 @@ const OfferChallengeBanner = () => {
           <FlexBox
             justifyContent="flex-end"
             margin="3.3rem 0 0 0"
+            tabletMargin="7rem 0 0 0"
             background="transparent"
           >
             <Link to={script.url}>
