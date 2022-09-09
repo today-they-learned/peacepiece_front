@@ -7,13 +7,14 @@ import { Island, Animal, Item, Point } from "./index";
 const TabPanee = styled(Tab.Pane)`
   height: 42rem;
   margin: 0 !important;
+  padding: 0.6rem !important;
   overflow: scroll;
   background: ${COLOR.bg.secondary} !important;
   border: none !important;
 `;
 
 const TabLib = styled(Tab)`
-  width: 18rem;
+  width: 17.5rem;
   margin: 0 !important;
   background: ${COLOR.bg.nav} !important;
   border: none !important;
@@ -52,7 +53,7 @@ const panes = [
 
 const Tabb = () => {
   return (
-    <BannerBox width="25rem">
+    <BannerBox width="25rem" padding="1.05rem">
       <TabLib panes={panes} />
     </BannerBox>
   );
