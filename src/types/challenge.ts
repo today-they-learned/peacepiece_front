@@ -1,10 +1,15 @@
 import { ImageType } from "types";
 
+type ChallengeCategoryInterface = {
+  id: string | number;
+  title: string;
+};
+
 type ChallengeInterface = {
-  id: string;
+  id: string | number;
   title: string;
   description: string;
-  categories: string[];
+  categories: ChallengeCategoryInterface[];
   prover_cnt: number;
   point: number;
   images: ImageType[];

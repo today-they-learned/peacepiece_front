@@ -12,7 +12,7 @@ import COLOR from "constants/color";
 import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
 
 const TemporaryContainer = styled.div`
-  width: 45rem;
+  width: 100%;
   height: 4.8rem;
   border-radius: 1.2rem;
   display: flex;
@@ -51,7 +51,7 @@ const ChallengeTestimonial = () => {
     <>
       <ChallengeBanner
         title={script.title}
-        width="52.25rem"
+        width="100%"
         titleColor={COLOR.font.primary}
         padding="2rem 3rem"
       >

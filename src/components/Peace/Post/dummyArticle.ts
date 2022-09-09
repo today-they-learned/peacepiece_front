@@ -6,7 +6,12 @@ const dummyArticle: ArticleType = {
     id: "1",
     title: "일회용품 No! 다시 쓰기 Yes!",
     description: "이 챌린지는 블라블라 ~",
-    categories: ["일회용품_줄이기"],
+    categories: [
+      {
+        id: 2,
+        title: "일회용품 줄이기",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [
