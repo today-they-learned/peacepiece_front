@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
   type?: "submit" | "reset" | "button" | undefined;
   margin?: string;
+  padding?: string;
   borderRadius?: string;
   fontSize?: string;
   fontFamily?: string;
@@ -20,6 +21,7 @@ interface Props {
 const defaultProps = {
   type: "button",
   margin: "0",
+  padding: "0.6rem 1.5rem",
   fontFamily: "Pr-SemiBold",
   borderRadius: "0.62rem",
   fontSize: "1.2rem",
@@ -37,6 +39,7 @@ const FlexButton = (props: Props) => {
     children,
     type,
     margin,
+    padding,
     borderRadius,
     fontSize,
     fontFamily,
@@ -56,7 +59,7 @@ const FlexButton = (props: Props) => {
       css={css`
         width: auto;
         height: auto;
-        padding: 0.6rem 1.5rem;
+        padding: ${padding};
         margin: ${margin};
         border: 0;
         outline: 0;

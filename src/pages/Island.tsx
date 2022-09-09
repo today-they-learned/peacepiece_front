@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { FlexBox } from "components/common";
 import IslandViewer from "components/Island/IslandViewer";
 import Maps from "constants/Island/Maps";
+import Tab from "components/Peace/Tab/Tab";
 
 const items = [
   [
@@ -63,12 +65,11 @@ const Island = () => {
   }, [mapIdx]);
 
   return (
-    <div>
-      내소개
-      <button onClick={handleClick} style={{ color: "white" }}>
-        이거 누르면 맵 바뀜
-      </button>
-      <IslandViewer terrainMap={mapState} items={itemsState} />
+    <div style={{ display: "flex" }}>
+      <FlexBox padding="10rem 0">
+        <IslandViewer terrainMap={mapState} items={itemsState} />
+      </FlexBox>
+      <Tab />
     </div>
   );
 };
