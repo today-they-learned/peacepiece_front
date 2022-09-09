@@ -23,18 +23,18 @@ const insertJSX = () => {
   for (let i = 0; i < dummyData.length; i += 1) {
     newArr.push(
       <FlexBox
-        width="288px"
-        height="95px"
+        width="260px"
+        height="90px"
         background={COLOR.bg.navSecondary}
-        margin="0 0 0.7rem 0"
+        margin="0 0 0.6rem 0"
         borderRadius="5px"
       >
         <Img />
         <FlexBox background="transparent" column>
           <FlexBox background="transparent" margin="0.8rem">
-            <FlexTextBox fontSize="1.25rem">{dummyData[i].item}</FlexTextBox>
+            <FlexTextBox fontSize="1.05rem">{dummyData[i].item}</FlexTextBox>
             <FlexTextBox
-              fontSize="1.25rem"
+              fontSize="1.05rem"
               color={COLOR.font.primary}
               margin="0 0 0 0.5rem"
             >
@@ -95,7 +95,7 @@ const insertJSX = () => {
 const Item = () => {
   return (
     <FlexBox background="transparent" column margin="0 0 0.5rem 0">
-      <FlexTextBox fontSize="1.25rem" margin="0.2rem 0 0.9rem 0.5rem">
+      <FlexTextBox fontSize="1.2rem" margin="0.2rem 0 0.9rem 0.5rem">
         🌴 아이템 구매하기
       </FlexTextBox>
       {insertJSX()}

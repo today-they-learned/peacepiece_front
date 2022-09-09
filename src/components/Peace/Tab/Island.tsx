@@ -21,8 +21,8 @@ const dummyData = [
 ];
 
 const Img = styled.div`
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   margin: 0.75rem 0.25rem 0.75rem 0.75rem;
   border-radius: 5px;
   background: #d9d9d9;
@@ -33,20 +33,20 @@ const insertJSX = () => {
   for (let i = 0; i < dummyData.length; i += 1) {
     newArr.push(
       <FlexBox
-        width="288px"
-        height="95px"
+        width="260px"
+        height="90px"
         background={COLOR.bg.navSecondary}
-        margin="0 0 0.7rem 0"
+        margin="0 0 0.6rem 0"
         borderRadius="5px"
       >
         <Img />
         <FlexBox background="transparent" column>
           <FlexBox background="transparent" margin="0.8rem">
-            <FlexTextBox fontSize="1.25rem">
+            <FlexTextBox fontSize="1.05rem">
               섬 확장 {dummyData[i].stage}단계
             </FlexTextBox>
             <FlexTextBox
-              fontSize="1.25rem"
+              fontSize="1.05rem"
               color={COLOR.font.primary}
               margin="0 0 0 0.5rem"
             >
@@ -107,7 +107,7 @@ const insertJSX = () => {
 const Island = () => {
   return (
     <FlexBox column margin="0 0 0.5rem 0">
-      <FlexTextBox fontSize="1.25rem" margin="0.2rem 0 0.9rem 0.5rem">
+      <FlexTextBox fontSize="1.2rem" margin="0.2rem 0 0.9rem 0.5rem">
         🍃 섬 넓히기
       </FlexTextBox>
       {insertJSX()}

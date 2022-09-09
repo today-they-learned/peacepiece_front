@@ -33,8 +33,8 @@ const dummyPoints: point[] = [
 
 const Title = styled.a`
   font-family: "Pr-Bold";
-  font-size: 1.1rem;
-  max-width: 9.5rem;
+  font-size: 1.05rem;
+  max-width: 8.5rem;
   margin-right: 0.4rem;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -67,11 +67,11 @@ const insertJSX = (points: point[]) => {
   for (let i = 0; i < dummyPoints.length; i += 1) {
     newArr.push(
       <FlexBox
-        width="280px"
+        width="260px"
         height="83px"
         borderRadius="5px"
         background={COLOR.bg.navSecondary}
-        margin="0.3rem 0.3rem 0.5rem 0.3rem"
+        margin="0.6rem 0"
         padding="1rem"
         column
       >
@@ -79,7 +79,7 @@ const insertJSX = (points: point[]) => {
           <CustomTooltip title={points[i].title} arrow placement="top-start">
             <Title>{points[i].title}</Title>
           </CustomTooltip>
-          <FlexTextBox fontFamily="Pr-Bold" fontSize="1.1rem">
+          <FlexTextBox fontFamily="Pr-Bold" fontSize="1.05rem">
             챌린지 인증
           </FlexTextBox>
         </FlexBox>
@@ -93,7 +93,7 @@ const insertJSX = (points: point[]) => {
               {points[i].point} PP
             </FlexTextBox>
           )}
-          <FlexTextBox fontSize="0.75rem" margin="0 0 0 7.5rem">
+          <FlexTextBox fontSize="0.75rem" margin="0 0 0 6rem">
             {points[i].date}
           </FlexTextBox>
         </FlexBox>
