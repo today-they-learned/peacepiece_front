@@ -97,10 +97,7 @@ const ModalFrame = (props: AreaElement) => {
             column
             padding="3rem"
             borderRadius="1.25rem"
-            position="relative"
-            top="50%"
-            left="25%"
-            transform="translateY(-50%)"
+            margin="auto"
           >
             <FlexBox
               width="100%"
