@@ -8,20 +8,31 @@ interface Props {
   content: string;
   feedbackCount: number;
   isFeedbacked: boolean;
-  margin?: string;
+  gap?: string;
 }
 
 const defaultProps = {
-  margin: "0.5rem 1rem 0.5rem 0rem",
+  gap: "1rem",
 };
 
-const Container = styled.div<{ margin: string }>`
-  width: 22rem;
+const Container = styled.div<{ gap: string }>`
   height: auto;
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
   padding: 0.7rem 1.5rem 0.7rem 1.5rem;
-  margin: ${(props) => props.margin};
+
+  flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
+  max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
+
+  @media (max-width: 1000px) {
+    flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
+    max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
+  }
+
+  @media (max-width: 600px) {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 `;
 
 const User = styled.div`
@@ -53,8 +64,13 @@ const LikeNumber = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ChallengeOfferCard = (props: Props) => {
-  const { suggester, content, feedbackCount, isFeedbacked, margin } = props;
+const ChallengeOfferCard = ({
+  suggester,
+  content,
+  feedbackCount,
+  isFeedbacked,
+  gap,
+}: Props) => {
   const [clicked, setClicked] = useState(isFeedbacked);
   const [like, setLike] = useState(feedbackCount);
   const clickedLike = () => {
@@ -62,7 +78,7 @@ const ChallengeOfferCard = (props: Props) => {
     setClicked((prev) => !prev);
   };
   return (
-    <Container margin={margin}>
+    <Container gap={gap}>
       <User>{suggester}</User>
       <Content>{content}</Content>
       <LikeContainer>

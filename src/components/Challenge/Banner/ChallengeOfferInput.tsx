@@ -27,20 +27,12 @@ const ChallengeOfferInput = () => {
   const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
 
   return (
-    <ChallengeBanner
-      title={script.title}
-      width="76rem"
-      padding="2rem"
-      maxWidthTablet="1250px"
-      widthTablet="51rem"
-      maxWidthMobile="768px"
-      widthMobile="26.5rem"
-    >
+    <ChallengeBanner title={script.title} width="100%" padding="2rem">
       <Textarea
         value={value}
         onChange={onChangeValue}
-        width="98%"
-        margin="1rem 0 0 0"
+        width="100%"
+        margin="1rem 0"
         text={script.text}
         minRow={6}
         maxLength={100}
@@ -48,7 +40,7 @@ const ChallengeOfferInput = () => {
       <FlexBox
         justifyContent="space-between"
         alignItems="center"
-        margin="0.5rem 1rem"
+        padding="1rem 0"
         background={COLOR.bg.primary}
       >
         <FlexTextBox
@@ -59,6 +51,7 @@ const ChallengeOfferInput = () => {
           글자 수 {value.length} / 100
         </FlexTextBox>
         <FlexButton
+          margin="0"
           fontSize="1.1rem"
           onClick={handleSubmit}
           fontFamily="Pr-Bold"
