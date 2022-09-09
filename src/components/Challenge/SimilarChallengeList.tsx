@@ -1,4 +1,3 @@
-import { FlexBox } from "components/common";
 import styled from "styled-components";
 import ChallengeMiniCard from "./Card/ChallengeMiniCard";
 

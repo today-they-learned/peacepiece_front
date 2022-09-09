@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useChallengeData } from "hooks/queries/challenge";
-
-import { FlexBox } from "components/common";
 import CertificationBanner from "components/Challenge/Banner/CertificationBanner";
 import ChallengeDetailBanner from "components/Challenge/Banner/ChallengeDetailBanner";
 import ChallengeTestimonial from "components/Challenge/Banner/ChallengeTestimonial";

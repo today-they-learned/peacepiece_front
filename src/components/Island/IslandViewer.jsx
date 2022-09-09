@@ -152,7 +152,7 @@ const IslandViewer = ({ terrainMap, items }) => {
   const [terrainMapState, setTerrainMapState] = useState([]);
   const [terrainState, setTerrainState] = useState([]);
   const [itemsState, setItemsState] = useState([]);
-  const [mouseCoordState, setMouseCoordState] = useState({ x: null, y: null });
+  const [mouseCoordState] = useState({ x: null, y: null });
 
   const draw = () => {
     if (!canvasRef.current || !imagesRef.current) return;

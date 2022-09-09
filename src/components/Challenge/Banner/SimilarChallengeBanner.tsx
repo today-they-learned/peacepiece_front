@@ -1,4 +1,4 @@
-import { ChallengeBanner, ChallengeTitle } from "components/Challenge";
+import { ChallengeTitle } from "components/Challenge";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import SimilarChallengeList from "../SimilarChallengeList";
