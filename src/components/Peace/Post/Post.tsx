@@ -38,10 +38,10 @@ const Emoji = styled.div<{ isFeedbacked: boolean }>`
   font-size: 13px;
   padding: 0.2rem 0.6rem;
   border-radius: 15px;
+  margin-right: 0.7rem;
   font-family: ${(props) => (props.isFeedbacked ? "Pr-Bold" : "Pr-Regular")};
   color: ${(props) =>
     props.isFeedbacked ? COLOR.font.darkDefault : COLOR.white};
-  margin-right: 0.7rem;
   background: ${(props) =>
     props.isFeedbacked ? COLOR.white : COLOR.btn.active};
 `;
