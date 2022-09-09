@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Island, Animal, Item, Point } from "./index";
 
 const TabPanee = styled(Tab.Pane)`
-  height: 45rem;
+  height: 42rem;
   margin: 0 !important;
   overflow: scroll;
   background: ${COLOR.bg.secondary} !important;
@@ -13,7 +13,7 @@ const TabPanee = styled(Tab.Pane)`
 `;
 
 const TabLib = styled(Tab)`
-  width: 20rem;
+  width: 18rem;
   margin: 0 !important;
   background: ${COLOR.bg.nav} !important;
   border: none !important;
