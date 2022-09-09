@@ -1,3 +1,5 @@
+import { useCookies } from "react-cookie";
+
 import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
@@ -11,6 +13,8 @@ interface Payload {
 }
 
 const useSignUpMutation = (setErrMsg: Dispatch<SetStateAction<Payload>>) => {
+  const [, setCookie] = useCookies(["access_token"]);
+
   const navigate = useNavigate();
 
   return useMutation(
@@ -19,7 +23,9 @@ const useSignUpMutation = (setErrMsg: Dispatch<SetStateAction<Payload>>) => {
     },
     {
       onSuccess: ({ data }) => {
-        localStorage.setItem("access_token", data.access_token);
+        const expires = new Date();
+        expires.setMinutes(expires.getMinutes() + 25);
+        setCookie("access_token", data.access_token, { expires });
         localStorage.setItem("refresh_token", data.refresh_token);
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate(-1);
