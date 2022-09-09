@@ -4,6 +4,14 @@ import { BannerBox } from "components/common";
 import styled from "styled-components";
 import { Island, Animal, Item, Point } from "./index";
 
+const TabContainer = styled(BannerBox)`
+  max-height: 80vh;
+
+  @media only screen and (max-width: 768px) {
+    max-height: 70vh;
+  }
+`;
+
 const TabPane = styled(semanticTab.Pane)`
   height: 42rem;
   margin: 0 !important;
@@ -13,8 +21,7 @@ const TabPane = styled(semanticTab.Pane)`
   border: none !important;
 `;
 
-const TabLib = styled(semanticTab)`
-  width: 17.5rem;
+const Tab = styled(semanticTab)`
   margin: 0 !important;
   background: ${COLOR.bg.nav} !important;
   border: none !important;
@@ -51,12 +58,12 @@ const panes = [
   },
 ];
 
-const Tab = () => {
+const Tabs = () => {
   return (
-    <BannerBox padding="1.05rem">
-      <TabLib panes={panes} />
-    </BannerBox>
+    <TabContainer padding="1.05rem">
+      <Tab panes={panes} />
+    </TabContainer>
   );
 };
 
-export default Tab;
+export default Tabs;

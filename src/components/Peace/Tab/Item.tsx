@@ -96,7 +96,7 @@ const Item = () => {
   return (
     <FlexBox background="transparent" column margin="0 0 0.5rem 0">
       <FlexTextBox fontSize="1.2rem" margin="0.2rem 0 0.9rem 0.5rem">
-        🌴 아이템 구매하기
+        <h3>🌴 아이템 구매하기</h3>
       </FlexTextBox>
       {insertJSX()}
     </FlexBox>

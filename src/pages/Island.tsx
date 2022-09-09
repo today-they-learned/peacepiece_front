@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { FlexBox } from "components/common";
 import IslandViewer from "components/Island/IslandViewer";
 import Maps from "constants/Island/Maps";
-import Tab from "components/Peace/Tab/Tab";
+import Tabs from "components/Peace/Tab/Tabs";
+import styled from "styled-components";
 
 const items = [
   [
@@ -51,6 +51,29 @@ const items = [
   ],
 ];
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const IslandViewerWrapper = styled.div`
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    flex: 1;
+  }
+`;
+
+const TabWrapper = styled.div`
+  flex: 1;
+`;
+
 const Island = () => {
   const [mapState] = useState(Maps[0]);
   const [itemsState, setItemsState] = useState(items[0]);
@@ -61,17 +84,19 @@ const Island = () => {
   // };
 
   useEffect(() => {
-    setMapIdx(0);
+    setMapIdx(3);
     setItemsState(items[mapIdx]);
   }, [mapIdx]);
 
   return (
-    <div style={{ display: "flex" }}>
-      <FlexBox padding="10rem 0">
+    <Wrapper>
+      <IslandViewerWrapper>
         <IslandViewer terrainMap={mapState} items={itemsState} />
-      </FlexBox>
-      <Tab />
-    </div>
+      </IslandViewerWrapper>
+      <TabWrapper>
+        <Tabs />
+      </TabWrapper>
+    </Wrapper>
   );
 };
 
