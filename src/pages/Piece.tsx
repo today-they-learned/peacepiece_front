@@ -1,6 +1,5 @@
 import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallengeBanner";
-import { FlexBox } from "components/common";
 import PostCardList from "components/Peace/Post/PostCardList";
 import Writing from "components/Peace/Writing";
 import styled from "styled-components";
