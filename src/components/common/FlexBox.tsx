@@ -8,6 +8,7 @@ interface Props {
   height?: string;
   margin?: string;
   padding?: string;
+  mobilePadding?: string;
   shadow?: boolean;
   borderRadius?: string;
   column?: boolean;
@@ -20,19 +21,23 @@ interface Props {
   position?: string;
   top?: string;
   left?: string;
+  mobileLeft?: string;
   right?: string;
   bottom?: string;
   gap?: string;
   float?: string;
   transform?: string;
+  mobileWidth?: string;
 }
 
 const defaultProps = {
   width: "auto",
   maxWidth: "none",
+  mobileWidth: "100%",
   height: "auto",
   margin: "0",
   padding: "0",
+  mobilePadding: "0",
   shadow: false,
   borderRadius: "",
   column: false,
@@ -45,6 +50,7 @@ const defaultProps = {
   background: "transparent",
   top: "0",
   left: "0",
+  mobileLeft: "0",
   right: "0",
   bottom: "0",
   gap: "0",
@@ -56,10 +62,12 @@ const FlexBox = (props: Props) => {
   const {
     children,
     width,
+    mobileWidth,
     maxWidth,
     height,
     margin,
     padding,
+    mobilePadding,
     shadow,
     borderRadius,
     column,
@@ -72,6 +80,7 @@ const FlexBox = (props: Props) => {
     position,
     top,
     left,
+    mobileLeft,
     right,
     bottom,
     gap,
@@ -105,6 +114,12 @@ const FlexBox = (props: Props) => {
         gap: ${gap};
         float: ${float};
         transform: ${transform};
+
+        @media only screen and (max-width: 767px) {
+          width: ${mobileWidth};
+          left: ${mobileLeft};
+          padding: ${mobilePadding !== "0" ? mobilePadding : padding};
+        }
       `}
     >
       {children}
