@@ -12,12 +12,17 @@ const ChallengeDetail = () => {
   const { data } = useChallengeData(id);
 
   return (
-    <FlexBox justifyContent="center" height="100%">
-      <FlexBox column alignItems="center" margin="0 0 10rem 0">
+    <FlexBox
+      justifyContent="center"
+      height="100%"
+      gap="2rem"
+      margin="0 0 2rem 0"
+    >
+      <FlexBox column alignItems="center">
         <ChallengeDetailBanner challenge={data} />
         <ChallengeTestimonial />
       </FlexBox>
-      <FlexBox column alignItems="center">
+      <FlexBox column alignItems="center" gap="2rem">
         <CertificationBanner title={data?.title} isProved={data?.is_proved} />
         <SimilarChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
       </FlexBox>
