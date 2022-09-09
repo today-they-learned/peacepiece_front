@@ -14,7 +14,6 @@ const ChallengeMiniCard = (props: Props) => {
   return (
     <BannerBox
       width="100%"
-      height="9.25rem"
       padding="1.2rem 1.5rem 1.2rem 1.5rem"
       borderRadius="1.25rem"
       theme="secondary"

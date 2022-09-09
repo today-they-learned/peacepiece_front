@@ -7,6 +7,7 @@ import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallenge
 import { FlexBox } from "components/common";
 import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import PostCardList from "components/Peace/Post/PostCardList";
+import { PieceContainer, PostContainer, SubMenuContainer } from "./Piece";
 
 const PieceSearch = () => {
   const { keyword } = useParams();
@@ -22,8 +23,12 @@ const PieceSearch = () => {
   }, [inView]);
 
   return (
-    <FlexBox justifyContent="center" height="100%">
-      <FlexBox column alignItems="center" margin="0 0 10rem 0">
+    <PieceContainer>
+      <SubMenuContainer>
+        <PieceSearchBanner />
+        <SimilarChallengeBanner title="🧐 추천 챌린지" />
+      </SubMenuContainer>
+      <PostContainer>
         <PieceSearchResult
           isFetched={isFetched}
           keyword={keyword}
@@ -37,12 +42,8 @@ const PieceSearch = () => {
             />
           ))}
         <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
-      </FlexBox>
-      <FlexBox column alignItems="center">
-        <PieceSearchBanner />
-        <SimilarChallengeBanner title="🧐 추천 챌린지" />
-      </FlexBox>
-    </FlexBox>
+      </PostContainer>
+    </PieceContainer>
   );
 };
 

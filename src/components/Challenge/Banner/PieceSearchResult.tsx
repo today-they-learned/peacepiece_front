@@ -15,7 +15,7 @@ interface Props {
 
 const PieceSearchResult = ({ keyword, numOfPiece, isFetched }: Props) => {
   return (
-    <BannerBox width="52.5rem" height="4.875rem" padding="1.5rem">
+    <BannerBox width="100%" height="4.875rem" padding="1.5rem" margin="0">
       <FlexTextBox fontSize="1.56rem" fontFamily="Pr-Bold">
         {numOfPiece ? (
           <>

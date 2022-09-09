@@ -7,7 +7,7 @@ import Writing from "components/Peace/Writing";
 import styled from "styled-components";
 import { useArticleListData } from "hooks/queries/article";
 
-const PieceContainer = styled.div`
+export const PieceContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
   gap: 2rem;
@@ -17,7 +17,7 @@ const PieceContainer = styled.div`
   }
 `;
 
-const PostContainer = styled.div`
+export const PostContainer = styled.div`
   flex: 2 2 calc((100% - 2rem) * 2 / 3);
 
   display: flex;
@@ -29,7 +29,7 @@ const PostContainer = styled.div`
   }
 `;
 
-const SubMenuContainer = styled.div`
+export const SubMenuContainer = styled.div`
   flex: 1 1 calc((100% - 2rem) / 3);
 
   display: flex;

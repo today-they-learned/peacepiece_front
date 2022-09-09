@@ -56,8 +56,8 @@ const PieceSearchBanner = () => {
     <PieceSearchBannerContainer>
       <ChallengeTitle title={script.title} background="trasparent" />
 
-      <FlexBox position="relative" alignItems="center">
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <FlexBox position="relative" alignItems="center">
           <SearchInput
             placeholder="ex) 일회용품"
             value={keyword}
@@ -66,8 +66,8 @@ const PieceSearchBanner = () => {
           <SearchBtn type="submit">
             <HiOutlineSearch color={COLOR.font.primary} size="25" />
           </SearchBtn>
-        </form>
-      </FlexBox>
+        </FlexBox>
+      </form>
     </PieceSearchBannerContainer>
   );
 };
