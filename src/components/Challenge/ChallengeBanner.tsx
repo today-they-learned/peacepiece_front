@@ -11,6 +11,7 @@ interface Props {
   url?: string;
   theme?: string;
   width?: string;
+  height?: string;
   background?: string;
   padding?: string;
   maxWidthTablet?: string;
@@ -25,6 +26,7 @@ const defaultProps = {
   theme: "default",
   titleColor: "white",
   width: "24.5rem",
+  height: "12.8rem",
   background: COLOR.bg.primary,
   padding: "1.5rem",
   maxWidthTablet: "0",
@@ -42,6 +44,7 @@ export const ChallengeBanner = (props: Props) => {
     url,
     theme,
     width,
+    height,
     background,
     padding,
     maxWidthTablet,
@@ -53,6 +56,7 @@ export const ChallengeBanner = (props: Props) => {
     <BannerBox
       theme={theme}
       width={width}
+      height={height}
       padding={padding}
       maxWidthTablet={maxWidthTablet}
       widthTablet={widthTablet}

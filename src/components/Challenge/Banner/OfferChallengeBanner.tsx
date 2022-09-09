@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ChallengeBanner } from "components/Challenge";
 import { FlexButton, FlexTextBox, FlexBox } from "components/common";
 import COLOR from "constants/color";
+import { Desktop, Tablet } from "hooks/mediaQuery";
 
 const script = {
   title: "챌린지 제안하기",
@@ -11,27 +12,55 @@ const script = {
 
 const OfferChallengeBanner = () => {
   return (
-    <ChallengeBanner
-      theme="banner"
-      title={script.title}
-      background="transparent"
-    >
-      <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
-      <FlexBox
-        justifyContent="flex-end"
-        margin="3.3rem 0 0 0"
-        background="transparent"
-      >
-        <Link to={script.url}>
-          <FlexButton
-            color={COLOR.font.primary}
-            backgroundColor={COLOR.bg.primary}
+    <>
+      <Desktop>
+        <ChallengeBanner
+          theme="banner"
+          title={script.title}
+          background="transparent"
+        >
+          <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
+          <FlexBox
+            justifyContent="flex-end"
+            margin="3.3rem 0 0 0"
+            background="transparent"
           >
-            제안하기
-          </FlexButton>
-        </Link>
-      </FlexBox>
-    </ChallengeBanner>
+            <Link to={script.url}>
+              <FlexButton
+                color={COLOR.font.primary}
+                backgroundColor={COLOR.bg.primary}
+              >
+                제안하기
+              </FlexButton>
+            </Link>
+          </FlexBox>
+        </ChallengeBanner>
+      </Desktop>
+      <Tablet>
+        <ChallengeBanner
+          theme="banner"
+          title={script.title}
+          background="transparent"
+          height="17.56rem"
+        >
+          <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
+          <FlexBox
+            justifyContent="flex-end"
+            margin="3.3rem 0 0 0"
+            background="transparent"
+          >
+            <Link to={script.url}>
+              <FlexButton
+                color={COLOR.font.primary}
+                backgroundColor={COLOR.bg.primary}
+              >
+                제안하기
+              </FlexButton>
+            </Link>
+          </FlexBox>
+        </ChallengeBanner>
+      </Tablet>
+    </>
   );
 };
 
