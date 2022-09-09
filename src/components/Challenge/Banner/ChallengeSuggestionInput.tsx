@@ -98,7 +98,7 @@ const ChallengeSuggestionInput = () => {
         >
           글자 수 {value.length} / 100
         </FlexTextBox>
-        <FlexBox position="relative">
+        <FlexBox position="relative" mobileWidth="fit-content">
           {user ? (
             <Btn onClick={handleSubmit}>제안하기</Btn>
           ) : (
