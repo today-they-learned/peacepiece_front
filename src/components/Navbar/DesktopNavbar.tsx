@@ -163,8 +163,6 @@ const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
   background-color: ${COLOR.bg.navSecondary};
   display: none;
   text-align: center;
-  position: absolute;
-  top: 4.4rem;
   ${(props) =>
     props.clickedChallenge
       ? css`
