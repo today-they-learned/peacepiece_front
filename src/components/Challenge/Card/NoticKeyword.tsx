@@ -49,7 +49,14 @@ const NoticKeyword = () => {
         <FlexTextBox fontSize="1.56rem" margin="0.2rem 0.4rem 1rem 0">
           님의 알림 키워드
         </FlexTextBox>
-        <Tooltip text="알림 설정을 한 키워드의 챌린지가 올라왔을 때, 이메일로 알려드릴게요 😇" />
+        <Tooltip
+          text={
+            <>
+              알림 설정을 한 키워드의 챌린지가 올라왔을 때, <br />
+              이메일로 알려드릴게요. 😇
+            </>
+          }
+        />
       </FlexBox>
       <BannerBox
         width="21.6rem"
