@@ -7,6 +7,7 @@ interface Props {
   maxWidth?: string;
   height?: string;
   margin?: string;
+  tabletMargin?: string;
   padding?: string;
   mobilePadding?: string;
   shadow?: boolean;
@@ -33,9 +34,10 @@ interface Props {
 const defaultProps = {
   width: "auto",
   maxWidth: "none",
-  mobileWidth: "100%",
+  mobileWidth: "",
   height: "auto",
   margin: "0",
+  tabletMargin: "0",
   padding: "0",
   mobilePadding: "0",
   shadow: false,
@@ -66,6 +68,7 @@ const FlexBox = (props: Props) => {
     maxWidth,
     height,
     margin,
+    tabletMargin,
     padding,
     mobilePadding,
     shadow,
@@ -114,6 +117,10 @@ const FlexBox = (props: Props) => {
         gap: ${gap};
         float: ${float};
         transform: ${transform};
+
+        @media only screen and (min-width: 768px) and (max-width: 1023px) {
+          margin: ${tabletMargin !== "0" ? tabletMargin : margin};
+        }
 
         @media only screen and (max-width: 767px) {
           width: ${mobileWidth};

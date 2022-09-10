@@ -53,21 +53,22 @@ const dummyChallenges = [
 ];
 
 const Container = styled.div`
-  width: 52rem;
+  width: 100%;
   height: 17.25rem;
   padding: 0.8rem;
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};
+  margin-bottom: 3rem;
+
   @media only screen and (max-width: 768px) {
-    width: 28rem;
     padding-left: 0;
   }
-  margin-bottom: 3rem;
 `;
 
 const CarouselLib = styled(Carousel)`
   width: 50.5rem;
   height: 10.5rem;
+  margin: auto;
   background-color: ${COLOR.bg.primary};
   @media only screen and (max-width: 768px) {
     width: 27.5rem;
@@ -134,7 +135,7 @@ const arrLoopMobile = () => {
   for (let i = 0; i < dummyChallenges.length; i += 1) {
     newArr.push(
       <Page>
-        <FlexBox margin="0 0.5rem 0 2rem">
+        <FlexBox margin="0.5rem 0.5rem 0 2.5rem">
           <WeeklyChallengeCard
             title={dummyChallenges[i].title}
             description={dummyChallenges[i].description}

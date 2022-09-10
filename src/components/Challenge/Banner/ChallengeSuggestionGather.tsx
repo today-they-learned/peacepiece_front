@@ -1,7 +1,7 @@
 import { ChallengeSuggestionCard } from "components/Challenge/Card";
-import { FlexBox } from "components/common";
 import { ChallengeBanner } from "components/Challenge";
 import COLOR from "constants/color";
+import { FlexBox } from "components/common";
 
 const dummyChallenges = [
   {
@@ -39,12 +39,18 @@ const dummyChallenges = [
 const ChallengeSuggestionGather = () => {
   return (
     <ChallengeBanner
-      width="52.25rem"
+      width="100%"
+      widthMobile="100%"
       padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
       url="/challenge/suggestion"
     >
-      <FlexBox margin="1rem 0 0 0" wrap="wrap" background={COLOR.bg.primary}>
+      <FlexBox
+        wrap="wrap"
+        margin="2rem 0 0 0"
+        background={COLOR.bg.primary}
+        gap="1rem"
+      >
         {dummyChallenges.map((challenge) => (
           <ChallengeSuggestionCard
             key={challenge.id}
@@ -52,6 +58,7 @@ const ChallengeSuggestionGather = () => {
             content={challenge.content}
             feedbackCount={challenge.feedbackCount}
             isFeedbacked={challenge.clicked}
+            gap="1rem"
           />
         ))}
       </FlexBox>

@@ -11,12 +11,11 @@ interface Props {
   url?: string;
   theme?: string;
   width?: string;
+  height?: string;
   background?: string;
-  padding?: string;
   margin?: string;
-  maxWidthTablet?: string;
+  padding?: string;
   widthTablet?: string;
-  maxWidthMobile?: string;
   widthMobile?: string;
 }
 
@@ -26,13 +25,12 @@ const defaultProps = {
   theme: "default",
   titleColor: "white",
   width: "24.5rem",
+  height: "auto",
   background: COLOR.bg.primary,
+  margin: "0",
   padding: "1.5rem",
-  margin: "",
-  maxWidthTablet: "0",
-  widthTablet: "0",
-  maxWidthMobile: "0",
-  widthMobile: "0",
+  widthTablet: "100%",
+  widthMobile: "100%",
 };
 
 export const ChallengeBanner = (props: Props) => {
@@ -44,23 +42,21 @@ export const ChallengeBanner = (props: Props) => {
     url,
     theme,
     width,
+    height,
     background,
-    padding,
     margin,
-    maxWidthTablet,
+    padding,
     widthTablet,
-    maxWidthMobile,
     widthMobile,
   } = props;
   return (
     <BannerBox
       theme={theme}
       width={width}
-      padding={padding}
+      height={height}
       margin={margin}
-      maxWidthTablet={maxWidthTablet}
+      padding={padding}
       widthTablet={widthTablet}
-      maxWidthMobile={maxWidthMobile}
       widthMobile={widthMobile}
     >
       <FlexBox
