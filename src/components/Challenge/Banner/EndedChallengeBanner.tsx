@@ -1,13 +1,6 @@
 import { ChallengeBanner } from "components/Challenge";
 import EndedChallengeList from "components/Challenge/EndedChallengeList";
-
-const dummyChallenges = [
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
-  { id: 1, title: "이것은 지난 챌린지의 제목이다", proverCnt: 10, point: 100 },
-];
+import { useChallengEndedData } from "hooks/queries/challenge";
 
 const script = {
   title: "🙇‍♂️ 지난 챌린지",
@@ -15,9 +8,13 @@ const script = {
 };
 
 const EndedChallengeBanner = () => {
+  const { data, isFetched } = useChallengEndedData(3);
+
   return (
     <ChallengeBanner title={script.title} url={script.url}>
-      <EndedChallengeList challenges={dummyChallenges} />
+      {isFetched && (
+        <EndedChallengeList challenges={data.pages[0].data.results} />
+      )}
     </ChallengeBanner>
   );
 };
