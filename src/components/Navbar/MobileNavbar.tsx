@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "hooks";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Nav = styled.div`
+  width: 100%;
+  height: 4.375rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 0 2rem;
+  background-color: ${COLOR.bg.nav};
+  font-family: "Pr-ExtraBold";
+  position: relative;
 `;
 
 const Logo = styled.img`
@@ -23,14 +31,18 @@ const CenterNavItems = styled.div`
 
 const Container = styled.div`
   position: relative;
-  /* width: 4rem; */
+  width: 4rem;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Island = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
+  font-family: "Pr-Regular";
   font-size: 1rem;
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -44,7 +56,7 @@ const Island = styled.span<{ isClicked: string }>`
   }
 
   ${(props) =>
-    props.isClicked === "island" &&
+    props.isClicked === "/island" &&
     css`
       &::after {
         width: 100%;
@@ -57,8 +69,9 @@ const Island = styled.span<{ isClicked: string }>`
 `;
 
 const Challenge = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
+  font-family: "Pr-Regular";
   font-size: 1rem;
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -85,8 +98,9 @@ const Challenge = styled.span<{ isClicked: string }>`
 `;
 
 const Piece = styled.span<{ isClicked: string }>`
-  opacity: 0.3;
+  font-family: "Pr-Regular";
   font-size: 1rem;
+  color: ${COLOR.font.disabled};
   &::after {
     content: "";
     position: absolute;
@@ -100,7 +114,7 @@ const Piece = styled.span<{ isClicked: string }>`
   }
 
   ${(props) =>
-    props.isClicked === "piece" &&
+    props.isClicked === "/piece" &&
     css`
       &::after {
         width: 100%;
@@ -113,10 +127,11 @@ const Piece = styled.span<{ isClicked: string }>`
 `;
 
 const RightNavItems = styled.div`
+  width: 7rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5rem;
 `;
 
 const Start = styled.div`
@@ -127,71 +142,211 @@ const Start = styled.div`
   color: ${COLOR.white};
   display: flex;
   justify-content: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+`;
+
+const Profile = styled.div`
+  background-color: ${COLOR.font.disabled};
+  width: 2rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin: 0 2rem;
+`;
+
+const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
+  width: 100%;
+  height: 4rem;
+  background-color: ${COLOR.bg.navSecondary};
+  display: none;
+  text-align: center;
+  ${(props) =>
+    props.clickedChallenge
+      ? css`
+          display: block;
+        `
+      : css`
+          display: none;
+        `};
+`;
+
+const DropdownTextBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DropdonwText = styled.span`
+  font-family: "Pr-Bold";
+  font-size: 0.8rem;
+  margin: 0 2rem;
+  color: ${COLOR.font.disabled};
+  cursor: pointer;
 `;
 
 const MobileNavbar = () => {
-  const [currentClickNav, setCurrentClickNav] = useState("island");
+  const { user } = useUser();
+  const [clickedChallenge, setClickedChallenge] = useState(false);
+  const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
+  const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
+  const [prevClickSubNav, setPrevClickSubNav] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const getClickNav = (e: React.MouseEvent<HTMLElement>) => {
+  const onClickNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickNav(e.target.id);
-      if (e.target.id === "island") {
+
+      if (e.target.id === "/island") {
         navigate("/");
       } else {
-        navigate(`/${e.target.id}`);
+        navigate(`${e.target.id}`);
+      }
+
+      if (e.target.id === "challenge") {
+        setClickedChallenge(true);
+        setCurrentClickSubNav("/challenge");
+      } else {
+        setClickedChallenge(false);
       }
     }
   };
 
+  const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target instanceof Element) {
+      setCurrentClickSubNav(e.target.id);
+      navigate(`${e.target.id}`);
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const url = location.pathname;
+
+    if (url.slice(0, 11) === "/challenge/") {
+      if (url.slice(11) === "suggestion") {
+        setCurrentClickNav("challenge");
+        setCurrentClickSubNav("/challenge/suggestion");
+        setClickedChallenge(true);
+      } else if (url.slice(11) === "ended") {
+        setCurrentClickNav("challenge");
+        setCurrentClickSubNav("/challenge/ended");
+        setClickedChallenge(true);
+      } else {
+        setCurrentClickNav("challenge");
+        setClickedChallenge(true);
+      }
+    } else if (url === "/challenge") {
+      setCurrentClickNav("challenge");
+      setCurrentClickSubNav("/challenge");
+      setClickedChallenge(true);
+    } else if (url === "/") {
+      setCurrentClickNav("/island");
+    } else if (url.slice(0, 6) === "/piece") {
+      setCurrentClickNav("/piece");
+    } else {
+      setCurrentClickNav(null);
+      setCurrentClickSubNav(null);
+      setClickedChallenge(false);
+    }
+  }, [location]);
+
   useEffect(() => {
     if (currentClickNav !== null) {
       const current = document.getElementById(currentClickNav);
-      current.style.opacity = "1";
-      current.style.fontWeight = "bold";
+      current.style.color = `${COLOR.font.default}`;
+      current.style.fontFamily = "Pr-Bold";
     }
 
     if (prevClickNav !== null) {
       const prev = document.getElementById(prevClickNav);
-      prev.style.opacity = "0.3";
-      prev.style.fontWeight = "normal";
+      prev.style.color = `${COLOR.font.disabled}`;
+      prev.style.fontFamily = "Pr-Regular";
     }
 
     setPrevClickNav(currentClickNav);
   }, [currentClickNav]);
 
+  useEffect(() => {
+    if (currentClickSubNav !== null) {
+      const current = document.getElementById(currentClickSubNav);
+      current.style.color = `${COLOR.font.primary}`;
+    }
+
+    if (prevClickSubNav !== null) {
+      const prev = document.getElementById(prevClickSubNav);
+      prev.style.color = `${COLOR.font.disabled}`;
+    }
+
+    setPrevClickSubNav(currentClickSubNav);
+  }, [currentClickSubNav]);
+
   return (
-    <Nav>
-      <Logo src="images/logo.png" />
-      <CenterNavItems>
-        <Container>
-          <Island id="island" onClick={getClickNav} isClicked={currentClickNav}>
-            나의 섬
-          </Island>
-        </Container>
-        <Container>
-          <Challenge
-            id="challenge"
-            onClick={getClickNav}
-            isClicked={currentClickNav}
-          >
-            챌린지
-          </Challenge>
-        </Container>
-        <Container>
-          <Piece id="piece" onClick={getClickNav} isClicked={currentClickNav}>
-            피스
-          </Piece>
-        </Container>
-      </CenterNavItems>
-      <RightNavItems>
-        <Start>시작하기</Start>
-        {/* <IoIosNotificationsOutline size="30" />
-        <Profile /> */}
-      </RightNavItems>
-    </Nav>
+    <>
+      <Nav>
+        <Logo src="images/logo.png" />
+        <CenterNavItems>
+          <Container>
+            <Island
+              id="/island"
+              onClick={onClickNav}
+              isClicked={currentClickNav}
+            >
+              나의 섬
+            </Island>
+          </Container>
+          <Container>
+            <Challenge
+              id="challenge"
+              onClick={onClickNav}
+              isClicked={currentClickNav}
+            >
+              챌린지
+            </Challenge>
+          </Container>
+          <Container>
+            <Piece id="/piece" onClick={onClickNav} isClicked={currentClickNav}>
+              피스
+            </Piece>
+          </Container>
+        </CenterNavItems>
+        <RightNavItems>
+          {user ? (
+            <>
+              <IoIosNotificationsOutline size="30" />
+              <Profile />
+            </>
+          ) : (
+            <Start
+              onClick={() => {
+                navigate(`/sign`);
+              }}
+            >
+              시작하기
+            </Start>
+          )}
+        </RightNavItems>
+      </Nav>
+      <DropdownBox clickedChallenge={clickedChallenge}>
+        <DropdownTextBox>
+          <DropdonwText id="/challenge" onClick={onClickSubNav}>
+            진행 중인 챌린지
+          </DropdonwText>
+          <DropdonwText id="/challenge/ended" onClick={onClickSubNav}>
+            지난 챌린지
+          </DropdonwText>
+          <DropdonwText id="/challenge/suggestion" onClick={onClickSubNav}>
+            챌린지 제안
+          </DropdonwText>
+        </DropdownTextBox>
+      </DropdownBox>
+    </>
   );
 };
 
