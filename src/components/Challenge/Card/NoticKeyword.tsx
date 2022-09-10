@@ -63,7 +63,6 @@ const NoticKeyword = () => {
         widthMobile="95%"
         widthTablet="90%"
         height="10.75rem"
-        margin="1rem"
         padding="0.5rem 0.3rem 0.5rem 0.4rem"
         theme="secondary"
         position="relative"

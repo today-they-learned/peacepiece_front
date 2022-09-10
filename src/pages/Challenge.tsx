@@ -19,7 +19,7 @@ const Challenge = () => {
           margin="2rem 0 0 0"
           gap="2rem"
         >
-          <FlexBox column alignItems="center" margin="0 2rem 10rem 0">
+          <FlexBox column alignItems="center" margin="0 0 10rem 0">
             <TodayChallengeList />
             <WeeklyChallengeList />
             <ChallengeSuggestionGather />
@@ -39,10 +39,12 @@ const Challenge = () => {
           margin="2rem 0 0 0"
           padding="2rem"
         >
-          <FlexBox width="100%" justifyContent="center" alignItems="center">
-            <NoticKeyword />
-            <ChallengeSuggestionBanner />
-          </FlexBox>
+          {user && (
+            <FlexBox width="100%" justifyContent="center" alignItems="center">
+              <NoticKeyword />
+              <ChallengeSuggestionBanner />
+            </FlexBox>
+          )}
           <TodayChallengeList />
           <WeeklyChallengeList />
           <ChallengeSuggestionGather />
@@ -57,7 +59,7 @@ const Challenge = () => {
           margin="2rem 0 0 0"
           padding="2rem"
         >
-          <NoticKeyword />
+          {user && <NoticKeyword />}
           <TodayChallengeList />
           <WeeklyChallengeList />
           <ChallengeSuggestionGather />
