@@ -22,10 +22,10 @@ const Container = styled.div<{ gap: string }>`
   padding: 0.7rem 1.5rem 0.7rem 1.5rem;
   margin: 0 0.5rem 1rem 0;
 
-  flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
-  max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
+  flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 2)`};
+  max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 2)`};
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1023px) {
     flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
     max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
   }
