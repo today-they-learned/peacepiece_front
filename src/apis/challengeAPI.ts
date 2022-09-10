@@ -10,6 +10,12 @@ const challengeAPI = {
   daily: () => {
     return instance.get("challenges/daily/");
   },
+  weekly: () => {
+    return instance.get("challenges/weekly/");
+  },
+  ended: () => {
+    return instance.get("challenges/ended/");
+  },
 };
 
 export default challengeAPI;
