@@ -4,11 +4,12 @@ import COLOR from "constants/color";
 
 interface Props {
   checked: boolean;
+  disabled?: boolean;
 }
 
 export const ToggleBtn = styled.button<Props>`
-  width: 3.7rem;
-  height: 1.8rem;
+  width: 3.3rem;
+  height: 1.4rem;
   margin-top: 0.2rem;
   border-radius: 1rem;
   border: none;
@@ -24,11 +25,11 @@ export const ToggleBtn = styled.button<Props>`
 
 const Circle = styled.div<Props>`
   background-color: ${COLOR.white};
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 1rem;
   position: absolute;
-  left: 5%;
+  left: 0;
   transition: all 0.5s ease-in-out;
   ${(props) =>
     props.checked &&
@@ -48,11 +49,11 @@ const Circle = styled.div<Props>`
 `;
 
 const Toggle = (props: Props) => {
-  const { checked } = props;
+  const { checked, disabled } = props;
   const [toggle, setToggle] = useState(checked);
 
   const clickedToggle = () => {
-    setToggle((prev) => !prev);
+    if (!disabled) setToggle((prev) => !prev);
   };
 
   return (
@@ -61,5 +62,7 @@ const Toggle = (props: Props) => {
     </ToggleBtn>
   );
 };
+
+Toggle.defaultProps = { disabled: false };
 
 export default Toggle;

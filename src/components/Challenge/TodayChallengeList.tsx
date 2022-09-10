@@ -136,7 +136,12 @@ const TodayChallengeList = () => {
         <Container>
           <ChallengeTitle
             title={randomTitle}
-            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+            toolTipContent={
+              <>
+                오늘만 참여할 수 있는 챌린지에요. <br />
+                한번 바로 확인해볼까요?
+              </>
+            }
             background={COLOR.bg.primary}
           />
           <CardContainer>

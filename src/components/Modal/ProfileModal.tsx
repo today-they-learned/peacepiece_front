@@ -33,6 +33,8 @@ const Avatar = styled.div`
   border-radius: 2rem;
   background-color: gray;
   opacity: 0.5;
+  object-fit: cover;
+  background: ${COLOR.bg.primary};
 `;
 
 const Line = styled.div`

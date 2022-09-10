@@ -1,10 +1,11 @@
 import Tooltip from "components/Tooltip/Tooltip";
 import { FlexBox, FlexTextBox } from "components/common";
 import COLOR from "constants/color";
+import { ReactNode } from "react";
 
 interface Props {
   title: string;
-  toolTipContent?: string;
+  toolTipContent?: string | ReactNode;
   margin?: string;
   background?: string;
   color?: string;

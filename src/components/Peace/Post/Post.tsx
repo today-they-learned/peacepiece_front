@@ -13,25 +13,29 @@ const Avatar = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
+  background: ${COLOR.bg.primary};
 `;
 
 const Image = styled.img`
   flex: 1;
-  max-width: 10rem;
+  width: 11rem;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
+  background: ${COLOR.bg.primary};
 `;
 
 const LastImage = styled.img`
-  width: 100%;
+  width: 11rem;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
   opacity: 0.3;
   position: relative;
+  background: ${COLOR.bg.primary};
 `;
 
 const Emoji = styled.div<{ isFeedbacked: boolean }>`
@@ -90,7 +94,7 @@ const Post = (props: Props) => {
         margin="0"
       >
         <FlexBox background="transparent" alignItems="center" margin="0">
-          <Avatar src={`${process.env.PUBLIC_URL}/${article.writer.avatar}`} />
+          <Avatar src={article.writer.avatar} />
           <FlexBox
             column
             justifyContent="center"
@@ -125,13 +129,10 @@ const Post = (props: Props) => {
 
         <ImageListContainer>
           {article.images.slice(0, 3).map((image, idx) => {
-            if (idx === 2) {
+            if (article.images.length > 3 && idx === 2) {
               return (
-                <LastImageContainer>
-                  <LastImage
-                    src={`${process.env.PUBLIC_URL}/${image.file}`}
-                    key={image.id}
-                  />
+                <LastImageContainer key={`postImage_${image.id}`}>
+                  <LastImage src={image.file} />
                   <FlexTextBox
                     position="absolute"
                     right="50%"
@@ -144,12 +145,7 @@ const Post = (props: Props) => {
                 </LastImageContainer>
               );
             }
-            return (
-              <Image
-                src={`${process.env.PUBLIC_URL}/${image.file}`}
-                key={image.id}
-              />
-            );
+            return <Image src={image.file} key={`postImage_${image.id}`} />;
           })}
         </ImageListContainer>
 

@@ -52,7 +52,7 @@ const ChallengeDetail = () => {
     <ChallengeDetailContainer>
       <DetailInfoContainer>
         <ChallengeDetailBanner challenge={data} />
-        <ChallengeTestimonial />
+        <ChallengeTestimonial title={data?.title} />
       </DetailInfoContainer>
       <SubInfoContainer>
         <CertificationBanner title={data?.title} isProved={data?.is_proved} />

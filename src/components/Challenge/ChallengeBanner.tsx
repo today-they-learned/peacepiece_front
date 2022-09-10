@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { BannerBox, FlexBox, FlexTextBox } from "components/common";
 import { ChallengeTitle } from "components/Challenge";
 import COLOR from "constants/color";
+import { ReactNode } from "react";
 
 interface Props {
   children: React.ReactNode;
   title: string;
   titleColor?: string;
-  tooltip?: string;
+  tooltip?: string | ReactNode;
   url?: string;
   theme?: string;
   width?: string;

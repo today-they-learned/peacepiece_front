@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 /* eslint-disable react/jsx-props-no-spreading */
+import { ReactNode } from "react";
 import { styled } from "@mui/material/styles";
 import COLOR from "constants/color";
 import HelpIcon from "@mui/icons-material/Help";
@@ -7,7 +8,7 @@ import * as TooltipLib from "@mui/material/Tooltip";
 import { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 interface Props {
-  text?: string;
+  text?: string | ReactNode;
   margin?: string;
 }
 
@@ -41,8 +42,11 @@ const Tooltip = (props: Props) => {
       paddingLeft: 15,
     },
   }));
+
+  const title = <div style={{ textAlign: "center" }}>{text}</div>;
+
   return (
-    <CustomTooltip title={text} arrow placement="top-start">
+    <CustomTooltip title={title} arrow placement="top-start">
       <Icon color="action" margin={margin} />
     </CustomTooltip>
   );

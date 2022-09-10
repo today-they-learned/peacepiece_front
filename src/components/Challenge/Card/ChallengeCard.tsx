@@ -84,7 +84,7 @@ const ChallengeCard = (props: Props) => {
   return (
     <Container margin={margin} key={challenge.id}>
       <Thumbnail
-        src={`${process.env.PUBLIC_URL}${challenge.thumbnail.file}`}
+        src={challenge.thumbnail.file}
         isProved={challenge.is_proved}
       />
       {challenge.is_proved && (
