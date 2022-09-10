@@ -1,9 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FlexTextBox } from "components/common";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import ChallengeBanner from "components/Challenge/ChallengeBanner";
 import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
-import { useState } from "react";
+import { useUser } from "hooks";
 
 const TemporaryContainer = styled.div`
   border-radius: 1.2rem;
@@ -16,14 +18,21 @@ const TemporaryContainer = styled.div`
 const WritingContainer = styled(ChallengeBanner)``;
 
 const Writing = () => {
+  const navigate = useNavigate();
+  const { user } = useUser();
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
-    setModalVisible(true);
+    if (user) {
+      setModalVisible(true);
+    } else {
+      navigate("/sign");
+    }
   };
   const closeModal = () => {
     setModalVisible(false);
   };
+
   return (
     <>
       <WritingContainer

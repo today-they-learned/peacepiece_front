@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import { useChallengeArticleData } from "hooks/queries/challenge";
 import { FlexBox, FlexTextBox } from "components/common";
@@ -10,6 +10,7 @@ import { ChallengeBanner } from "components/Challenge";
 import TestimonialCard from "components/Challenge/Card/TestimonialCard";
 import COLOR from "constants/color";
 import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
+import { useUser } from "hooks";
 
 const TemporaryContainer = styled.div`
   width: 100%;
@@ -26,8 +27,14 @@ const script = {
   title: "챌린지 인증",
 };
 
-const ChallengeTestimonial = () => {
+interface Props {
+  title: string;
+}
+
+const ChallengeTestimonial = ({ title }: Props) => {
+  const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useUser();
   const { ref, inView } = useInView();
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -41,7 +48,11 @@ const ChallengeTestimonial = () => {
   }, [inView]);
 
   const openModal = () => {
-    setModalVisible(true);
+    if (user) {
+      setModalVisible(true);
+    } else {
+      navigate("/sign");
+    }
   };
   const closeModal = () => {
     setModalVisible(false);
@@ -88,8 +99,9 @@ const ChallengeTestimonial = () => {
         <ChallengeConfirmModal
           onClose={closeModal}
           visible={modalVisible}
-          title="일회용품 No! 다시 쓰기 Yes!"
+          title={title}
           type="writing"
+          challengeId={id}
           subTitle
         />
       )}

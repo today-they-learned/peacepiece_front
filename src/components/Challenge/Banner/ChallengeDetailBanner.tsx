@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { BannerBox, FlexBox, FlexTextBox, FlexButton } from "components/common";
+import { BannerBox, FlexBox, FlexTextBox } from "components/common";
 import { Paper } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -20,8 +20,11 @@ const Thumbnail = styled.img`
 const Img = styled.img`
   flex: 1 1 calc((100% - 2rem) / 3);
   max-width: calc((100% - 2rem) / 3);
-  height: auto;
-  max-height: 9.3rem;
+  max-height: 8.5rem;
+  width: 11rem;
+  height: 8.5rem;
+  object-fit: cover;
+  border-radius: 0.625rem;
   object-fit: cover;
 `;
 
@@ -36,11 +39,10 @@ const Page = styled(Paper)`
   display: flex;
   justify-content: flex-start;
   max-width: 100%;
-  margin-left: 0.5rem;
   display: flex;
   border: none !important;
   gap: 1rem;
-  padding: 1rem;
+  padding: 1rem 3.5rem;
   background-color: ${COLOR.bg.primary} !important;
 `;
 
@@ -105,14 +107,15 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
       {challenge?.categories && (
         <FlexBox background="transparent" padding="1rem">
           {challenge?.categories.map((category) => (
-            <FlexButton
+            <FlexBox
               key={`challenge-category-${category.id}`}
-              backgroundColor={COLOR.bg.banner}
-              margin="0 0.5rem 0 1.3rem"
-              fontSize="1rem"
+              background={COLOR.bg.banner}
+              padding="0.3rem 1rem"
+              borderRadius="0.3rem"
+              margin="0 1rem 0 0.2rem"
             >
-              {category.title}
-            </FlexButton>
+              <FlexTextBox fontSize="1rem">{category.title}</FlexTextBox>
+            </FlexBox>
           ))}
         </FlexBox>
       )}
@@ -137,10 +140,10 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
       <FlexBox padding="1rem" width="100%">
         <FlexBox
           width="100%"
-          height="fit-content"
           padding="1rem"
           borderRadius="10px"
           background={COLOR.bg.banner}
+          center
         >
           <FlexTextBox>
             이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수 있어요! 벌써{" "}

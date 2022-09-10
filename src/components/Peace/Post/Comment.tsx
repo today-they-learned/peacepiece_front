@@ -12,6 +12,8 @@ const Avatar = styled.img<{ size: string }>`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   border-radius: 50%;
+  object-fit: cover;
+  background: ${COLOR.bg.primary};
 `;
 
 // const EmojiBtn = styled.button<{ isFeedbacked: boolean }>`
@@ -30,10 +32,7 @@ const Avatar = styled.img<{ size: string }>`
 const Comment = ({ comment }: Props) => {
   return (
     <FlexBox margin="0 0 1rem 0" gap="1rem">
-      <Avatar
-        src={`${process.env.PUBLIC_URL}/${comment.writer.avatar}`}
-        size="2rem"
-      />
+      <Avatar src={comment.writer.avatar} size="2rem" />
       <FlexBox column gap="0.4rem" alignItems="flex-end">
         <FlexBox
           padding="0.3rem 0.7rem"

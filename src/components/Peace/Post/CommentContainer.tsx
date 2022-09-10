@@ -20,11 +20,11 @@ interface Props {
 const CommentContainer = ({ comments }: Props) => {
   const VISIBLE_CNT = 3;
   const [commentsCnt, setCommentsCnt] = useState(
-    Math.min(VISIBLE_CNT, comments.length)
+    Math.min(VISIBLE_CNT, comments?.length)
   );
 
   return (
-    !!comments.length && (
+    !!comments?.length && (
       <FlexBox
         width="100%"
         height="auto"
@@ -36,14 +36,14 @@ const CommentContainer = ({ comments }: Props) => {
         column
       >
         <FlexBox column>
-          {comments.slice(0, commentsCnt).map((comment) => (
+          {comments?.slice(0, commentsCnt).map((comment) => (
             <Comment key={comment.id} comment={comment} />
           ))}
-          {commentsCnt !== comments.length && (
+          {commentsCnt !== comments?.length && (
             <Button
               onClick={() =>
                 setCommentsCnt(
-                  Math.min(commentsCnt + VISIBLE_CNT, comments.length)
+                  Math.min(commentsCnt + VISIBLE_CNT, comments?.length)
                 )
               }
             >

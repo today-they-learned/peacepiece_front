@@ -9,6 +9,8 @@ const Avatar = styled.img`
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
+  object-fit: cover;
+  background: ${COLOR.bg.primary};
 `;
 
 const SummitBtn = styled.button`
@@ -48,7 +50,7 @@ const CommentInput = ({ articleId }: Props) => {
         padding="1rem 1.5rem"
         position="relative"
       >
-        <Avatar src={`${process.env.PUBLIC_URL}/${user.avatar}`} />
+        <Avatar src={user.avatar} />
         <Textarea
           value={comment}
           onChange={onChangeComment}

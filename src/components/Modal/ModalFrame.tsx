@@ -17,6 +17,7 @@ interface AreaElement {
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
   type?: string;
   subTitle?: boolean;
+  handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const defaultProps = {
@@ -63,8 +64,10 @@ const ModalFrame = (props: AreaElement) => {
     background,
     visible,
     onClose,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     type,
     subTitle,
+    handleSubmit,
   } = props;
 
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -96,21 +99,22 @@ const ModalFrame = (props: AreaElement) => {
             mobileWidth="20rem"
             height={height}
             column
-            padding="2.5rem"
+            padding="2rem"
+            center
             borderRadius="1.25rem"
-            margin="auto"
+            margin="5vh auto"
           >
             <FlexBox
               width="100%"
               justifyContent="space-between"
               alignItems="center"
-              margin="0 0 2rem 0"
+              margin="0 0 1.5rem 0"
             >
-              <FlexBox>
+              <FlexBox alignItems="baseline">
                 <FlexTextBox
                   color={modalMainColor}
-                  fontSize="1.875rem"
-                  mobileFontSize="1.2rem"
+                  fontSize="1.7rem"
+                  mobileFontSize="1.1rem"
                   fontFamily="Pr-Bold"
                 >
                   {title}
@@ -118,7 +122,7 @@ const ModalFrame = (props: AreaElement) => {
                 {subTitle && (
                   <FlexTextBox
                     color={COLOR.white}
-                    fontSize="1.875rem"
+                    fontSize="1.5rem"
                     mobileFontSize="1rem"
                     fontFamily="Pr-Bold"
                     margin="0 0 0 1rem"
@@ -135,14 +139,9 @@ const ModalFrame = (props: AreaElement) => {
               )}
             </FlexBox>
             <FlexBox>{children}</FlexBox>
-            <FlexBox
-              position="relative"
-              left={type === "warning" ? "23rem" : "27rem"}
-              mobileLeft={type === "warning" ? "0" : "0rem"}
-              top={type === "warning" ? "7rem" : "1rem"}
-            >
+            <FlexBox width="100%" justifyContent="flex-end">
               <FlexButton
-                fontSize="1.56rem"
+                fontSize="1.4rem"
                 backgroundColor={COLOR.bg.default}
                 onClick={onClose}
               >
@@ -151,8 +150,9 @@ const ModalFrame = (props: AreaElement) => {
               <FlexButton
                 margin="0 0 0 1rem"
                 color={modalMainColor}
-                fontSize="1.56rem"
+                fontSize="1.4rem"
                 backgroundColor={COLOR.bg.primary}
+                onClick={handleSubmit}
               >
                 {btnTitle2}
               </FlexButton>
