@@ -12,7 +12,7 @@ const script = {
 
 const OfferChallengeBanner = () => {
   return (
-    <>
+    <div style={{ width: "100%" }}>
       <Desktop>
         <ChallengeBanner
           theme="banner"
@@ -61,7 +61,7 @@ const OfferChallengeBanner = () => {
           </FlexBox>
         </ChallengeBanner>
       </Tablet>
-    </>
+    </div>
   );
 };
 

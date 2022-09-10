@@ -30,9 +30,9 @@ const defaultProps = {
   background: COLOR.bg.primary,
   padding: "1.5rem",
   maxWidthTablet: "0",
-  widthTablet: "0",
+  widthTablet: "100%",
   maxWidthMobile: "0",
-  widthMobile: "0",
+  widthMobile: "100%",
 };
 
 export const ChallengeBanner = (props: Props) => {
