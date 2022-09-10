@@ -17,6 +17,7 @@ type ChallengeInterface = {
   is_proved: boolean;
   start_at: string;
   end_at: string;
+  is_ended: boolean;
 };
 
 export default ChallengeInterface;

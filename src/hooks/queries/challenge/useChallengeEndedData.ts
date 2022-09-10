@@ -2,9 +2,12 @@ import { useInfiniteQuery } from "react-query";
 import challengeAPI from "apis/challengeAPI";
 import * as queryKeys from "constants/queryKeys";
 
-const useChallengeEndedQuery = (pageSize?: number) => {
+const useChallengeEndedQuery = (pageSize?: number, main?: string) => {
+  const queryKey = [queryKeys.CHALLENGE_ENDED_DATA];
+  if (main) queryKey.push(main);
+
   return useInfiniteQuery(
-    [queryKeys.CHALLENGE_ENDED_DATA],
+    queryKey,
     ({ pageParam = 1 }) => challengeAPI.ended(pageParam, pageSize || 10),
     {
       getNextPageParam: (lastPage) => {

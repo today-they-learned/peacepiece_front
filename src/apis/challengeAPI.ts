@@ -14,7 +14,7 @@ const challengeAPI = {
     return instance.get("challenges/weekly/");
   },
   ended: (page: number, pageSize: number) => {
-    return instance.get(`challenges/ended/?page=${page}&pase_size=${pageSize}`);
+    return instance.get(`challenges/ended/?page=${page}&page_size=${pageSize}`);
   },
 };
 

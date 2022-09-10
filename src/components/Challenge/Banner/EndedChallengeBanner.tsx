@@ -1,6 +1,6 @@
 import { ChallengeBanner } from "components/Challenge";
 import EndedChallengeList from "components/Challenge/EndedChallengeList";
-import { useChallengEndedData } from "hooks/queries/challenge";
+import { useChallengeEndedData } from "hooks/queries/challenge";
 
 const script = {
   title: "🙇‍♂️ 지난 챌린지",
@@ -8,7 +8,7 @@ const script = {
 };
 
 const EndedChallengeBanner = () => {
-  const { data, isFetched } = useChallengEndedData(3);
+  const { data, isFetched } = useChallengeEndedData(3, "main");
 
   return (
     <ChallengeBanner title={script.title} url={script.url}>

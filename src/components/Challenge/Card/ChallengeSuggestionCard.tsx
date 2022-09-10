@@ -2,12 +2,10 @@ import { useState } from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
+import { ChallengeSuggestionType } from "types";
 
 interface Props {
-  suggester: string;
-  content: string;
-  feedbackCount: number;
-  isFeedbacked: boolean;
+  suggestion: ChallengeSuggestionType;
   gap?: string;
 }
 
@@ -64,23 +62,17 @@ const LikeNumber = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ChallengeSuggestionCard = ({
-  suggester,
-  content,
-  feedbackCount,
-  isFeedbacked,
-  gap,
-}: Props) => {
-  const [clicked, setClicked] = useState(isFeedbacked);
-  const [like, setLike] = useState(feedbackCount);
+const ChallengeSuggestionCard = ({ suggestion, gap }: Props) => {
+  const [clicked, setClicked] = useState(suggestion.is_feedbacked);
+  const [like, setLike] = useState(suggestion.feedback_count);
   const clickedLike = () => {
     setLike((prev) => prev + 1);
     setClicked((prev) => !prev);
   };
   return (
     <Container gap={gap}>
-      <User>{suggester}</User>
-      <Content>{content}</Content>
+      <User>{suggestion.suggester.username}</User>
+      <Content>{suggestion.content}</Content>
       <LikeContainer>
         {clicked ? (
           <AiFillLike color={COLOR.font.primary} size="20" />

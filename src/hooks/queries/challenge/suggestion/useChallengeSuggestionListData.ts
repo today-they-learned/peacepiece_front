@@ -2,10 +2,13 @@ import { useInfiniteQuery } from "react-query";
 import challengeSuggestionAPI from "apis/challengeSuggestionAPI";
 import * as queryKeys from "constants/queryKeys";
 
-const useChallengeSuggestionListQuery = () => {
+const useChallengeSuggestionListQuery = (pageSize?: number, main?: string) => {
+  const queryKey = [queryKeys.CHALLENGE_SUGGESTION_LIST];
+  if (main) queryKey.push(main);
   return useInfiniteQuery(
-    [queryKeys.CHALLENGE_SUGGESTION_LIST],
-    ({ pageParam = 1 }) => challengeSuggestionAPI.list.get(pageParam),
+    queryKey,
+    ({ pageParam = 1 }) =>
+      challengeSuggestionAPI.list.get(pageParam, pageSize || 9),
     {
       getNextPageParam: (lastPage) => {
         if (lastPage.data) {

@@ -6,7 +6,7 @@ import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { FlexTextBox, FlexBox } from "components/common";
-import { useChallengWeeklyData } from "hooks/queries/challenge";
+import { useChallengeWeeklyData } from "hooks/queries/challenge";
 import { ChallengeType } from "types";
 import WeeklyChallengeCard from "./Card/WeeklyChallengeCard";
 
@@ -88,7 +88,7 @@ const arrLoopMobile = (challenges: ChallengeType[]) => {
 
 const WeeklyChallengeList = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const { data: challenges, isFetched } = useChallengWeeklyData();
+  const { data: challenges, isFetched } = useChallengeWeeklyData();
   const [insertCard, setInsertCard] = useState<JSX.Element[]>();
 
   useEffect(() => {

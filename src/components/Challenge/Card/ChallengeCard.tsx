@@ -39,12 +39,14 @@ const Thumbnail = styled.img<ThumbnailImageProps>`
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+  object-fit: cover;
 
   ${({ isProved }) => isProved && "filter: brightness(50%);"};
 
   @media only screen and (max-width: 767px) {
     width: 11rem;
     height: 100%;
+    border-radius: 2rem 0 0 2rem;
   }
 `;
 
@@ -99,6 +101,7 @@ const ChallengeCard = (props: Props) => {
           <ChallengeFigure
             proverCnt={challenge.prover_cnt}
             point={challenge.point}
+            background={COLOR.bg.secondary}
           />
           <HashTagBox>
             {challenge.categories.map((category) => (
