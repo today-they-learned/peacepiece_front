@@ -434,6 +434,7 @@ const EndedChallenge = () => {
       justifyContent="center"
       padding="1rem"
       column
+      margin="2rem 0 0 0"
     >
       <ChallengeTitle title={script.title} />
       <EndedChallengeCardList challenges={dummyChallenges} />
