@@ -31,13 +31,14 @@ interface Props {
 }
 
 const CommentInput = ({ articleId }: Props) => {
-  const [comment, onChangeComment] = useTextArea("");
+  const [comment, onChangeComment, setComment] = useTextArea("");
   const { user } = useUser();
 
   const { mutate: addComment } = useAddComment(articleId);
 
   const handleSubmit = () => {
     addComment({ content: comment });
+    setComment("");
   };
 
   return (
