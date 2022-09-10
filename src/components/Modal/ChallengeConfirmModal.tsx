@@ -14,11 +14,13 @@ interface Props {
   visible: boolean;
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
   title: string;
+  text?: string;
   type?: string;
   subTitle?: boolean;
 }
 
 const defaultProps = {
+  text: "챌린지 인증 글을 입력해주세요",
   type: "warning",
   subTitle: false,
 };
@@ -73,6 +75,7 @@ const ChallengeConfirmModal = ({
   onClose,
   visible,
   title,
+  text,
   type,
   subTitle,
 }: Props) => {
@@ -145,7 +148,7 @@ const ChallengeConfirmModal = ({
           <Textarea
             value={content}
             onChange={onChangeContent}
-            text="챌린지 인증 글을 입력해주세요"
+            text={text}
             width="43rem"
             mobileWidth="13rem"
             minRow={2}
