@@ -66,6 +66,8 @@ const Title = styled.div`
 
 const HashTagBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
 
   @media only screen and (max-width: 767px) {
     margin-top: 3rem;
@@ -74,7 +76,7 @@ const HashTagBox = styled.div`
 
 const HashTag = styled.div`
   font-family: "Pr-Medium";
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: ${COLOR.white};
   margin-right: 0.5rem;
 `;

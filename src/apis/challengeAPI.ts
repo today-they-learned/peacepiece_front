@@ -7,6 +7,9 @@ const challengeAPI = {
   category: (keyword: string) => {
     return instance.get(`challenges/categories/?search=${keyword}`);
   },
+  daily: () => {
+    return instance.get("challenges/daily/");
+  },
 };
 
 export default challengeAPI;

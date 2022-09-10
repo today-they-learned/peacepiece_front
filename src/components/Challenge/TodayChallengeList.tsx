@@ -3,89 +3,9 @@ import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeType } from "types";
 import { Desktop, Mobile, Tablet } from "hooks/mediaQuery";
-import { ChallengeCard } from "./Card";
+import { useChallengeDailyData } from "hooks/queries/challenge";
 import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
-
-const dummyChallenges: ChallengeType[] = [
-  {
-    id: "1",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    description: "내용",
-    categories: [
-      {
-        id: 1,
-        title: "001a",
-      },
-      {
-        id: 2,
-        title: "텀블러_챌린지",
-      },
-    ],
-    prover_cnt: 10,
-    point: 100,
-    images: [],
-    thumbnail: {
-      id: 1,
-      file: "/images/card.png",
-      created_at: "2022-08-30T01:10:53.265788+09:00",
-    },
-    is_proved: true,
-    start_at: "2022-08-30T01:10:53.265788+09:00",
-    end_at: "2022-08-30T01:10:53.265788+09:00",
-  },
-  {
-    id: "1",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    description: "내용",
-    categories: [
-      {
-        id: 1,
-        title: "001a",
-      },
-      {
-        id: 2,
-        title: "텀블러_챌린지",
-      },
-    ],
-    prover_cnt: 10,
-    point: 100,
-    images: [],
-    thumbnail: {
-      id: 1,
-      file: "/images/card.png",
-      created_at: "2022-08-30T01:10:53.265788+09:00",
-    },
-    is_proved: false,
-    start_at: "2022-08-30T01:10:53.265788+09:00",
-    end_at: "2022-08-30T01:10:53.265788+09:00",
-  },
-  {
-    id: "1",
-    title: "텀블러로 커피 마시는 멋진 나는..",
-    description: "내용",
-    categories: [
-      {
-        id: 1,
-        title: "001a",
-      },
-      {
-        id: 2,
-        title: "텀블러_챌린지",
-      },
-    ],
-    prover_cnt: 10,
-    point: 100,
-    images: [],
-    thumbnail: {
-      id: 1,
-      file: "/images/card.png",
-      created_at: "2022-08-30T01:10:53.265788+09:00",
-    },
-    is_proved: true,
-    start_at: "2022-08-30T01:10:53.265788+09:00",
-    end_at: "2022-08-30T01:10:53.265788+09:00",
-  },
-];
+import { ChallengeCard } from "./Card";
 
 const Container = styled.div`
   width: 100%;
@@ -130,6 +50,8 @@ const TodayChallengeList = () => {
       Math.floor(Math.random() * todayChallengeTitleList.length)
     ];
 
+  const { data: challenges } = useChallengeDailyData();
+
   return (
     <>
       <Desktop>
@@ -145,9 +67,9 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {dummyChallenges.map((challenge) => (
+            {challenges?.map((challenge: ChallengeType) => (
               <TodayChallengeCardWrapper
-                key={`today-challenges${challenge.id}`}
+                key={`today-challenges_${challenge.id}`}
                 gap="2rem"
               >
                 <ChallengeCard challenge={challenge} />
@@ -164,9 +86,9 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {dummyChallenges.map((challenge) => (
+            {challenges?.map((challenge: ChallengeType) => (
               <TodayChallengeCardWrapper
-                key={`today-challenges${challenge.id}`}
+                key={`today-challenges_${challenge.id}`}
                 gap="2rem"
               >
                 <ChallengeCard challenge={challenge} />
@@ -183,10 +105,10 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {dummyChallenges.map((challenge) => (
+            {challenges?.map((challenge: ChallengeType) => (
               <ChallengeCard
                 challenge={challenge}
-                key={`today-challenges${challenge.id}`}
+                key={`today-challenges_${challenge.id}`}
               />
             ))}
           </CardContainer>
