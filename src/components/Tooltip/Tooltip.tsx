@@ -6,7 +6,7 @@ import HelpIcon from "@mui/icons-material/Help";
 import * as TooltipLib from "@mui/material/Tooltip";
 import { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
-export interface Props {
+interface Props {
   text?: string;
   margin?: string;
 }

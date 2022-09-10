@@ -163,8 +163,6 @@ const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
   background-color: ${COLOR.bg.navSecondary};
   display: none;
   text-align: center;
-  position: absolute;
-  top: 4.4rem;
   ${(props) =>
     props.clickedChallenge
       ? css`
@@ -231,12 +229,11 @@ const Navbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const url = location.pathname;
-    console.log(url);
 
     if (url.slice(0, 11) === "/challenge/") {
-      if (url.slice(11) === "offer") {
+      if (url.slice(11) === "suggestion") {
         setCurrentClickNav("challenge");
-        setCurrentClickSubNav("/challenge/offer");
+        setCurrentClickSubNav("/challenge/suggestion");
         setClickedChallenge(true);
       } else if (url.slice(11) === "ended") {
         setCurrentClickNav("challenge");
@@ -345,7 +342,7 @@ const Navbar = () => {
           <DropdonwText id="/challenge/ended" onClick={onClickSubNav}>
             지난 챌린지
           </DropdonwText>
-          <DropdonwText id="/challenge/offer" onClick={onClickSubNav}>
+          <DropdonwText id="/challenge/suggestion" onClick={onClickSubNav}>
             챌린지 제안
           </DropdonwText>
         </DropdownTextBox>

@@ -1,19 +1,27 @@
-import { Tab } from "semantic-ui-react";
+import { Tab as semanticTab } from "semantic-ui-react";
 import COLOR from "constants/color";
 import { BannerBox } from "components/common";
 import styled from "styled-components";
 import { Island, Animal, Item, Point } from "./index";
 
-const TabPanee = styled(Tab.Pane)`
-  height: 45rem;
+const TabContainer = styled(BannerBox)`
+  max-height: 80vh;
+
+  @media only screen and (max-width: 768px) {
+    max-height: 70vh;
+  }
+`;
+
+const TabPane = styled(semanticTab.Pane)`
+  height: 42rem;
   margin: 0 !important;
-  overflow: scroll;
+  padding: 0.6rem !important;
+  overflow-y: scroll;
   background: ${COLOR.bg.secondary} !important;
   border: none !important;
 `;
 
-const TabLib = styled(Tab)`
-  width: 20rem;
+const Tab = styled(semanticTab)`
   margin: 0 !important;
   background: ${COLOR.bg.nav} !important;
   border: none !important;
@@ -33,29 +41,29 @@ const panes = [
   {
     menuItem: "상점",
     render: () => (
-      <TabPanee>
+      <TabPane>
         <Island />
         <Animal />
         <Item />
-      </TabPanee>
+      </TabPane>
     ),
   },
   {
     menuItem: "포인트 이력",
     render: () => (
-      <TabPanee>
+      <TabPane>
         <Point />
-      </TabPanee>
+      </TabPane>
     ),
   },
 ];
 
-const Tabb = () => {
+const Tabs = () => {
   return (
-    <BannerBox width="25rem">
-      <TabLib panes={panes} />
-    </BannerBox>
+    <TabContainer padding="1.05rem">
+      <Tab panes={panes} />
+    </TabContainer>
   );
 };
 
-export default Tabb;
+export default Tabs;

@@ -97,8 +97,10 @@ const ChallengeCard = (props: Props) => {
           point={challenge.point}
         />
         <HashTagBox>
-          {challenge.categories.map((category, index) => (
-            <HashTag key={index}>#{category}</HashTag>
+          {challenge.categories.map((category) => (
+            <HashTag key={`challenge-category-${category.id}`}>
+              #{category.title}
+            </HashTag>
           ))}
         </HashTagBox>
       </ContentBox>

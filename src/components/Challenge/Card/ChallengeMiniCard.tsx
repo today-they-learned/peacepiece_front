@@ -13,11 +13,11 @@ const ChallengeMiniCard = (props: Props) => {
   const { title, description } = props;
   return (
     <BannerBox
-      width="21.4rem"
-      height="9.25rem"
+      width="100%"
       padding="1.2rem 1.5rem 1.2rem 1.5rem"
       borderRadius="1.25rem"
       theme="secondary"
+      margin="0"
     >
       <FlexTextBox
         fontSize="1.25rem"

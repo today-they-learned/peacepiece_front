@@ -9,31 +9,38 @@ import { ChallengeType } from "types";
 import { DidItIcon } from "components/Challenge";
 
 const Thumbnail = styled.img`
-  width: 47.5rem;
+  width: auto;
+  max-width: 100%;
   height: 16.5rem;
   object-fit: cover;
-  margin: 1rem 0 0 1.3rem;
+  margin: 1rem;
+  border-radius: 1rem;
 `;
 
 const Img = styled.img`
-  width: 13rem;
-  height: 9.3rem;
+  flex: 1 1 calc((100% - 2rem) / 3);
+  max-width: calc((100% - 2rem) / 3);
+  height: auto;
+  max-height: 9.3rem;
   object-fit: cover;
-  margin: 1rem;
 `;
 
 const CarouselLib = styled(Carousel)`
-  width: 50.5rem;
+  width: auto;
+  max-width: 100%;
   height: 10.5rem;
   background-color: ${COLOR.bg.primary};
 `;
 
 const Page = styled(Paper)`
-  width: 49rem;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
   margin-left: 0.5rem;
   display: flex;
   border: none !important;
-  padding: 0 2rem 0 2rem;
+  gap: 1rem;
+  padding: 1rem;
   background-color: ${COLOR.bg.primary} !important;
 `;
 
@@ -71,32 +78,15 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
       );
     }
 
-    return newArr;
+    return newArr.reverse();
   };
 
-  const loopBtn = () => {
-    const newArr = [];
-    for (let i = 0; i < challenge?.categories.length; i += 1) {
-      newArr.push(
-        <FlexButton
-          key={i}
-          backgroundColor={COLOR.bg.banner}
-          margin="0 0.5rem 0 1.3rem"
-          fontSize="1rem"
-        >
-          {challenge?.categories[i]}
-        </FlexButton>
-      );
-    }
-    return newArr;
-  };
   const insertImg = loopImg();
-  const insertBtn = loopBtn();
 
   return (
-    <BannerBox width="52.25rem" padding="1rem">
+    <BannerBox width="100%" padding="1rem">
       <Thumbnail src={challenge?.thumbnail.file} />
-      <FlexBox alignItems="center" margin="1.5rem 0 0.5rem 1.3rem">
+      <FlexBox alignItems="center" padding="1rem">
         {challenge?.end_at && (
           <FlexTextBox
             fontSize="1.56rem"
@@ -112,9 +102,20 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
         </FlexTextBox>
         {challenge?.is_proved && <DidItIcon />}
       </FlexBox>
-      <FlexBox background="white" margin="1rem 0 1rem 0">
-        {insertBtn}
-      </FlexBox>
+      {challenge?.categories && (
+        <FlexBox background="transparent" padding="1rem">
+          {challenge?.categories.map((category) => (
+            <FlexButton
+              key={`challenge-category-${category.id}`}
+              backgroundColor={COLOR.bg.banner}
+              margin="0 0.5rem 0 1.3rem"
+              fontSize="1rem"
+            >
+              {category.title}
+            </FlexButton>
+          ))}
+        </FlexBox>
+      )}
       <CarouselLib
         height="11rem"
         animation="slide"
@@ -133,19 +134,20 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
       >
         {insertImg}
       </CarouselLib>
-      <FlexBox
-        width="44rem"
-        height="3rem"
-        padding="0.7rem 3rem 0.7rem 3rem"
-        margin="1rem 2.5rem 0 3rem"
-        borderRadius="10px"
-        background={COLOR.bg.banner}
-      >
-        <FlexTextBox>
-          이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수 있어요! 벌써{" "}
-          {challenge?.prover_cnt}
-          명의 사람들이 함께했어요 😇
-        </FlexTextBox>
+      <FlexBox padding="1rem" width="100%">
+        <FlexBox
+          width="100%"
+          height="fit-content"
+          padding="1rem"
+          borderRadius="10px"
+          background={COLOR.bg.banner}
+        >
+          <FlexTextBox>
+            이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수 있어요! 벌써{" "}
+            {challenge?.prover_cnt}
+            명의 사람들이 함께했어요 😇
+          </FlexTextBox>
+        </FlexBox>
       </FlexBox>
       <FlexTextBox margin="2rem">{challenge?.description}</FlexTextBox>
     </BannerBox>

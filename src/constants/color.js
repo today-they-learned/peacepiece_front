@@ -15,6 +15,7 @@ const COLOR = {
   btn: {
     default: "#f6f6f6",
     tooltip: "#3f3f3f",
+    active: "#3f3f3f",
   },
   bg: {
     primary: "#242531",

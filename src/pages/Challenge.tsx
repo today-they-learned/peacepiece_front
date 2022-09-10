@@ -1,6 +1,7 @@
+import { useUser } from "hooks";
 import { EndedChallengeBanner } from "components/Challenge/Banner";
-import ChallengeOfferGather from "components/Challenge/Banner/ChallengeOfferGather";
-import OfferChallengeBanner from "components/Challenge/Banner/OfferChallengeBanner";
+import ChallengeSuggestionGather from "components/Challenge/Banner/ChallengeSuggestionGather";
+import ChallengeSuggestionBanner from "components/Challenge/Banner/ChallengeSuggestionBanner";
 import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallengeList from "components/Challenge/TodayChallengeList";
 import WeeklyChallengeList from "components/Challenge/WeeklyChallengeList";
@@ -8,18 +9,24 @@ import { FlexBox } from "components/common";
 import { Desktop, Tablet, Mobile } from "hooks/mediaQuery";
 
 const Challenge = () => {
+  const { user } = useUser();
   return (
     <div style={{ height: "100%" }}>
       <Desktop>
-        <FlexBox justifyContent="center" height="100%" margin="2rem 0 0 0">
+        <FlexBox
+          justifyContent="center"
+          height="100%"
+          margin="2rem 0 0 0"
+          gap="2rem"
+        >
           <FlexBox column alignItems="center" margin="0 2rem 10rem 0">
             <TodayChallengeList />
             <WeeklyChallengeList />
-            <ChallengeOfferGather />
+            <ChallengeSuggestionGather />
           </FlexBox>
-          <FlexBox column alignItems="center">
-            <NoticKeyword />
-            <OfferChallengeBanner />
+          <FlexBox column alignItems="center" gap="2rem">
+            {user && <NoticKeyword />}
+            <ChallengeSuggestionBanner />
             <EndedChallengeBanner />
           </FlexBox>
         </FlexBox>
@@ -34,11 +41,11 @@ const Challenge = () => {
         >
           <FlexBox width="100%" justifyContent="center" alignItems="center">
             <NoticKeyword />
-            <OfferChallengeBanner />
+            <ChallengeSuggestionBanner />
           </FlexBox>
           <TodayChallengeList />
           <WeeklyChallengeList />
-          <ChallengeOfferGather />
+          <ChallengeSuggestionGather />
         </FlexBox>
       </Tablet>
       <Mobile>
@@ -53,7 +60,7 @@ const Challenge = () => {
           <NoticKeyword />
           <TodayChallengeList />
           <WeeklyChallengeList />
-          <ChallengeOfferGather />
+          <ChallengeSuggestionGather />
         </FlexBox>
       </Mobile>
     </div>

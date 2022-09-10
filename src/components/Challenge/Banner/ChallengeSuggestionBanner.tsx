@@ -7,10 +7,10 @@ import { Desktop, Tablet } from "hooks/mediaQuery";
 const script = {
   title: "챌린지 제안하기",
   text: "환경을 위한 여러분만의 챌린지를 제안해주세요!",
-  url: "/challenge/offer",
+  url: "/challenge/suggestion",
 };
 
-const OfferChallengeBanner = () => {
+const ChallengeSuggestionBanner = () => {
   return (
     <div style={{ width: "100%" }}>
       <Desktop>
@@ -68,4 +68,4 @@ const OfferChallengeBanner = () => {
   );
 };
 
-export default OfferChallengeBanner;
+export default ChallengeSuggestionBanner;

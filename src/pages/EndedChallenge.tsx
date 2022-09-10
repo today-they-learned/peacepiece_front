@@ -12,7 +12,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -29,7 +38,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -46,7 +64,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -63,7 +90,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -80,7 +116,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -97,7 +142,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -114,7 +168,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -131,7 +194,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -148,7 +220,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -165,7 +246,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -182,7 +272,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -199,7 +298,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -216,7 +324,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -233,7 +350,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -250,7 +376,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],
@@ -267,7 +402,16 @@ const dummyChallenges: ChallengeType[] = [
     id: "1",
     title: "텀블러로 커피 마시는 멋진 나는..",
     description: "내용",
-    categories: ["001a", "텀블러_챌린지"],
+    categories: [
+      {
+        id: 1,
+        title: "001a",
+      },
+      {
+        id: 2,
+        title: "텀블러_챌린지",
+      },
+    ],
     prover_cnt: 10,
     point: 100,
     images: [],

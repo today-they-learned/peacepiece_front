@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useDate from "hooks/useDate";
+import { useDate } from "hooks";
 import { FlexBox, FlexButton, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";

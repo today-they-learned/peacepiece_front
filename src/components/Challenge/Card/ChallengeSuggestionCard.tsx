@@ -64,7 +64,7 @@ const LikeNumber = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ChallengeOfferCard = ({
+const ChallengeSuggestionCard = ({
   suggester,
   content,
   feedbackCount,
@@ -97,6 +97,6 @@ const ChallengeOfferCard = ({
     </Container>
   );
 };
-ChallengeOfferCard.defaultProps = defaultProps;
+ChallengeSuggestionCard.defaultProps = defaultProps;
 
-export default ChallengeOfferCard;
+export default ChallengeSuggestionCard;

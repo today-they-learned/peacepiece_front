@@ -1,4 +1,6 @@
-import { ChallengeBanner } from "components/Challenge";
+import { ChallengeTitle } from "components/Challenge";
+import styled from "styled-components";
+import COLOR from "constants/color";
 import SimilarChallengeList from "../SimilarChallengeList";
 
 interface Props {
@@ -32,12 +34,27 @@ const dummyChallenges = [
   },
 ];
 
+const SimilarChallengeBannerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+
+  padding: 1.5rem;
+  border-radius: 1.4rem;
+  background: ${COLOR.bg.primary};
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
+`;
+
 const SimilarChallengeBanner = (props: Props) => {
   const { title } = props;
   return (
-    <ChallengeBanner title={title}>
+    <SimilarChallengeBannerContainer>
+      <ChallengeTitle title={title} background="trasparent" />
       <SimilarChallengeList challenges={dummyChallenges} />
-    </ChallengeBanner>
+    </SimilarChallengeBannerContainer>
   );
 };
 

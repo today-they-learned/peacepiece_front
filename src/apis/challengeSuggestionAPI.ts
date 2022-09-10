@@ -16,7 +16,7 @@ const challengeSuggestionAPI = {
   },
   list: {
     get: (page: number) => {
-      return instance.get(`challenges/suggestions/?page=${page}`);
+      return instance.get(`challenges/suggestions/?page=${page}&page_size=9`);
     },
   },
   feedback: {

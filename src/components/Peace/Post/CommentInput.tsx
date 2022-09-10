@@ -1,19 +1,13 @@
-import { useTextArea } from "hooks";
+import { useTextArea, useUser } from "hooks";
 import { FlexBox } from "components/common";
 import { Textarea } from "components/Form";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import dummyData from "./dummyArticle";
+import { useAddComment } from "hooks/queries/article/comment";
 
-const defaultProps = {
-  backgroundColor: "white",
-  color: "black",
-  size: "3.2rem",
-};
-
-const Avatar = styled.img<{ size: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
+const Avatar = styled.img`
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
 `;
 
@@ -30,35 +24,45 @@ const SummitBtn = styled.button`
   cursor: pointer;
 `;
 
-const CommentInput = () => {
-  const [comment, onChnageComment] = useTextArea("");
+interface Props {
+  articleId: number;
+}
+
+const CommentInput = ({ articleId }: Props) => {
+  const [comment, onChangeComment] = useTextArea("");
+  const { user } = useUser();
+
+  const { mutate: addComment } = useAddComment(articleId);
+
+  const handleSubmit = () => {
+    addComment({ content: comment });
+  };
+
   return (
-    <FlexBox
-      width="48rem"
-      height="auto"
-      background={COLOR.bg.secondary}
-      borderRadius="1.25rem"
-      padding="1rem"
-      position="relative"
-    >
-      <Avatar
-        src={`${process.env.PUBLIC_URL}/${dummyData.writer.avatar}`}
-        size="2rem"
-      />
-      <Textarea
-        value={comment}
-        onChange={onChnageComment}
-        text="글에 대한 의견을 남겨주세요 🌱"
-        background={COLOR.bg.nav}
-        width="39.5rem"
-        padding="0.5rem 1rem"
-        fontSize="1rem"
-        margin="0 0.3rem 0 0.8rem"
-      />
-      <SummitBtn>작성</SummitBtn>
-    </FlexBox>
+    user && (
+      <FlexBox
+        width="100%"
+        height="auto"
+        background={COLOR.bg.secondary}
+        borderRadius="1.25rem"
+        padding="1rem 1.5rem"
+        position="relative"
+      >
+        <Avatar src={`${process.env.PUBLIC_URL}/${user.avatar}`} />
+        <Textarea
+          value={comment}
+          onChange={onChangeComment}
+          text="글에 대한 의견을 남겨주세요 🌱"
+          background={COLOR.bg.nav}
+          width="100%"
+          padding="0.5rem 1rem"
+          fontSize="1rem"
+          margin="0 0.3rem 0 0.8rem"
+        />
+        <SummitBtn onClick={handleSubmit}>작성</SummitBtn>
+      </FlexBox>
+    )
   );
 };
-CommentInput.defaultProps = defaultProps;
 
 export default CommentInput;
