@@ -18,6 +18,7 @@ const OfferChallengeBanner = () => {
           theme="banner"
           title={script.title}
           background="transparent"
+          margin="0 0 2rem 0"
         >
           <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
           <FlexBox
@@ -42,6 +43,8 @@ const OfferChallengeBanner = () => {
           title={script.title}
           background="transparent"
           height="17.56rem"
+          margin="0 0 2rem 2rem"
+          widthTablet="93%"
         >
           <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
           <FlexBox

@@ -35,10 +35,12 @@ const NoticKeyword = () => {
   return (
     <BannerBox
       width="24.6rem"
+      widthTablet="93%"
       height="18.37rem"
       padding="1.8rem 0.5rem 1.8rem 0.5rem"
+      margin="0 0 2rem 0"
     >
-      <FlexBox background={COLOR.bg.primary}>
+      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0">
         <FlexTextBox
           fontSize="1.56rem"
           mobileFontSize="1.56rem"
@@ -57,12 +59,14 @@ const NoticKeyword = () => {
         <Tooltip text="알림 설정을 한 키워드의 챌린지가 올라왔을 때, 이메일로 알려드릴게요 😇" />
       </FlexBox>
       <BannerBox
-        width="21.6rem"
+        width="90%"
         widthMobile="95%"
+        widthTablet="90%"
         height="10.75rem"
         padding="1rem 0.3rem 1rem 0.4rem"
         theme="secondary"
         position="relative"
+        margin="0 0 0 1rem"
       >
         <FlexButton
           position="absolute"

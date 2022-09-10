@@ -1,7 +1,7 @@
-import styled from "styled-components";
 import { ChallengeOfferCard } from "components/Challenge/Card";
 import { ChallengeBanner } from "components/Challenge";
 import COLOR from "constants/color";
+import { FlexBox } from "components/common";
 
 const dummyChallenges = [
   {
@@ -36,27 +36,21 @@ const dummyChallenges = [
   },
 ];
 
-const Container = styled.div`
-  display: flex;
-  margin: 1rem 0 0 0;
-  flex-wrap: wrap;
-  background: ${COLOR.bg.primary};
-
-  @media only screen and (max-width: 767px) {
-    flex-direction: column;
-  }
-`;
-
 const ChallengeOfferGather = () => {
   return (
     <ChallengeBanner
-      width="52.25rem"
+      width="100%"
       widthMobile="100%"
       padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
       url="/challenge/offer"
     >
-      <Container>
+      <FlexBox
+        wrap="wrap"
+        margin="2rem 0 0 0"
+        background={COLOR.bg.primary}
+        gap="1rem"
+      >
         {dummyChallenges.map((challenge) => (
           <ChallengeOfferCard
             key={challenge.id}
@@ -64,9 +58,10 @@ const ChallengeOfferGather = () => {
             content={challenge.content}
             feedbackCount={challenge.feedbackCount}
             isFeedbacked={challenge.clicked}
+            gap="1rem"
           />
         ))}
-      </Container>
+      </FlexBox>
     </ChallengeBanner>
   );
 };

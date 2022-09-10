@@ -13,10 +13,9 @@ interface Props {
   width?: string;
   height?: string;
   background?: string;
+  margin?: string;
   padding?: string;
-  maxWidthTablet?: string;
   widthTablet?: string;
-  maxWidthMobile?: string;
   widthMobile?: string;
 }
 
@@ -28,10 +27,9 @@ const defaultProps = {
   width: "24.5rem",
   height: "auto",
   background: COLOR.bg.primary,
+  margin: "0",
   padding: "1.5rem",
-  maxWidthTablet: "0",
   widthTablet: "100%",
-  maxWidthMobile: "0",
   widthMobile: "100%",
 };
 
@@ -46,10 +44,9 @@ export const ChallengeBanner = (props: Props) => {
     width,
     height,
     background,
+    margin,
     padding,
-    maxWidthTablet,
     widthTablet,
-    maxWidthMobile,
     widthMobile,
   } = props;
   return (
@@ -57,10 +54,9 @@ export const ChallengeBanner = (props: Props) => {
       theme={theme}
       width={width}
       height={height}
+      margin={margin}
       padding={padding}
-      maxWidthTablet={maxWidthTablet}
       widthTablet={widthTablet}
-      maxWidthMobile={maxWidthMobile}
       widthMobile={widthMobile}
     >
       <FlexBox

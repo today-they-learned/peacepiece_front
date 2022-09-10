@@ -61,7 +61,7 @@ const dummyChallenges: ChallengeType[] = [
 ];
 
 const Container = styled.div`
-  width: 52.25rem;
+  width: 100%;
   height: 30rem;
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};

@@ -53,16 +53,16 @@ const dummyChallenges = [
 ];
 
 const Container = styled.div`
-  width: 52rem;
+  width: 100%;
   height: 17.25rem;
   padding: 0.8rem;
   border-radius: 1.25rem;
   background-color: ${COLOR.bg.primary};
+  margin-bottom: 3rem;
+
   @media only screen and (max-width: 768px) {
-    width: 100%;
     padding-left: 0;
   }
-  margin-bottom: 3rem;
 `;
 
 const CarouselLib = styled(Carousel)`

@@ -12,7 +12,7 @@ const Challenge = () => {
     <div style={{ height: "100%" }}>
       <Desktop>
         <FlexBox justifyContent="center" height="100%" margin="2rem 0 0 0">
-          <FlexBox column alignItems="center" margin="0 0 10rem 0">
+          <FlexBox column alignItems="center" margin="0 2rem 10rem 0">
             <TodayChallengeList />
             <WeeklyChallengeList />
             <ChallengeOfferGather />
@@ -25,8 +25,14 @@ const Challenge = () => {
         </FlexBox>
       </Desktop>
       <Tablet>
-        <FlexBox column alignItems="center" height="100%" margin="2rem 0 0 0">
-          <FlexBox justifyContent="center" alignItems="center">
+        <FlexBox
+          column
+          alignItems="center"
+          height="100%"
+          margin="2rem 0 0 0"
+          padding="2rem"
+        >
+          <FlexBox width="100%" justifyContent="center" alignItems="center">
             <NoticKeyword />
             <OfferChallengeBanner />
           </FlexBox>

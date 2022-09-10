@@ -24,6 +24,7 @@ const Container = styled.div<{ gap: string }>`
 
   flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
   max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
+
   @media (max-width: 1023px) {
     flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
     max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
