@@ -2,7 +2,6 @@ import { ChallengeTitle } from "components/Challenge";
 import { FlexBox } from "components/common";
 import { ChallengeType } from "types";
 import EndedChallengeCardList from "components/Challenge/EndedChallengeCardList";
-import COLOR from "constants/color";
 
 const script = {
   title: "📌 지난 챌린지",
