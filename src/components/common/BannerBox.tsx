@@ -26,9 +26,9 @@ const defaultProps = {
   theme: "default",
   position: "static",
   maxWidthTablet: "0",
-  widthTablet: "0",
+  widthTablet: "100%",
   maxWidthMobile: "0",
-  widthMobile: "0",
+  widthMobile: "100%",
 };
 
 const BannerBox = (props: Props) => {

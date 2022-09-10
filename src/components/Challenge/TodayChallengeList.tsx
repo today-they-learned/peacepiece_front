@@ -2,7 +2,7 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
 import { ChallengeType } from "types";
-import { FlexBox } from "components/common";
+import { Desktop, Mobile, Tablet } from "hooks/mediaQuery";
 import { ChallengeCard } from "./Card";
 import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 
@@ -60,6 +60,20 @@ const dummyChallenges: ChallengeType[] = [
   },
 ];
 
+const Container = styled.div`
+  width: 52.25rem;
+  height: 30rem;
+  border-radius: 1.25rem;
+  background-color: ${COLOR.bg.primary};
+  padding: 1.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 3rem;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    height: auto;
+  }
+`;
+
 const CardContainer = styled.div`
   width: 100%;
   height: 20rem;
@@ -67,6 +81,13 @@ const CardContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 2.5rem;
+  gap: 2rem;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
 `;
 
 const TodayChallengeList = () => {
@@ -83,31 +104,69 @@ const TodayChallengeList = () => {
     ];
 
   return (
-    <FlexBox
-      column
-      width="52.25rem"
-      height="30rem"
-      borderRadius="1.25rem"
-      background={COLOR.bg.primary}
-      padding="1.5rem 2.5rem 0rem 2.5rem"
-      margin="0 0 3rem 0"
-    >
-      <ChallengeTitle
-        title={randomTitle}
-        toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
-        background={COLOR.bg.primary}
-      />
-      <CardContainer>
-        {dummyChallenges.map((challenge) => (
-          <TodayChallengeCardWrapper
-            key={`today-challenges${challenge.id}`}
-            gap="2rem"
-          >
-            <ChallengeCard challenge={challenge} />
-          </TodayChallengeCardWrapper>
-        ))}
-      </CardContainer>
-    </FlexBox>
+    <>
+      <Desktop>
+        <Container>
+          <ChallengeTitle
+            title={randomTitle}
+            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+            background={COLOR.bg.primary}
+          />
+          <CardContainer>
+            {dummyChallenges.map((challenge) => (
+              <TodayChallengeCardWrapper
+                key={`today-challenges${challenge.id}`}
+                gap="2rem"
+              >
+                <ChallengeCard challenge={challenge} />
+              </TodayChallengeCardWrapper>
+            ))}
+          </CardContainer>
+        </Container>
+      </Desktop>
+      <Tablet>
+        <Container>
+          <ChallengeTitle
+            title={randomTitle}
+            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+            background={COLOR.bg.primary}
+          />
+          <CardContainer>
+            {dummyChallenges.map((challenge) => (
+              <TodayChallengeCardWrapper
+                key={`today-challenges${challenge.id}`}
+                gap="2rem"
+              >
+                <ChallengeCard challenge={challenge} />
+              </TodayChallengeCardWrapper>
+            ))}
+          </CardContainer>
+        </Container>
+      </Tablet>
+      <Mobile>
+        <Container>
+          <ChallengeTitle
+            title={randomTitle}
+            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
+            background={COLOR.bg.primary}
+          />
+          <CardContainer>
+            {dummyChallenges.map((challenge) => (
+              // <TodayChallengeCardWrapper
+              //   key={`today-challenges${challenge.id}`}
+              //   gap="2rem"
+              // >
+              //   <ChallengeCard challenge={challenge} />
+              // </TodayChallengeCardWrapper>
+              <ChallengeCard
+                challenge={challenge}
+                key={`today-challenges${challenge.id}`}
+              />
+            ))}
+          </CardContainer>
+        </Container>
+      </Mobile>
+    </>
   );
 };
 

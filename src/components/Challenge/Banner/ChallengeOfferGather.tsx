@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ChallengeOfferCard } from "components/Challenge/Card";
 import { FlexBox } from "components/common";
 import { ChallengeBanner } from "components/Challenge";
@@ -36,15 +37,27 @@ const dummyChallenges = [
   },
 ];
 
+const Container = styled.div`
+  display: flex;
+  margin: 1rem 0 0 0;
+  flex-wrap: wrap;
+  background: ${COLOR.bg.primary};
+
+  @media only screen and (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
 const ChallengeOfferGather = () => {
   return (
     <ChallengeBanner
       width="52.25rem"
+      widthMobile="100%"
       padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
       url="/challenge/offer"
     >
-      <FlexBox margin="1rem 0 0 0" wrap="wrap" background={COLOR.bg.primary}>
+      <Container>
         {dummyChallenges.map((challenge) => (
           <ChallengeOfferCard
             key={challenge.id}
@@ -54,7 +67,7 @@ const ChallengeOfferGather = () => {
             isFeedbacked={challenge.clicked}
           />
         ))}
-      </FlexBox>
+      </Container>
     </ChallengeBanner>
   );
 };

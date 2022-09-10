@@ -28,7 +28,7 @@ const defaultProps = {
   right: "0",
   bottom: "0",
   background: "transparent",
-  mobileFontSize: "1rem",
+  mobileFontSize: "",
   mobileDisplay: "block",
 };
 

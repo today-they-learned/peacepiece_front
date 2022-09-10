@@ -20,6 +20,7 @@ const Container = styled.div<{ gap: string }>`
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
   padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+  margin: 0 0.5rem 1rem 0;
 
   flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
   max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
@@ -29,9 +30,10 @@ const Container = styled.div<{ gap: string }>`
     max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 767px) {
     flex: 1 1 100%;
     max-width: 100%;
+    width: 100%;
   }
 `;
 

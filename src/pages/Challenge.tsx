@@ -35,6 +35,21 @@ const Challenge = () => {
           <ChallengeOfferGather />
         </FlexBox>
       </Tablet>
+      <Mobile>
+        <FlexBox
+          column
+          alignItems="center"
+          width="100%"
+          height="100%"
+          margin="2rem 0 0 0"
+          padding="2rem"
+        >
+          <NoticKeyword />
+          <TodayChallengeList />
+          <WeeklyChallengeList />
+          <ChallengeOfferGather />
+        </FlexBox>
+      </Mobile>
     </div>
   );
 };

@@ -34,7 +34,7 @@ interface Props {
 const defaultProps = {
   width: "auto",
   maxWidth: "none",
-  mobileWidth: "100%",
+  mobileWidth: "",
   height: "auto",
   margin: "0",
   tabletMargin: "0",
