@@ -45,6 +45,7 @@ const Image = styled.img`
   height: 6.2rem;
   margin-right: 1rem;
   border-radius: 0.6rem;
+  object-fit: cover;
 `;
 
 export const PhotoInput = styled(Input)`
