@@ -1,4 +1,4 @@
-export { default as useDate } from "./useDate";
+export { useDate, useFromDate } from "./useDate";
 export { default as useInput } from "./useInput";
 export { default as useTextArea } from "./useTextArea";
 export { default as useQueryDebounce } from "./useQueryDebounce";

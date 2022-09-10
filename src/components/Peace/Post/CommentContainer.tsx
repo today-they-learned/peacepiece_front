@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FlexBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import dummyComments from "./dummyCommemts";
+import { CommentType } from "types";
 import Comment from "./Comment";
 
 const Button = styled.button`
@@ -13,46 +13,46 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const insertCmt = (cmtMore: boolean, clickedBtn: () => void) => {
-  const newArr = [];
-  let len = 2;
-  if (dummyComments.count < 2) {
-    len = dummyComments.count;
-  }
-  for (let i = 0; i < len; i += 1) {
-    newArr.push(<Comment comment={dummyComments.results[i]} />);
-  }
-  if (dummyComments.count >= 3) {
-    newArr.push(<Button onClick={clickedBtn}>댓글 더보기</Button>);
-    if (cmtMore) {
-      newArr.pop();
-      for (let i = 2; i < dummyComments.count; i += 1) {
-        newArr.push(<Comment comment={dummyComments.results[i]} />);
-      }
-    }
-  }
+interface Props {
+  comments: CommentType[];
+}
 
-  return newArr;
-};
+const CommentContainer = ({ comments }: Props) => {
+  const VISIBLE_CNT = 3;
+  const [commentsCnt, setCommentsCnt] = useState(
+    Math.min(VISIBLE_CNT, comments.length)
+  );
 
-const CommentContainer = () => {
-  const [cmtMore, setCmtMore] = useState<boolean>(false);
-  const clickedBtn = () => {
-    setCmtMore((prev) => !prev);
-  };
   return (
-    <FlexBox
-      width="100%"
-      height="auto"
-      background={COLOR.bg.secondary}
-      borderRadius="1.25rem"
-      padding="1rem 1rem 0 1rem"
-      margin="0"
-      position="relative"
-      column
-    >
-      <FlexBox column>{insertCmt(cmtMore, clickedBtn)}</FlexBox>
-    </FlexBox>
+    !!comments.length && (
+      <FlexBox
+        width="100%"
+        height="auto"
+        background={COLOR.bg.secondary}
+        borderRadius="1.25rem"
+        padding="1rem 1.5rem 0.5rem 1.5rem"
+        margin="0"
+        position="relative"
+        column
+      >
+        <FlexBox column>
+          {comments.slice(0, commentsCnt).map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))}
+          {commentsCnt !== comments.length && (
+            <Button
+              onClick={() =>
+                setCommentsCnt(
+                  Math.min(commentsCnt + VISIBLE_CNT, comments.length)
+                )
+              }
+            >
+              댓글 더보기
+            </Button>
+          )}
+        </FlexBox>
+      </FlexBox>
+    )
   );
 };
 

@@ -45,10 +45,11 @@ const PieceSearchBannerContainer = styled.div`
 
 const PieceSearchBanner = () => {
   const navigate = useNavigate();
-  const [keyword, onChangeKeyword] = useInput();
+  const [keyword, onChangeKeyword, setKeyword] = useInput();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setKeyword("");
     navigate(`/piece/search/${keyword}`);
   };
 

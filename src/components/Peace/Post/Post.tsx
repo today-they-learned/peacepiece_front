@@ -35,13 +35,15 @@ const LastImage = styled.img`
 `;
 
 const Emoji = styled.div<{ isFeedbacked: boolean }>`
-  padding: 0.25rem 0.5rem;
-  border-radius: 10px;
-  color: ${(isFeedbacked) =>
-    isFeedbacked ? COLOR.white : COLOR.font.darkDefault};
+  font-size: 13px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
   margin-right: 0.7rem;
-  background: ${(isFeedbacked) =>
-    isFeedbacked ? COLOR.btn.active : COLOR.white};
+  font-family: ${(props) => (props.isFeedbacked ? "Pr-Bold" : "Pr-Regular")};
+  color: ${(props) =>
+    props.isFeedbacked ? COLOR.font.darkDefault : COLOR.white};
+  background: ${(props) =>
+    props.isFeedbacked ? COLOR.white : COLOR.btn.active};
 `;
 
 const Button = styled.button`
@@ -54,7 +56,6 @@ const Button = styled.button`
 const ImageListContainer = styled.div`
   display: flex;
   margin: 0.5rem 0 1rem 0;
-
   max-width: 100%;
 `;
 
@@ -74,7 +75,7 @@ const Post = (props: Props) => {
   return (
     <>
       {article.challenge && (
-        <FlexTextBox margin="0.5rem 0 0 0 " color={COLOR.font.link}>
+        <FlexTextBox margin="0" color={COLOR.font.link}>
           [{article.challenge.title}] 챌린지
         </FlexTextBox>
       )}
@@ -84,7 +85,7 @@ const Post = (props: Props) => {
         background={COLOR.bg.secondary}
         borderRadius="1.25rem"
         column
-        padding="1rem"
+        padding="1rem 1.5rem"
         position="relative"
         margin="0"
       >
@@ -115,14 +116,11 @@ const Post = (props: Props) => {
 
         <FlexTextBox fontSize="1rem" fontFamily="Pr-Medium" padding="1rem 0">
           {article.content.slice(0, textLimit)}
-          <Button
-            onClick={() => setTextLimit(article.content.length)}
-            style={{
-              display: textLimit === article.content.length && "none",
-            }}
-          >
-            더보기
-          </Button>
+          {textLimit !== article.content.length && (
+            <Button onClick={() => setTextLimit(article.content.length)}>
+              더보기
+            </Button>
+          )}
         </FlexTextBox>
 
         <ImageListContainer>
@@ -157,9 +155,9 @@ const Post = (props: Props) => {
 
         <FlexBox background="transparent">
           <Emoji isFeedbacked>👍 1</Emoji>
-          <Emoji isFeedbacked>🌱 0</Emoji>
-          <Emoji isFeedbacked>❤️ 0</Emoji>
-          <Emoji isFeedbacked>🚀 0</Emoji>
+          <Emoji isFeedbacked={false}>🌱 0</Emoji>
+          <Emoji isFeedbacked={false}>❤️ 0</Emoji>
+          <Emoji isFeedbacked={false}>🚀 0</Emoji>
         </FlexBox>
       </FlexBox>
     </>
