@@ -66,13 +66,10 @@ const ChallengeSuggestionInput = () => {
       content: value,
     };
     addSuggestion(data);
-  };
-
-  const onSuccess = () => {
     setValue("");
   };
 
-  const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
+  const { mutate: addSuggestion } = useAddChallengeSuggestion();
 
   return (
     <ChallengeBanner title={script.title} width="100%" padding="2rem">
