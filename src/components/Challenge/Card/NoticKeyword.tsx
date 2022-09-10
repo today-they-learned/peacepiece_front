@@ -35,18 +35,25 @@ const NoticKeyword = () => {
   return (
     <BannerBox
       width="24.6rem"
+      widthTablet="93%"
       height="18.37rem"
       padding="1.8rem 0.5rem 1.8rem 0.5rem"
+      margin="0 0 2rem 0"
     >
-      <FlexBox background={COLOR.bg.primary}>
+      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0">
         <FlexTextBox
           fontSize="1.56rem"
+          mobileFontSize="1.56rem"
           color={COLOR.font.primary}
           margin="0.2rem 0 1rem 1.2rem"
         >
           권소예
         </FlexTextBox>
-        <FlexTextBox fontSize="1.56rem" margin="0.2rem 0.4rem 1rem 0">
+        <FlexTextBox
+          fontSize="1.56rem"
+          mobileFontSize="1.56rem"
+          margin="0.2rem 0.4rem 1rem 0"
+        >
           님의 알림 키워드
         </FlexTextBox>
         <Tooltip
@@ -59,14 +66,19 @@ const NoticKeyword = () => {
         />
       </FlexBox>
       <BannerBox
-        width="21.6rem"
+        width="90%"
+        widthMobile="95%"
+        widthTablet="90%"
         height="10.75rem"
-        margin="1rem"
         padding="0.5rem 0.3rem 0.5rem 0.4rem"
         theme="secondary"
+        position="relative"
+        margin="0 0 0 1rem"
       >
         <FlexButton
-          margin="0 0 0 14rem"
+          position="absolute"
+          bottom="7rem"
+          right="0.5rem"
           fontSize="0.9rem"
           fontFamily="Pr-Regular"
           onClick={handleOpen}
@@ -83,7 +95,7 @@ const NoticKeyword = () => {
             <NoticKeywordModal onClick={handleClose} />
           </Box>
         </Modal>
-        <FlexBox margin="0.2rem 0.5rem 0.5rem 0.5rem" wrap="wrap">
+        <FlexBox margin="2rem 0 0 0.5rem" wrap="wrap">
           {keywords.map((keyword: string) => (
             <FlexTextBox
               key={keyword}

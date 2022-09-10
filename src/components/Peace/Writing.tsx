@@ -58,6 +58,7 @@ const Writing = () => {
           visible={modalVisible}
           title="피스 글 작성하기"
           type="writing"
+          text="피스 글을 작성해주세요"
         />
       )}
     </>

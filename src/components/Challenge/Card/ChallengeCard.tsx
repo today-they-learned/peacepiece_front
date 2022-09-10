@@ -26,6 +26,12 @@ const Container = styled.div<{ margin: string }>`
   background-color: ${COLOR.bg.secondary};
   position: relative;
   margin: ${(props) => props.margin};
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    height: 10.25rem;
+    display: flex;
+  }
 `;
 
 const Thumbnail = styled.img<ThumbnailImageProps>`
@@ -34,10 +40,21 @@ const Thumbnail = styled.img<ThumbnailImageProps>`
   margin-bottom: 1rem;
 
   ${({ isProved }) => isProved && "filter: brightness(50%);"};
+
+  @media only screen and (max-width: 767px) {
+    width: 11rem;
+    height: 100%;
+  }
 `;
 
 const ContentBox = styled.div`
   margin-left: 1rem;
+
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.div`
@@ -47,13 +64,12 @@ const Title = styled.div`
   margin-bottom: 0.5rem;
 `;
 
-const ChallengeInfo = styled.div`
-  display: flex;
-  margin-bottom: 1.5rem;
-`;
-
 const HashTagBox = styled.div`
   display: flex;
+
+  @media only screen and (max-width: 767px) {
+    margin-top: 3rem;
+  }
 `;
 
 const HashTag = styled.div`
@@ -71,15 +87,15 @@ const ChallengeCard = (props: Props) => {
         src={challenge.thumbnail.file}
         isProved={challenge.is_proved}
       />
-      {challenge.is_proved && <DidItIcon isAbsolute top="1rem" right="1rem" />}
+      {challenge.is_proved && (
+        <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
+      )}
       <ContentBox>
         <Title>{challenge.title}</Title>
-        <ChallengeInfo>
-          <ChallengeFigure
-            proverCnt={challenge.prover_cnt}
-            point={challenge.point}
-          />
-        </ChallengeInfo>
+        <ChallengeFigure
+          proverCnt={challenge.prover_cnt}
+          point={challenge.point}
+        />
         <HashTagBox>
           {challenge.categories.map((category) => (
             <HashTag key={`challenge-category-${category.id}`}>

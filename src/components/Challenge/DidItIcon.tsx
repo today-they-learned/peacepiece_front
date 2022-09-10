@@ -5,12 +5,14 @@ interface Props {
   isAbsolute?: boolean;
   top?: string;
   right?: string;
+  mobileLeft?: string;
 }
 
 const defaultProps = {
   isAbsolute: false,
   top: "0",
   right: "0",
+  mobileLeft: "0",
 };
 
 const CompleteBox = styled.div`
@@ -25,6 +27,11 @@ const CompleteBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 767px) {
+    right: 0;
+    left: ${(props: Props) => props.mobileLeft};
+  }
 `;
 
 const CompleteWord = styled.span`
@@ -36,9 +43,14 @@ const CompleteWord = styled.span`
 `;
 
 const DidItIcon = (props: Props) => {
-  const { isAbsolute, top, right } = props;
+  const { isAbsolute, top, right, mobileLeft } = props;
   return (
-    <CompleteBox isAbsolute={isAbsolute} top={top} right={right}>
+    <CompleteBox
+      isAbsolute={isAbsolute}
+      top={top}
+      right={right}
+      mobileLeft={mobileLeft}
+    >
       <CompleteWord>내가 해냄</CompleteWord>
     </CompleteBox>
   );

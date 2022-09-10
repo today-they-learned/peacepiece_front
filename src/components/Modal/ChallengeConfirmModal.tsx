@@ -15,12 +15,14 @@ interface Props {
   visible: boolean;
   onClose: () => void;
   title: string;
+  text?: string;
   type?: string;
   subTitle?: boolean;
   challengeId?: string | false;
 }
 
 const defaultProps = {
+  text: "챌린지 인증 글을 입력해주세요",
   type: "warning",
   subTitle: false,
   challengeId: false,
@@ -72,6 +74,7 @@ const ChallengeConfirmModal = ({
   onClose,
   visible,
   title,
+  text,
   type,
   subTitle,
   challengeId,
@@ -152,7 +155,7 @@ const ChallengeConfirmModal = ({
             autoFocus
             value={content}
             onChange={onChangeContent}
-            text="챌린지 인증 글을 입력해주세요"
+            text={text}
             width="43rem"
             mobileWidth="13rem"
             minRow={2}

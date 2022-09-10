@@ -6,27 +6,66 @@ import NoticKeyword from "components/Challenge/Card/NoticKeyword";
 import TodayChallengeList from "components/Challenge/TodayChallengeList";
 import WeeklyChallengeList from "components/Challenge/WeeklyChallengeList";
 import { FlexBox } from "components/common";
+import { Desktop, Tablet, Mobile } from "hooks/mediaQuery";
 
 const Challenge = () => {
   const { user } = useUser();
   return (
-    <FlexBox
-      justifyContent="center"
-      height="100%"
-      margin="2rem 0 0 0"
-      gap="2rem"
-    >
-      <FlexBox column alignItems="center" margin="0 0 10rem 0">
-        <TodayChallengeList />
-        <WeeklyChallengeList />
-        <ChallengeSuggestionGather />
-      </FlexBox>
-      <FlexBox column alignItems="center" gap="2rem">
-        {user && <NoticKeyword />}
-        <ChallengeSuggestionBanner />
-        <EndedChallengeBanner />
-      </FlexBox>
-    </FlexBox>
+    <div style={{ height: "100%" }}>
+      <Desktop>
+        <FlexBox
+          justifyContent="center"
+          height="100%"
+          margin="2rem 0 0 0"
+          gap="2rem"
+        >
+          <FlexBox column alignItems="center" margin="0 0 10rem 0">
+            <TodayChallengeList />
+            <WeeklyChallengeList />
+            <ChallengeSuggestionGather />
+          </FlexBox>
+          <FlexBox column alignItems="center" gap="2rem">
+            {user && <NoticKeyword />}
+            <ChallengeSuggestionBanner />
+            <EndedChallengeBanner />
+          </FlexBox>
+        </FlexBox>
+      </Desktop>
+      <Tablet>
+        <FlexBox
+          column
+          alignItems="center"
+          height="100%"
+          margin="2rem 0 0 0"
+          padding="2rem"
+        >
+          {user && (
+            <FlexBox width="100%" justifyContent="center" alignItems="center">
+              <NoticKeyword />
+              <ChallengeSuggestionBanner />
+            </FlexBox>
+          )}
+          <TodayChallengeList />
+          <WeeklyChallengeList />
+          <ChallengeSuggestionGather />
+        </FlexBox>
+      </Tablet>
+      <Mobile>
+        <FlexBox
+          column
+          alignItems="center"
+          width="100%"
+          height="100%"
+          margin="2rem 0 0 0"
+          padding="2rem"
+        >
+          {user && <NoticKeyword />}
+          <TodayChallengeList />
+          <WeeklyChallengeList />
+          <ChallengeSuggestionGather />
+        </FlexBox>
+      </Mobile>
+    </div>
   );
 };
 
