@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
@@ -84,29 +85,31 @@ const HashTag = styled.div`
 const ChallengeCard = (props: Props) => {
   const { challenge, margin } = props;
   return (
-    <Container margin={margin} key={challenge.id}>
-      <Thumbnail
-        src={challenge.thumbnail.file}
-        isProved={challenge.is_proved}
-      />
-      {challenge.is_proved && (
-        <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
-      )}
-      <ContentBox>
-        <Title>{challenge.title}</Title>
-        <ChallengeFigure
-          proverCnt={challenge.prover_cnt}
-          point={challenge.point}
+    <Link to={`/challenge/${challenge.id}`}>
+      <Container margin={margin} key={challenge.id}>
+        <Thumbnail
+          src={challenge.thumbnail.file}
+          isProved={challenge.is_proved}
         />
-        <HashTagBox>
-          {challenge.categories.map((category) => (
-            <HashTag key={`challenge-category-${category.id}`}>
-              #{category.title}
-            </HashTag>
-          ))}
-        </HashTagBox>
-      </ContentBox>
-    </Container>
+        {challenge.is_proved && (
+          <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
+        )}
+        <ContentBox>
+          <Title>{challenge.title}</Title>
+          <ChallengeFigure
+            proverCnt={challenge.prover_cnt}
+            point={challenge.point}
+          />
+          <HashTagBox>
+            {challenge.categories.map((category) => (
+              <HashTag key={`challenge-category-${category.id}`}>
+                #{category.title}
+              </HashTag>
+            ))}
+          </HashTagBox>
+        </ContentBox>
+      </Container>
+    </Link>
   );
 };
 ChallengeCard.defaultProps = defaultProps;

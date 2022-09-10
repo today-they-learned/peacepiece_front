@@ -51,33 +51,18 @@ const arrLoop = (challenges: ChallengeType[]) => {
   const newArr = [];
   for (let i = 0; i <= challenges.length - 1; i += 2) {
     newArr.push(
-      <Page>
+      <Page key={`weekly_challenge_page_${i}`}>
         {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
           <FlexBox margin="1rem 0.5rem 0 1rem" background={COLOR.bg.primary}>
-            <WeeklyChallengeCard
-              title={challenges[i].title}
-              description={challenges[i].description}
-              proverCnt={challenges[i].prover_cnt}
-              point={challenges[i].point}
-            />
+            <WeeklyChallengeCard challenge={challenges[i]} />
           </FlexBox>
         ) : (
           <>
             <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
-              <WeeklyChallengeCard
-                title={challenges[i].title}
-                description={challenges[i].description}
-                proverCnt={challenges[i].prover_cnt}
-                point={challenges[i].point}
-              />
+              <WeeklyChallengeCard challenge={challenges[i]} />
             </FlexBox>
             <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>
-              <WeeklyChallengeCard
-                title={challenges[i + 1].title}
-                description={challenges[i + 1].description}
-                proverCnt={challenges[i + 1].prover_cnt}
-                point={challenges[i].point}
-              />
+              <WeeklyChallengeCard challenge={challenges[i]} />
             </FlexBox>
           </>
         )}
@@ -91,14 +76,9 @@ const arrLoopMobile = (challenges: ChallengeType[]) => {
   const newArr = [];
   for (let i = 0; i < challenges.length; i += 1) {
     newArr.push(
-      <Page>
+      <Page key={`weekly_challenge_page_${i}`}>
         <FlexBox margin="0.5rem 0.5rem 0 2.5rem">
-          <WeeklyChallengeCard
-            title={challenges[i].title}
-            description={challenges[i].description}
-            proverCnt={challenges[i].prover_cnt}
-            point={challenges[i].point}
-          />
+          <WeeklyChallengeCard challenge={challenges[i]} />
         </FlexBox>
       </Page>
     );
@@ -129,8 +109,8 @@ const WeeklyChallengeList = () => {
         animation="slide"
         indicators={false}
         duration={1000}
-        cycleNavigation
-        navButtonsAlwaysVisible
+        cycleNavigation={challenges?.length > 2}
+        navButtonsAlwaysVisible={challenges?.length > 2}
         NextIcon={<ArrowForwardIosIcon />}
         PrevIcon={<ArrowBackIosNewIcon />}
         navButtonsProps={{
