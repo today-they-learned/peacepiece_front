@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ChallengeOfferCard } from "components/Challenge/Card";
-import { FlexBox } from "components/common";
 import { ChallengeBanner } from "components/Challenge";
 import COLOR from "constants/color";
 
