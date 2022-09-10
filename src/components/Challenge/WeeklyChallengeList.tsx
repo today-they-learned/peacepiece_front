@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useMediaQuery, Paper } from "@mui/material";
 import styled from "styled-components";
 import COLOR from "constants/color";
@@ -5,52 +6,9 @@ import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { FlexTextBox, FlexBox } from "components/common";
+import { useChallengWeeklyData } from "hooks/queries/challenge";
+import { ChallengeType } from "types";
 import WeeklyChallengeCard from "./Card/WeeklyChallengeCard";
-
-const dummyChallenges = [
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-  {
-    title: "일회용컵 No! 텀블러 Yes!",
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-    proverCnt: 10,
-    point: 100,
-  },
-];
 
 const Container = styled.div`
   width: 100%;
@@ -89,37 +47,36 @@ const Page = styled(Paper)`
   }
 `;
 
-const arrLoop = () => {
+const arrLoop = (challenges: ChallengeType[]) => {
   const newArr = [];
-  for (let i = 0; i <= dummyChallenges.length - 1; i += 2) {
+  for (let i = 0; i <= challenges.length - 1; i += 2) {
     newArr.push(
       <Page>
-        {i === dummyChallenges.length - 1 &&
-        dummyChallenges.length % 2 === 1 ? (
+        {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
           <FlexBox margin="1rem 0.5rem 0 1rem" background={COLOR.bg.primary}>
             <WeeklyChallengeCard
-              title={dummyChallenges[i].title}
-              description={dummyChallenges[i].description}
-              proverCnt={dummyChallenges[i].proverCnt}
-              point={dummyChallenges[i].point}
+              title={challenges[i].title}
+              description={challenges[i].description}
+              proverCnt={challenges[i].prover_cnt}
+              point={challenges[i].point}
             />
           </FlexBox>
         ) : (
           <>
             <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
               <WeeklyChallengeCard
-                title={dummyChallenges[i].title}
-                description={dummyChallenges[i].description}
-                proverCnt={dummyChallenges[i].proverCnt}
-                point={dummyChallenges[i].point}
+                title={challenges[i].title}
+                description={challenges[i].description}
+                proverCnt={challenges[i].prover_cnt}
+                point={challenges[i].point}
               />
             </FlexBox>
             <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>
               <WeeklyChallengeCard
-                title={dummyChallenges[i + 1].title}
-                description={dummyChallenges[i + 1].description}
-                proverCnt={dummyChallenges[i + 1].proverCnt}
-                point={dummyChallenges[i].point}
+                title={challenges[i + 1].title}
+                description={challenges[i + 1].description}
+                proverCnt={challenges[i + 1].prover_cnt}
+                point={challenges[i].point}
               />
             </FlexBox>
           </>
@@ -130,17 +87,17 @@ const arrLoop = () => {
   return newArr;
 };
 
-const arrLoopMobile = () => {
+const arrLoopMobile = (challenges: ChallengeType[]) => {
   const newArr = [];
-  for (let i = 0; i < dummyChallenges.length; i += 1) {
+  for (let i = 0; i < challenges.length; i += 1) {
     newArr.push(
       <Page>
         <FlexBox margin="0.5rem 0.5rem 0 2.5rem">
           <WeeklyChallengeCard
-            title={dummyChallenges[i].title}
-            description={dummyChallenges[i].description}
-            proverCnt={dummyChallenges[i].proverCnt}
-            point={dummyChallenges[i].point}
+            title={challenges[i].title}
+            description={challenges[i].description}
+            proverCnt={challenges[i].prover_cnt}
+            point={challenges[i].point}
           />
         </FlexBox>
       </Page>
@@ -151,8 +108,16 @@ const arrLoopMobile = () => {
 
 const WeeklyChallengeList = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
+  const { data: challenges, isFetched } = useChallengWeeklyData();
+  const [insertCard, setInsertCard] = useState<JSX.Element[]>();
 
-  const insertCard = isDesktop ? arrLoop() : arrLoopMobile();
+  useEffect(() => {
+    if (isFetched) {
+      setInsertCard(
+        isDesktop ? arrLoop(challenges) : arrLoopMobile(challenges)
+      );
+    }
+  }, [isFetched]);
 
   return (
     <Container>
