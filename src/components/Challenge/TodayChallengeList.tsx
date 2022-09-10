@@ -179,12 +179,6 @@ const TodayChallengeList = () => {
           />
           <CardContainer>
             {dummyChallenges.map((challenge) => (
-              // <TodayChallengeCardWrapper
-              //   key={`today-challenges${challenge.id}`}
-              //   gap="2rem"
-              // >
-              //   <ChallengeCard challenge={challenge} />
-              // </TodayChallengeCardWrapper>
               <ChallengeCard
                 challenge={challenge}
                 key={`today-challenges${challenge.id}`}
