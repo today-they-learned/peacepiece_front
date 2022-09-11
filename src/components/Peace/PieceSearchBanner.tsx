@@ -12,14 +12,12 @@ const script = {
 };
 
 const SearchInput = styled.input`
-  width: 100%;
+  width: 90%;
   height: 2.875rem;
   color: ${COLOR.white};
   font-family: "Pr-Medium";
-  background-color: ${COLOR.bg.secondary};
-  border-radius: 1rem;
-  margin-top: 1rem;
   padding: 1rem;
+  margin: 0;
 `;
 
 const SearchBtn = styled.button`
@@ -49,18 +47,23 @@ const PieceSearchBanner = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    if (keyword) {
+    if (keyword.trim()) {
       setKeyword("");
-      navigate(`/piece/search/${keyword}`);
+      navigate(`/piece/search/${keyword.trim()}`);
     }
   };
 
   return (
     <PieceSearchBannerContainer>
       <ChallengeTitle title={script.title} background="trasparent" />
-
       <form onSubmit={handleSubmit}>
-        <FlexBox position="relative" alignItems="center">
+        <FlexBox
+          position="relative"
+          alignItems="center"
+          background={COLOR.bg.secondary}
+          borderRadius="1rem"
+          margin="1.3rem 0 0 0"
+        >
           <SearchInput
             placeholder="ex) 일회용품"
             value={keyword}
