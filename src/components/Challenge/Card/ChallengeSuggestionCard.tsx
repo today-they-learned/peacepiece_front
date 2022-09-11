@@ -42,9 +42,8 @@ const Content = styled.div`
 `;
 
 const LikeContainer = styled.div`
-  float: right;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 `;
 

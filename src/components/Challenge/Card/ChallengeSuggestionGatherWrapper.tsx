@@ -13,6 +13,8 @@ const defaultProps = {
 };
 
 const Wrapper = styled.div<{ gap: string; all: boolean }>`
+  height: auto;
+
   ${(props) =>
     props.all
       ? css`
