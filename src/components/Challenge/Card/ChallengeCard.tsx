@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
@@ -38,12 +39,14 @@ const Thumbnail = styled.img<ThumbnailImageProps>`
   height: 12rem;
   border-radius: 2rem 2rem 0 0;
   margin-bottom: 1rem;
+  object-fit: cover;
 
   ${({ isProved }) => isProved && "filter: brightness(50%);"};
 
   @media only screen and (max-width: 767px) {
     width: 11rem;
     height: 100%;
+    border-radius: 2rem 0 0 2rem;
   }
 `;
 
@@ -66,6 +69,8 @@ const Title = styled.div`
 
 const HashTagBox = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
 
   @media only screen and (max-width: 767px) {
     margin-top: 3rem;
@@ -74,7 +79,7 @@ const HashTagBox = styled.div`
 
 const HashTag = styled.div`
   font-family: "Pr-Medium";
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: ${COLOR.white};
   margin-right: 0.5rem;
 `;
@@ -82,29 +87,32 @@ const HashTag = styled.div`
 const ChallengeCard = (props: Props) => {
   const { challenge, margin } = props;
   return (
-    <Container margin={margin} key={challenge.id}>
-      <Thumbnail
-        src={challenge.thumbnail.file}
-        isProved={challenge.is_proved}
-      />
-      {challenge.is_proved && (
-        <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
-      )}
-      <ContentBox>
-        <Title>{challenge.title}</Title>
-        <ChallengeFigure
-          proverCnt={challenge.prover_cnt}
-          point={challenge.point}
+    <Link to={`/challenge/${challenge.id}`}>
+      <Container margin={margin} key={challenge.id}>
+        <Thumbnail
+          src={challenge.thumbnail.file}
+          isProved={challenge.is_proved}
         />
-        <HashTagBox>
-          {challenge.categories.map((category) => (
-            <HashTag key={`challenge-category-${category.id}`}>
-              #{category.title}
-            </HashTag>
-          ))}
-        </HashTagBox>
-      </ContentBox>
-    </Container>
+        {challenge.is_proved && (
+          <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
+        )}
+        <ContentBox>
+          <Title>{challenge.title}</Title>
+          <ChallengeFigure
+            proverCnt={challenge.prover_cnt}
+            point={challenge.point}
+            background={COLOR.bg.secondary}
+          />
+          <HashTagBox>
+            {challenge.categories.map((category) => (
+              <HashTag key={`challenge-category-${category.id}`}>
+                #{category.title}
+              </HashTag>
+            ))}
+          </HashTagBox>
+        </ContentBox>
+      </Container>
+    </Link>
   );
 };
 ChallengeCard.defaultProps = defaultProps;

@@ -13,10 +13,7 @@ const AllChallengeSuggestionPartialList = (props: Props) => {
         return (
           <ChallengeSuggestionCard
             key={`suggestion-${suggestion.id}`}
-            suggester={suggestion.suggester.username}
-            content={suggestion.content}
-            feedbackCount={suggestion.feedback_count}
-            isFeedbacked={suggestion.is_feedbacked}
+            suggestion={suggestion}
             gap="1rem"
           />
         );

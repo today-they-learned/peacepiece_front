@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
@@ -79,9 +80,11 @@ const Post = (props: Props) => {
   return (
     <>
       {article.challenge && (
-        <FlexTextBox margin="0" color={COLOR.font.link}>
-          [{article.challenge.title}] 챌린지
-        </FlexTextBox>
+        <Link to={`/challenge/${article.challenge.id}`}>
+          <FlexTextBox margin="0" color={COLOR.font.link}>
+            [{article.challenge.title}] 챌린지
+          </FlexTextBox>
+        </Link>
       )}
       <FlexBox
         width="100%"

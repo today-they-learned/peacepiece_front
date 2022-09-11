@@ -4,8 +4,8 @@ import PostCard from "components/Peace/Post/PostCard";
 
 const PieceDetail = () => {
   const { id } = useParams();
-  const { data } = useArticleData(id);
-  return <PostCard article={data.data} />;
+  const { data, isFetched } = useArticleData(id);
+  return isFetched && <PostCard article={data.data} />;
 };
 
 export default PieceDetail;

@@ -20,11 +20,11 @@ interface Props {
 const CommentContainer = ({ comments }: Props) => {
   const VISIBLE_CNT = 3;
   const [commentsCnt, setCommentsCnt] = useState(
-    Math.min(VISIBLE_CNT, comments.length)
+    Math.min(VISIBLE_CNT, comments?.length)
   );
   useEffect(() => {
-    setCommentsCnt(Math.min(VISIBLE_CNT, comments.length));
-  }, [comments.length]);
+    setCommentsCnt(Math.min(VISIBLE_CNT, comments?.length));
+  }, [comments?.length]);
 
   return (
     !!comments?.length && (
