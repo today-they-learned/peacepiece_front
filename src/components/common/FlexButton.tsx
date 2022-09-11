@@ -15,6 +15,7 @@ interface Props {
   position?: string;
   right?: string;
   bottom?: string;
+  disabled?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -31,6 +32,7 @@ const defaultProps = {
   position: "static",
   right: "0",
   bottom: "0",
+  disabled: false,
   onClick: Function,
 };
 
@@ -38,6 +40,7 @@ const FlexButton = (props: Props) => {
   const {
     children,
     type,
+    disabled,
     margin,
     padding,
     borderRadius,
@@ -56,6 +59,7 @@ const FlexButton = (props: Props) => {
     <button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       css={css`
         width: auto;
         height: auto;

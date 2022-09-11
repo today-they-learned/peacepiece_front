@@ -144,6 +144,7 @@ const IslandViewer = ({ terrainMap, items }) => {
   const imagesRef = useRef({});
   const modalRef = useRef();
   const modalImageRef = useRef();
+  const isFirstRender = useRef(true);
 
   const [mapWidth, setMapWidth] = useState(0);
   const [mapPadding, setMapPadding] = useState({ left: 0, top: 0 });
@@ -234,7 +235,7 @@ const IslandViewer = ({ terrainMap, items }) => {
     setTerrainMapState(terrainMap);
     setTerrainState(createTerrain(terrainMap));
     setItemsState(items);
-  }, [terrainMap, items]);
+  }, [items, terrainMap]);
 
   useEffect(() => {
     if (terrainMapState.length === 0) return;

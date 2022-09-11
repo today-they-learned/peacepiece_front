@@ -5,6 +5,7 @@ import { BuyableItemType } from "types";
 
 interface Props {
   animalData: BuyableItemType[];
+  handleBuyItem: (itemId: number) => void;
 }
 
 const Img = styled.img`
@@ -14,7 +15,7 @@ const Img = styled.img`
   border-radius: 5px;
 `;
 
-const Animal = ({ animalData }: Props) => {
+const Animal = ({ animalData, handleBuyItem }: Props) => {
   return (
     <FlexBox background="transparent" column margin="0 0 0.5rem 0">
       <FlexTextBox fontSize="1.2rem" margin="0.2rem 0 0.9rem 0.5rem">
@@ -46,6 +47,7 @@ const Animal = ({ animalData }: Props) => {
                   fontSize="0.9rem"
                   padding="0.4rem 1.2rem"
                   borderRadius="0.3rem"
+                  disabled
                 >
                   입양 완료
                 </FlexButton>
@@ -56,6 +58,7 @@ const Animal = ({ animalData }: Props) => {
                   fontSize="0.9rem"
                   padding="0.4rem 1.2rem"
                   borderRadius="0.3rem"
+                  onClick={() => handleBuyItem(animalDatum.id)}
                 >
                   {animalDatum.point} PP로 입양하기
                 </FlexButton>
@@ -66,6 +69,7 @@ const Animal = ({ animalData }: Props) => {
                   fontSize="0.9rem"
                   padding="0.4rem 1.2rem"
                   borderRadius="0.3rem"
+                  disabled
                 >
                   {animalDatum?.buyable_context?.pre_condition?.item?.name}{" "}
                   {animalDatum?.buyable_context?.pre_condition?.max_count}
@@ -82,6 +86,7 @@ const Animal = ({ animalData }: Props) => {
                   fontSize="0.9rem"
                   padding="0.4rem 1.2rem"
                   borderRadius="0.3rem"
+                  disabled
                 >
                   {animalDatum?.buyable_context?.lack_point} PP 부족
                 </FlexButton>

@@ -3,7 +3,7 @@ import { Tab as semanticTab } from "semantic-ui-react";
 import COLOR from "constants/color";
 import { BannerBox } from "components/common";
 import styled from "styled-components";
-import { useItemListData } from "hooks/queries/items";
+import { useBuyItem, useItemListData } from "hooks/queries/items";
 import { BuyableItemType } from "types";
 import { Island, Animal, Item, Point } from "./index";
 
@@ -44,8 +44,13 @@ const Tabs = () => {
   const [islandData, setIslandData] = useState([]);
   const [animalData, setAnimalData] = useState([]);
   const [treeData, setTreeData] = useState([]);
-  const { data, isFetched } = useItemListData();
   const [panes, setPanes] = useState([]);
+  const { mutate: buyItem } = useBuyItem();
+  const { data, isFetched } = useItemListData();
+
+  const handleBuyItem = (itemId: number) => {
+    buyItem({ itemId });
+  };
 
   useEffect(() => {
     setPanes([
@@ -53,9 +58,9 @@ const Tabs = () => {
         menuItem: "상점",
         render: () => (
           <TabPane>
-            <Item treeData={treeData} />
-            <Island islandData={islandData} />
-            <Animal animalData={animalData} />
+            <Item treeData={treeData} handleBuyItem={handleBuyItem} />
+            <Island islandData={islandData} handleBuyItem={handleBuyItem} />
+            <Animal animalData={animalData} handleBuyItem={handleBuyItem} />
           </TabPane>
         ),
       },

@@ -1,6 +1,6 @@
 import { ImageType } from "types";
 
-type ItemCategoryType = "map" | "animal" | "tree" | "item";
+export type ItemCategoryType = "map" | "animal" | "tree" | "item";
 
 type ItemType = {
   id: number;
