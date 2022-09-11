@@ -34,54 +34,54 @@ const treePlaceWrapper = [
     {
       y: 5,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 5,
       x: 6,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 6,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 7,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 5,
       x: 7,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
   ],
   [
     {
       y: 5,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 5,
       x: 6,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 6,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 7,
       x: 5,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
     {
       y: 5,
       x: 7,
-      code: 220, // TODO: trees 이미지 넣고, 코드 넣기
+      code: 300, // TODO: trees 이미지 넣고, 코드 넣기
     },
   ],
   [],

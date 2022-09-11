@@ -39,6 +39,7 @@ export const Character = {
 };
 
 export const Item = {
+  trees: 300,
   disabled: 998,
   disabled2: 999,
 };
@@ -285,6 +286,8 @@ export const TileSwitcher = (tileId, context) => {
       return context.flyingSquirrel;
     case Character.sandCat:
       return context.sandCat;
+    case Item.trees:
+      return context.trees;
     case Item.disabled:
       return context.disabled;
     case Item.disabled2:
