@@ -24,7 +24,7 @@ const AutoCompleteInput = styled(Search)`
     width: 100% !important;
     border-radius: 0.5rem !important;
     font-family: "Pr-Regular" !important;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 
     .result {
       padding: 0.8rem 1rem !important;
@@ -32,6 +32,10 @@ const AutoCompleteInput = styled(Search)`
 
     > span {
       word-break: keep-all !important;
+    }
+    .empty > .header {
+      font-weight: 400 !important;
+      font-family: "Pr-Regular" !important;
     }
   }
 `;
@@ -63,6 +67,7 @@ const AutoComplete = () => {
       onResultSelect={handleResultSelect}
       loading={isLoading}
       resultRenderer={resultRenderer}
+      noResultsMessage="검색 결과가 없습니다 😥"
     />
   );
 };

@@ -36,7 +36,7 @@ const NoticKeywordModal = ({ onClick }: Props) => {
   const { mutate: deleteReminder } = useDeleteChallengeReminder();
 
   return (
-    <FlexBox column position="relative">
+    <FlexBox column position="relative" width="100%">
       <AiOutlineClose
         color={COLOR.white}
         size="22"

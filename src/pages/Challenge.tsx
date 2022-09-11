@@ -33,15 +33,15 @@ const Challenge = () => {
         </FlexBox>
       </Desktop>
       <Tablet>
-        <FlexBox
-          column
-          alignItems="center"
-          height="100%"
-          margin="2rem 0 0 0"
-          padding="2rem"
-        >
+        <FlexBox column alignItems="center" height="100%" padding="2rem">
           {user && (
-            <FlexBox width="100%" justifyContent="center" alignItems="center">
+            <FlexBox
+              width="100%"
+              justifyContent="space-between"
+              alignItems="center"
+              gap="2rem"
+              margin="0 0 2rem 0"
+            >
               <NoticKeyword />
               <ChallengeSuggestionBanner />
             </FlexBox>
@@ -61,6 +61,7 @@ const Challenge = () => {
           padding="2rem"
         >
           {user && <NoticKeyword />}
+          <div style={{ height: "3rem" }} />
           <TodayChallengeList />
           <WeeklyChallengeList />
           <ChallengeSuggestionGather />

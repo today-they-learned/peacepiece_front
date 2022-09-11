@@ -12,13 +12,13 @@ const script = {
 
 const ChallengeSuggestionBanner = () => {
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", height: "100%" }}>
       <Desktop>
         <ChallengeBanner
           theme="banner"
           title={script.title}
           background="transparent"
-          margin="0 0 2rem 0"
+          margin="1rem 0"
         >
           <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
           <FlexBox
@@ -42,25 +42,25 @@ const ChallengeSuggestionBanner = () => {
           theme="banner"
           title={script.title}
           background="transparent"
-          height="17.56rem"
-          margin="0 0 2rem 2rem"
-          widthTablet="93%"
+          widthTablet="100%"
+          height="100%"
         >
-          <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
-          <FlexBox
-            justifyContent="flex-end"
-            margin="3.3rem 0 0 0"
-            tabletMargin="7rem 0 0 0"
-            background="transparent"
-          >
-            <Link to={script.url}>
-              <FlexButton
-                color={COLOR.font.primary}
-                backgroundColor={COLOR.bg.primary}
-              >
-                제안하기
-              </FlexButton>
-            </Link>
+          <FlexBox column justifyContent="space-between" height="100%">
+            <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
+            <FlexBox
+              width="100%"
+              justifyContent="flex-end"
+              background="transparent"
+            >
+              <Link to={script.url}>
+                <FlexButton
+                  color={COLOR.font.primary}
+                  backgroundColor={COLOR.bg.primary}
+                >
+                  제안하기
+                </FlexButton>
+              </Link>
+            </FlexBox>
           </FlexBox>
         </ChallengeBanner>
       </Tablet>

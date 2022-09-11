@@ -14,7 +14,7 @@ interface Props {
   backgroundColor?: string;
   position?: string;
   right?: string;
-  bottom?: string;
+  top?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -30,7 +30,7 @@ const defaultProps = {
   backgroundColor: "",
   position: "static",
   right: "0",
-  bottom: "0",
+  top: "0",
   onClick: Function,
 };
 
@@ -48,7 +48,7 @@ const FlexButton = (props: Props) => {
     backgroundColor,
     position,
     right,
-    bottom,
+    top,
     onClick,
   } = props;
 
@@ -71,7 +71,7 @@ const FlexButton = (props: Props) => {
         cursor: ${cursor ? "pointer" : cursor};
         position: ${position};
         right: ${right};
-        bottom: ${bottom};
+        top: ${top};
       `}
     >
       {children}

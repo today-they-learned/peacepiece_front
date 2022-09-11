@@ -1,20 +1,23 @@
 import { useState } from "react";
 import COLOR from "constants/color";
-import FlexTextBox from "components/common/FlexTextBox";
-import BannerBox from "components/common/BannerBox";
+import { BannerBox, FlexBox, FlexTextBox } from "components/common";
 import Tooltip from "components/Tooltip/Tooltip";
 import FlexButton from "components/common/FlexButton";
-import FlexBox from "components/common/FlexBox";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import NoticKeywordModal from "components/Modal/NoticeKeywordModal";
+import { ReminderType } from "types";
+import { useChallengeReminderData } from "hooks/queries/challenge/reminder";
+import styled from "styled-components";
+import { useUser } from "hooks";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "38rem",
+  width: "80%",
+  maxWidth: "38rem",
   borderRadius: "1rem",
   bgcolor: COLOR.bg.default,
   color: "#efefef",
@@ -22,92 +25,97 @@ const style = {
   p: 4,
 };
 
+const Keyword = styled.div`
+  font-family: "Pr-SemiBold";
+  max-width: 100%;
+  height: 18px;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 1023px) {
+    max-width: 50%;
+  }
+`;
+
 const NoticKeyword = () => {
+  const { user } = useUser();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [keywords] = useState([
-    "일회용품_안_쓰기",
-    "텀블러",
-    "이_세상에는_다시_쓸_수_있는_물건이_많다",
-  ]);
+  const { data: reminders, isFetched } = useChallengeReminderData();
 
   return (
-    <BannerBox
-      width="24.6rem"
-      widthTablet="93%"
-      height="18.37rem"
-      padding="1.8rem 0.5rem 1.8rem 0.5rem"
-      margin="0 0 2rem 0"
-    >
-      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0">
+    <BannerBox width="24.6rem" widthTablet="50%" height="100%" padding="1.6rem">
+      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0" wrap="wrap">
         <FlexTextBox
           fontSize="1.56rem"
           mobileFontSize="1.56rem"
           color={COLOR.font.primary}
-          margin="0.2rem 0 1rem 1.2rem"
-        >
-          권소예
-        </FlexTextBox>
-        <FlexTextBox
-          fontSize="1.56rem"
-          mobileFontSize="1.56rem"
           margin="0.2rem 0.4rem 1rem 0"
         >
-          님의 알림 키워드
+          {user?.username}
         </FlexTextBox>
-        <Tooltip
-          text={
-            <>
-              알림 설정을 한 키워드의 챌린지가 올라왔을 때, <br />
-              이메일로 알려드릴게요. 😇
-            </>
-          }
-        />
-      </FlexBox>
-      <BannerBox
-        width="90%"
-        widthMobile="95%"
-        widthTablet="90%"
-        height="10.75rem"
-        padding="0.5rem 0.3rem 0.5rem 0.4rem"
-        theme="secondary"
-        position="relative"
-        margin="0 0 0 1rem"
-      >
-        <FlexButton
-          position="absolute"
-          bottom="7rem"
-          right="0.5rem"
-          fontSize="0.9rem"
-          fontFamily="Pr-Regular"
-          onClick={handleOpen}
-        >
-          수정하기{">"}
-        </FlexButton>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <NoticKeywordModal onClick={handleClose} />
-          </Box>
-        </Modal>
-        <FlexBox margin="2rem 0 0 0.5rem" wrap="wrap">
-          {keywords.map((keyword: string) => (
-            <FlexTextBox
-              key={keyword}
-              height="18px"
-              margin="0 0.5rem 1rem 0"
-              fontSize="1.1rem"
-            >
-              #{keyword}
-            </FlexTextBox>
-          ))}
+        <FlexBox alignItems="center" margin="0 0 0.5rem 0">
+          <FlexTextBox
+            fontSize="1.56rem"
+            mobileFontSize="1.56rem"
+            margin="0 5px 0 0"
+          >
+            님의 알림 키워드
+          </FlexTextBox>
+          <Tooltip
+            text={
+              <>
+                알림 설정을 한 키워드의 챌린지가 올라왔을 때, <br />
+                이메일로 알려드릴게요. 😇
+              </>
+            }
+          />
         </FlexBox>
-      </BannerBox>
+      </FlexBox>
+      <FlexBox center>
+        <BannerBox
+          width="100%"
+          padding="0.3rem"
+          theme="secondary"
+          position="relative"
+        >
+          <FlexButton
+            position="absolute"
+            top="0.5rem"
+            fontSize="0.9rem"
+            fontFamily="Pr-Regular"
+            onClick={handleOpen}
+          >
+            수정하기 {">"}
+          </FlexButton>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <NoticKeywordModal onClick={handleClose} />
+            </Box>
+          </Modal>
+          <FlexBox
+            margin="1rem 0 0 0"
+            padding="2rem 1rem"
+            wrap="wrap"
+            gap="0.8rem"
+          >
+            {isFetched &&
+              reminders.map((reminder: ReminderType) => (
+                <Keyword key={`reminder_category_main_${reminder.category.id}`}>
+                  #{reminder.category.title}
+                </Keyword>
+              ))}
+          </FlexBox>
+        </BannerBox>
+      </FlexBox>
     </BannerBox>
   );
 };
