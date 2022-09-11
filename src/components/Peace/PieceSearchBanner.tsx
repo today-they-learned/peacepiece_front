@@ -49,8 +49,10 @@ const PieceSearchBanner = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setKeyword("");
-    navigate(`/piece/search/${keyword}`);
+    if (keyword) {
+      setKeyword("");
+      navigate(`/piece/search/${keyword}`);
+    }
   };
 
   return (
