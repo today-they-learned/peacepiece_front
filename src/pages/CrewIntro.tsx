@@ -5,43 +5,55 @@ import COLOR from "constants/color";
 
 const dummyData = [
   {
-    role: "팀리더",
+    id: 1,
+    role: "팀 리더",
     name: "김신건",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
   },
   {
+    id: 2,
     role: "팀원",
     name: "권소예",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
   },
   {
+    id: 3,
     role: "팀원",
     name: "김민정",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
   },
   {
+    id: 4,
     role: "팀원",
     name: "진승희",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
   },
   {
+    id: 5,
     role: "팀원",
     name: "최지현",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
   },
   {
+    id: 6,
     role: "팀원",
     name: "최유찬",
+    profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
       "대충 소개말 뭐 했고, 어떤 걸 느꼈다.대충 소개말 뭐 했고, 어떤 걸 느꼈다.",
@@ -49,23 +61,11 @@ const dummyData = [
 ];
 
 const Img = styled.img`
-  width: 100%;
   height: 11rem;
-  border-radius: 20%;
+  border-radius: 3rem;
   background: #d9d9d9;
   cursor: pointer;
   object-fit: cover;
-`;
-const ContentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 calc((100% - 2rem) / 6);
-  gap: 1.5rem;
-  background-color: red;
-  @media (max-width: 900px) {
-    flex: 1 1 calc((100% - 2rem) / 3);
-  }
 `;
 const Profile = styled.div`
   width: 20vw;
@@ -74,97 +74,71 @@ const Profile = styled.div`
   background: #d9d9d9;
   cursor: pointer;
 `;
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  @media (max-width: 1023px) {
+    gap: 3vw;
+  }
+`;
+
 const Div = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  gap: 0.4rem;
+  flex: 1 1 calc(100% / 7);
+  @media (max-width: 1023px) {
+    flex: 1 1 calc(100% / 4);
+  }
 `;
 
 const CrewIntro = () => {
-  const [idx, setIdx] = useState(0);
+  const [idx, setidx] = useState(1);
   return (
     <>
       <ContentContainer>
-        <Div>
-          <Img
-            onClick={() => setIdx(0)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀 리더</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">김신건</FlexTextBox>
-        </Div>
-        <Div>
-          <Img
-            onClick={() => setIdx(1)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">권소예</FlexTextBox>
-        </Div>
-        <Div>
-          <Img
-            onClick={() => setIdx(2)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">김민정</FlexTextBox>
-        </Div>
-        <Div>
-          <Img
-            onClick={() => setIdx(3)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">진승희</FlexTextBox>
-        </Div>
-        <Div>
-          <Img
-            onClick={() => setIdx(4)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">최지현</FlexTextBox>
-        </Div>
-        <Div>
-          <Img
-            onClick={() => setIdx(5)}
-            src={`${process.env.PUBLIC_URL}/images/image2.png`}
-          />
-          <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
-          <FlexTextBox fontFamily="Pr-Regular">최유찬</FlexTextBox>
-        </Div>
+        {dummyData.map((data) => (
+          <Div key={`crew-intro_${data.name}`}>
+            <Img
+              onClick={() => setidx(data.id)}
+              src={`${process.env.PUBLIC_URL}/${data.profile}`}
+            />
+            <FlexTextBox fontFamily="Pr-Regular">{data.role}</FlexTextBox>
+            <FlexTextBox fontFamily="Pr-Regular">{data.name}</FlexTextBox>
+          </Div>
+        ))}
       </ContentContainer>
-      {/* <FlexBox
+      <FlexBox
         width="100%"
+        margin="1.5rem 0 0 0"
         padding="2rem"
         gap="1.5rem"
         background={COLOR.bg.navSecondary}
       >
         <Profile />
-        <ContentContainer>
+        <FlexBox width="70%" column gap="0.4rem">
           <FlexTextBox color={COLOR.font.info} fontFamily="Pr-Regular">
-            {dummyData[idx].role}
+            {dummyData[idx - 1].role}
           </FlexTextBox>
           <FlexTextBox fontSize="1.7rem" fontFamily="Pr-Regular">
-            {dummyData[idx].name}
+            {dummyData[idx - 1].name}
           </FlexTextBox>
           <FlexTextBox
             color={COLOR.font.primary}
             fontFamily="Pr-Regular"
-            margin="0.5rem 0 0 0"
+            margin="0.6rem 0 0 0"
           >
-            {dummyData[idx].intro}
+            {dummyData[idx - 1].intro}
           </FlexTextBox>
           <FlexTextBox fontFamily="Pr-Regular">
-            {dummyData[idx].content}
+            {dummyData[idx - 1].content}
           </FlexTextBox>
-        </ContentContainer>
-      </FlexBox> */}
+        </FlexBox>
+      </FlexBox>
     </>
   );
 };
