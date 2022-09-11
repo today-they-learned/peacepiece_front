@@ -1,9 +1,9 @@
 import { instance } from "config/api";
 
-const articleCommentApI = {
+const articleCommentAPI = {
   post: (articleId: number, data: { content: string }) => {
     return instance.post(`articles/${articleId}/comments/`, data);
   },
 };
 
-export default articleCommentApI;
+export default articleCommentAPI;

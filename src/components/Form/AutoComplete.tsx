@@ -2,20 +2,37 @@ import styled from "styled-components";
 import useQueryDebounce from "hooks/useQueryDebounce";
 import useInput from "hooks/useInput";
 import { Search } from "semantic-ui-react";
-import { useChallengeCategoryData } from "hooks/queries/challenge/reminder";
+import {
+  useAddChallengeReminder,
+  useChallengeCategoryData,
+} from "hooks/queries/challenge/reminder";
 
 const AutoCompleteInput = styled(Search)`
+  width: 100% !important;
+  .input {
+    width: 100% !important;
+    height: 3rem;
+    border-radius: 0.5rem !important;
+    font-family: "Pr-Regular" !important;
+  }
   .input > input {
-    width: 16.6rem !important;
     height: 3rem;
     border-radius: 0.5rem !important;
     font-family: "Pr-Regular" !important;
   }
   .results {
-    width: 16.6rem !important;
+    width: 100% !important;
     border-radius: 0.5rem !important;
     font-family: "Pr-Regular" !important;
     font-size: 0.9rem;
+
+    .result {
+      padding: 0.8rem 1rem !important;
+    }
+
+    > span {
+      word-break: keep-all !important;
+    }
   }
 `;
 
@@ -24,19 +41,16 @@ interface Category {
   title: string;
 }
 
-const resultRenderer = (category: Category) => (
-  <span style={{ maxWidth: "15vw", wordBreak: "keep-all" }}>
-    {category.title}
-  </span>
-);
+const resultRenderer = (category: Category) => <span>{category.title}</span>;
 
 const AutoComplete = () => {
   const [keyword, onChangeKeyword, setKeyword] = useInput("");
   const debouncedKeyword = useQueryDebounce(keyword, 200);
   const { data, isLoading } = useChallengeCategoryData(debouncedKeyword);
+  const { mutate: addReminder } = useAddChallengeReminder();
 
-  const handleResultSelect = () => {
-    // e: Event, data: any
+  const handleResultSelect = (e: Event, data: { result: { id: number } }) => {
+    addReminder(data.result.id);
     setKeyword("");
   };
 

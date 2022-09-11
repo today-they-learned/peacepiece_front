@@ -10,6 +10,7 @@ import { Desktop, Tablet, Mobile } from "hooks/mediaQuery";
 
 const Challenge = () => {
   const { user } = useUser();
+
   return (
     <div style={{ height: "100%" }}>
       <Desktop>

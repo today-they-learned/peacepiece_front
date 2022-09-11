@@ -1,4 +1,3 @@
-import { useState } from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
@@ -6,6 +5,11 @@ import FlexBox from "components/common/FlexBox";
 import AutoComplete from "components/Form/AutoComplete";
 import { Icon, Label } from "semantic-ui-react";
 import { FlexTextBox } from "components/common";
+import {
+  useChallengeReminderData,
+  useDeleteChallengeReminder,
+} from "hooks/queries/challenge/reminder";
+import { ReminderType } from "types";
 
 interface Props {
   onClick: () => void;
@@ -28,45 +32,36 @@ const TagLabel = styled(Label)`
 `;
 
 const NoticKeywordModal = ({ onClick }: Props) => {
-  const [keywords] = useState([
-    "일회용품_안_쓰기",
-    "텀블러",
-    "이_세상에는_다시_쓸_수_있는_물건이_많다",
-    "친환경_습관_기르기",
-    "일회용품_대신_텀블러",
-    "에코백_활용",
-  ]);
-
-  const insertTags = () => {
-    const newArr = [];
-    for (let i = 0; i < keywords.length; i += 1) {
-      newArr.push(
-        <TagLabel>
-          <FlexBox>
-            <Box>{keywords[i]}</Box>
-            <Icon name="delete" link />
-          </FlexBox>
-        </TagLabel>
-      );
-    }
-    return newArr;
-  };
+  const { data: reminders, isFetched } = useChallengeReminderData();
+  const { mutate: deleteReminder } = useDeleteChallengeReminder();
 
   return (
     <FlexBox column position="relative">
       <AiOutlineClose
         color={COLOR.white}
-        size="28"
+        size="22"
         style={{ position: "absolute", right: 0, cursor: "pointer" }}
         onClick={onClick}
       />
       <FlexTextBox fontSize="1.5rem">알림 키워드</FlexTextBox>
       <FlexBox wrap="wrap" margin="2rem 0 1rem 0">
-        {insertTags()}
+        {isFetched &&
+          reminders.map((reminder: ReminderType) => (
+            <TagLabel key={`reminder_category_${reminder.category.id}`}>
+              <FlexBox>
+                <Box>{reminder.category.title}</Box>
+                <Icon
+                  name="delete"
+                  link
+                  onClick={() => {
+                    deleteReminder(reminder.category.id);
+                  }}
+                />
+              </FlexBox>
+            </TagLabel>
+          ))}
       </FlexBox>
-      <FlexBox margin="0 0 0 50%">
-        <AutoComplete />
-      </FlexBox>
+      <AutoComplete />
     </FlexBox>
   );
 };
