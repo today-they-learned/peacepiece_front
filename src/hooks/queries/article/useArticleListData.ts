@@ -16,7 +16,6 @@ const useArticleListQuery = () => {
         return 1;
       },
       keepPreviousData: true,
-      staleTime: 0,
     }
   );
 };

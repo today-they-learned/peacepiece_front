@@ -16,7 +16,6 @@ const useChallengeArticleQuery = (challengeId: string) => {
         return 1;
       },
       keepPreviousData: true,
-      staleTime: 0,
     }
   );
 };

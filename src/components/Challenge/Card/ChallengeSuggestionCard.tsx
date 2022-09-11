@@ -1,16 +1,21 @@
-import { useState } from "react";
 import COLOR from "constants/color";
 import styled from "styled-components";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { ChallengeSuggestionType } from "types";
+import {
+  useAddSuggestionFeedback,
+  useDeleteSuggestionFeedback,
+} from "hooks/queries/challenge/suggestion";
 
 interface Props {
   suggestion: ChallengeSuggestionType;
   gap?: string;
+  main?: boolean;
 }
 
 const defaultProps = {
   gap: "1rem",
+  main: false,
 };
 
 const Container = styled.div<{ gap: string }>`
@@ -62,29 +67,34 @@ const LikeNumber = styled.span`
   margin-left: 0.5rem;
 `;
 
-const ChallengeSuggestionCard = ({ suggestion, gap }: Props) => {
-  const [clicked, setClicked] = useState(suggestion.is_feedbacked);
-  const [like, setLike] = useState(suggestion.feedback_count);
-  const clickedLike = () => {
-    setLike((prev) => prev + 1);
-    setClicked((prev) => !prev);
-  };
+const ChallengeSuggestionCard = ({ suggestion, gap, main }: Props) => {
+  const { mutate: addFeedback } = useAddSuggestionFeedback(suggestion.id, main);
+  const { mutate: deleteFeedback } = useDeleteSuggestionFeedback(
+    suggestion.id,
+    main
+  );
+
   return (
     <Container gap={gap}>
       <User>{suggestion.suggester.username}</User>
       <Content>{suggestion.content}</Content>
       <LikeContainer>
-        {clicked ? (
-          <AiFillLike color={COLOR.font.primary} size="20" />
+        {suggestion.is_feedbacked ? (
+          <AiFillLike
+            cursor="pointer"
+            color={COLOR.font.primary}
+            onClick={() => deleteFeedback()}
+            size="20"
+          />
         ) : (
           <AiOutlineLike
+            cursor="pointer"
             color={COLOR.font.primary}
             size="20"
-            onClick={clickedLike}
-            style={{ cursor: "pointer" }}
+            onClick={() => addFeedback()}
           />
         )}
-        <LikeNumber>{like}</LikeNumber>
+        <LikeNumber>{suggestion.feedback_count}</LikeNumber>
       </LikeContainer>
     </Container>
   );

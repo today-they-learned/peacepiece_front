@@ -29,6 +29,7 @@ const ChallengeSuggestionGather = () => {
                 key={`challenge_suggestion_${suggestion.id}`}
                 suggestion={suggestion}
                 gap="1rem"
+                main
               />
             )
           )}
