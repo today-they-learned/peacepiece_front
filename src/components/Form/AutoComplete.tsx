@@ -45,7 +45,7 @@ const resultRenderer = (category: Category) => <span>{category.title}</span>;
 
 const AutoComplete = () => {
   const [keyword, onChangeKeyword, setKeyword] = useInput("");
-  const debouncedKeyword = useQueryDebounce(keyword, 200);
+  const debouncedKeyword = useQueryDebounce(keyword, 300);
   const { data, isLoading } = useChallengeCategoryData(debouncedKeyword);
   const { mutate: addReminder } = useAddChallengeReminder();
 

@@ -50,7 +50,7 @@ const TodayChallengeList = () => {
       Math.floor(Math.random() * todayChallengeTitleList.length)
     ];
 
-  const { data: challenges } = useChallengeDailyData();
+  const { data: challenges, isFetched } = useChallengeDailyData();
 
   return (
     <>
@@ -67,14 +67,15 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {challenges?.map((challenge: ChallengeType) => (
-              <TodayChallengeCardWrapper
-                key={`today-challenges_${challenge.id}`}
-                gap="2rem"
-              >
-                <ChallengeCard challenge={challenge} />
-              </TodayChallengeCardWrapper>
-            ))}
+            {isFetched &&
+              challenges.map((challenge: ChallengeType) => (
+                <TodayChallengeCardWrapper
+                  key={`today-challenges_${challenge.id}`}
+                  gap="2rem"
+                >
+                  <ChallengeCard challenge={challenge} />
+                </TodayChallengeCardWrapper>
+              ))}
           </CardContainer>
         </Container>
       </Desktop>
@@ -86,14 +87,15 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {challenges?.map((challenge: ChallengeType) => (
-              <TodayChallengeCardWrapper
-                key={`today-challenges_${challenge.id}`}
-                gap="2rem"
-              >
-                <ChallengeCard challenge={challenge} />
-              </TodayChallengeCardWrapper>
-            ))}
+            {isFetched &&
+              challenges.map((challenge: ChallengeType) => (
+                <TodayChallengeCardWrapper
+                  key={`today-challenges_${challenge.id}`}
+                  gap="2rem"
+                >
+                  <ChallengeCard challenge={challenge} />
+                </TodayChallengeCardWrapper>
+              ))}
           </CardContainer>
         </Container>
       </Tablet>
