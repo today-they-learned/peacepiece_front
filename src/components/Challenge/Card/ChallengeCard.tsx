@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
