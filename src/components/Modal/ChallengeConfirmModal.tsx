@@ -116,7 +116,7 @@ const ChallengeConfirmModal = ({
 
   return (
     <ModalFrame
-      width="50rem"
+      width="50%"
       height="auto"
       title={title}
       btnTitle1="취소하기"
@@ -132,7 +132,8 @@ const ChallengeConfirmModal = ({
         theme="transparent"
         padding="0"
         margin="0"
-        widthMobile="15rem"
+        width="100%"
+        widthMobile="100%"
       >
         <FlexBox
           background={COLOR.bg.nav}
@@ -156,8 +157,8 @@ const ChallengeConfirmModal = ({
             value={content}
             onChange={onChangeContent}
             text={text}
-            width="43rem"
-            mobileWidth="13rem"
+            width="100%"
+            mobileWidth="100%"
             minRow={2}
           />
         </FlexBox>

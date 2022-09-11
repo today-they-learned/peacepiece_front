@@ -96,7 +96,8 @@ const ModalFrame = (props: AreaElement) => {
           <FlexBox
             background={background}
             width={width}
-            mobileWidth="20rem"
+            tabletWidth="80%"
+            mobileWidth="80%"
             height={height}
             column
             padding="2rem"
@@ -138,7 +139,9 @@ const ModalFrame = (props: AreaElement) => {
                 </button>
               )}
             </FlexBox>
-            <FlexBox>{children}</FlexBox>
+            <FlexBox width="100%" mobileWidth="100%">
+              {children}
+            </FlexBox>
             <FlexBox width="100%" justifyContent="flex-end">
               <FlexButton
                 fontSize="1.4rem"
