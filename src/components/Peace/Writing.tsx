@@ -13,6 +13,7 @@ const TemporaryContainer = styled.div`
   align-items: center;
   padding: 1rem;
   background: ${COLOR.bg.default};
+  cursor: pointer;
 `;
 
 const WritingContainer = styled(ChallengeBanner)``;
