@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useUser } from "hooks";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import { FlexBox } from "components/common";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import ProfileModal from "components/Modal/ProfileModal";
