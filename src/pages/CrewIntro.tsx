@@ -57,12 +57,14 @@ const Img = styled.img`
   object-fit: cover;
 `;
 const ContentContainer = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 68%;
-  @media (max-width: 767px) {
-    width: 68%;
+  flex-direction: row;
+  flex: 1 1 calc((100% - 2rem) / 6);
+  gap: 1.5rem;
+  background-color: red;
+  @media (max-width: 900px) {
+    flex: 1 1 calc((100% - 2rem) / 3);
   }
 `;
 const Profile = styled.div`
@@ -73,23 +75,21 @@ const Profile = styled.div`
   cursor: pointer;
 `;
 const Div = styled.div`
-  flex: 1 1 calc((100% - 2rem) / 6);
-  max-width: calc((100% - 2rem) / 6);
+  width: 100%;
+  height: 100%;
+  position: relative;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media (max-width: 700px) {
-    flex: 1 1 calc((100% - 2rem) / 3);
-    max-width: calc((100% - 2rem) / 3);
-  }
+  background-color: black;
 `;
 
 const CrewIntro = () => {
   const [idx, setIdx] = useState(0);
   return (
-    <FlexBox column gap="2rem">
-      <FlexBox gap="2rem">
+    <>
+      <ContentContainer>
         <Div>
           <Img
             onClick={() => setIdx(0)}
@@ -138,8 +138,8 @@ const CrewIntro = () => {
           <FlexTextBox fontFamily="Pr-Regular">팀원</FlexTextBox>
           <FlexTextBox fontFamily="Pr-Regular">최유찬</FlexTextBox>
         </Div>
-      </FlexBox>
-      <FlexBox
+      </ContentContainer>
+      {/* <FlexBox
         width="100%"
         padding="2rem"
         gap="1.5rem"
@@ -164,8 +164,8 @@ const CrewIntro = () => {
             {dummyData[idx].content}
           </FlexTextBox>
         </ContentContainer>
-      </FlexBox>
-    </FlexBox>
+      </FlexBox> */}
+    </>
   );
 };
 export default CrewIntro;
