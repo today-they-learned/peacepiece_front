@@ -27,7 +27,9 @@ const WeeklyChallengeCard = ({ challenge }: Props) => {
     <Link to={`/challenge/${challenge.id}`}>
       <FlexBox
         column
-        width="21.3rem"
+        width="18rem"
+        tabletWidth="21.5rem"
+        mobileWidth="21.5rem"
         height="9.25rem"
         borderRadius="1.25rem"
         background={COLOR.bg.secondary}
