@@ -105,13 +105,15 @@ const ChallengeConfirmModal = ({
   };
 
   const handleSubmit = () => {
-    const formdata = new FormData();
-    if (challengeId) formdata.append("challenge_id", challengeId);
-    formdata.append("content", content);
-    [...imageList].forEach((image, index) => {
-      formdata.append(`images[${index}]file`, image.file);
-    });
-    addArticle(formdata);
+    if (content.trim()) {
+      const formdata = new FormData();
+      if (challengeId) formdata.append("challenge_id", challengeId);
+      formdata.append("content", content.trim());
+      [...imageList].forEach((image, index) => {
+        formdata.append(`images[${index}]file`, image.file);
+      });
+      addArticle(formdata);
+    }
   };
 
   return (
@@ -126,6 +128,7 @@ const ChallengeConfirmModal = ({
       visible={visible}
       type={type}
       subTitle={subTitle}
+      confirm={!!content.trim()}
     >
       <BannerBox
         position="relative"

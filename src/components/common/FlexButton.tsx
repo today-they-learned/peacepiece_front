@@ -72,6 +72,7 @@ const FlexButton = (props: Props) => {
         position: ${position};
         right: ${right};
         bottom: ${bottom};
+        transition: all ease 0.25s;
       `}
     >
       {children}
