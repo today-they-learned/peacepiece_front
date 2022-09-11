@@ -7,6 +7,7 @@ const useChallengeReminderQuery = () => {
     [queryKeys.CHALLENGE_REMINDER_DATA],
     () => challengeReminderAPI.get(),
     {
+      staleTime: 0,
       select: (data) => {
         return data.data;
       },
