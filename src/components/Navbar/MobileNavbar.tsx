@@ -149,13 +149,14 @@ const Start = styled.div`
   cursor: pointer;
 `;
 
-const Profile = styled.div`
+const Profile = styled.img`
   background-color: ${COLOR.font.disabled};
   width: 1.6rem;
   height: 1.5rem;
   border-radius: 50%;
   margin: 0.2rem 1.5rem 0 1.5rem;
   position: static;
+  object-fit: cover;
 `;
 
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
