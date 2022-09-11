@@ -54,18 +54,18 @@ const items = [
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1200px) {
     flex-direction: column;
   }
 `;
 
 const IslandViewerWrapper = styled.div`
-  flex: 3;
+  flex: 2.5;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1200px) {
     flex: 1;
   }
 `;

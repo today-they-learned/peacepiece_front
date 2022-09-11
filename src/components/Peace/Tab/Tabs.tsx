@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import { Tab as semanticTab } from "semantic-ui-react";
 import COLOR from "constants/color";
 import { BannerBox } from "components/common";
 import styled from "styled-components";
+import { useItemListData } from "hooks/queries/items";
+import { BuyableItemType } from "types";
 import { Island, Animal, Item, Point } from "./index";
 
 const TabContainer = styled(BannerBox)`
@@ -37,31 +40,61 @@ const Tab = styled(semanticTab)`
   }
 `;
 
-const panes = [
-  {
-    menuItem: "상점",
-    render: () => (
-      <TabPane>
-        <Island />
-        <Animal />
-        <Item />
-      </TabPane>
-    ),
-  },
-  {
-    menuItem: "포인트 이력",
-    render: () => (
-      <TabPane>
-        <Point />
-      </TabPane>
-    ),
-  },
-];
-
 const Tabs = () => {
+  const [islandData, setIslandData] = useState([]);
+  const [animalData, setAnimalData] = useState([]);
+  const [treeData, setTreeData] = useState([]);
+  const { data, isFetched } = useItemListData();
+  const [panes, setPanes] = useState([]);
+
+  useEffect(() => {
+    setPanes([
+      {
+        menuItem: "상점",
+        render: () => (
+          <TabPane>
+            <Item treeData={treeData} />
+            <Island islandData={islandData} />
+            <Animal animalData={animalData} />
+          </TabPane>
+        ),
+      },
+      {
+        menuItem: "포인트 이력",
+        render: () => (
+          <TabPane>
+            <Point />
+          </TabPane>
+        ),
+      },
+    ]);
+  }, [islandData, animalData, treeData]);
+
+  useEffect(() => {
+    if (!data) return;
+
+    setIslandData(
+      data.data.filter((item: BuyableItemType) => {
+        return item?.category === "map";
+      })
+    );
+
+    setAnimalData(
+      data.data.filter((item: BuyableItemType) => {
+        return item?.category === "animal";
+      })
+    );
+
+    setTreeData(
+      data.data.filter((item: BuyableItemType) => {
+        return item?.category === "tree";
+      })
+    );
+  }, [data, isFetched]);
+
   return (
     <TabContainer padding="1.05rem">
-      <Tab panes={panes} />
+      {isFetched && <Tab panes={panes} />}
     </TabContainer>
   );
 };
