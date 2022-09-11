@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const CarouselLib = styled(Carousel)`
-  width: 50.5rem;
+  width: 100%;
   height: 10.5rem;
   margin: auto;
   background-color: ${COLOR.bg.primary};
@@ -34,7 +34,7 @@ const CarouselLib = styled(Carousel)`
 `;
 
 const Page = styled(Paper)`
-  width: 49rem;
+  width: 100%;
   margin-left: 0.5rem;
   display: flex;
   border: none !important;
