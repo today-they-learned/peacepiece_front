@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
+import ProfileModal from "components/Modal/ProfileModal";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "hooks";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -150,10 +151,11 @@ const Start = styled.div`
 
 const Profile = styled.div`
   background-color: ${COLOR.font.disabled};
-  width: 2rem;
+  width: 1.6rem;
   height: 1.5rem;
   border-radius: 50%;
-  margin: 0 2rem;
+  margin: 0.2rem 1.5rem 0 1.5rem;
+  position: static;
 `;
 
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
@@ -188,9 +190,17 @@ const DropdonwText = styled.span`
   cursor: pointer;
 `;
 
+const ProfileBox = styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: static;
+  cursor: pointer;
+`;
+
 const MobileNavbar = () => {
   const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
+  const [clickedProfile, setClickedProfile] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
@@ -216,6 +226,10 @@ const MobileNavbar = () => {
         setClickedChallenge(false);
       }
     }
+  };
+
+  const onClickProfile = () => {
+    setClickedProfile(!clickedProfile);
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -320,7 +334,10 @@ const MobileNavbar = () => {
           {user ? (
             <>
               <IoIosNotificationsOutline size="30" />
-              <Profile />
+              <ProfileBox>
+                <Profile onClick={onClickProfile} />
+                {clickedProfile && <ProfileModal />}
+              </ProfileBox>
             </>
           ) : (
             <Start
