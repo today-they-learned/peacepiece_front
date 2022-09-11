@@ -4,6 +4,7 @@ import COLOR from "constants/color";
 import { FlexBox } from "components/common";
 import { useChallengeSuggestionListData } from "hooks/queries/challenge/suggestion";
 import { ChallengeSuggestionType } from "types";
+import ChallengeSuggestionGatherWrapper from "../Card/ChallengeSuggestionGatherWrapper";
 
 const ChallengeSuggestionGather = () => {
   const { data, isFetched } = useChallengeSuggestionListData(3, "main");
@@ -25,11 +26,12 @@ const ChallengeSuggestionGather = () => {
         {isFetched &&
           data.pages[0].data.results.map(
             (suggestion: ChallengeSuggestionType) => (
-              <ChallengeSuggestionCard
+              <ChallengeSuggestionGatherWrapper
                 key={`challenge_suggestion_${suggestion.id}`}
-                suggestion={suggestion}
                 gap="1rem"
-              />
+              >
+                <ChallengeSuggestionCard suggestion={suggestion} />
+              </ChallengeSuggestionGatherWrapper>
             )
           )}
       </FlexBox>
