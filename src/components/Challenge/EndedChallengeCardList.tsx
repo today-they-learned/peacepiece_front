@@ -1,40 +1,22 @@
-import { FlexBox } from "components/common";
-import { ChallengeType } from "types";
-import ChallengeCard from "./Card/ChallengeCard";
-import EndedChallengeCardWrapper from "./Card/EndedChallengeCardWrapper";
+import styled from "styled-components";
 
 interface Props {
-  challenges?: ChallengeType[];
+  children: React.ReactNode;
 }
 
-const defaultProps: Props = {
-  challenges: [],
-};
+const ChallengeCardListWrapper = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  gap: 2rem;
+`;
 
-const EndedChallengeCardList = ({ challenges }: Props) => {
-  return (
-    <FlexBox
-      width="100%"
-      height="100%"
-      justifyContent="flex-start"
-      alignItems="center"
-      wrap="wrap"
-      padding="2rem 0"
-      margin="0"
-      gap="2rem"
-    >
-      {challenges.map((challenge) => (
-        <EndedChallengeCardWrapper
-          key={`ended-challenge-${challenge.id}`}
-          gap="2rem"
-        >
-          <ChallengeCard challenge={challenge} />
-        </EndedChallengeCardWrapper>
-      ))}
-    </FlexBox>
-  );
+const EndedChallengeCardList = ({ children }: Props) => {
+  return <ChallengeCardListWrapper>{children}</ChallengeCardListWrapper>;
 };
-
-EndedChallengeCardList.defaultProps = defaultProps;
 
 export default EndedChallengeCardList;

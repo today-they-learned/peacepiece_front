@@ -66,13 +66,10 @@ const ChallengeSuggestionInput = () => {
       content: value,
     };
     addSuggestion(data);
-  };
-
-  const onSuccess = () => {
     setValue("");
   };
 
-  const { mutate: addSuggestion } = useAddChallengeSuggestion({ onSuccess });
+  const { mutate: addSuggestion } = useAddChallengeSuggestion();
 
   return (
     <ChallengeBanner title={script.title} width="100%" padding="2rem">
@@ -103,7 +100,11 @@ const ChallengeSuggestionInput = () => {
             <Btn onClick={handleSubmit}>제안하기</Btn>
           ) : (
             <CustomTooltip
-              title="로그인 후에 챌린지를 제안할 수 있어요"
+              title={
+                <div style={{ textAlign: "center" }}>
+                  로그인 후에 <br /> 챌린지를 제안할 수 있어요
+                </div>
+              }
               arrow
               placement="top-start"
             >

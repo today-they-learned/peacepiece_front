@@ -7,6 +7,10 @@ interface Props {
   onClose: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
+const handleSubmit = () => {
+  console.log("ds");
+};
+
 const CloseWarningModal = ({ onClose, visible }: Props) => (
   <ModalFrame
     modalMainColor={COLOR.font.danger}
@@ -18,6 +22,7 @@ const CloseWarningModal = ({ onClose, visible }: Props) => (
     onClose={onClose}
     visible={visible}
     subTitle={false}
+    handleSubmit={handleSubmit}
   >
     <FlexTextBox
       fontSize="1.25rem"

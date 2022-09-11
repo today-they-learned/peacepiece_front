@@ -15,6 +15,7 @@ interface Props {
   maxLength?: number;
   value: string;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+  autoFocus?: boolean;
 }
 
 const defaultProps = {
@@ -23,9 +24,10 @@ const defaultProps = {
   minRow: 1,
   margin: "0",
   padding: "1.25rem",
-  fontSize: "1.25rem",
+  fontSize: "1.2rem",
   background: COLOR.bg.secondary,
   maxLength: 900000,
+  autoFocus: false,
 };
 
 const Textarea = (props: Props) => {
@@ -41,12 +43,14 @@ const Textarea = (props: Props) => {
     maxLength,
     value,
     onChange,
+    autoFocus,
   } = props;
 
   // 글자수 제한 props로 길이 받아서 처리
 
   return (
     <TextareaAutosize
+      autoFocus={autoFocus}
       value={value}
       onChange={onChange}
       aria-label="empty textarea"

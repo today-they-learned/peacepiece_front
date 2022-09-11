@@ -14,17 +14,17 @@ const Wrapper = styled.div<{ gap: string }>`
   flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
   max-width: ${(props) => `calc((100% - ${props.gap} * 2) / 3)`};
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1200px) {
     flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 3) / 4)`};
     max-width: ${(props) => `calc((100% - ${props.gap} * 3) / 4)`};
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1000) {
     flex: 1 1 ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
     max-width: ${(props) => `calc((100% - ${props.gap} * 1) / 2)`};
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 767px) {
     flex: 1 1 100%;
     max-width: 100%;
   }

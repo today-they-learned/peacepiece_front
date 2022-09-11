@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
@@ -13,35 +14,41 @@ const Avatar = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  object-fit: cover;
+  background: ${COLOR.bg.primary};
 `;
 
 const Image = styled.img`
   flex: 1;
-  max-width: 10rem;
+  width: 11rem;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
+  background: ${COLOR.bg.primary};
 `;
 
 const LastImage = styled.img`
-  width: 100%;
+  width: 11rem;
   height: 6.4rem;
   object-fit: cover;
   border-radius: 0.625rem;
   margin-right: 1rem;
   opacity: 0.3;
   position: relative;
+  background: ${COLOR.bg.primary};
 `;
 
 const Emoji = styled.div<{ isFeedbacked: boolean }>`
-  padding: 0.25rem 0.5rem;
-  border-radius: 10px;
-  color: ${(isFeedbacked) =>
-    isFeedbacked ? COLOR.white : COLOR.font.darkDefault};
+  font-size: 13px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 15px;
   margin-right: 0.7rem;
-  background: ${(isFeedbacked) =>
-    isFeedbacked ? COLOR.btn.active : COLOR.white};
+  font-family: ${(props) => (props.isFeedbacked ? "Pr-Bold" : "Pr-Regular")};
+  color: ${(props) =>
+    props.isFeedbacked ? COLOR.font.darkDefault : COLOR.white};
+  background: ${(props) =>
+    props.isFeedbacked ? COLOR.white : COLOR.btn.active};
 `;
 
 const Button = styled.button`
@@ -54,7 +61,6 @@ const Button = styled.button`
 const ImageListContainer = styled.div`
   display: flex;
   margin: 0.5rem 0 1rem 0;
-
   max-width: 100%;
 `;
 
@@ -74,9 +80,11 @@ const Post = (props: Props) => {
   return (
     <>
       {article.challenge && (
-        <FlexTextBox margin="0.5rem 0 0 0 " color={COLOR.font.link}>
-          [{article.challenge.title}] 챌린지
-        </FlexTextBox>
+        <Link to={`/challenge/${article.challenge.id}`}>
+          <FlexTextBox margin="0" color={COLOR.font.link}>
+            [{article.challenge.title}] 챌린지
+          </FlexTextBox>
+        </Link>
       )}
       <FlexBox
         width="100%"
@@ -84,12 +92,12 @@ const Post = (props: Props) => {
         background={COLOR.bg.secondary}
         borderRadius="1.25rem"
         column
-        padding="1rem"
+        padding="1rem 1.5rem"
         position="relative"
         margin="0"
       >
         <FlexBox background="transparent" alignItems="center" margin="0">
-          <Avatar src={`${process.env.PUBLIC_URL}/${article.writer.avatar}`} />
+          <Avatar src={article.writer.avatar} />
           <FlexBox
             column
             justifyContent="center"
@@ -115,25 +123,19 @@ const Post = (props: Props) => {
 
         <FlexTextBox fontSize="1rem" fontFamily="Pr-Medium" padding="1rem 0">
           {article.content.slice(0, textLimit)}
-          <Button
-            onClick={() => setTextLimit(article.content.length)}
-            style={{
-              display: textLimit === article.content.length && "none",
-            }}
-          >
-            더보기
-          </Button>
+          {textLimit !== article.content.length && (
+            <Button onClick={() => setTextLimit(article.content.length)}>
+              더보기
+            </Button>
+          )}
         </FlexTextBox>
 
         <ImageListContainer>
           {article.images.slice(0, 3).map((image, idx) => {
-            if (idx === 2) {
+            if (article.images.length > 3 && idx === 2) {
               return (
-                <LastImageContainer>
-                  <LastImage
-                    src={`${process.env.PUBLIC_URL}/${image.file}`}
-                    key={image.id}
-                  />
+                <LastImageContainer key={`postImage_${image.id}`}>
+                  <LastImage src={image.file} />
                   <FlexTextBox
                     position="absolute"
                     right="50%"
@@ -146,20 +148,15 @@ const Post = (props: Props) => {
                 </LastImageContainer>
               );
             }
-            return (
-              <Image
-                src={`${process.env.PUBLIC_URL}/${image.file}`}
-                key={image.id}
-              />
-            );
+            return <Image src={image.file} key={`postImage_${image.id}`} />;
           })}
         </ImageListContainer>
 
         <FlexBox background="transparent">
           <Emoji isFeedbacked>👍 1</Emoji>
-          <Emoji isFeedbacked>🌱 0</Emoji>
-          <Emoji isFeedbacked>❤️ 0</Emoji>
-          <Emoji isFeedbacked>🚀 0</Emoji>
+          <Emoji isFeedbacked={false}>🌱 0</Emoji>
+          <Emoji isFeedbacked={false}>❤️ 0</Emoji>
+          <Emoji isFeedbacked={false}>🚀 0</Emoji>
         </FlexBox>
       </FlexBox>
     </>

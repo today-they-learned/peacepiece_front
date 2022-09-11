@@ -29,8 +29,8 @@ const PostCard = ({ article }: Props) => {
   return (
     <PostCardContainer>
       <Post article={article} />
-      <CommentInput />
-      <CommentContainer />
+      <CommentInput articleId={article.id} />
+      <CommentContainer comments={article.article_comments} />
     </PostCardContainer>
   );
 };

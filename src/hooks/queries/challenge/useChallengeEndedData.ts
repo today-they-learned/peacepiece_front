@@ -1,17 +1,17 @@
 import { useInfiniteQuery } from "react-query";
-import challengeSuggestionAPI from "apis/challengeSuggestionAPI";
+import challengeAPI from "apis/challengeAPI";
 import * as queryKeys from "constants/queryKeys";
 
-const useChallengeSuggestionListQuery = (pageSize?: number, main?: string) => {
-  const queryKey = [queryKeys.CHALLENGE_SUGGESTION_LIST];
+const useChallengeEndedQuery = (pageSize?: number, main?: string) => {
+  const queryKey = [queryKeys.CHALLENGE_ENDED_DATA];
   if (main) queryKey.push(main);
+
   return useInfiniteQuery(
     queryKey,
-    ({ pageParam = 1 }) =>
-      challengeSuggestionAPI.list.get(pageParam, pageSize || 9),
+    ({ pageParam = 1 }) => challengeAPI.ended(pageParam, pageSize || 10),
     {
       getNextPageParam: (lastPage) => {
-        if (lastPage.data) {
+        if (lastPage) {
           const currentPage = lastPage.data.current_page;
           const totalPages = lastPage.data.total_pages;
           return currentPage < totalPages && currentPage + 1;
@@ -24,4 +24,4 @@ const useChallengeSuggestionListQuery = (pageSize?: number, main?: string) => {
   );
 };
 
-export default useChallengeSuggestionListQuery;
+export default useChallengeEndedQuery;

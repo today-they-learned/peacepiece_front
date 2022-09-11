@@ -15,8 +15,10 @@ const challengeSuggestionAPI = {
     return instance.delete(`challenges/suggestion/${id}/`);
   },
   list: {
-    get: (page: number) => {
-      return instance.get(`challenges/suggestions/?page=${page}&page_size=9`);
+    get: (page: number, pageSize: number) => {
+      return instance.get(
+        `challenges/suggestions/?page=${page}&page_size=${pageSize}`
+      );
     },
   },
   feedback: {

@@ -16,7 +16,7 @@ const PostCardList = ({ articles }: Props) => {
   return (
     <PostCardListWrapper>
       {articles.map((article) => {
-        return <PostCard key={`Article_${article.id}`} article={article} />;
+        return <PostCard key={`PostCard_${article.id}`} article={article} />;
       })}
     </PostCardListWrapper>
   );
