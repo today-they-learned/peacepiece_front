@@ -1,5 +1,6 @@
 import { ChallengeSuggestionType } from "types";
 import ChallengeSuggestionCard from "./Card/ChallengeSuggestionCard";
+import ChallengeSuggestionGatherWrapper from "./Card/ChallengeSuggestionGatherWrapper";
 
 interface Props {
   suggestions: ChallengeSuggestionType[];
@@ -11,11 +12,13 @@ const AllChallengeSuggestionPartialList = (props: Props) => {
     <>
       {suggestions.map((suggestion) => {
         return (
-          <ChallengeSuggestionCard
+          <ChallengeSuggestionGatherWrapper
             key={`suggestion-${suggestion.id}`}
-            suggestion={suggestion}
             gap="1rem"
-          />
+            all
+          >
+            <ChallengeSuggestionCard suggestion={suggestion} />
+          </ChallengeSuggestionGatherWrapper>
         );
       })}
     </>

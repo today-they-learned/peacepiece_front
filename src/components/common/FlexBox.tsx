@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
   width?: string;
   maxWidth?: string;
+  tabletWidth?: string;
   height?: string;
   margin?: string;
   tabletMargin?: string;
@@ -34,6 +35,7 @@ interface Props {
 const defaultProps = {
   width: "auto",
   maxWidth: "none",
+  tabletWidth: "",
   mobileWidth: "",
   height: "auto",
   margin: "0",
@@ -64,6 +66,7 @@ const FlexBox = (props: Props) => {
   const {
     children,
     width,
+    tabletWidth,
     mobileWidth,
     maxWidth,
     height,
@@ -119,6 +122,7 @@ const FlexBox = (props: Props) => {
         transform: ${transform};
 
         @media only screen and (min-width: 768px) and (max-width: 1023px) {
+          width: ${tabletWidth};
           margin: ${tabletMargin !== "0" ? tabletMargin : margin};
         }
 
