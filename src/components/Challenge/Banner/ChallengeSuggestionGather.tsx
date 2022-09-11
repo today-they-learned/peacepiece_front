@@ -30,7 +30,7 @@ const ChallengeSuggestionGather = () => {
                 key={`challenge_suggestion_${suggestion.id}`}
                 gap="1rem"
               >
-                <ChallengeSuggestionCard suggestion={suggestion} />
+                <ChallengeSuggestionCard suggestion={suggestion} main />
               </ChallengeSuggestionGatherWrapper>
             )
           )}

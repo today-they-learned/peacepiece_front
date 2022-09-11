@@ -125,6 +125,7 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
         indicators={false}
         cycleNavigation
         navButtonsAlwaysVisible
+        duration={1000}
         NextIcon={<ArrowForwardIosIcon />}
         PrevIcon={<ArrowBackIosNewIcon />}
         navButtonsProps={{

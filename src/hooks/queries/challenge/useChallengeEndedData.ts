@@ -19,7 +19,6 @@ const useChallengeEndedQuery = (pageSize?: number, main?: string) => {
         return 1;
       },
       keepPreviousData: true,
-      staleTime: 0,
     }
   );
 };
