@@ -41,11 +41,16 @@ const User = styled.div`
 `;
 
 const Content = styled.div`
-  height: 5rem;
+  height: 5.5rem;
   font-size: 1rem;
   font-family: "Pr-SemiBold";
   color: ${COLOR.white};
   margin-bottom: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 `;
 
 const LikeContainer = styled.div`
