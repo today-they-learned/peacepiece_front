@@ -66,7 +66,7 @@ const CommentInput = ({ articleId }: Props) => {
           text="글에 대한 의견을 남겨주세요 🌱"
           background={COLOR.bg.nav}
           width="100%"
-          padding="0.5rem 1rem"
+          padding="0.5rem 0 0.5rem 0.7rem"
           fontSize="1rem"
           mobileFontsize="0.7rem"
           margin="0 0 0 0.5rem"
