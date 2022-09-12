@@ -5,6 +5,7 @@ import COLOR from "constants/color";
 import { FlexBox, FlexTextBox } from "components/common";
 import { useFromNow } from "hooks";
 import { NotiType } from "types";
+import { useReadNoti } from "hooks/queries/user";
 
 interface Props {
   notis: Array<NotiType>;
@@ -55,7 +56,10 @@ const NotiList = ({ notis, newNoti }: Props) => {
     notis.filter((noti) => (newNoti ? !noti.is_viewed : noti))
   );
 
+  const { mutate: readNoti } = useReadNoti();
+
   const onClickNoti = (noti: NotiType) => {
+    readNoti(noti.id);
     if (noti.notice_category === "category") {
       navigate(`/challenge/${noti.challenge.id}`);
     } else {
