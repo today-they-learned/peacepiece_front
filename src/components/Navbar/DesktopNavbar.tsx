@@ -4,8 +4,8 @@ import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import ProfileTooltip from "components/Tooltip/ProfileTooltip";
-import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
+import UserMenu from "components/Navbar/UserMenu";
+import Notice from "components/Navbar/Notice/Notice";
 
 const Nav = styled.div`
   width: 100%;
@@ -358,11 +358,11 @@ const Navbar = () => {
                   size="30"
                   onClick={onClickNotification}
                 />
-                {clickedNotification && <NoticeTooltip />}
+                {clickedNotification && <Notice />}
               </ProfileBox>
               <ProfileBox>
                 <Profile onClick={onClickProfile} />
-                {clickedProfile && <ProfileTooltip />}
+                {clickedProfile && <UserMenu />}
               </ProfileBox>
             </>
           ) : (

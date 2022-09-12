@@ -52,7 +52,7 @@ const Box = styled.div`
   left: -10.4rem;
 `;
 
-const ProfileTooltip = () => {
+const UserMenu = () => {
   return (
     <Box>
       <Container>
@@ -98,4 +98,4 @@ const ProfileTooltip = () => {
   );
 };
 
-export default ProfileTooltip;
+export default UserMenu;

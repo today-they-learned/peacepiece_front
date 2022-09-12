@@ -31,7 +31,7 @@ const Box = styled.div`
   left: -11.75rem;
 `;
 
-const NoticeTooltip = () => {
+const Notice = () => {
   return (
     <Box>
       <Container>
@@ -41,4 +41,4 @@ const NoticeTooltip = () => {
   );
 };
 
-export default NoticeTooltip;
+export default Notice;
