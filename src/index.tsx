@@ -1,5 +1,5 @@
 import { queryClient } from "config";
-import Loading from "pages/Loading";
+import PageLoading from "pages/PageLoading";
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { QueryClientProvider } from "react-query";
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <StrictMode>
-    <React.Suspense fallback={<Loading />}>
+    <React.Suspense fallback={<PageLoading />}>
       <QueryClientProvider client={queryClient}>
         <App />
         <div id="modal-root" />

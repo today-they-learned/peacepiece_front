@@ -2,8 +2,11 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 
 const Background = styled.div`
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   z-index: 999;
   display: flex;
   flex-direction: column;
@@ -29,10 +32,10 @@ const Spinner = styled.div`
   }
 `;
 
-const Loading = () => (
+const PageLoading = () => (
   <Background>
     <Spinner />
   </Background>
 );
 
-export default Loading;
+export default PageLoading;
