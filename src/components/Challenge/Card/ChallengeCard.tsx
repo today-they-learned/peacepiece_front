@@ -3,6 +3,7 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
 import { ChallengeType } from "types";
+import { FlexBox } from "components/common";
 
 interface Props {
   challenge: ChallengeType;
@@ -23,7 +24,7 @@ const defaultProps = {
 const Container = styled.div<{ margin: string }>`
   width: 100%;
   height: 20rem;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   background-color: ${COLOR.bg.secondary};
   position: relative;
   margin: ${(props) => props.margin};
@@ -36,17 +37,17 @@ const Container = styled.div<{ margin: string }>`
 `;
 
 const Thumbnail = styled.img<ThumbnailImageProps>`
-  height: 12rem;
-  border-radius: 2rem 2rem 0 0;
+  height: 11rem;
+  border-radius: 1.5rem 1.5rem 0 0;
   margin-bottom: 1rem;
   object-fit: cover;
 
   ${({ isProved }) => isProved && "filter: brightness(50%);"};
 
   @media only screen and (max-width: 767px) {
-    width: 11rem;
+    width: 8.5rem;
     height: 100%;
-    border-radius: 2rem 0 0 2rem;
+    border-radius: 1.5rem 0 0 1.5rem;
   }
 `;
 
@@ -56,7 +57,7 @@ const ContentBox = styled.div`
   @media only screen and (max-width: 767px) {
     width: 100%;
     margin: 0;
-    padding: 1rem;
+    padding: 0.8rem;
   }
 `;
 
@@ -68,20 +69,20 @@ const Title = styled.div`
 `;
 
 const HashTagBox = styled.div`
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
-
-  @media only screen and (max-width: 767px) {
-    margin-top: 3rem;
-  }
 `;
 
 const HashTag = styled.div`
   font-family: "Pr-Medium";
   font-size: 0.8rem;
+  max-width: 5rem;
   color: ${COLOR.white};
   margin-right: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ChallengeCard = (props: Props) => {
@@ -100,19 +101,22 @@ const ChallengeCard = (props: Props) => {
         <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
       )}
       <ContentBox>
-        <Title>{challenge.title}</Title>
-        <ChallengeFigure
-          proverCnt={challenge.prover_cnt}
-          point={challenge.point}
-          background={COLOR.bg.secondary}
-        />
-        <HashTagBox>
-          {challenge.categories.map((category) => (
-            <HashTag key={`challenge-category-${category.id}`}>
-              #{category.title}
-            </HashTag>
-          ))}
-        </HashTagBox>
+        <FlexBox column height="100%" justifyContent="space-between">
+          <div style={{ marginBottom: "5px" }}>
+            <Title>{challenge.title}</Title>
+            <ChallengeFigure
+              proverCnt={challenge.prover_cnt}
+              point={challenge.point}
+            />
+          </div>
+          <HashTagBox>
+            {challenge.categories.map((category) => (
+              <HashTag key={`challenge-category-${category.id}`}>
+                #{category.title}
+              </HashTag>
+            ))}
+          </HashTagBox>
+        </FlexBox>
       </ContentBox>
     </Container>
   );

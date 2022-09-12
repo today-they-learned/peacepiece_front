@@ -48,32 +48,25 @@ const NoticKeyword = () => {
 
   return (
     <BannerBox width="24.6rem" widthTablet="50%" height="100%" padding="1.6rem">
-      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0" wrap="wrap">
+      <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0">
         <FlexTextBox
           fontSize="1.56rem"
-          mobileFontSize="1.56rem"
+          mobileFontSize="1.4rem"
+          lineHeight="2rem"
           color={COLOR.font.primary}
-          margin="0.2rem 0.4rem 1rem 0"
+          margin="0 0.4rem 1rem 0"
         >
-          {user?.username}
+          {user?.username}{" "}
+          <span style={{ color: COLOR.white }}>님의 알림 키워드</span>
         </FlexTextBox>
-        <FlexBox alignItems="center" margin="0 0 0.5rem 0">
-          <FlexTextBox
-            fontSize="1.56rem"
-            mobileFontSize="1.56rem"
-            margin="0 5px 0 0"
-          >
-            님의 알림 키워드
-          </FlexTextBox>
-          <Tooltip
-            text={
-              <>
-                알림 설정을 한 키워드의 챌린지가 올라왔을 때, <br />
-                이메일로 알려드릴게요. 😇
-              </>
-            }
-          />
-        </FlexBox>
+        <Tooltip
+          text={
+            <>
+              알림 설정을 한 키워드의 챌린지가 올라왔을 때, <br />
+              이메일로 알려드릴게요. 😇
+            </>
+          }
+        />
       </FlexBox>
       <FlexBox center>
         <BannerBox
@@ -85,6 +78,7 @@ const NoticKeyword = () => {
           <FlexButton
             position="absolute"
             top="0.5rem"
+            right="0"
             fontSize="0.9rem"
             fontFamily="Pr-Regular"
             onClick={handleOpen}

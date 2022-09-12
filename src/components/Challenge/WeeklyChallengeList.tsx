@@ -5,45 +5,27 @@ import COLOR from "constants/color";
 import Carousel from "react-material-ui-carousel";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { FlexTextBox, FlexBox } from "components/common";
+import { FlexBox } from "components/common";
 import { useChallengeWeeklyData } from "hooks/queries/challenge";
 import { ChallengeType } from "types";
+import { ChallengeBanner } from "components/Challenge";
 import WeeklyChallengeCard from "./Card/WeeklyChallengeCard";
 
-const Container = styled.div`
-  width: 100%;
-  height: 17.25rem;
-  padding: 0.8rem;
-  border-radius: 1.25rem;
-  background-color: ${COLOR.bg.primary};
-  margin-bottom: 3rem;
-
-  @media only screen and (max-width: 768px) {
-    padding-left: 0;
-  }
-`;
-
 const CarouselLib = styled(Carousel)`
-  width: 100%;
-  height: 10.5rem;
-  margin: auto;
-  background-color: ${COLOR.bg.primary};
-  @media only screen and (max-width: 768px) {
-    width: 27.5rem;
-  }
+  width: calc(100% + 3rem);
+  margin: 2.5rem -1.5rem 1rem -1.5rem;
 `;
 
 const Page = styled(Paper)`
   width: 100%;
-  margin-left: 0.5rem;
   display: flex;
   border: none !important;
   background-color: ${COLOR.bg.primary} !important;
   box-shadow: none !important;
+  padding: 0 3.5rem;
 
   @media only screen and (max-width: 768px) {
-    width: 24rem;
-    margin-left: 0.6rem;
+    padding: 0 3rem;
   }
 `;
 
@@ -52,23 +34,38 @@ const arrLoop = (challenges: ChallengeType[]) => {
   for (let i = 0; i <= challenges.length - 1; i += 2) {
     newArr.push(
       <Page key={`weekly_challenge_page_${i}`}>
-        {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
-          <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
-            <WeeklyChallengeCard challenge={challenges[i]} />
-          </FlexBox>
-        ) : (
-          <>
-            <FlexBox
-              margin="1rem 0.5rem 0 3.5rem"
-              background={COLOR.bg.primary}
-            >
+        <FlexBox width="100%" gap="1.5rem">
+          {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
+            <>
               <WeeklyChallengeCard challenge={challenges[i]} />
-            </FlexBox>
-            <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>
+              <div style={{ flex: "1 1 0" }} />
+            </>
+          ) : (
+            <>
               <WeeklyChallengeCard challenge={challenges[i]} />
-            </FlexBox>
-          </>
-        )}
+              <WeeklyChallengeCard challenge={challenges[i + 1]} />
+            </>
+          )}
+        </FlexBox>
+      </Page>
+    );
+  }
+  for (let i = 0; i <= challenges.length - 1; i += 2) {
+    newArr.push(
+      <Page key={`weekly_challenge_page_${i}`}>
+        <FlexBox width="100%" gap="1.5rem">
+          {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
+            <>
+              <WeeklyChallengeCard challenge={challenges[i]} />
+              <div style={{ flex: "1 1 0" }} />
+            </>
+          ) : (
+            <>
+              <WeeklyChallengeCard challenge={challenges[i]} />
+              <WeeklyChallengeCard challenge={challenges[i + 1]} />
+            </>
+          )}
+        </FlexBox>
       </Page>
     );
   }
@@ -80,7 +77,7 @@ const arrLoopMobile = (challenges: ChallengeType[]) => {
   for (let i = 0; i < challenges.length; i += 1) {
     newArr.push(
       <Page key={`weekly_challenge_page_${i}`}>
-        <FlexBox margin="0.5rem 0.5rem 0 2.5rem">
+        <FlexBox width="100%">
           <WeeklyChallengeCard challenge={challenges[i]} />
         </FlexBox>
       </Page>
@@ -103,19 +100,20 @@ const WeeklyChallengeList = () => {
   }, [isFetched]);
 
   return (
-    <Container>
-      <FlexTextBox fontSize="1.7rem" margin="1.4rem 0 2rem 2rem">
-        📝 이번주 챌린지
-      </FlexTextBox>
+    <ChallengeBanner title="📝 이번주 챌린지" width="100%" margin="0 0 3rem 0">
       <CarouselLib
-        height="11rem"
         animation="slide"
         indicators={false}
         duration={1000}
         cycleNavigation={challenges?.length > 2}
+        autoPlay={false}
         navButtonsAlwaysVisible={challenges?.length > 2}
-        NextIcon={<ArrowForwardIosIcon />}
-        PrevIcon={<ArrowBackIosNewIcon />}
+        NextIcon={
+          <ArrowForwardIosIcon fontSize={isDesktop ? "medium" : "small"} />
+        }
+        PrevIcon={
+          <ArrowBackIosNewIcon fontSize={isDesktop ? "medium" : "small"} />
+        }
         navButtonsProps={{
           style: {
             backgroundColor: "transparent",
@@ -126,7 +124,7 @@ const WeeklyChallengeList = () => {
       >
         {insertCard}
       </CarouselLib>
-    </Container>
+    </ChallengeBanner>
   );
 };
 

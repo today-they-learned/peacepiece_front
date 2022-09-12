@@ -20,7 +20,9 @@ const ChallengeSuggestionBanner = () => {
           background="transparent"
           margin="1rem 0"
         >
-          <FlexTextBox fontSize="0.93rem">{script.text}</FlexTextBox>
+          <FlexTextBox margin="1rem 0 0 0" fontSize="0.93rem">
+            {script.text}
+          </FlexTextBox>
           <FlexBox
             justifyContent="flex-end"
             margin="3.3rem 0 0 0"
