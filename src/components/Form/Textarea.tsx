@@ -72,6 +72,7 @@ const Textarea = (props: Props) => {
         background-color: ${background} !important;
         margin: ${margin};
         resize: none;
+        line-height: calc(${fontSize} + 0.6rem);
 
         @media only screen and (max-width: 767px) {
           width: ${mobileWidth} !important;
