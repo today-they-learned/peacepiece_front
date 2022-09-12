@@ -6,6 +6,7 @@ import PostCardList from "components/Peace/Post/PostCardList";
 import Writing from "components/Peace/Writing";
 import styled from "styled-components";
 import { useArticleListData } from "hooks/queries/article";
+import Loading from "./Loading";
 
 export const PieceContainer = styled.div`
   display: flex;
@@ -63,7 +64,9 @@ const Piece = () => {
               articles={page?.data.results}
             />
           ))}
-        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
+        <div style={{ width: "100%" }} ref={ref}>
+          {isFetchingNextPage && <Loading />}
+        </div>
       </PostContainer>
     </PieceContainer>
   );

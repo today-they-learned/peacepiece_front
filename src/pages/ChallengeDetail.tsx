@@ -52,10 +52,12 @@ const ChallengeDetail = () => {
     <ChallengeDetailContainer>
       <DetailInfoContainer>
         <ChallengeDetailBanner challenge={data} />
-        <ChallengeTestimonial title={data?.title} />
+        <ChallengeTestimonial title={data?.title} isEnded={data?.is_ended} />
       </DetailInfoContainer>
       <SubInfoContainer>
-        <CertificationBanner title={data?.title} isProved={data?.is_proved} />
+        {!data?.is_ended && (
+          <CertificationBanner title={data?.title} isProved={data?.is_proved} />
+        )}
         <RelatedChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
       </SubInfoContainer>
     </ChallengeDetailContainer>

@@ -48,11 +48,11 @@ const Line = styled.div`
 
 const Box = styled.div`
   position: relative;
-  top: 1rem;
+  top: 1.2rem;
   left: -10.4rem;
 `;
 
-const ProfileModal = () => {
+const ProfileTooltip = () => {
   return (
     <Box>
       <Container>
@@ -98,4 +98,4 @@ const ProfileModal = () => {
   );
 };
 
-export default ProfileModal;
+export default ProfileTooltip;

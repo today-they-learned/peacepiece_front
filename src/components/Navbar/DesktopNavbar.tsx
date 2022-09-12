@@ -4,7 +4,8 @@ import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import ProfileModal from "components/Modal/ProfileModal";
+import ProfileTooltip from "components/Tooltip/ProfileTooltip";
+import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
 
 const Nav = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10rem 0 10rem;
+  padding: 0 8% 0 8%;
   background-color: ${COLOR.bg.nav};
   font-family: "Pr-ExtraBold";
   position: relative;
@@ -202,6 +203,7 @@ const Navbar = () => {
   const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [clickedProfile, setClickedProfile] = useState(false);
+  const [clickedNotification, setClickedNotification] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
@@ -231,6 +233,12 @@ const Navbar = () => {
 
   const onClickProfile = () => {
     setClickedProfile(!clickedProfile);
+    setClickedNotification(false);
+  };
+
+  const onClickNotification = () => {
+    setClickedNotification(!clickedNotification);
+    setClickedProfile(false);
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -345,10 +353,16 @@ const Navbar = () => {
         <RightNavItems>
           {user ? (
             <>
-              <IoIosNotificationsOutline size="30" />
+              <ProfileBox>
+                <IoIosNotificationsOutline
+                  size="30"
+                  onClick={onClickNotification}
+                />
+                {clickedNotification && <NoticeTooltip />}
+              </ProfileBox>
               <ProfileBox>
                 <Profile onClick={onClickProfile} />
-                {clickedProfile && <ProfileModal />}
+                {clickedProfile && <ProfileTooltip />}
               </ProfileBox>
             </>
           ) : (
