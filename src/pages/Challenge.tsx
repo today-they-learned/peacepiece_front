@@ -14,6 +14,7 @@ const Challenge = () => {
     <div style={{ height: "100%" }}>
       <Desktop>
         <FlexBox
+          width="100%"
           justifyContent="center"
           height="100%"
           margin="2rem 0 0 0"
