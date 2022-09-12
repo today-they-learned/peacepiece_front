@@ -14,6 +14,7 @@ const TemporaryContainer = styled.div`
   padding: 1rem;
   background: ${COLOR.bg.default};
   cursor: pointer;
+  margin-top: 1rem;
 `;
 
 const WritingContainer = styled(ChallengeBanner)``;
@@ -40,7 +41,6 @@ const Writing = () => {
         title="피스 글쓰기"
         width="100%"
         titleColor={COLOR.font.primary}
-        padding="2rem 2rem"
         margin="0"
       >
         <TemporaryContainer role="none" onClick={openModal}>
