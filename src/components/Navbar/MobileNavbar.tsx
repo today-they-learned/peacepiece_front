@@ -305,7 +305,7 @@ const MobileNavbar = () => {
   return (
     <>
       <Nav>
-        <Logo src="images/logo.png" />
+        <Logo src={`${process.env.PUBLIC_URL}/images/logo.png`} />
         <CenterNavItems>
           <Container>
             {user ? (

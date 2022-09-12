@@ -42,7 +42,7 @@ const MobileFooter = () => {
     <Foot>
       <Line />
       <FlexBox padding="2rem 1rem 1.2rem 2.5rem">
-        <Logo src="images/logo.png" />
+        <Logo src={`${process.env.PUBLIC_URL}/images/logo.png`} />
         <FootItems>
           <Label
             onClick={() => {
