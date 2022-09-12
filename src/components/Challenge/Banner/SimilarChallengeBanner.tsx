@@ -1,38 +1,12 @@
 import { ChallengeTitle } from "components/Challenge";
 import styled from "styled-components";
 import COLOR from "constants/color";
+import { useRecommendChallengeData } from "hooks/queries/challenge";
 import SimilarChallengeList from "../SimilarChallengeList";
 
 interface Props {
   title: string;
 }
-
-const dummyChallenges = [
-  {
-    id: 1,
-    title: "일회용컵 No! 텀블러 Yes!",
-    proverCnt: 10,
-    point: 100,
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-  },
-  {
-    id: 2,
-    title: "일회용컵 No! 텀블러 Yes!",
-    proverCnt: 10,
-    point: 100,
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-  },
-  {
-    id: 3,
-    title: "일회용컵 No! 텀블러 Yes!",
-    proverCnt: 10,
-    point: 100,
-    description:
-      "일주일동안 음료를 마실 때, 텀블러를 이용하고 인증사진을 공유해주세요!",
-  },
-];
 
 const SimilarChallengeBannerContainer = styled.div`
   display: flex;
@@ -50,11 +24,16 @@ const SimilarChallengeBannerContainer = styled.div`
 
 const SimilarChallengeBanner = (props: Props) => {
   const { title } = props;
+
+  const { data: recommends } = useRecommendChallengeData();
+
   return (
-    <SimilarChallengeBannerContainer>
-      <ChallengeTitle title={title} background="trasparent" />
-      <SimilarChallengeList challenges={dummyChallenges} />
-    </SimilarChallengeBannerContainer>
+    !!recommends?.length && (
+      <SimilarChallengeBannerContainer>
+        <ChallengeTitle title={title} background="trasparent" />
+        <SimilarChallengeList challenges={recommends} />
+      </SimilarChallengeBannerContainer>
+    )
   );
 };
 
