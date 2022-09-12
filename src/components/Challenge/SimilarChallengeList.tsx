@@ -1,14 +1,9 @@
 import styled from "styled-components";
-import ChallengeMiniCard from "./Card/ChallengeMiniCard";
+import WeeklyChallengeCard from "components/Challenge/Card/WeeklyChallengeCard";
+import { ChallengeType } from "types";
 
 interface Props {
-  challenges: Array<{
-    id: number;
-    title: string;
-    proverCnt: number;
-    point: number;
-    description: string;
-  }>;
+  challenges: ChallengeType[];
 }
 
 const SimilarChallengeListContainer = styled.div`
@@ -24,14 +19,9 @@ const SimilarChallengeList = (props: Props) => {
   const { challenges } = props;
   return (
     <SimilarChallengeListContainer>
+      {/* 위클리챌린지카드 미니카트랑 통합하기 => 이름은 미니카드로 */}
       {challenges.slice(-2).map((challenge) => {
-        return (
-          <ChallengeMiniCard
-            key={challenge.id}
-            title={challenge.title}
-            description={challenge.description}
-          />
-        );
+        return <WeeklyChallengeCard key={challenge.id} challenge={challenge} />;
       })}
     </SimilarChallengeListContainer>
   );

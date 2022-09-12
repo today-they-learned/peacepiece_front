@@ -16,6 +16,12 @@ const challengeAPI = {
   ended: (page: number, pageSize: number) => {
     return instance.get(`challenges/ended/?page=${page}&page_size=${pageSize}`);
   },
+  recommend: () => {
+    return instance.get("challenges/recommend/");
+  },
+  related: (id: string) => {
+    return instance.get(`challenges/${id}/related_challenges/`);
+  },
 };
 
 export default challengeAPI;

@@ -49,7 +49,12 @@ const CertificationBanner = (props: Props) => {
         title={script.title}
         tooltip={<>챌린지 인증을 하면 PP 포인트를 받을 수 있어요! 😎</>}
       >
-        <FlexBox justifyContent="center" width="22rem" height="11rem">
+        <FlexBox
+          justifyContent="center"
+          width="22rem"
+          height="11rem"
+          margin="1rem 0"
+        >
           <BannerBox
             width="100%"
             height="100%"
