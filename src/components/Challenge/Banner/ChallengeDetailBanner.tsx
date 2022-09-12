@@ -147,7 +147,8 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
           center
         >
           <FlexTextBox>
-            이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수 있어요! 벌써{" "}
+            이 챌린지에 참가하면 {challenge?.point} PP를 획득할 수{" "}
+            {challenge.is_ended ? "있었어요" : "있어요"}! 벌써{" "}
             {challenge?.prover_cnt}
             명의 사람들이 함께했어요 😇
           </FlexTextBox>
