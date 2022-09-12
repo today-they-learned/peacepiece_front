@@ -11,32 +11,6 @@ const FirstMap = [
   ["eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb"],
 ];
 
-// const FirstMap = [
-//   ["fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw"],
-//   ["fw", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["fw", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "fw"],
-//   ["fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw"],
-// ];
-
-// const FirstMap = [
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
-//   ["eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "eb", "fw"],
-//   ["fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw", "fw"],
-// ];
-
 const SecondMap = [
   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],
   ["gr", "gr", "gr", "gr", "gr", "gr", "gr", "gr", "eb", "fw"],

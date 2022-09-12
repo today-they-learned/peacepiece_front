@@ -130,6 +130,7 @@ import treeAltTall from "./IslandImages/treeAltTall.png";
 
 import treeShort from "./IslandImages/treeShort.png";
 import treeTall from "./IslandImages/treeTall.png";
+import trees from "./IslandImages/trees.png";
 
 import tank from "./IslandImages/tank.png";
 import koala from "./IslandImages/koala/koala.png";
@@ -234,7 +235,7 @@ const IslandViewer = ({ terrainMap, items }) => {
     setTerrainMapState(terrainMap);
     setTerrainState(createTerrain(terrainMap));
     setItemsState(items);
-  }, [terrainMap, items]);
+  }, [items, terrainMap]);
 
   useEffect(() => {
     if (terrainMapState.length === 0) return;
@@ -1000,6 +1001,13 @@ const IslandViewer = ({ terrainMap, items }) => {
         alt="sandCat"
         ref={(el) => (imagesRef.current.sandCat = el)}
         src={sandCat}
+        className="hidden"
+      />
+
+      <img
+        alt="trees"
+        ref={(el) => (imagesRef.current.trees = el)}
+        src={trees}
         className="hidden"
       />
 
