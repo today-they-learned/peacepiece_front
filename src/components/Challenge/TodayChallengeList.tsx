@@ -32,7 +32,12 @@ const todayChallengeTitleList = [
 ];
 
 const script = {
-  tootip: "오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요?",
+  tootip: (
+    <>
+      오늘만 참여할 수 있는 챌린지에요. <br />
+      한번 바로 확인해볼까요?
+    </>
+  ),
 };
 
 const TodayChallengeList = () => {
