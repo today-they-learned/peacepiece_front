@@ -265,6 +265,7 @@ const Navbar = () => {
       setCurrentClickNav("/island");
     } else if (url.slice(0, 6) === "/piece") {
       setCurrentClickNav("/piece");
+      setClickedChallenge(false);
     } else {
       setCurrentClickNav(null);
       setCurrentClickSubNav(null);
