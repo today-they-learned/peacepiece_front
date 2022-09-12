@@ -116,7 +116,7 @@ const ChallengeConfirmModal = ({
 
   return (
     <ModalFrame
-      width="50rem"
+      width="50%"
       height="auto"
       title={title}
       btnTitle1="취소하기"
@@ -132,7 +132,8 @@ const ChallengeConfirmModal = ({
         theme="transparent"
         padding="0"
         margin="0"
-        widthMobile="15rem"
+        width="100%"
+        widthMobile="100%"
       >
         <FlexBox
           background={COLOR.bg.nav}
@@ -156,8 +157,8 @@ const ChallengeConfirmModal = ({
             value={content}
             onChange={onChangeContent}
             text={text}
-            width="43rem"
-            mobileWidth="13rem"
+            width="100%"
+            mobileWidth="100%"
             minRow={2}
           />
         </FlexBox>
@@ -169,7 +170,11 @@ const ChallengeConfirmModal = ({
           column
         >
           <FlexBox background="transparent">
-            <FlexTextBox fontSize="1.25rem" margin="0.15rem 0.5rem 1rem 0">
+            <FlexTextBox
+              fontSize="1.25rem"
+              mobileFontSize="1rem"
+              margin="0.15rem 0.5rem 1rem 0"
+            >
               이미지 첨부
             </FlexTextBox>
             <Tooltip
@@ -228,7 +233,7 @@ const ChallengeConfirmModal = ({
             >
               <FlexTextBox
                 fontSize="1.3rem"
-                mobileFontSize="0.8rem"
+                mobileFontSize="1rem"
                 margin="0.1rem 0 0 0"
                 width="100%"
               >
@@ -248,7 +253,7 @@ const ChallengeConfirmModal = ({
                 <FlexTextBox
                   fontSize="1.3rem"
                   margin="0 5px 0 0"
-                  mobileFontSize="0.8rem"
+                  mobileFontSize="1rem"
                 >
                   인스타그램 공유
                 </FlexTextBox>

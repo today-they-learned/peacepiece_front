@@ -21,6 +21,7 @@ const TemporaryContainer = styled.div`
   padding: 0 0 0 2rem;
   margin: 2rem 0 0 0;
   background: ${COLOR.bg.default};
+  cursor: pointer;
 `;
 
 const script = {

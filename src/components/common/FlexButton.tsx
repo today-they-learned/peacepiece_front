@@ -8,6 +8,7 @@ interface Props {
   padding?: string;
   borderRadius?: string;
   fontSize?: string;
+  mobileFontSize?: string;
   fontFamily?: string;
   cursor?: string;
   color?: string;
@@ -25,6 +26,7 @@ const defaultProps = {
   fontFamily: "Pr-SemiBold",
   borderRadius: "0.62rem",
   fontSize: "1.2rem",
+  mobileFontSize: "",
   cursor: "pointer",
   color: "white",
   backgroundColor: "",
@@ -42,6 +44,7 @@ const FlexButton = (props: Props) => {
     padding,
     borderRadius,
     fontSize,
+    mobileFontSize,
     fontFamily,
     cursor,
     color,
@@ -72,6 +75,10 @@ const FlexButton = (props: Props) => {
         position: ${position};
         right: ${right};
         bottom: ${bottom};
+
+        @media only screen and (max-width: 768px) {
+          font-size: ${mobileFontSize};
+        }
       `}
     >
       {children}
