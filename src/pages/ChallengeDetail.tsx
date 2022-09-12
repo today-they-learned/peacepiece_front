@@ -3,7 +3,7 @@ import { useChallengeData } from "hooks/queries/challenge";
 import CertificationBanner from "components/Challenge/Banner/CertificationBanner";
 import ChallengeDetailBanner from "components/Challenge/Banner/ChallengeDetailBanner";
 import ChallengeTestimonial from "components/Challenge/Banner/ChallengeTestimonial";
-import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallengeBanner";
+import RelatedChallengeBanner from "components/Challenge/Banner/RelatedChallengeBanner";
 import styled from "styled-components";
 
 const ChallengeDetailContainer = styled.div`
@@ -56,7 +56,7 @@ const ChallengeDetail = () => {
       </DetailInfoContainer>
       <SubInfoContainer>
         <CertificationBanner title={data?.title} isProved={data?.is_proved} />
-        <SimilarChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
+        <RelatedChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
       </SubInfoContainer>
     </ChallengeDetailContainer>
   );
