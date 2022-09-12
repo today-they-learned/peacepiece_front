@@ -22,10 +22,10 @@ const challengeSuggestionAPI = {
     },
   },
   feedback: {
-    post: (id: string) => {
+    post: (id: number) => {
       return instance.post(`challenges/suggestions/${id}/feedbacks/`);
     },
-    delete: (id: string) => {
+    delete: (id: number) => {
       return instance.delete(`challenges/suggestions/${id}/feedbacks/`);
     },
   },

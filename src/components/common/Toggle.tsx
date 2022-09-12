@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const ToggleBtn = styled.button<Props>`
-  width: 3.3rem;
+  width: 3.2rem;
   height: 1.4rem;
   margin-top: 0.2rem;
   border-radius: 1rem;

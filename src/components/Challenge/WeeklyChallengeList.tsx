@@ -24,7 +24,7 @@ const Container = styled.div`
 `;
 
 const CarouselLib = styled(Carousel)`
-  width: 50.5rem;
+  width: 100%;
   height: 10.5rem;
   margin: auto;
   background-color: ${COLOR.bg.primary};
@@ -34,7 +34,7 @@ const CarouselLib = styled(Carousel)`
 `;
 
 const Page = styled(Paper)`
-  width: 49rem;
+  width: 100%;
   margin-left: 0.5rem;
   display: flex;
   border: none !important;
@@ -53,12 +53,15 @@ const arrLoop = (challenges: ChallengeType[]) => {
     newArr.push(
       <Page key={`weekly_challenge_page_${i}`}>
         {i === challenges.length - 1 && challenges.length % 2 === 1 ? (
-          <FlexBox margin="1rem 0.5rem 0 1rem" background={COLOR.bg.primary}>
+          <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
             <WeeklyChallengeCard challenge={challenges[i]} />
           </FlexBox>
         ) : (
           <>
-            <FlexBox margin="1rem 0.5rem 0 3rem" background={COLOR.bg.primary}>
+            <FlexBox
+              margin="1rem 0.5rem 0 3.5rem"
+              background={COLOR.bg.primary}
+            >
               <WeeklyChallengeCard challenge={challenges[i]} />
             </FlexBox>
             <FlexBox margin="1rem 1rem 0 0.5rem" background={COLOR.bg.primary}>

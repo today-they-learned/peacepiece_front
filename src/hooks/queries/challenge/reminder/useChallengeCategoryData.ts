@@ -8,7 +8,7 @@ const useChallengeCategoryQuery = (keyword: string) => {
     () => challengeAPI.category(keyword),
     {
       enabled: !!keyword,
-      staleTime: 10 * 1000,
+      staleTime: 60 * 1000,
       keepPreviousData: true,
       select: (data) => {
         return data.data;

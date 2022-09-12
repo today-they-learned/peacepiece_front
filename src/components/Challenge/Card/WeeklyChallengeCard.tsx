@@ -2,18 +2,34 @@ import { Link } from "react-router-dom";
 import { FlexBox, FlexTextBox } from "components/common";
 import COLOR from "constants/color";
 import { ChallengeType } from "types";
+import styled from "styled-components";
 import ChallengeFigure from "../ChallengeFigure";
 
 interface Props {
   challenge: ChallengeType;
 }
 
+const Description = styled.div`
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+  height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: ${COLOR.white};
+  font-family: "Pr-SemiBold";
+`;
+
 const WeeklyChallengeCard = ({ challenge }: Props) => {
   return (
     <Link to={`/challenge/${challenge.id}`}>
       <FlexBox
         column
-        width="21.3rem"
+        width="18rem"
+        tabletWidth="21.5rem"
+        mobileWidth="21.5rem"
         height="9.25rem"
         borderRadius="1.25rem"
         background={COLOR.bg.secondary}
@@ -31,7 +47,7 @@ const WeeklyChallengeCard = ({ challenge }: Props) => {
           proverCnt={challenge.prover_cnt}
           point={challenge.point}
         />
-        <FlexTextBox margin="0.5rem 0 0 0">{challenge.description}</FlexTextBox>
+        <Description>{challenge.description}</Description>
       </FlexBox>
     </Link>
   );

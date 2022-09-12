@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useUser } from "hooks";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
+import { FlexBox } from "components/common";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import ProfileModal from "components/Modal/ProfileModal";
 
 const Nav = styled.div`
   width: 100%;
@@ -148,12 +150,14 @@ const Start = styled.div`
   cursor: pointer;
 `;
 
-const Profile = styled.div`
+const Profile = styled.img`
   background-color: ${COLOR.font.disabled};
-  width: 2rem;
+  width: 1.6rem;
   height: 1.5rem;
   border-radius: 50%;
-  margin: 0 2rem;
+  margin: 0.2rem 1.5rem 0 1.5rem;
+  position: static;
+  object-fit: cover;
 `;
 
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
@@ -188,9 +192,17 @@ const DropdonwText = styled.span`
   cursor: pointer;
 `;
 
+const ProfileBox = styled.div`
+  width: 2rem;
+  height: 2rem;
+  position: static;
+  cursor: pointer;
+`;
+
 const Navbar = () => {
   const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
+  const [clickedProfile, setClickedProfile] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
@@ -216,6 +228,10 @@ const Navbar = () => {
         setClickedChallenge(false);
       }
     }
+  };
+
+  const onClickProfile = () => {
+    setClickedProfile(!clickedProfile);
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -320,7 +336,10 @@ const Navbar = () => {
           {user ? (
             <>
               <IoIosNotificationsOutline size="30" />
-              <Profile />
+              <ProfileBox>
+                <Profile onClick={onClickProfile} />
+                {clickedProfile && <ProfileModal />}
+              </ProfileBox>
             </>
           ) : (
             <Start
