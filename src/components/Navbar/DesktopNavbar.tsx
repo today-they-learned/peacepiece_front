@@ -5,7 +5,7 @@ import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import UserMenu from "components/Navbar/UserMenu";
-import Notice from "components/Navbar/Notice/Notice";
+import Noti from "components/Navbar/Noti/Noti";
 
 const Nav = styled.div`
   width: 100%;
@@ -359,7 +359,7 @@ const Navbar = () => {
                   onClick={onClickNotification}
                   cursor="pointer"
                 />
-                {clickedNotification && <Notice />}
+                {clickedNotification && <Noti />}
               </ProfileBox>
               <ProfileBox>
                 <Profile src={user.avatar} onClick={onClickProfile} />

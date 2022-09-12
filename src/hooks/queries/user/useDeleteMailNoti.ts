@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "react-query";
-import authAPI from "apis/authAPI";
+import userAPI from "apis/userAPI";
 
-const useAddMailNotiMutation = (setUser: any) => {
+const useDeleteMailNotiMutation = (setUser: any) => {
   return useMutation(
     () => {
-      return authAPI.mail.post();
+      return userAPI.mail.delete();
     },
     {
       onSuccess: () => {
         const user = JSON.parse(localStorage.getItem("user"));
-        user.mail_notifiable = true;
+        user.mail_notifiable = false;
         localStorage.setItem("user", JSON.stringify(user));
         setUser(user);
       },
@@ -18,4 +18,4 @@ const useAddMailNotiMutation = (setUser: any) => {
   );
 };
 
-export default useAddMailNotiMutation;
+export default useDeleteMailNotiMutation;

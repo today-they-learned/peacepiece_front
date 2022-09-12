@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import Usermenu from "components/Navbar/UserMenu";
-import Notice from "components/Navbar/Notice/Notice";
+import Noti from "components/Navbar/Noti/Noti";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "hooks";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -357,7 +357,7 @@ const MobileNavbar = () => {
                   size="30"
                   onClick={onClickNotification}
                 />
-                {clickedNotification && <Notice />}
+                {clickedNotification && <Noti />}
               </ProfileBox>
               <ProfileBox>
                 <Profile onClick={onClickProfile} />

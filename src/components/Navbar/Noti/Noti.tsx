@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { NoticeTab } from "./index";
+import { NotiTab } from "./index";
 
 const Container = styled.div`
   position: relative;
   margin-top: 5%;
   margin-left: 60%;
-  padding: 0.6rem 0.3rem 0.6rem 0.8rem;
-  width: 16rem;
+  padding: 0.6rem 0.7rem 0.6rem 0.8rem;
+  min-width: 17rem;
   border-radius: 0.6rem;
   z-index: 10;
   background: ${COLOR.bg.secondary};
@@ -31,14 +31,14 @@ const Box = styled.div`
   left: -11.75rem;
 `;
 
-const Notice = () => {
+const Noti = () => {
   return (
     <Box>
       <Container>
-        <NoticeTab />
+        <NotiTab />
       </Container>
     </Box>
   );
 };
 
-export default Notice;
+export default Noti;

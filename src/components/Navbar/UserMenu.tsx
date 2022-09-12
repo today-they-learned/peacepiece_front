@@ -8,7 +8,7 @@ import { FlexBox, FlexTextBox } from "components/common";
 // import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useAddMailNoti, useDeleteMailNoti } from "hooks/queries/auth";
+import { useAddMailNoti, useDeleteMailNoti } from "hooks/queries/user";
 
 const Container = styled.div`
   position: relative;
