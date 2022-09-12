@@ -13,17 +13,18 @@ const Avatar = styled.img`
   background: ${COLOR.bg.primary};
 `;
 
-const SummitBtn = styled.button`
-  background-color: ${COLOR.font.primary};
+const SummitBtn = styled.button<{ comment: string }>`
+  background-color: ${(props) =>
+    props.comment ? COLOR.font.primary : COLOR.font.disabled};
+  cursor: ${(props) => props.comment && "pointer"};
   color: white;
   width: 3.2rem;
-  margin: 0.2rem 0 0 0;
+  height: 2rem;
   padding: 0.35rem;
   font-size: 1rem;
   font-family: "Pr-Bold";
-  border-top-right-radius: 0.8rem;
-  border-bottom-right-radius: 0.8rem;
-  cursor: pointer;
+  border-radius: 0 1.25rem 1.25rem 0;
+  transition: all ease 0.25s;
 `;
 
 interface Props {
@@ -37,8 +38,10 @@ const CommentInput = ({ articleId }: Props) => {
   const { mutate: addComment } = useAddComment(articleId);
 
   const handleSubmit = () => {
-    addComment({ content: comment });
-    setComment("");
+    if (comment.trim()) {
+      addComment({ content: comment.trim() });
+      setComment("");
+    }
   };
 
   return (
@@ -50,6 +53,7 @@ const CommentInput = ({ articleId }: Props) => {
         borderRadius="1.25rem"
         padding="1rem 1.5rem"
         position="relative"
+        gap="0.5rem"
       >
         <Avatar src={user.avatar} />
         <Textarea
@@ -60,9 +64,12 @@ const CommentInput = ({ articleId }: Props) => {
           width="100%"
           padding="0.5rem 1rem"
           fontSize="1rem"
-          margin="0 0.3rem 0 0.8rem"
+          margin="0 0 0 0.5rem"
+          borderRadius="1.25rem 0 0 1.25rem"
         />
-        <SummitBtn onClick={handleSubmit}>작성</SummitBtn>
+        <SummitBtn comment={comment.trim()} onClick={handleSubmit}>
+          작성
+        </SummitBtn>
       </FlexBox>
     )
   );

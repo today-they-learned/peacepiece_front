@@ -83,6 +83,7 @@ const FlexButton = (props: Props) => {
         right: ${right};
         bottom: ${bottom};
         top: ${top};
+        transition: all ease 0.25s;
 
         @media only screen and (max-width: 768px) {
           font-size: ${mobileFontSize};

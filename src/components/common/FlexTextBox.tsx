@@ -16,6 +16,7 @@ interface Props {
   background?: string;
   mobileFontSize?: string;
   mobileDisplay?: string;
+  lineHeight?: string;
 }
 
 const defaultProps = {
@@ -32,6 +33,7 @@ const defaultProps = {
   background: "transparent",
   mobileFontSize: "",
   mobileDisplay: "block",
+  lineHeight: "auto",
 };
 
 const FlexTextBox = (props: Props) => {
@@ -50,6 +52,7 @@ const FlexTextBox = (props: Props) => {
     bottom,
     background,
     mobileDisplay,
+    lineHeight,
   } = props;
 
   return (
@@ -67,6 +70,7 @@ const FlexTextBox = (props: Props) => {
         right: ${right};
         bottom: ${bottom};
         background: ${background};
+        line-height: ${lineHeight};
 
         @media only screen and (max-width: 767px) {
           font-size: ${mobileFontSize};

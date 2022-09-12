@@ -16,6 +16,7 @@ interface Props {
   value: string;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   autoFocus?: boolean;
+  borderRadius?: string;
 }
 
 const defaultProps = {
@@ -28,6 +29,7 @@ const defaultProps = {
   background: COLOR.bg.secondary,
   maxLength: 900000,
   autoFocus: false,
+  borderRadius: "1.25rem",
 };
 
 const Textarea = (props: Props) => {
@@ -44,6 +46,7 @@ const Textarea = (props: Props) => {
     value,
     onChange,
     autoFocus,
+    borderRadius,
   } = props;
 
   // 글자수 제한 props로 길이 받아서 처리
@@ -59,8 +62,8 @@ const Textarea = (props: Props) => {
       maxLength={maxLength}
       css={css`
         width: ${width} !important;
-        border-radius: 1.25rem !important;
-        border: none;
+        border-radius: ${borderRadius} !important;
+        border: none !important;
         padding: ${padding};
         font-size: ${fontSize};
         font-family: "Pr-Bold";

@@ -14,6 +14,7 @@ export const PieceContainer = styled.div`
 
   @media (max-width: 1000px) {
     flex-direction: column;
+    margin: 1.5rem 0.5rem;
   }
 `;
 

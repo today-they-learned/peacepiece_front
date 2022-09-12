@@ -23,6 +23,7 @@ const CloseWarningModal = ({ onClose, visible }: Props) => (
     visible={visible}
     subTitle={false}
     handleSubmit={handleSubmit}
+    confirm
   >
     <FlexTextBox
       fontSize="1.25rem"

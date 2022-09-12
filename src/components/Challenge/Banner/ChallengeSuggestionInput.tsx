@@ -16,15 +16,17 @@ const script = {
   text: "어떤 챌린지가 PeacePiece에서 열리면 좋을까요? 다양한 생각을 공유해주세요",
 };
 
-const Btn = styled.button`
+const Btn = styled.button<{ value?: string }>`
   margin: 0;
   font-size: 1.1rem;
   font-family: "Pr-Bold";
   padding: 0.6rem 1.5rem;
   border-radius: 0.62rem;
-  background: ${COLOR.bg.banner} !important;
+  background: ${(props) =>
+    props.value ? COLOR.bg.banner : COLOR.font.disabled} !important;
   color: ${COLOR.font.default};
-  cursor: pointer;
+  cursor: ${(props) => props.value && "pointer"};
+  transition: all ease 0.25s;
 `;
 
 const BtnInActive = styled(Btn)`
@@ -62,11 +64,13 @@ const ChallengeSuggestionInput = () => {
   const [value, onChangeValue, setValue] = useTextArea("");
 
   const handleSubmit = () => {
-    const data = {
-      content: value,
-    };
-    addSuggestion(data);
-    setValue("");
+    if (value.trim()) {
+      const data = {
+        content: value.trim(),
+      };
+      addSuggestion(data);
+      setValue("");
+    }
   };
 
   const { mutate: addSuggestion } = useAddChallengeSuggestion();
@@ -93,11 +97,13 @@ const ChallengeSuggestionInput = () => {
           color={COLOR.font.disabled}
           margin="0 0 0 1rem"
         >
-          글자 수 {value.length} / 100
+          글자 수 {value.trim().length} / 100
         </FlexTextBox>
         <FlexBox position="relative" mobileWidth="fit-content">
           {user ? (
-            <Btn onClick={handleSubmit}>제안하기</Btn>
+            <Btn value={value.trim()} onClick={handleSubmit}>
+              제안하기
+            </Btn>
           ) : (
             <CustomTooltip
               title={

@@ -18,6 +18,7 @@ interface AreaElement {
   type?: string;
   subTitle?: boolean;
   handleSubmit: React.MouseEventHandler<HTMLButtonElement>;
+  confirm: boolean;
 }
 
 const defaultProps = {
@@ -68,6 +69,7 @@ const ModalFrame = (props: AreaElement) => {
     type,
     subTitle,
     handleSubmit,
+    confirm,
   } = props;
 
   const onMaskClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -153,10 +155,13 @@ const ModalFrame = (props: AreaElement) => {
               </FlexButton>
               <FlexButton
                 margin="0 0 0 1rem"
-                color={modalMainColor}
+                color={confirm ? modalMainColor : COLOR.white}
                 fontSize="1.4rem"
                 mobileFontSize="1.2rem"
-                backgroundColor={COLOR.bg.primary}
+                cursor={confirm && "pointer"}
+                backgroundColor={
+                  confirm ? COLOR.bg.primary : COLOR.font.disabled
+                }
                 onClick={handleSubmit}
               >
                 {btnTitle2}
