@@ -5,6 +5,7 @@ import styled from "styled-components";
 import COLOR from "constants/color";
 import { ArticleType } from "types";
 import { useDate } from "hooks";
+import ImageList from "./ImageList";
 
 interface Props {
   article: ArticleType;
@@ -15,27 +16,6 @@ const Avatar = styled.img`
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  background: ${COLOR.bg.primary};
-`;
-
-const Image = styled.img`
-  flex: 1;
-  width: 11rem;
-  height: 6.4rem;
-  object-fit: cover;
-  border-radius: 0.625rem;
-  margin-right: 1rem;
-  background: ${COLOR.bg.primary};
-`;
-
-const LastImage = styled.img`
-  width: 11rem;
-  height: 6.4rem;
-  object-fit: cover;
-  border-radius: 0.625rem;
-  margin-right: 1rem;
-  opacity: 0.3;
-  position: relative;
   background: ${COLOR.bg.primary};
 `;
 
@@ -56,19 +36,6 @@ const Button = styled.button`
   font-size: 0.8rem;
   font-family: "Pr-Bold";
   cursor: pointer;
-`;
-
-const ImageListContainer = styled.div`
-  display: flex;
-  margin: 0.5rem 0 1rem 0;
-  max-width: 100%;
-`;
-
-const LastImageContainer = styled.div`
-  display: flex;
-  position: relative;
-  flex: 1;
-  max-width: 10rem;
 `;
 
 const Post = (props: Props) => {
@@ -130,27 +97,7 @@ const Post = (props: Props) => {
           )}
         </FlexTextBox>
 
-        <ImageListContainer>
-          {article.images.slice(0, 3).map((image, idx) => {
-            if (article.images.length > 3 && idx === 2) {
-              return (
-                <LastImageContainer key={`postImage_${image.id}`}>
-                  <LastImage src={image.file} />
-                  <FlexTextBox
-                    position="absolute"
-                    right="50%"
-                    bottom="30%"
-                    fontSize="0.8rem"
-                    fontFamily="Pr-Bold"
-                  >
-                    +{article.images.length - 3}
-                  </FlexTextBox>
-                </LastImageContainer>
-              );
-            }
-            return <Image src={image.file} key={`postImage_${image.id}`} />;
-          })}
-        </ImageListContainer>
+        <ImageList article={article} />
 
         <FlexBox background="transparent">
           <Emoji isFeedbacked>👍 1</Emoji>

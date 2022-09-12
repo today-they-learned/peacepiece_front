@@ -54,8 +54,37 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
   const len = challenge?.images?.length;
   const lenq = len / 3;
   const lenr = len % 3;
+  let autoPlay = false;
+  if (len > 3) {
+    autoPlay = true;
+  }
   const loopImg = () => {
     const newArr = [];
+    if (len > 2) {
+      for (let i = 0; i < lenq; i += 3) {
+        newArr.push(
+          <Page key={i}>
+            <Img src={challenge?.images[i]?.file} alt="image1" />
+            <Img src={challenge?.images[i + 1]?.file} alt="image2" />
+            <Img src={challenge?.images[i + 2]?.file} alt="image3" />
+          </Page>
+        );
+      }
+    }
+    if (lenr === 1) {
+      newArr.push(
+        <Page key={len - 1}>
+          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
+        </Page>
+      );
+    } else if (lenr === 2) {
+      newArr.push(
+        <Page key={len - 2}>
+          <Img src={challenge?.images[len - 2]?.file} alt="image1" />
+          <Img src={challenge?.images[len - 1]?.file} alt="image2" />
+        </Page>
+      );
+    }
     for (let i = 0; i < lenq; i += 3) {
       newArr.push(
         <Page key={i}>
@@ -71,39 +100,16 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
           <Img src={challenge?.images[len - 1]?.file} alt="image1" />
         </Page>
       );
-    } else {
+    } else if (lenr === 2) {
       newArr.push(
         <Page key={len - 2}>
           <Img src={challenge?.images[len - 2]?.file} alt="image1" />
-          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
-        </Page>
-      );
-    }
-    for (let i = 0; i < lenq; i += 3) {
-      newArr.push(
-        <Page key={i}>
-          <Img src={challenge?.images[i]?.file} alt="image1" />
-          <Img src={challenge?.images[i + 1]?.file} alt="image2" />
-          <Img src={challenge?.images[i + 2]?.file} alt="image3" />
-        </Page>
-      );
-    }
-    if (lenr === 1) {
-      newArr.push(
-        <Page key={len - 1}>
-          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
-        </Page>
-      );
-    } else {
-      newArr.push(
-        <Page key={len - 2}>
-          <Img src={challenge?.images[len - 2]?.file} alt="image1" />
-          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
+          <Img src={challenge?.images[len - 1]?.file} alt="image2" />
         </Page>
       );
     }
 
-    return newArr.reverse();
+    return newArr;
   };
 
   const insertImg = loopImg();
@@ -142,25 +148,33 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
           ))}
         </FlexBox>
       )}
-      <CarouselLib
-        height="11rem"
-        animation="slide"
-        indicators={false}
-        cycleNavigation
-        navButtonsAlwaysVisible
-        duration={1000}
-        NextIcon={<ArrowForwardIosIcon />}
-        PrevIcon={<ArrowBackIosNewIcon />}
-        navButtonsProps={{
-          style: {
-            backgroundColor: "transparent",
-            color: COLOR.font.primary,
-            borderRadius: 0,
-          },
-        }}
-      >
-        {insertImg}
-      </CarouselLib>
+
+      {challenge?.images?.length === 0 ? (
+        ""
+      ) : (
+        <CarouselLib
+          height="11rem"
+          animation="slide"
+          indicators={false}
+          cycleNavigation
+          navButtonsAlwaysVisible={autoPlay}
+          navButtonsAlwaysInvisible={!autoPlay}
+          autoPlay={autoPlay}
+          duration={1000}
+          NextIcon={<ArrowForwardIosIcon />}
+          PrevIcon={<ArrowBackIosNewIcon />}
+          navButtonsProps={{
+            style: {
+              backgroundColor: "transparent",
+              color: COLOR.font.primary,
+              borderRadius: 0,
+            },
+          }}
+        >
+          {insertImg}
+        </CarouselLib>
+      )}
+
       <FlexBox padding="1rem" width="100%">
         <FlexBox
           width="100%"

@@ -1,14 +1,15 @@
+import { useParams } from "react-router-dom";
 import { ChallengeTitle } from "components/Challenge";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { useRecommendChallengeData } from "hooks/queries/challenge";
+import { useRelatedChallengeData } from "hooks/queries/challenge";
 import SimilarChallengeList from "../SimilarChallengeList";
 
 interface Props {
   title: string;
 }
 
-const SimilarChallengeBannerContainer = styled.div`
+const RelatedChallengeBannerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -22,19 +23,20 @@ const SimilarChallengeBannerContainer = styled.div`
   }
 `;
 
-const SimilarChallengeBanner = (props: Props) => {
+const RelatedChallengeBanner = (props: Props) => {
   const { title } = props;
+  const { id } = useParams();
 
-  const { data: recommends } = useRecommendChallengeData();
+  const { data: relateds } = useRelatedChallengeData(id);
 
   return (
-    !!recommends?.length && (
-      <SimilarChallengeBannerContainer>
+    !!relateds?.length && (
+      <RelatedChallengeBannerContainer>
         <ChallengeTitle title={title} background="trasparent" />
-        <SimilarChallengeList challenges={recommends} />
-      </SimilarChallengeBannerContainer>
+        <SimilarChallengeList challenges={relateds} />
+      </RelatedChallengeBannerContainer>
     )
   );
 };
 
-export default SimilarChallengeBanner;
+export default RelatedChallengeBanner;

@@ -1,73 +1,45 @@
-import { useRef, useState } from "react";
-import {
-  useAddArticle,
-  // useArticleData,
-  useDeleteArticle,
-  useUpdateArticle,
-} from "hooks/queries/article";
+import { FlexBox } from "components/common";
+import COLOR from "constants/color";
+import styled from "styled-components";
+
+const Img = styled.img`
+  width: 50.5rem;
+  height: 37.875rem;
+  margin-bottom: 3rem;
+
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 45rem;
+    height: 33.75rem;
+  }
+
+  @media only screen and (max-width: 767px) {
+    width: 80%;
+    height: 60%;
+    margin-top: 2rem;
+  }
+`;
+
+const Text = styled.span`
+  font-family: "Pr-Bold";
+  font-size: 2.5rem;
+  color: ${COLOR.white};
+  margin: 0 0 4rem 0;
+
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    font-size: 2rem;
+  }
+
+  @media only screen and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+`;
 
 const NotFound = () => {
-  const formData = new FormData();
-  const imageRef = useRef<HTMLInputElement>(null);
-  // 이미지 파일들 담아둘 리스트
-  const [imageList, setimageList] = useState([]);
-
-  // api
-  // const { data } = useArticleData(16);
-  const { mutate: addArticle } = useAddArticle();
-  const { mutate: updateArticle } = useUpdateArticle(14);
-  const { mutate: deleteArticle } = useDeleteArticle(14);
-
-  // form 제출
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    formData.append("content", "테스트123!");
-    // 이미지들을 fordata 에 images[0]file: 파일 형식으로 append
-    [...imageList].forEach((image, index) => {
-      formData.append(`images[${index}]file`, image);
-    });
-
-    // api호출
-    addArticle(formData);
-  };
-
-  // 이미지 추가할때마다 이미지 리스트에서 삭제
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setimageList([...imageList, e.target.files[0]]);
-  };
-
-  const handleUpdate = (e: React.FormEvent) => {
-    e.preventDefault();
-    const updateData = new FormData();
-    updateData.append("content", "ㄹㅇㅋㅋ");
-    updateArticle(updateData);
-  };
-
   return (
-    <>
-      404 NotFound
-      <form onSubmit={handleSubmit}>
-        <button type="submit">submit</button>
-        <button onClick={() => imageRef.current.click()} type="button">
-          이미지 등록
-        </button>
-        <input
-          type="file"
-          accept="image/*"
-          ref={imageRef}
-          onChange={handleImageChange}
-          style={{ display: "none" }}
-        />
-      </form>
-      <div>
-        <form onSubmit={handleUpdate}>
-          <div>수정테스트</div>
-          <button type="submit"> 수정버튼 </button>
-        </form>
-      </div>
-      <button onClick={() => deleteArticle()}>삭제버튼</button>
-      <div style={{ marginBottom: "3rem" }} />
-    </>
+    <FlexBox column alignItems="center" width="100%" height="100%">
+      <Img src="/images/404.png" alt="404" />
+      <Text>해당 페이지를 찾을 수 없습니다.</Text>
+    </FlexBox>
   );
 };
 
