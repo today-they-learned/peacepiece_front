@@ -11,6 +11,7 @@ import TestimonialCard from "components/Challenge/Card/TestimonialCard";
 import COLOR from "constants/color";
 import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
 import { useUser } from "hooks";
+import Loading from "pages/Loading";
 
 const TemporaryContainer = styled.div`
   width: 100%;
@@ -97,7 +98,9 @@ const ChallengeTestimonial = ({ title, isEnded }: Props) => {
               );
             })}
         </FlexBox>
-        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
+        <div style={{ width: "100%" }} ref={ref}>
+          {isFetchingNextPage && <Loading />}
+        </div>
       </ChallengeBanner>
       {modalVisible && (
         <ChallengeConfirmModal

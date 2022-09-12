@@ -7,6 +7,7 @@ import SimilarChallengeBanner from "components/Challenge/Banner/SimilarChallenge
 import PieceSearchBanner from "components/Peace/PieceSearchBanner";
 import PostCardList from "components/Peace/Post/PostCardList";
 import { PieceContainer, PostContainer, SubMenuContainer } from "./Piece";
+import Loading from "./Loading";
 
 const PieceSearch = () => {
   const { keyword } = useParams();
@@ -40,7 +41,9 @@ const PieceSearch = () => {
               articles={page?.data.results}
             />
           ))}
-        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
+        <div style={{ width: "100%" }} ref={ref}>
+          {isFetchingNextPage && <Loading />}
+        </div>
       </PostContainer>
     </PieceContainer>
   );
