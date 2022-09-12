@@ -8,8 +8,10 @@ const useChallengeCategoryQuery = (keyword: string) => {
     () => challengeAPI.category(keyword),
     {
       enabled: !!keyword,
-      staleTime: 60 * 1000,
+      staleTime: 0,
+      cacheTime: 60 * 1000,
       keepPreviousData: true,
+      refetchOnMount: false,
       select: (data) => {
         return data.data;
       },

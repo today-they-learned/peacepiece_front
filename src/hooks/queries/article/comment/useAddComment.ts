@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMutation } from "react-query";
-import articleCommentApI from "apis/articleCommentAPI";
+import articleCommentAPI from "apis/articleCommentAPI";
 import { queryClient } from "config";
 import * as queryKeys from "constants/queryKeys";
 import { ArticleType } from "types";
@@ -10,7 +10,7 @@ const useAddComment = (articleId: number) => {
   const { keyword } = useParams();
   return useMutation(
     (payload: { content: string }) => {
-      return articleCommentApI.post(articleId, payload);
+      return articleCommentAPI.post(articleId, payload);
     },
     {
       onSuccess: ({ data }) => {

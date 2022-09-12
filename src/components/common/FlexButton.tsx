@@ -17,6 +17,7 @@ interface Props {
   right?: string;
   bottom?: string;
   disabled?: boolean;
+  top?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -32,9 +33,10 @@ const defaultProps = {
   color: "white",
   backgroundColor: "",
   position: "static",
-  right: "0",
-  bottom: "0",
+  right: "",
+  bottom: "",
   disabled: false,
+  top: "",
   onClick: Function,
 };
 
@@ -53,8 +55,9 @@ const FlexButton = (props: Props) => {
     color,
     backgroundColor,
     position,
-    right,
     bottom,
+    right,
+    top,
     onClick,
   } = props;
 
@@ -79,10 +82,12 @@ const FlexButton = (props: Props) => {
         position: ${position};
         right: ${right};
         bottom: ${bottom};
+        top: ${top};
 
         @media only screen and (max-width: 768px) {
           font-size: ${mobileFontSize};
         }
+        top: ${top};
       `}
     >
       {children}

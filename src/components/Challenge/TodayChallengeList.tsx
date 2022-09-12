@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeTitle } from "components/Challenge";
@@ -37,27 +38,27 @@ const CardContainer = styled.div`
   }
 `;
 
+const todayChallengeTitleList = [
+  "📌 오늘의 챌린지",
+  "😇 오늘은 이런 챌린지 어때요?",
+  "🚀 데일리 챌린지",
+  "🥺 오늘은 꼭 챌린지 도전해봐요!",
+];
+
 const TodayChallengeList = () => {
-  const todayChallengeTitleList = [
-    "📌 오늘의 챌린지",
-    "😇 오늘은 이런 챌린지 어때요?",
-    "🚀 데일리 챌린지",
-    "🥺 오늘은 꼭 챌린지 도전해봐요!",
-  ];
+  const [titleIdx, setTitleIdx] = useState(0);
+  const { data: challenges, isFetched } = useChallengeDailyData();
 
-  const randomTitle =
-    todayChallengeTitleList[
-      Math.floor(Math.random() * todayChallengeTitleList.length)
-    ];
-
-  const { data: challenges } = useChallengeDailyData();
+  useEffect(() => {
+    setTitleIdx(Math.floor(Math.random() * todayChallengeTitleList.length));
+  }, []);
 
   return (
     <>
       <Desktop>
         <Container>
           <ChallengeTitle
-            title={randomTitle}
+            title={todayChallengeTitleList[titleIdx]}
             toolTipContent={
               <>
                 오늘만 참여할 수 있는 챌린지에요. <br />
@@ -67,40 +68,42 @@ const TodayChallengeList = () => {
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {challenges?.map((challenge: ChallengeType) => (
-              <TodayChallengeCardWrapper
-                key={`today-challenges_${challenge.id}`}
-                gap="2rem"
-              >
-                <ChallengeCard challenge={challenge} />
-              </TodayChallengeCardWrapper>
-            ))}
+            {isFetched &&
+              challenges.map((challenge: ChallengeType) => (
+                <TodayChallengeCardWrapper
+                  key={`today-challenges_${challenge.id}`}
+                  gap="2rem"
+                >
+                  <ChallengeCard challenge={challenge} />
+                </TodayChallengeCardWrapper>
+              ))}
           </CardContainer>
         </Container>
       </Desktop>
       <Tablet>
         <Container>
           <ChallengeTitle
-            title={randomTitle}
+            title={todayChallengeTitleList[titleIdx]}
             toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
             background={COLOR.bg.primary}
           />
           <CardContainer>
-            {challenges?.map((challenge: ChallengeType) => (
-              <TodayChallengeCardWrapper
-                key={`today-challenges_${challenge.id}`}
-                gap="2rem"
-              >
-                <ChallengeCard challenge={challenge} />
-              </TodayChallengeCardWrapper>
-            ))}
+            {isFetched &&
+              challenges.map((challenge: ChallengeType) => (
+                <TodayChallengeCardWrapper
+                  key={`today-challenges_${challenge.id}`}
+                  gap="2rem"
+                >
+                  <ChallengeCard challenge={challenge} />
+                </TodayChallengeCardWrapper>
+              ))}
           </CardContainer>
         </Container>
       </Tablet>
       <Mobile>
         <Container>
           <ChallengeTitle
-            title={randomTitle}
+            title={todayChallengeTitleList[titleIdx]}
             toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
             background={COLOR.bg.primary}
           />
