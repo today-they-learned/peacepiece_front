@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ChallengeFigure, DidItIcon } from "components/Challenge";
@@ -87,38 +87,37 @@ const HashTag = styled.div`
 
 const ChallengeCard = (props: Props) => {
   const { challenge, margin } = props;
-  const navigate = useNavigate();
-  const onClickCard = () => {
-    navigate(`/challenge/${challenge.id}`);
-  };
+
   return (
-    <Container margin={margin} key={challenge.id} onClick={onClickCard}>
-      <Thumbnail
-        src={challenge.thumbnail.file}
-        isProved={challenge.is_proved}
-      />
-      {challenge.is_proved && (
-        <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
-      )}
-      <ContentBox>
-        <FlexBox column height="100%" justifyContent="space-between">
-          <div style={{ marginBottom: "5px" }}>
-            <Title>{challenge.title}</Title>
-            <ChallengeFigure
-              proverCnt={challenge.prover_cnt}
-              point={challenge.point}
-            />
-          </div>
-          <HashTagBox>
-            {challenge.categories.map((category) => (
-              <HashTag key={`challenge-category-${category.id}`}>
-                #{category.title}
-              </HashTag>
-            ))}
-          </HashTagBox>
-        </FlexBox>
-      </ContentBox>
-    </Container>
+    <Link to={`/challenge/${challenge.id}`}>
+      <Container margin={margin} key={challenge.id}>
+        <Thumbnail
+          src={challenge.thumbnail.file}
+          isProved={challenge.is_proved}
+        />
+        {challenge.is_proved && (
+          <DidItIcon isAbsolute top="1rem" right="1rem" mobileLeft="1.5rem" />
+        )}
+        <ContentBox>
+          <FlexBox column height="100%" justifyContent="space-between">
+            <div style={{ marginBottom: "5px" }}>
+              <Title>{challenge.title}</Title>
+              <ChallengeFigure
+                proverCnt={challenge.prover_cnt}
+                point={challenge.point}
+              />
+            </div>
+            <HashTagBox>
+              {challenge.categories.map((category) => (
+                <HashTag key={`challenge-category-${category.id}`}>
+                  #{category.title}
+                </HashTag>
+              ))}
+            </HashTagBox>
+          </FlexBox>
+        </ContentBox>
+      </Container>
+    </Link>
   );
 };
 ChallengeCard.defaultProps = defaultProps;
