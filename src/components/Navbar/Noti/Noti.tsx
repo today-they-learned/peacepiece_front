@@ -6,8 +6,8 @@ const Container = styled.div`
   position: relative;
   margin-top: 5%;
   margin-left: 60%;
-  padding: 0.6rem 0.7rem 0.6rem 0.8rem;
-  min-width: 17rem;
+  padding: 0.6rem;
+  min-width: 19rem;
   border-radius: 0.6rem;
   z-index: 10;
   background: ${COLOR.bg.secondary};
@@ -22,6 +22,13 @@ const Container = styled.div`
     top: -0.8rem;
     left: 10.5rem;
     z-index: 10;
+  }
+  @media only screen and (max-width: 768px) {
+    margin-left: 0;
+
+    :after {
+      left: 11.6rem;
+    }
   }
 `;
 

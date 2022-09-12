@@ -6,19 +6,7 @@ import Box from "@mui/material/Box";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { useNotiData } from "hooks/queries/user";
-import { NotiNew, NotiAll } from "components/Navbar/Noti";
-import { NotiType } from "types";
-
-const apartData = (notis: NotiType[]) => {
-  // 새로운 알림만 골라서 넣어주는
-  const newNotifications: NotiType[] = [];
-  for (let i = 0; i < notis.length; i += 1) {
-    if (notis[i].is_viewed === false) {
-      newNotifications.push(notis[i]);
-    }
-  }
-  return newNotifications;
-};
+import { NotiList } from "components/Navbar/Noti";
 
 interface TabPanelProps {
   children: ReactNode;
@@ -60,7 +48,7 @@ const TabPanel = (props: TabPanelProps) => {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 2, padding: 0, marginTop: 2 }}>
+        <Box sx={{ p: 2, padding: 0, marginTop: 1.5 }}>
           <div>{children}</div>
         </Box>
       )}
@@ -97,10 +85,10 @@ const NotiTab = () => {
         </TabsLib>
       </Box>
       <TabPanel value={value} index={0}>
-        {isFetched && <NotiNew notis={apartData(notis)} />}
+        {isFetched && <NotiList newNoti notis={notis} />}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {isFetched && <NotiAll notis={notis} />}
+        {isFetched && <NotiList notis={notis} />}
       </TabPanel>
     </Box>
   );

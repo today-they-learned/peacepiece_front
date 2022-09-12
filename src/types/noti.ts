@@ -1,9 +1,10 @@
-import { ArticleType, UserType } from "types";
+import { ArticleType, ChallengeType, UserType } from "types";
 
 type NotiInterface = {
   id: number;
   contributor: UserType;
   article: ArticleType;
+  challenge: ChallengeType;
   category: {
     id: number;
     title: string;
