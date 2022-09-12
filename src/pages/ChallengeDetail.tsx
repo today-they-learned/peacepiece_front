@@ -55,7 +55,7 @@ const ChallengeDetail = () => {
         <ChallengeTestimonial title={data?.title} isEnded={data?.is_ended} />
       </DetailInfoContainer>
       <SubInfoContainer>
-        {!data.is_ended && (
+        {!data?.is_ended && (
           <CertificationBanner title={data?.title} isProved={data?.is_proved} />
         )}
         <SimilarChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
