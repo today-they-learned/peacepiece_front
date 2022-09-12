@@ -15,6 +15,7 @@ const Img = styled.img`
   @media only screen and (max-width: 767px) {
     width: 80%;
     height: 60%;
+    margin-top: 2rem;
   }
 `;
 
