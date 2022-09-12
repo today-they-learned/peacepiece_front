@@ -1,4 +1,4 @@
-import { FlexTextBox, FlexBox } from "components/common";
+import { FlexBox } from "components/common";
 import COLOR from "constants/color";
 import styled from "styled-components";
 
