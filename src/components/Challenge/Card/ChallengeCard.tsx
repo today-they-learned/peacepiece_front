@@ -27,6 +27,7 @@ const Container = styled.div<{ margin: string }>`
   background-color: ${COLOR.bg.secondary};
   position: relative;
   margin: ${(props) => props.margin};
+  cursor: pointer;
 
   @media only screen and (max-width: 767px) {
     width: 100%;
