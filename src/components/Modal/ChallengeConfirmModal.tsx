@@ -242,7 +242,7 @@ const ChallengeConfirmModal = ({
               >
                 페이스북 공유
               </FlexTextBox>
-              <Toggle disabled checked={false} />
+              <Toggle checked={false} />
             </FlexBox>
           </FlexBox>
           <FlexBox background="transparent" width="100%" mobileWidth="100%">
@@ -269,7 +269,7 @@ const ChallengeConfirmModal = ({
                   margin="0"
                 />
               </FlexBox>
-              <Toggle disabled checked={false} />
+              <Toggle checked={false} />
             </FlexBox>
           </FlexBox>
         </FlexBox>

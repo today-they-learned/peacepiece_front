@@ -12,6 +12,15 @@ const authAPI = {
   refresh: (data) => {
     return instance.post("users/token/refresh/", data);
   },
+
+  mail: {
+    post: () => {
+      return instance.post("users/mail_notifiable/");
+    },
+    delete: () => {
+      return instance.delete("users/mail_notifiable/");
+    },
+  },
 };
 
 export default authAPI;

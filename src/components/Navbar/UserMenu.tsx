@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useUser } from "hooks";
 import { useCookies } from "react-cookie";
 import styled from "styled-components";
@@ -7,13 +8,14 @@ import { FlexBox, FlexTextBox } from "components/common";
 // import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useAddMailNoti, useDeleteMailNoti } from "hooks/queries/auth";
 
 const Container = styled.div`
   position: relative;
   margin-top: 5%;
   margin-left: 60%;
   padding-bottom: 0.5rem;
-  width: 14rem;
+  min-width: 14rem;
   border-radius: 0.6rem;
   z-index: 10;
   background: ${COLOR.bg.secondary};
@@ -55,7 +57,11 @@ const Box = styled.div`
 
 const UserMenu = () => {
   const [, , removeCookie] = useCookies(["access_token"]);
-  const { user } = useUser();
+  const { user: initialUser } = useUser();
+
+  const [user, setUser] = useState(initialUser);
+  const { mutate: addMailNoti } = useAddMailNoti(setUser);
+  const { mutate: deleteMailNoti } = useDeleteMailNoti(setUser);
 
   const logout = () => {
     localStorage.removeItem("user");
@@ -64,19 +70,31 @@ const UserMenu = () => {
     window.location.href = "/";
   };
 
+  const handleMail = () => {
+    if (user.mail_notifiable) {
+      deleteMailNoti();
+    } else {
+      addMailNoti();
+    }
+  };
+
   return (
     <Box>
       <Container>
-        <FlexBox padding="1rem">
+        <FlexBox padding="1rem" width="100%" alignItems="center">
           <Avatar src={user.avatar} />
-          <FlexTextBox margin="0.5rem 0.5rem 0 0" color={COLOR.font.primary}>
-            환경지키미
-          </FlexTextBox>
-          <FlexTextBox margin="0.5rem 0 0 0">{user.username}</FlexTextBox>
-          <FlexTextBox margin="0.5rem 0 0 0">님</FlexTextBox>
+          <FlexBox wrap="wrap">
+            <FlexTextBox margin="0 0.3rem 0 0" color={COLOR.font.primary}>
+              환경지키미
+            </FlexTextBox>
+            <>
+              <FlexTextBox margin="0 0 0 0">{user.username}</FlexTextBox>
+              <FlexTextBox margin="0 0 0 0">님</FlexTextBox>
+            </>
+          </FlexBox>
         </FlexBox>
         <Line />
-        <FlexBox padding="0.5rem 1rem 1rem 1.15rem" column>
+        <FlexBox width="100%" padding="0.5rem 1rem 0.5rem 1.15rem" column>
           {/* 계정설정 페이지 off */}
           {/* <FlexBox padding="0.5rem">
             <PersonOutlineIcon
@@ -86,7 +104,8 @@ const UserMenu = () => {
               계정 설정
             </FlexTextBox>
           </FlexBox> */}
-          <div
+          <button
+            onClick={handleMail}
             style={{
               width: "100%",
               padding: 0,
@@ -104,7 +123,7 @@ const UserMenu = () => {
               </FlexTextBox>
               <Toggle size="small" checked={user.mail_notifiable} />
             </FlexBox>
-          </div>
+          </button>
           <button
             onClick={logout}
             style={{
