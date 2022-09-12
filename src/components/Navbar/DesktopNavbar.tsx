@@ -152,12 +152,13 @@ const Start = styled.div`
 
 const Profile = styled.img`
   background-color: ${COLOR.font.disabled};
-  width: 1.6rem;
-  height: 1.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 50%;
-  margin: 0.2rem 1.5rem 0 1.5rem;
+  margin: 0 1.5rem 0 1.5rem;
   position: static;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
@@ -196,7 +197,6 @@ const ProfileBox = styled.div`
   width: 2rem;
   height: 2rem;
   position: static;
-  cursor: pointer;
 `;
 
 const Navbar = () => {
@@ -357,11 +357,12 @@ const Navbar = () => {
                 <IoIosNotificationsOutline
                   size="30"
                   onClick={onClickNotification}
+                  cursor="pointer"
                 />
                 {clickedNotification && <Notice />}
               </ProfileBox>
               <ProfileBox>
-                <Profile onClick={onClickProfile} />
+                <Profile src={user.avatar} onClick={onClickProfile} />
                 {clickedProfile && <UserMenu />}
               </ProfileBox>
             </>

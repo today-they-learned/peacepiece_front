@@ -1,8 +1,10 @@
+import { useUser } from "hooks";
+import { useCookies } from "react-cookie";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import Toggle from "components/common/Toggle";
 import { FlexBox, FlexTextBox } from "components/common";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+// import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -28,13 +30,12 @@ const Container = styled.div`
   }
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   width: 2.3rem;
   height: 2.3rem;
   margin-right: 0.7rem;
   border-radius: 2rem;
   background-color: ${COLOR.font.secondary};
-  opacity: 0.5;
   object-fit: cover;
 `;
 
@@ -53,45 +54,73 @@ const Box = styled.div`
 `;
 
 const UserMenu = () => {
+  const [, , removeCookie] = useCookies(["access_token"]);
+  const { user } = useUser();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("refresh_token");
+    removeCookie("access_token");
+    window.location.href = "/";
+  };
+
   return (
     <Box>
       <Container>
         <FlexBox padding="1rem">
-          <Avatar />
+          <Avatar src={user.avatar} />
           <FlexTextBox margin="0.5rem 0.5rem 0 0" color={COLOR.font.primary}>
             환경지키미
           </FlexTextBox>
-          <FlexTextBox margin="0.5rem 0 0 0">권소예</FlexTextBox>
+          <FlexTextBox margin="0.5rem 0 0 0">{user.username}</FlexTextBox>
           <FlexTextBox margin="0.5rem 0 0 0">님</FlexTextBox>
         </FlexBox>
         <Line />
         <FlexBox padding="0.5rem 1rem 1rem 1.15rem" column>
-          <FlexBox padding="0.5rem">
+          {/* 계정설정 페이지 off */}
+          {/* <FlexBox padding="0.5rem">
             <PersonOutlineIcon
-              sx={{ fontSize: 28, color: COLOR.font.secondary }}
-            />
+              sx={{ fontSize: 28, color: COLOR.font.secondary }} 
+            /> 
             <FlexTextBox color={COLOR.font.secondary} margin="0.1rem 0 0 1rem">
               계정 설정
             </FlexTextBox>
-          </FlexBox>
-          <FlexBox margin="0.1rem 0 0 0.1rem" padding="0.5rem">
-            <MailOutlineIcon
-              sx={{ color: COLOR.font.secondary, marginTop: 0.1 }}
-            />
-            <FlexTextBox
-              color={COLOR.font.secondary}
-              margin="0.1rem 1rem 0 1rem"
-            >
-              메일 알림
-            </FlexTextBox>
-            <Toggle checked={false} />
-          </FlexBox>
-          <FlexBox padding="0.5rem 0.5rem  0.5rem  0.7rem">
-            <LogoutIcon sx={{ color: COLOR.font.secondary }} />
-            <FlexTextBox color="#ff4e4e" margin="0 0 0 1rem">
-              로그아웃
-            </FlexTextBox>
-          </FlexBox>
+          </FlexBox> */}
+          <div
+            style={{
+              width: "100%",
+              padding: 0,
+              margin: "0.5rem",
+              cursor: "pointer",
+            }}
+          >
+            <FlexBox alignItems="center">
+              <MailOutlineIcon sx={{ color: COLOR.font.secondary }} />
+              <FlexTextBox
+                color={COLOR.font.secondary}
+                margin="0.2rem 1.3rem 0 1rem"
+              >
+                메일 알림
+              </FlexTextBox>
+              <Toggle size="small" checked={user.mail_notifiable} />
+            </FlexBox>
+          </div>
+          <button
+            onClick={logout}
+            style={{
+              width: "100%",
+              padding: 0,
+              margin: "0.5rem",
+              cursor: "pointer",
+            }}
+          >
+            <FlexBox alignItems="center">
+              <LogoutIcon sx={{ color: COLOR.font.secondary }} />
+              <FlexTextBox color="#ff4e4e" margin="0.2rem 1rem 0 1rem">
+                로그아웃
+              </FlexTextBox>
+            </FlexBox>
+          </button>
         </FlexBox>
       </Container>
     </Box>
