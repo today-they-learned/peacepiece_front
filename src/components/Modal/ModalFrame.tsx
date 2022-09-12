@@ -145,6 +145,7 @@ const ModalFrame = (props: AreaElement) => {
             <FlexBox width="100%" justifyContent="flex-end">
               <FlexButton
                 fontSize="1.4rem"
+                mobileFontSize="1.2rem"
                 backgroundColor={COLOR.bg.default}
                 onClick={onClose}
               >
@@ -154,6 +155,7 @@ const ModalFrame = (props: AreaElement) => {
                 margin="0 0 0 1rem"
                 color={modalMainColor}
                 fontSize="1.4rem"
+                mobileFontSize="1.2rem"
                 backgroundColor={COLOR.bg.primary}
                 onClick={handleSubmit}
               >
