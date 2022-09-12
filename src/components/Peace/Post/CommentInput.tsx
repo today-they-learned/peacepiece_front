@@ -25,6 +25,10 @@ const SummitBtn = styled.button<{ comment: string }>`
   font-family: "Pr-Bold";
   border-radius: 0 1.25rem 1.25rem 0;
   transition: all ease 0.25s;
+
+  @media only screen and (max-width: 767px) {
+    font-size: 0.7rem;
+  }
 `;
 
 interface Props {
@@ -64,6 +68,7 @@ const CommentInput = ({ articleId }: Props) => {
           width="100%"
           padding="0.5rem 1rem"
           fontSize="1rem"
+          mobileFontsize="0.7rem"
           margin="0 0 0 0.5rem"
           borderRadius="1.25rem 0 0 1.25rem"
         />

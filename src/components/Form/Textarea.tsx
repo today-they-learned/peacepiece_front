@@ -11,6 +11,7 @@ interface Props {
   margin?: string;
   padding?: string;
   fontSize?: string;
+  mobileFontsize?: string;
   background?: string;
   maxLength?: number;
   value: string;
@@ -26,6 +27,7 @@ const defaultProps = {
   margin: "0",
   padding: "1.25rem",
   fontSize: "1.2rem",
+  mobileFontsize: "",
   background: COLOR.bg.secondary,
   maxLength: 900000,
   autoFocus: false,
@@ -41,6 +43,7 @@ const Textarea = (props: Props) => {
     margin,
     padding,
     fontSize,
+    mobileFontsize,
     background,
     maxLength,
     value,
@@ -48,8 +51,6 @@ const Textarea = (props: Props) => {
     autoFocus,
     borderRadius,
   } = props;
-
-  // 글자수 제한 props로 길이 받아서 처리
 
   return (
     <TextareaAutosize
@@ -74,6 +75,7 @@ const Textarea = (props: Props) => {
 
         @media only screen and (max-width: 767px) {
           width: ${mobileWidth} !important;
+          font-size: ${mobileFontsize};
         }
       `}
     />
