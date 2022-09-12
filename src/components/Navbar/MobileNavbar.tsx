@@ -28,7 +28,7 @@ const Logo = styled.img`
 const CenterNavItems = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 40%;
+  width: 50%;
 `;
 
 const Container = styled.div`
@@ -186,7 +186,7 @@ const DropdownTextBox = styled.div`
 
 const DropdonwText = styled.span`
   font-family: "Pr-Bold";
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   margin: 0 2rem;
   color: ${COLOR.font.disabled};
   cursor: pointer;
