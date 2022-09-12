@@ -20,13 +20,14 @@ const Logo = styled.img`
 
 const FootItems = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 65%;
+  justify-content: space-around;
+  margin-left: 2vw;
+  width: 72%;
 `;
 
 const Label = styled.span`
   position: relative;
-  width: 6rem;
+  width: auto;
   margin-top: 0.1rem;
   font-size: 0.8rem;
   color: #a3a3a3;
@@ -40,7 +41,7 @@ const MobileFooter = () => {
   return (
     <Foot>
       <Line />
-      <FlexBox padding="2rem 1rem 1.2rem 1rem">
+      <FlexBox padding="2rem 1rem 1.2rem 2.5rem">
         <Logo src="images/logo.png" />
         <FootItems>
           <Label
