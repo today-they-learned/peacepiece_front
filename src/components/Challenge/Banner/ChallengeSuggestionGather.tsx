@@ -7,7 +7,7 @@ import { ChallengeSuggestionType } from "types";
 import ChallengeSuggestionGatherWrapper from "../Card/ChallengeSuggestionGatherWrapper";
 
 const ChallengeSuggestionGather = () => {
-  const { data, isFetched } = useChallengeSuggestionListData(3, "main");
+  const { data, isFetched } = useChallengeSuggestionListData(4, "main");
 
   return (
     <ChallengeBanner
