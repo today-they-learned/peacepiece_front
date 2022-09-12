@@ -47,7 +47,6 @@ const SubInfoContainer = styled.div`
 const ChallengeDetail = () => {
   const { id } = useParams();
   const { data } = useChallengeData(id);
-  console.log(data);
 
   return (
     <ChallengeDetailContainer>
