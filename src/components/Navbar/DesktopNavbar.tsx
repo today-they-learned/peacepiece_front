@@ -252,6 +252,9 @@ const Navbar = () => {
     window.scrollTo(0, 0);
     const url = location.pathname;
 
+    setClickedNotification(false);
+    setClickedProfile(false);
+
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "suggestion") {
         setCurrentClickNav("challenge");
