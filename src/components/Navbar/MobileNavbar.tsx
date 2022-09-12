@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import ProfileTooltip from "components/Tooltip/ProfileTooltip";
+import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "hooks";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -202,6 +203,7 @@ const MobileNavbar = () => {
   const { user } = useUser();
   const [clickedChallenge, setClickedChallenge] = useState(false);
   const [clickedProfile, setClickedProfile] = useState(false);
+  const [clickedNotification, setClickedNotification] = useState(false);
   const [currentClickNav, setCurrentClickNav] = useState("/island");
   const [prevClickNav, setPrevClickNav] = useState(null);
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
@@ -231,6 +233,12 @@ const MobileNavbar = () => {
 
   const onClickProfile = () => {
     setClickedProfile(!clickedProfile);
+    setClickedNotification(false);
+  };
+
+  const onClickNotification = () => {
+    setClickedNotification(!clickedNotification);
+    setClickedProfile(false);
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -334,7 +342,13 @@ const MobileNavbar = () => {
         <RightNavItems>
           {user ? (
             <>
-              <IoIosNotificationsOutline size="30" />
+              <ProfileBox>
+                <IoIosNotificationsOutline
+                  size="30"
+                  onClick={onClickNotification}
+                />
+                {clickedNotification && <NoticeTooltip />}
+              </ProfileBox>
               <ProfileBox>
                 <Profile onClick={onClickProfile} />
                 {clickedProfile && <ProfileTooltip />}
