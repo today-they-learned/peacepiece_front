@@ -13,13 +13,12 @@ const ChallengeSuggestionGather = () => {
     <ChallengeBanner
       width="100%"
       widthMobile="100%"
-      padding="2rem 2.5rem"
       title="🧐 이런 챌린지는 어때요?"
       url="/challenge/suggestion"
     >
       <FlexBox
         wrap="wrap"
-        margin="2rem 0 0 0"
+        margin="2rem 0.5rem 1rem 1rem"
         background={COLOR.bg.primary}
         gap="1rem"
       >

@@ -11,6 +11,7 @@ interface Props {
   fontFamily?: string;
   color?: string;
   position?: string;
+  top?: string;
   right?: string;
   bottom?: string;
   background?: string;
@@ -28,6 +29,7 @@ const defaultProps = {
   fontFamily: "Pr-SemiBold",
   color: "white",
   position: "static",
+  top: "0",
   right: "0",
   bottom: "0",
   background: "transparent",
@@ -48,6 +50,7 @@ const FlexTextBox = (props: Props) => {
     fontFamily,
     color,
     position,
+    top,
     right,
     bottom,
     background,
@@ -67,6 +70,7 @@ const FlexTextBox = (props: Props) => {
         text-align: left;
         color: ${color};
         position: ${position};
+        top: ${top};
         right: ${right};
         bottom: ${bottom};
         background: ${background};

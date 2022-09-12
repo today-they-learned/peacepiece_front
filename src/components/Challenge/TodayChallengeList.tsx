@@ -1,26 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import COLOR from "constants/color";
-import { ChallengeTitle } from "components/Challenge";
+import { ChallengeBanner } from "components/Challenge";
 import { ChallengeType } from "types";
 import { Desktop, Mobile, Tablet } from "hooks/mediaQuery";
 import { useChallengeDailyData } from "hooks/queries/challenge";
 import TodayChallengeCardWrapper from "./Card/TodayChallengeCardWrapper";
 import { ChallengeCard } from "./Card";
-
-const Container = styled.div`
-  width: 100%;
-  height: 30rem;
-  border-radius: 1.25rem;
-  background-color: ${COLOR.bg.primary};
-  padding: 1.5rem 1rem 0.5rem 1rem;
-  margin-bottom: 3rem;
-
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-    height: auto;
-  }
-`;
 
 const CardContainer = styled.div`
   width: 100%;
@@ -28,13 +13,14 @@ const CardContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2.5rem;
+  margin: 2rem 0.5rem 1rem 1rem;
   gap: 2rem;
 
   @media only screen and (max-width: 767px) {
     width: 100%;
     height: auto;
     flex-direction: column;
+    margin: 2rem 0 1rem 0;
   }
 `;
 
@@ -44,6 +30,15 @@ const todayChallengeTitleList = [
   "🚀 데일리 챌린지",
   "🥺 오늘은 꼭 챌린지 도전해봐요!",
 ];
+
+const script = {
+  tootip: (
+    <>
+      오늘만 참여할 수 있는 챌린지에요. <br />
+      한번 바로 확인해볼까요?
+    </>
+  ),
+};
 
 const TodayChallengeList = () => {
   const [titleIdx, setTitleIdx] = useState(0);
@@ -56,17 +51,12 @@ const TodayChallengeList = () => {
   return (
     <>
       <Desktop>
-        <Container>
-          <ChallengeTitle
-            title={todayChallengeTitleList[titleIdx]}
-            toolTipContent={
-              <>
-                오늘만 참여할 수 있는 챌린지에요. <br />
-                한번 바로 확인해볼까요?
-              </>
-            }
-            background={COLOR.bg.primary}
-          />
+        <ChallengeBanner
+          width="100%"
+          margin="0 0 3rem 0"
+          title={todayChallengeTitleList[titleIdx]}
+          tooltip={script.tootip}
+        >
           <CardContainer>
             {isFetched &&
               challenges.map((challenge: ChallengeType) => (
@@ -78,15 +68,15 @@ const TodayChallengeList = () => {
                 </TodayChallengeCardWrapper>
               ))}
           </CardContainer>
-        </Container>
+        </ChallengeBanner>
       </Desktop>
       <Tablet>
-        <Container>
-          <ChallengeTitle
-            title={todayChallengeTitleList[titleIdx]}
-            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
-            background={COLOR.bg.primary}
-          />
+        <ChallengeBanner
+          width="100%"
+          margin="0 0 3rem 0"
+          title={todayChallengeTitleList[titleIdx]}
+          tooltip={script.tootip}
+        >
           <CardContainer>
             {isFetched &&
               challenges.map((challenge: ChallengeType) => (
@@ -98,15 +88,15 @@ const TodayChallengeList = () => {
                 </TodayChallengeCardWrapper>
               ))}
           </CardContainer>
-        </Container>
+        </ChallengeBanner>
       </Tablet>
       <Mobile>
-        <Container>
-          <ChallengeTitle
-            title={todayChallengeTitleList[titleIdx]}
-            toolTipContent="오늘만 참여할 수 있는 챌린지에요. 한번 바로 확인해볼까요"
-            background={COLOR.bg.primary}
-          />
+        <ChallengeBanner
+          width="100%"
+          margin="0 0 3rem 0"
+          title={todayChallengeTitleList[titleIdx]}
+          tooltip={script.tootip}
+        >
           <CardContainer>
             {challenges?.map((challenge: ChallengeType) => (
               <ChallengeCard
@@ -115,7 +105,7 @@ const TodayChallengeList = () => {
               />
             ))}
           </CardContainer>
-        </Container>
+        </ChallengeBanner>
       </Mobile>
     </>
   );

@@ -62,8 +62,7 @@ export const ChallengeBanner = (props: Props) => {
     >
       <FlexBox
         justifyContent="space-between"
-        alignItems="baseline"
-        margin="0 0.5rem 1rem 0"
+        alignItems="flex-start"
         background={background}
       >
         <ChallengeTitle
@@ -74,7 +73,12 @@ export const ChallengeBanner = (props: Props) => {
         />
         {url && (
           <Link to={url}>
-            <FlexTextBox fontSize="0.95rem" fontFamily="Pr-Regular">
+            <FlexTextBox
+              margin="0 0 0 4px"
+              width="66px"
+              fontSize="0.95rem"
+              fontFamily="Pr-Regular"
+            >
               전체보기 {">"}
             </FlexTextBox>
           </Link>

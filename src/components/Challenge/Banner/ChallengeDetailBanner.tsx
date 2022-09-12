@@ -79,6 +79,29 @@ const ChallengeDetailBanner = ({ challenge }: Props) => {
         </Page>
       );
     }
+    for (let i = 0; i < lenq; i += 3) {
+      newArr.push(
+        <Page key={i}>
+          <Img src={challenge?.images[i]?.file} alt="image1" />
+          <Img src={challenge?.images[i + 1]?.file} alt="image2" />
+          <Img src={challenge?.images[i + 2]?.file} alt="image3" />
+        </Page>
+      );
+    }
+    if (lenr === 1) {
+      newArr.push(
+        <Page key={len - 1}>
+          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
+        </Page>
+      );
+    } else {
+      newArr.push(
+        <Page key={len - 2}>
+          <Img src={challenge?.images[len - 2]?.file} alt="image1" />
+          <Img src={challenge?.images[len - 1]?.file} alt="image1" />
+        </Page>
+      );
+    }
 
     return newArr.reverse();
   };

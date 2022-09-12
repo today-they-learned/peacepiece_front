@@ -23,7 +23,7 @@ const Container = styled.div<{ gap: string }>`
   border-radius: 1rem;
   background-color: ${COLOR.bg.secondary};
   padding: 0.7rem 1.5rem 0.7rem 1.5rem;
-  margin: 0 0 1rem 0;
+  margin: 0.25rem;
 `;
 
 const User = styled.div`

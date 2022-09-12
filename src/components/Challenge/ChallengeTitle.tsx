@@ -22,16 +22,20 @@ const ChallengeTitle = (props: Props) => {
   const { title, toolTipContent, margin, background, color } = props;
 
   return (
-    <FlexBox alignItems="center" background={background}>
+    <FlexBox alignItems="flex-start" background={background}>
       <FlexTextBox
         fontSize="1.56rem"
+        lineHeight="2rem"
         fontFamily="Pr-Bold"
+        mobileFontSize="1.4rem"
         margin={margin}
         color={color}
       >
         {title}
       </FlexTextBox>
-      {toolTipContent && <Tooltip text={toolTipContent} margin="0 0 0 1rem" />}
+      {toolTipContent && (
+        <Tooltip text={toolTipContent} margin="4px 0 0 1rem" />
+      )}
     </FlexBox>
   );
 };

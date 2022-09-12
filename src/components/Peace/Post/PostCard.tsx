@@ -12,11 +12,10 @@ const PostCardContainer = styled.div`
   background: ${COLOR.bg.primary};
   border-radius: 1.5rem;
 
-  padding: 2rem;
+  padding: 1.5rem;
   margin: 0;
 
   @media (max-width: 1000px) {
-    padding: 1rem;
     border-radius: 1rem;
   }
 `;
