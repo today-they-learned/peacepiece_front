@@ -17,7 +17,6 @@ import {
   ChallengeSuggestion,
   Piece,
   ChallengeDetail,
-  Test,
   PieceSearch,
   PieceDetail,
   Tos,
@@ -62,7 +61,6 @@ const App = () => {
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/team" element={<CrewIntro />} />
                 <Route path="/*" element={<NotFound />} />
-                <Route path="/test" element={<Test />} />
               </Routes>
             </ResponsiveLayout>
           </Router>
