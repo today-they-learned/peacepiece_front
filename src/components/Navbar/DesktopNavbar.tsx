@@ -309,13 +309,23 @@ const Navbar = () => {
         <Logo>PeacePiece</Logo>
         <CenterNavItems>
           <Container>
-            <Island
-              id="/island"
-              onClick={onClickNav}
-              isClicked={currentClickNav}
-            >
-              나의 섬
-            </Island>
+            {user ? (
+              <Island
+                id="/island"
+                onClick={onClickNav}
+                isClicked={currentClickNav}
+              >
+                나의 섬
+              </Island>
+            ) : (
+              <Island
+                id="/island"
+                onClick={onClickNav}
+                isClicked={currentClickNav}
+              >
+                소개
+              </Island>
+            )}
           </Container>
           <Container>
             <Challenge

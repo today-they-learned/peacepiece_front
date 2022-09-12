@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import FlexBox from "components/common/FlexBox";
+import { FlexBox } from "components/common";
 
 const Foot = styled.div`
   width: 100%;
@@ -23,14 +23,14 @@ const Logo = styled.span`
 
 const FootItems = styled.div`
   display: flex;
-  margin-left: 5%;
+  margin-left: 3vw;
   justify-content: space-around;
-  width: 53%;
+  width: 69%;
 `;
 
 const Label = styled.span`
   position: relative;
-  width: 10rem;
+  width: auto;
   font-size: 1rem;
   color: ${COLOR.font.secondary};
   text-align: center;

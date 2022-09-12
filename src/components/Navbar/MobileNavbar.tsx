@@ -305,16 +305,26 @@ const MobileNavbar = () => {
   return (
     <>
       <Nav>
-        <Logo src="images/logo.png" />
+        <Logo src={`${process.env.PUBLIC_URL}/images/logo.png`} />
         <CenterNavItems>
           <Container>
-            <Island
-              id="/island"
-              onClick={onClickNav}
-              isClicked={currentClickNav}
-            >
-              나의 섬
-            </Island>
+            {user ? (
+              <Island
+                id="/island"
+                onClick={onClickNav}
+                isClicked={currentClickNav}
+              >
+                나의 섬
+              </Island>
+            ) : (
+              <Island
+                id="/island"
+                onClick={onClickNav}
+                isClicked={currentClickNav}
+              >
+                소개
+              </Island>
+            )}
           </Container>
           <Container>
             <Challenge
