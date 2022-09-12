@@ -5,6 +5,8 @@ import {
   useDeleteArticle,
   useUpdateArticle,
 } from "hooks/queries/article";
+import NoticeTab from "components/Tooltip/NoticeTooltip/NoticeTab";
+import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
 
 const NotFound = () => {
   const formData = new FormData();
@@ -67,6 +69,7 @@ const NotFound = () => {
       </div>
       <button onClick={() => deleteArticle()}>삭제버튼</button>
       <div style={{ marginBottom: "3rem" }} />
+      <NoticeTooltip />
     </>
   );
 };

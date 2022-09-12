@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import COLOR from "constants/color";
-import ProfileModal from "components/Modal/ProfileModal";
+import ProfileTooltip from "components/Tooltip/ProfileTooltip";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "hooks";
 import { IoIosNotificationsOutline } from "react-icons/io";
@@ -337,7 +337,7 @@ const MobileNavbar = () => {
               <IoIosNotificationsOutline size="30" />
               <ProfileBox>
                 <Profile onClick={onClickProfile} />
-                {clickedProfile && <ProfileModal />}
+                {clickedProfile && <ProfileTooltip />}
               </ProfileBox>
             </>
           ) : (

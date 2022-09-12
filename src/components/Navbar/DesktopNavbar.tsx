@@ -5,7 +5,8 @@ import COLOR from "constants/color";
 import { FlexBox } from "components/common";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import ProfileModal from "components/Modal/ProfileModal";
+import ProfileTooltip from "components/Tooltip/ProfileTooltip";
+import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
 
 const Nav = styled.div`
   width: 100%;
@@ -335,10 +336,13 @@ const Navbar = () => {
         <RightNavItems>
           {user ? (
             <>
-              <IoIosNotificationsOutline size="30" />
+              <ProfileBox>
+                <IoIosNotificationsOutline size="30" />
+                <NoticeTooltip />
+              </ProfileBox>
               <ProfileBox>
                 <Profile onClick={onClickProfile} />
-                {clickedProfile && <ProfileModal />}
+                {clickedProfile && <ProfileTooltip />}
               </ProfileBox>
             </>
           ) : (
