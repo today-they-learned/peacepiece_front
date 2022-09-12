@@ -52,7 +52,7 @@ const ChallengeDetail = () => {
     <ChallengeDetailContainer>
       <DetailInfoContainer>
         <ChallengeDetailBanner challenge={data} />
-        <ChallengeTestimonial challenge={data} />
+        <ChallengeTestimonial title={data?.title} isEnded={data?.is_ended} />
       </DetailInfoContainer>
       <SubInfoContainer>
         {!data.is_ended && (

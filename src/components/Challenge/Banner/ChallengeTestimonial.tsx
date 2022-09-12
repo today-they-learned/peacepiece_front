@@ -5,7 +5,7 @@ import { useChallengeArticleData } from "hooks/queries/challenge";
 import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import { Divider } from "semantic-ui-react";
-import { ArticleType, ChallengeType } from "types";
+import { ArticleType } from "types";
 import { ChallengeBanner } from "components/Challenge";
 import TestimonialCard from "components/Challenge/Card/TestimonialCard";
 import COLOR from "constants/color";
@@ -29,10 +29,11 @@ const script = {
 };
 
 interface Props {
-  challenge: ChallengeType;
+  title: string;
+  isEnded: boolean;
 }
 
-const ChallengeTestimonial = ({ challenge }: Props) => {
+const ChallengeTestimonial = ({ title, isEnded }: Props) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useUser();
@@ -73,7 +74,7 @@ const ChallengeTestimonial = ({ challenge }: Props) => {
             fontFamily="Pr-Bold"
             color={COLOR.font.disabled}
           >
-            {challenge.is_ended
+            {isEnded
               ? "종료된 챌린지입니다 🥺"
               : "챌린지를 달성했나요? 모두에게 인증해주세요!"}
           </FlexTextBox>
@@ -102,7 +103,7 @@ const ChallengeTestimonial = ({ challenge }: Props) => {
         <ChallengeConfirmModal
           onClose={closeModal}
           visible={modalVisible}
-          title={challenge.title}
+          title={title}
           type="writing"
           challengeId={id}
           subTitle
