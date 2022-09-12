@@ -47,15 +47,18 @@ const SubInfoContainer = styled.div`
 const ChallengeDetail = () => {
   const { id } = useParams();
   const { data } = useChallengeData(id);
+  console.log(data);
 
   return (
     <ChallengeDetailContainer>
       <DetailInfoContainer>
         <ChallengeDetailBanner challenge={data} />
-        <ChallengeTestimonial title={data?.title} />
+        <ChallengeTestimonial challenge={data} />
       </DetailInfoContainer>
       <SubInfoContainer>
-        <CertificationBanner title={data?.title} isProved={data?.is_proved} />
+        {!data.is_ended && (
+          <CertificationBanner title={data?.title} isProved={data?.is_proved} />
+        )}
         <SimilarChallengeBanner title="🧐 비슷한 챌린지가 있어요!" />
       </SubInfoContainer>
     </ChallengeDetailContainer>
