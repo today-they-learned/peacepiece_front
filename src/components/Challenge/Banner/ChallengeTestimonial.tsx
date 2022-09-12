@@ -11,6 +11,7 @@ import TestimonialCard from "components/Challenge/Card/TestimonialCard";
 import COLOR from "constants/color";
 import ChallengeConfirmModal from "components/Modal/ChallengeConfirmModal";
 import { useUser } from "hooks";
+import Loading from "pages/Loading";
 
 const TemporaryContainer = styled.div`
   width: 100%;
@@ -30,9 +31,10 @@ const script = {
 
 interface Props {
   title: string;
+  isEnded: boolean;
 }
 
-const ChallengeTestimonial = ({ title }: Props) => {
+const ChallengeTestimonial = ({ title, isEnded }: Props) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useUser();
@@ -73,7 +75,9 @@ const ChallengeTestimonial = ({ title }: Props) => {
             fontFamily="Pr-Bold"
             color={COLOR.font.disabled}
           >
-            챌린지를 달성했나요? 모두에게 인증해주세요!
+            {isEnded
+              ? "종료된 챌린지입니다 🥺"
+              : "챌린지를 달성했나요? 모두에게 인증해주세요!"}
           </FlexTextBox>
         </TemporaryContainer>
         <Divider style={{ width: "100%", margin: "2rem 0 " }} />
@@ -94,7 +98,9 @@ const ChallengeTestimonial = ({ title }: Props) => {
               );
             })}
         </FlexBox>
-        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
+        <div style={{ width: "100%" }} ref={ref}>
+          {isFetchingNextPage && <Loading />}
+        </div>
       </ChallengeBanner>
       {modalVisible && (
         <ChallengeConfirmModal

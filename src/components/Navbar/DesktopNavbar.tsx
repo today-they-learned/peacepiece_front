@@ -13,7 +13,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10rem 0 10rem;
+  padding: 0 8% 0 8%;
   background-color: ${COLOR.bg.nav};
   font-family: "Pr-ExtraBold";
   position: relative;

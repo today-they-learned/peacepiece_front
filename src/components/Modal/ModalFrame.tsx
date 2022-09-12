@@ -136,7 +136,7 @@ const ModalFrame = (props: AreaElement) => {
                 )}
               </FlexBox>
               {closable && (
-                <button onClick={close}>
+                <button onClick={close} style={{ cursor: "pointer" }}>
                   {closable && <AiOutlineClose color={COLOR.white} size="28" />}
                 </button>
               )}

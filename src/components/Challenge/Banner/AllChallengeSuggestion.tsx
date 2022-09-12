@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import { useChallengeSuggestionListData } from "hooks/queries/challenge/suggestion";
 import { ChallengeBanner } from "components/Challenge";
 import AllChallengeSuggestionList from "components/Challenge/AllChallengeSuggestionList";
+import Loading from "pages/Loading";
 import AllChallengeSuggestionPartialList from "../AllChallengeSuggestionPartialList";
 
 const script = {
@@ -32,7 +33,9 @@ const AllChallengeSuggestion = () => {
               />
             );
           })}
-        <div ref={ref}>{isFetchingNextPage && "로딩중..."}</div>
+        <div style={{ width: "100%" }} ref={ref}>
+          {isFetchingNextPage && <Loading />}
+        </div>
       </AllChallengeSuggestionList>
     </ChallengeBanner>
   );
