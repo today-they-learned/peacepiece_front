@@ -4,8 +4,11 @@ import styled, { css } from "styled-components";
 import COLOR from "constants/color";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import ProfileTooltip from "components/Tooltip/ProfileTooltip";
-import NoticeTooltip from "components/Tooltip/NoticeTooltip/NoticeTooltip";
+import UserMenu from "components/Navbar/UserMenu";
+import Noti from "components/Navbar/Noti/Noti";
+import { useNotiData, useReadNotiAll } from "hooks/queries/user";
+import { Badge } from "@mui/material";
+import { NotiType } from "types";
 
 const Nav = styled.div`
   width: 100%;
@@ -152,12 +155,13 @@ const Start = styled.div`
 
 const Profile = styled.img`
   background-color: ${COLOR.font.disabled};
-  width: 1.6rem;
-  height: 1.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 50%;
-  margin: 0.2rem 1.5rem 0 1.5rem;
+  margin: 0 1.5rem 0 1.5rem;
   position: static;
   object-fit: cover;
+  cursor: pointer;
 `;
 
 const DropdownBox = styled.div<{ clickedChallenge: boolean }>`
@@ -196,7 +200,6 @@ const ProfileBox = styled.div`
   width: 2rem;
   height: 2rem;
   position: static;
-  cursor: pointer;
 `;
 
 const Navbar = () => {
@@ -208,6 +211,16 @@ const Navbar = () => {
   const [prevClickNav, setPrevClickNav] = useState(null);
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
   const [prevClickSubNav, setPrevClickSubNav] = useState(null);
+
+  const [notiCnt, setNotiCnt] = useState(0);
+
+  const {
+    data: notis,
+    isFetched,
+    isRefetching,
+    refetch: refetchNoti,
+  } = useNotiData();
+  const { mutate: readNotiAll } = useReadNotiAll();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -236,9 +249,17 @@ const Navbar = () => {
     setClickedNotification(false);
   };
 
+  const closeNoti = () => {
+    readNotiAll();
+  };
+
   const onClickNotification = () => {
     setClickedNotification(!clickedNotification);
     setClickedProfile(false);
+    setNotiCnt(0);
+    if (clickedNotification) {
+      closeNoti();
+    }
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -251,6 +272,12 @@ const Navbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const url = location.pathname;
+    if (clickedNotification) {
+      setClickedNotification(false);
+      closeNoti();
+    }
+    refetchNoti();
+    setClickedProfile(false);
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "suggestion") {
@@ -311,6 +338,16 @@ const Navbar = () => {
     setPrevClickSubNav(currentClickSubNav);
   }, [currentClickSubNav]);
 
+  useEffect(() => {
+    if (isFetched) {
+      setNotiCnt(getNewNotiCnt(notis));
+    }
+  }, [isFetched, isRefetching]);
+
+  const getNewNotiCnt = (notis: NotiType[]) => {
+    return notis.filter((noti: NotiType) => !noti.is_viewed).length;
+  };
+
   return (
     <>
       <Nav>
@@ -352,19 +389,31 @@ const Navbar = () => {
         </CenterNavItems>
         <RightNavItems>
           {user ? (
-            <>
-              <ProfileBox>
-                <IoIosNotificationsOutline
-                  size="30"
-                  onClick={onClickNotification}
-                />
-                {clickedNotification && <NoticeTooltip />}
-              </ProfileBox>
-              <ProfileBox>
-                <Profile onClick={onClickProfile} />
-                {clickedProfile && <ProfileTooltip />}
-              </ProfileBox>
-            </>
+            isFetched && (
+              <>
+                <ProfileBox>
+                  <Badge
+                    color="success"
+                    badgeContent={notiCnt}
+                    overlap={notiCnt < 10 ? "circular" : "rectangular"}
+                    max={99}
+                  >
+                    <IoIosNotificationsOutline
+                      size="30"
+                      onClick={onClickNotification}
+                      cursor="pointer"
+                    />
+                  </Badge>
+                  {clickedNotification && (
+                    <Noti notis={notis} isFetched={isFetched} />
+                  )}
+                </ProfileBox>
+                <ProfileBox>
+                  <Profile src={user.avatar} onClick={onClickProfile} />
+                  {clickedProfile && <UserMenu />}
+                </ProfileBox>
+              </>
+            )
           ) : (
             <Start
               onClick={() => {

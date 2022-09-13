@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { NoticeTab } from "./index";
+import { NotiType } from "types";
+import { NotiTab } from "./index";
 
 const Container = styled.div`
   position: relative;
   margin-top: 5%;
   margin-left: 60%;
-  padding: 0.6rem 0.3rem 0.6rem 0.8rem;
-  width: 16rem;
+  padding: 0.6rem;
+  min-width: 19rem;
   border-radius: 0.6rem;
   z-index: 10;
   background: ${COLOR.bg.secondary};
@@ -23,6 +24,13 @@ const Container = styled.div`
     left: 10.5rem;
     z-index: 10;
   }
+  @media only screen and (max-width: 768px) {
+    margin-left: 0;
+
+    :after {
+      left: 11.6rem;
+    }
+  }
 `;
 
 const Box = styled.div`
@@ -31,14 +39,19 @@ const Box = styled.div`
   left: -11.75rem;
 `;
 
-const NoticeTooltip = () => {
+interface Props {
+  notis: NotiType[];
+  isFetched: boolean;
+}
+
+const Noti = ({ notis, isFetched }: Props) => {
   return (
     <Box>
       <Container>
-        <NoticeTab />
+        <NotiTab notis={notis} isFetched={isFetched} />
       </Container>
     </Box>
   );
 };
 
-export default NoticeTooltip;
+export default Noti;

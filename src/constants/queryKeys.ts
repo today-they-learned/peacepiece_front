@@ -1,4 +1,5 @@
 export const USER_DATA = "USER_DATA";
+export const NOTI_DATA = "NOTI_DATA";
 
 export const ITEMS_DATA = "ITEMS_DATA";
 export const ITEM_STATUS = "ITEM_STATUS";

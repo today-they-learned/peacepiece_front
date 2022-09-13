@@ -83,7 +83,7 @@ const ChallengeSuggestionInput = () => {
         width="100%"
         margin="1rem 0"
         text={script.text}
-        minRow={6}
+        minRow={4}
         maxLength={100}
       />
       <FlexBox
