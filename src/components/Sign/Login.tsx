@@ -2,10 +2,11 @@ import styled from "styled-components";
 import useInput from "hooks/useInput";
 import { useLogin } from "hooks/queries/auth";
 import { Form, Grid, Icon } from "semantic-ui-react";
-import { FlexBox } from "components/common";
+import { FlexBox, FlexTextBox } from "components/common";
 import { Field, ErrorText } from "components/Form";
 import { PrimaryBtn, SecondBtn } from "components/Form/Button";
 import COLOR from "constants/color";
+import { Link } from "react-router-dom";
 
 const ResetPassword = styled.button`
   position: absolute;
@@ -83,9 +84,15 @@ const Login = () => {
         </SecondBtn>
       </Form>
       <FlexBox center margin="4rem 0 0 0">
-        이용약관
-        <div style={{ margin: "0 1rem" }}>|</div>
-        개인정보처리방침
+        <FlexTextBox color={COLOR.font.darkDefault}>
+          <Link to="/terms">이용약관</Link>
+        </FlexTextBox>
+        <FlexTextBox margin="0 1rem" color={COLOR.font.darkDefault}>
+          |
+        </FlexTextBox>
+        <FlexTextBox color={COLOR.font.darkDefault}>
+          <Link to="/privacy">개인정보처리방침</Link>
+        </FlexTextBox>
       </FlexBox>
     </Grid.Column>
   );
