@@ -4,6 +4,8 @@ import FlexBox from "components/common/FlexBox";
 
 const Foot = styled.div`
   width: 100%;
+  position: fixed;
+  bottom: 0;
 `;
 
 const Line = styled.div`

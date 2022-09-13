@@ -43,7 +43,7 @@ const dummyData = [
   {
     id: 5,
     role: "팀원",
-    name: "최지현",
+    name: "최유찬",
     profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
@@ -52,7 +52,7 @@ const dummyData = [
   {
     id: 6,
     role: "팀원",
-    name: "최유찬",
+    name: "최지현",
     profile: "images/image2.png",
     intro: "안녕하세요 블라블라 인사말 김신건입니다.",
     content:
@@ -114,7 +114,7 @@ const CrewIntro = () => {
       </ContentContainer>
       <FlexBox
         width="100%"
-        margin="1.5rem 0 0 0"
+        margin="1.5rem 0 1rem 0"
         padding="2rem"
         gap="1.5rem"
         background={COLOR.bg.navSecondary}

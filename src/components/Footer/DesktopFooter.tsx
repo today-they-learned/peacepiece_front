@@ -5,6 +5,7 @@ import { FlexBox } from "components/common";
 
 const Foot = styled.div`
   width: 100%;
+  height: 5rem;
 `;
 
 const Line = styled.div`
