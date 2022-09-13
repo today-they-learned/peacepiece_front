@@ -1,4 +1,4 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import useInput from "hooks/useInput";
 import { useLogin } from "hooks/queries/auth";
 import { Form, Grid, Icon } from "semantic-ui-react";
@@ -8,16 +8,16 @@ import { PrimaryBtn, SecondBtn } from "components/Form/Button";
 import COLOR from "constants/color";
 import { Link } from "react-router-dom";
 
-const ResetPassword = styled.button`
-  position: absolute;
-  top: 0.25rem;
-  right: 0;
-  color: ${COLOR.font.primary};
-  font-family: "Pr-Light";
-  font-size: 14px;
-  padding: 0;
-  cursor: pointer;
-`;
+// const ResetPassword = styled.button`
+//   position: absolute;
+//   top: 0.25rem;
+//   right: 0;
+//   color: ${COLOR.font.primary};
+//   font-family: "Pr-Light";
+//   font-size: 14px;
+//   padding: 0;
+//   cursor: pointer;
+// `;
 
 const Login = () => {
   const [email, onChangeEmail] = useInput("");
@@ -61,7 +61,7 @@ const Login = () => {
             value={password}
             onChange={onChangePassword}
           />
-          <ResetPassword type="button">비밀번호를 잊으셨나요?</ResetPassword>
+          {/* <ResetPassword type="button">비밀번호를 잊으셨나요?</ResetPassword> */}
         </div>
         {isError && (
           <ErrorText margin="1.5rem 0 0 0">
@@ -75,13 +75,13 @@ const Login = () => {
         >
           로그인
         </PrimaryBtn>
-        <SecondBtn type="button" fluid>
+        {/* <SecondBtn type="button" fluid>
           Google 계정으로 로그인하기
           <Icon
             name="angle right"
             style={{ position: "absolute", right: "1rem" }}
           />
-        </SecondBtn>
+        </SecondBtn> */}
       </Form>
       <FlexBox center margin="4rem 0 0 0">
         <FlexTextBox color={COLOR.font.darkDefault}>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FlexBox, FlexTextBox } from "components/common";
+import { FlexBox } from "components/common";
 import COLOR from "constants/color";
 import { ChallengeType } from "types";
 import styled from "styled-components";
@@ -22,6 +22,17 @@ const Description = styled.div`
   font-family: "Pr-SemiBold";
 `;
 
+const Text = styled.div`
+  font-size: 1.25rem;
+  font-family: "Pr-SemiBold";
+  color: ${COLOR.font.primary};
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+`;
+
 const WeeklyChallengeCard = ({ challenge }: Props) => {
   return (
     <div style={{ flex: "1 1 0" }}>
@@ -33,14 +44,7 @@ const WeeklyChallengeCard = ({ challenge }: Props) => {
           background={COLOR.bg.secondary}
           padding="1.2rem 1.5rem"
         >
-          <FlexTextBox
-            fontSize="1.25rem"
-            fontFamily="Pr-SemiBold"
-            color={COLOR.font.primary}
-            margin="0 0 0.5rem 0"
-          >
-            {challenge.title}
-          </FlexTextBox>
+          <Text>{challenge.title}</Text>
           <ChallengeFigure
             proverCnt={challenge.prover_cnt}
             point={challenge.point}
