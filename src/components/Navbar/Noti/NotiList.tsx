@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { css } from "@emotion/react";
 import COLOR from "constants/color";
 import { FlexBox, FlexTextBox } from "components/common";
 import { useFromNow } from "hooks";
@@ -18,6 +20,7 @@ const NotiContainer = styled.div`
   max-height: 15rem;
   overflow-y: scroll;
   gap: 5px;
+  transition: all ease 0.2s;
 `;
 
 const Text = styled.div`
@@ -65,6 +68,46 @@ const NotiList = ({ notis, newNoti }: Props) => {
 
   return (
     <NotiContainer>
+      {!notiList.length && newNoti && (
+        <NotiBox
+          newNoti
+          css={css`
+            cursor: none;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            &:hover {
+              background: transparent;
+            }
+          `}
+        >
+          <FlexTextBox margin="5px 0.5rem 0 0" fontSize="1.8rem">
+            🤫
+          </FlexTextBox>
+          <FlexBox column>
+            <Text>새로운 알림이 없어요</Text>
+          </FlexBox>
+        </NotiBox>
+      )}
+      {!notiList.length && !newNoti && (
+        <NotiBox
+          newNoti
+          css={css`
+            cursor: none;
+            margin-bottom: 0.5rem;
+            align-items: center;
+            &:hover {
+              background: transparent;
+            }
+          `}
+        >
+          <FlexTextBox margin="5px 0.5rem 0 0" fontSize="1.8rem">
+            🤫
+          </FlexTextBox>
+          <FlexBox column>
+            <Text>아직 받은 알림이 없어요</Text>
+          </FlexBox>
+        </NotiBox>
+      )}
       {notiList.map((noti) => (
         <FlexBox key={`notification_${noti.id}`}>
           {noti.notice_category === "category" ? (
