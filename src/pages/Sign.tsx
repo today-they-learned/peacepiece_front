@@ -19,7 +19,7 @@ const Sign = () => {
           column
           shadow
           width="30rem"
-          margin="0 0 5rem 0"
+          margin="0 0 3rem 0"
           borderRadius="1rem"
           background="white"
         >
