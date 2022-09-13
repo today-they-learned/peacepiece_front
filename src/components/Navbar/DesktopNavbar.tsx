@@ -345,7 +345,7 @@ const Navbar = () => {
   }, [isFetched, isRefetching]);
 
   const getNewNotiCnt = (notis: NotiType[]) => {
-    return notis.filter((noti: NotiType) => !noti.is_viewed).length;
+    return notis?.filter((noti: NotiType) => !noti.is_viewed).length;
   };
 
   return (
