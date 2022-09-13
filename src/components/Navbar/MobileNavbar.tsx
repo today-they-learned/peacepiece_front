@@ -408,7 +408,7 @@ const MobileNavbar = () => {
                   )}
                 </ProfileBox>
                 <ProfileBox>
-                  <Profile onClick={onClickProfile} />
+                  <Profile src={user.avatar} onClick={onClickProfile} />
                   {clickedProfile && <Usermenu />}
                 </ProfileBox>
               </>
