@@ -26,6 +26,7 @@ const Logo = styled.img`
   width: 2rem;
   height: 2rem;
   margin-right: 1rem;
+  cursor: pointer;
 `;
 
 const CenterNavItems = styled.div`
@@ -225,6 +226,10 @@ const MobileNavbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const onClickLogo = () => {
+    navigate("/");
+  };
+
   const onClickNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickNav(e.target.id);
@@ -351,7 +356,10 @@ const MobileNavbar = () => {
   return (
     <>
       <Nav>
-        <Logo src={`${process.env.PUBLIC_URL}/images/logo.png`} />
+        <Logo
+          src={`${process.env.PUBLIC_URL}/images/logo.png`}
+          onClick={onClickLogo}
+        />
         <CenterNavItems>
           <Container>
             {user ? (
@@ -408,7 +416,7 @@ const MobileNavbar = () => {
                   )}
                 </ProfileBox>
                 <ProfileBox>
-                  <Profile onClick={onClickProfile} />
+                  <Profile src={user.avatar} onClick={onClickProfile} />
                   {clickedProfile && <Usermenu />}
                 </ProfileBox>
               </>

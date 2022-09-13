@@ -26,6 +26,7 @@ const Logo = styled.span`
   color: ${COLOR.font.primary};
   font-size: 20px;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const CenterNavItems = styled.div`
@@ -225,6 +226,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const onClickLogo = () => {
+    navigate("/");
+  };
+
   const onClickNav = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof Element) {
       setCurrentClickNav(e.target.id);
@@ -351,7 +356,7 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-        <Logo>PeacePiece</Logo>
+        <Logo onClick={onClickLogo}>PeacePiece</Logo>
         <CenterNavItems>
           <Container>
             {user ? (
