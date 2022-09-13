@@ -47,7 +47,12 @@ const NoticKeyword = () => {
   const { data: reminders, isFetched } = useChallengeReminderData();
 
   return (
-    <BannerBox width="24.6rem" widthTablet="50%" height="100%" padding="1.6rem">
+    <BannerBox
+      width="24.6rem"
+      widthTablet="100%"
+      height="100%"
+      padding="1.6rem"
+    >
       <FlexBox background={COLOR.bg.primary} margin="0 0 1rem 0">
         <FlexTextBox
           fontSize="1.56rem"
