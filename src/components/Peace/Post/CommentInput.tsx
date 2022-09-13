@@ -19,7 +19,7 @@ const SummitBtn = styled.button<{ comment: string }>`
   cursor: ${(props) => props.comment && "pointer"};
   color: white;
   width: 3.2rem;
-  height: 2rem;
+  height: 2.6rem;
   padding: 0.35rem;
   font-size: 1rem;
   font-family: "Pr-Bold";
