@@ -10,6 +10,7 @@ const ChallengeDetailContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  width: 100%;
 
   @media (max-width: 1000px) {
     flex-direction: column;
