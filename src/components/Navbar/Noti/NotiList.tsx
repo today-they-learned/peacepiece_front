@@ -72,7 +72,7 @@ const NotiList = ({ notis, newNoti }: Props) => {
         <NotiBox
           newNoti
           css={css`
-            cursor: none;
+            cursor: default;
             margin-bottom: 0.5rem;
             align-items: center;
             &:hover {
@@ -92,7 +92,7 @@ const NotiList = ({ notis, newNoti }: Props) => {
         <NotiBox
           newNoti
           css={css`
-            cursor: none;
+            cursor: default;
             margin-bottom: 0.5rem;
             align-items: center;
             &:hover {
