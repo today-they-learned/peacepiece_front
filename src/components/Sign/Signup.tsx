@@ -3,8 +3,8 @@ import useInput from "hooks/useInput";
 import { useSignUp } from "hooks/queries/auth";
 import { FlexBox } from "components/common";
 import { Field, ErrorText } from "components/Form";
-import { PrimaryBtn, SecondBtn } from "components/Form/Button";
-import { Form, Grid, Icon } from "semantic-ui-react";
+import { PrimaryBtn } from "components/Form/Button";
+import { Form, Grid } from "semantic-ui-react";
 
 const Signup = () => {
   const [username, onChangeUsername] = useInput("");
@@ -85,13 +85,13 @@ const Signup = () => {
         <PrimaryBtn type="submit" fluid style={{ marginTop: "3rem" }}>
           회원가입
         </PrimaryBtn>
-        <SecondBtn type="button" fluid>
+        {/* <SecondBtn type="button" fluid>
           Google 계정으로 가입하기
           <Icon
             name="angle right"
             style={{ position: "absolute", right: "1rem" }}
           />
-        </SecondBtn>
+        </SecondBtn> */}
       </Form>
       <FlexBox center margin="4rem 0 0 0">
         이용약관

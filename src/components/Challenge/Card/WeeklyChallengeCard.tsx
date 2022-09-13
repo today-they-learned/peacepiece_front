@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FlexBox, FlexTextBox } from "components/common";
+import { FlexBox } from "components/common";
 import COLOR from "constants/color";
 import { ChallengeType } from "types";
 import styled from "styled-components";
