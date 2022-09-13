@@ -1,14 +1,4 @@
-import { ImageType } from "types";
-
-export type ItemCategoryType = "map" | "animal" | "tree" | "item";
-
-type ItemType = {
-  id: number;
-  name: string;
-  category: ItemCategoryType;
-  point: number;
-  thumbnail: ImageType;
-};
+import { ImageType, ItemType, ItemCategoryType } from "types";
 
 type PreConditionType = {
   id: number;
