@@ -3,7 +3,7 @@ import { Tab as semanticTab } from "semantic-ui-react";
 import COLOR from "constants/color";
 import { BannerBox } from "components/common";
 import styled from "styled-components";
-import { useBuyItem, useItemListData } from "hooks/queries/items";
+import { useBuyItem, useItemListData } from "hooks/queries/item";
 import { BuyableItemType } from "types";
 import { Island, Animal, Item, Point } from "./index";
 
