@@ -3,7 +3,6 @@ import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { AxiosInterceptor, queryClient } from "config";
 import { CookiesProvider } from "react-cookie";
-import { useUser } from "hooks";
 import GlobalStyles from "styles/GlobalStyles";
 import "styles/fonts.css";
 import "semantic-ui-css/semantic.min.css";
@@ -28,7 +27,6 @@ import ResponsiveLayout from "layouts/responsive.layout";
 import Privacy from "pages/Privacy";
 
 const App = () => {
-  const { user } = useUser();
   return (
     <QueryClientProvider client={queryClient}>
       <CookiesProvider>
@@ -37,11 +35,7 @@ const App = () => {
           <Router>
             <ResponsiveLayout>
               <Routes>
-                {user ? (
-                  <Route path="/" element={<Island />} />
-                ) : (
-                  <Route path="/" element={<ServiceIntro />} />
-                )}
+                <Route path="/" element={<Island />} />
                 <Route path="/sign" element={<Sign />} />
                 <Route path="/challenge" element={<Challenge />} />
                 <Route path="/challenge/:id" element={<ChallengeDetail />} />

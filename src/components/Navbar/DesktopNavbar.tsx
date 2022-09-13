@@ -301,7 +301,7 @@ const Navbar = () => {
       setCurrentClickNav("challenge");
       setCurrentClickSubNav("/challenge");
       setClickedChallenge(true);
-    } else if (url === "/") {
+    } else if (url === "/" || url === "/intro") {
       setCurrentClickNav("/island");
     } else if (url.slice(0, 6) === "/piece") {
       setCurrentClickNav("/piece");

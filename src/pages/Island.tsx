@@ -12,6 +12,7 @@ import {
   animalPlaceMapper,
   treePlaceWrapper,
 } from "constants/Island/Items";
+import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,8 +44,15 @@ const Island = () => {
   const [animalCount, setAnimalCount] = useState(0);
   const [treeCount, setTreeCount] = useState(0);
   const { user } = useUser();
+  const navigate = useNavigate();
 
   const { data: statusData, isFetched } = useItemStatusData(user.id);
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/intro");
+    }
+  }, []);
 
   useEffect(() => {
     if (!statusData) return;
