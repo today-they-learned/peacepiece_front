@@ -5,7 +5,10 @@ import Usermenu from "components/Navbar/UserMenu";
 import Noti from "components/Navbar/Noti/Noti";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "hooks";
+import { useNotiData, useReadNotiAll } from "hooks/queries/user";
 import { IoIosNotificationsOutline } from "react-icons/io";
+import { Badge } from "@mui/material";
+import { NotiType } from "types";
 
 const Nav = styled.div`
   width: 100%;
@@ -209,6 +212,16 @@ const MobileNavbar = () => {
   const [currentClickSubNav, setCurrentClickSubNav] = useState("/challenge");
   const [prevClickSubNav, setPrevClickSubNav] = useState(null);
 
+  const [notiCnt, setNotiCnt] = useState(0);
+
+  const {
+    data: notis,
+    isFetched,
+    isRefetching,
+    refetch: refetchNoti,
+  } = useNotiData();
+  const { mutate: readNotiAll } = useReadNotiAll();
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -236,9 +249,17 @@ const MobileNavbar = () => {
     setClickedNotification(false);
   };
 
+  const closeNoti = () => {
+    readNotiAll();
+  };
+
   const onClickNotification = () => {
     setClickedNotification(!clickedNotification);
     setClickedProfile(false);
+    setNotiCnt(0);
+    if (clickedNotification) {
+      closeNoti();
+    }
   };
 
   const onClickSubNav = (e: React.MouseEvent<HTMLElement>) => {
@@ -251,6 +272,13 @@ const MobileNavbar = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     const url = location.pathname;
+
+    if (clickedNotification) {
+      setClickedNotification(false);
+      closeNoti();
+    }
+    refetchNoti();
+    setClickedProfile(false);
 
     if (url.slice(0, 11) === "/challenge/") {
       if (url.slice(11) === "suggestion") {
@@ -310,6 +338,16 @@ const MobileNavbar = () => {
     setPrevClickSubNav(currentClickSubNav);
   }, [currentClickSubNav]);
 
+  useEffect(() => {
+    if (isFetched) {
+      setNotiCnt(getNewNotiCnt(notis));
+    }
+  }, [isFetched, isRefetching]);
+
+  const getNewNotiCnt = (notis: NotiType[]) => {
+    return notis.filter((noti: NotiType) => !noti.is_viewed).length;
+  };
+
   return (
     <>
       <Nav>
@@ -351,19 +389,30 @@ const MobileNavbar = () => {
         </CenterNavItems>
         <RightNavItems>
           {user ? (
-            <>
-              <ProfileBox>
-                <IoIosNotificationsOutline
-                  size="30"
-                  onClick={onClickNotification}
-                />
-                {clickedNotification && <Noti />}
-              </ProfileBox>
-              <ProfileBox>
-                <Profile onClick={onClickProfile} />
-                {clickedProfile && <Usermenu />}
-              </ProfileBox>
-            </>
+            isFetched && (
+              <>
+                <ProfileBox>
+                  <Badge
+                    color="success"
+                    badgeContent={notiCnt}
+                    overlap={notiCnt < 10 ? "circular" : "rectangular"}
+                    max={99}
+                  >
+                    <IoIosNotificationsOutline
+                      size="30"
+                      onClick={onClickNotification}
+                    />
+                  </Badge>
+                  {clickedNotification && (
+                    <Noti notis={notis} isFetched={isFetched} />
+                  )}
+                </ProfileBox>
+                <ProfileBox>
+                  <Profile onClick={onClickProfile} />
+                  {clickedProfile && <Usermenu />}
+                </ProfileBox>
+              </>
+            )
           ) : (
             <Start
               onClick={() => {

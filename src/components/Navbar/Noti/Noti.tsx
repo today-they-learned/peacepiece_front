@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
+import { NotiType } from "types";
 import { NotiTab } from "./index";
 
 const Container = styled.div`
@@ -38,11 +39,16 @@ const Box = styled.div`
   left: -11.75rem;
 `;
 
-const Noti = () => {
+interface Props {
+  notis: NotiType[];
+  isFetched: boolean;
+}
+
+const Noti = ({ notis, isFetched }: Props) => {
   return (
     <Box>
       <Container>
-        <NotiTab />
+        <NotiTab notis={notis} isFetched={isFetched} />
       </Container>
     </Box>
   );

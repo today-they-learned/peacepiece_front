@@ -5,8 +5,8 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { useNotiData } from "hooks/queries/user";
 import { NotiList } from "components/Navbar/Noti";
+import { NotiType } from "types";
 
 interface TabPanelProps {
   children: ReactNode;
@@ -63,9 +63,13 @@ function a11yProps(index: number) {
   };
 }
 
-const NotiTab = () => {
+interface Props {
+  notis: NotiType[];
+  isFetched: boolean;
+}
+
+const NotiTab = ({ notis, isFetched }: Props) => {
   const [value, setValue] = useState(0);
-  const { data: notis, isFetched } = useNotiData();
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
