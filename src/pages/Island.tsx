@@ -3,7 +3,7 @@ import IslandViewer from "components/Island/IslandViewer";
 import Maps from "constants/Island/Maps";
 import Tabs from "components/Island/Tab/Tabs";
 import styled from "styled-components";
-import { useItemStatusData } from "hooks/queries/items";
+import { useItemStatusData } from "hooks/queries/item";
 import { useUser } from "hooks";
 import { ItemStatusType } from "types";
 
