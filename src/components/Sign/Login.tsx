@@ -1,10 +1,10 @@
 // import styled from "styled-components";
 import useInput from "hooks/useInput";
 import { useLogin } from "hooks/queries/auth";
-import { Form, Grid, Icon } from "semantic-ui-react";
+import { Form, Grid } from "semantic-ui-react";
 import { FlexBox, FlexTextBox } from "components/common";
 import { Field, ErrorText } from "components/Form";
-import { PrimaryBtn, SecondBtn } from "components/Form/Button";
+import { PrimaryBtn } from "components/Form/Button";
 import COLOR from "constants/color";
 import { Link } from "react-router-dom";
 
