@@ -7,6 +7,7 @@ const useNotiQuery = () => {
     select: (data) => {
       return data.data;
     },
+    enabled: !!localStorage.getItem("user"),
     staleTime: 0,
   });
 };

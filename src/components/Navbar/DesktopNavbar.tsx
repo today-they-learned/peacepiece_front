@@ -276,7 +276,7 @@ const Navbar = () => {
       setClickedNotification(false);
       closeNoti();
     }
-    refetchNoti();
+    if (user) refetchNoti();
     setClickedProfile(false);
 
     if (url.slice(0, 11) === "/challenge/") {
@@ -339,7 +339,7 @@ const Navbar = () => {
   }, [currentClickSubNav]);
 
   useEffect(() => {
-    if (isFetched) {
+    if (user && isFetched) {
       setNotiCnt(getNewNotiCnt(notis));
     }
   }, [isFetched, isRefetching]);
