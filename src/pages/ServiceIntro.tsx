@@ -33,7 +33,6 @@ const IntroTitleContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -60%);
   width: 100%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
