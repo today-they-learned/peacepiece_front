@@ -5,10 +5,10 @@
 <div align=center>
     <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
     <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+    <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
     <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
     <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
     <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white">
-    <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
     <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
     <img src="https://img.shields.io/badge/styled components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white"/>
     <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
@@ -36,7 +36,7 @@
 
 ## 💁🏻‍♂ 웹 서비스 소개
 
-**일상생활 속 환경을 위한 활동을 기반으로 가상공간을 꾸밀 수 있는 웹플랫폼**
+<code>일상생활 속 환경을 위한 활동을 기반으로 가상공간을 꾸밀 수 있는 웹플랫폼</code>
 
 환경 보호를 위한 인식과 행동을 유발하기 위해 일상생활 속 활동을 기반으로 챌린지를 진행합니다. 챌린지 제안 기능을 통해 많은 사람들이 일상생활에서 환경을 보호할 수 있는 방법에 대해 고민하고, 사람들과 공유할 수 있다는 점에서 환경보호에 대한 관심을 증대하고 다양한 환경문제 해결법을 도출할 수 있습니다. 챌린지와 환경을 위한 SNS 커뮤니티인 피스를 통해 포인트를 획득하고, 포인트를 사용하여 섬 확장 및 아이템 구매를 통해 ‘나의 섬’을 꾸밀 수 있는 흥미로운 요소도 있습니다.
 
