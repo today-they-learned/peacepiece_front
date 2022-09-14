@@ -1,0 +1,29 @@
+{
+  "search": "검색",
+  "search_no_results_1": "앗!",
+  "search_no_results_2": "검색 결과가 없어요…",
+  "pick": "이모지를 선택하세요.",
+  "add_custom": "커스텀 이모지를 추가하세요.",
+  "categories": {
+    "activity": "활동",
+    "custom": "커스텀",
+    "flags": "플래그",
+    "foods": "식음료",
+    "frequent": "자주 사용됨",
+    "nature": "동물 및 자연",
+    "objects": "객체",
+    "people": "웃는 얼굴 및 사람",
+    "places": "여행 및 장소",
+    "search": "검색 결과",
+    "symbols": "기호"
+  },
+  "skins": {
+    "choose": "피부색 선택",
+    "1": "기본",
+    "2": "밝은 톤",
+    "3": "중간 밝은 톤",
+    "4": "중간 톤",
+    "5": "중간 어두운 톤",
+    "6": "어두운 톤"
+  }
+}

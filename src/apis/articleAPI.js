@@ -13,6 +13,14 @@ const articleAPI = {
   delete: (id) => {
     return instance.delete(`articles/${id}/`);
   },
+  feedback: {
+    post: (id, emoji) => {
+      return instance.post(`articles/${id}/feedbacks/${emoji}/`);
+    },
+    delete: (id, emoji) => {
+      return instance.delete(`articles/${id}/feedbacks/${emoji}/`);
+    },
+  },
 };
 
 export default articleAPI;

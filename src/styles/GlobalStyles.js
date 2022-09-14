@@ -38,6 +38,11 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
 
+  em-emoji-picker {
+    --font-family: 'Pr-Regular';
+    --rgb-accent: 60, 232, 123; 
+  }  
+
 `;
 
 export default GlobalStyles;

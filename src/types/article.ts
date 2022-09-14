@@ -1,4 +1,4 @@
-import { ChallengeType, CommentType, ImageType } from "types";
+import { ChallengeType, CommentType, ImageType, FeedbackType } from "types";
 
 type ArticleInterface = {
   id: number;
@@ -12,6 +12,7 @@ type ArticleInterface = {
   };
   images: Array<ImageType>;
   article_comments: CommentType[];
+  feedbacks: FeedbackType[];
 };
 
 export default ArticleInterface;

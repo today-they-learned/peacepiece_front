@@ -4,3 +4,5 @@ export { default as useUpdateArticle } from "./useUpdateArticle";
 export { default as useDeleteArticle } from "./useDeleteArticle";
 export { default as useArticleListData } from "./useArticleListData";
 export { default as useArticleSearchData } from "./useArticleSearchData";
+export * from "./feedback";
+export * from "./comment";
