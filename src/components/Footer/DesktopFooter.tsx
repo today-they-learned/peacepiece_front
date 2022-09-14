@@ -7,7 +7,7 @@ const Foot = styled.div`
   width: 100%;
   height: 5rem;
   position: relative;
-  transform: translateY(100%);
+  transform: translateY(50%);
   background: ${COLOR.bg.default};
 `;
 
@@ -89,7 +89,9 @@ const Footer = () => {
         <Line />
       </FlexBox>
       <FlexBox padding="0.8rem 9rem">
-        <Label style={{ width: "12rem" }}>Team TTL | PeacePice</Label>
+        <a href="https://github.com/today-they-learned">
+          <Label style={{ width: "12rem" }}>Team TTL | PeacePice</Label>
+        </a>
       </FlexBox>
     </Foot>
   );
