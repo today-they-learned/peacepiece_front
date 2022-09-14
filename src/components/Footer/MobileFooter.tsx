@@ -82,7 +82,9 @@ const MobileFooter = () => {
         <Line />
       </FlexBox>
       <FlexBox padding="0.8rem 1rem">
-        <Label style={{ width: "12rem" }}>Team TTL | PeacePice</Label>
+        <a href="https://github.com/today-they-learned">
+          <Label style={{ width: "12rem" }}>Team TTL | PeacePice</Label>
+        </a>
       </FlexBox>
     </Foot>
   );
