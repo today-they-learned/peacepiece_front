@@ -15,11 +15,11 @@ import Loading from "pages/Loading";
 
 const TemporaryContainer = styled.div`
   width: 100%;
-  height: 4.8rem;
+  height: fit-content;
   border-radius: 1.2rem;
   display: flex;
   align-items: center;
-  padding: 0 0 0 2rem;
+  padding: 1.5rem;
   margin: 2rem 0 0 0;
   background: ${COLOR.bg.default};
   cursor: pointer;
