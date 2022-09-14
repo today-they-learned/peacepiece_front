@@ -14,7 +14,6 @@ const EndedChallenge = () => {
   return (
     <FlexBox
       width="100%"
-      height="100%"
       justifyContent="center"
       padding="1rem"
       column

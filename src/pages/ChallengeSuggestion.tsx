@@ -8,7 +8,7 @@ const ChallengeSuggestion = () => {
       column
       justifyContent="center"
       alignItems="center"
-      margin="3rem 0 5rem 0 "
+      margin="3rem 0"
       gap="2rem"
     >
       <ChallengeSuggestionInput />

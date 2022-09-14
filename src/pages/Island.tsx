@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 3vh;
   @media only screen and (max-width: 1200px) {
     flex-direction: column;
   }

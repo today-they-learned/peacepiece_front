@@ -104,7 +104,6 @@ const Div = styled.div`
 `;
 
 const CrewIntroContainer = styled.div`
-  height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
