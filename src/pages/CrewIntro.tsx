@@ -104,6 +104,7 @@ const Div = styled.div`
 `;
 
 const CrewIntroContainer = styled.div`
+  height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,7 +134,7 @@ const CrewIntro = () => {
       <CrewIntroContainer>
         <FlexBox
           width="100%"
-          margin="1.5rem 0 1rem 0"
+          margin="2.5rem 0 1rem 0"
           padding="2rem"
           gap="1.5rem"
           background={COLOR.bg.navSecondary}

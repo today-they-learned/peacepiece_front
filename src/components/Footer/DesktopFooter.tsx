@@ -7,7 +7,7 @@ const Foot = styled.div`
   width: 100%;
   height: 5rem;
   position: relative;
-  transform: translateY(100%);
+  transform: translateY(50%);
 `;
 
 const Line = styled.div`
