@@ -1,5 +1,9 @@
 # Peace Piece Front-End
 
+<img width="1774" alt="스크린샷 2022-09-14 오후 7 21 17" src="https://user-images.githubusercontent.com/66055587/190129074-2adfc73c-0c00-44a9-84d8-a3b7131d8faa.png">
+
+</br>
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9cc5d64a-ced2-42bc-8391-37c835b35bcc/deploy-status)](https://app.netlify.com/sites/peacepiece/deploys)
 
 <div align=center>
