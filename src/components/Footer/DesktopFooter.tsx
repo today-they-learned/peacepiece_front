@@ -5,7 +5,9 @@ import { FlexBox } from "components/common";
 
 const Foot = styled.div`
   width: 100%;
-  height: 6rem;
+  height: 5rem;
+  position: relative;
+  transform: translateY(100%);
 `;
 
 const Line = styled.div`
