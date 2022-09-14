@@ -7,10 +7,11 @@ import RelatedChallengeBanner from "components/Challenge/Banner/RelatedChallenge
 import styled from "styled-components";
 
 const ChallengeDetailContainer = styled.div`
+  width: 100%;
+  padding: 1rem;
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  width: 100%;
 
   @media (max-width: 1000px) {
     flex-direction: column;
