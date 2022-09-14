@@ -4,7 +4,7 @@ import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ArticleType } from "types";
-import { useDate } from "hooks";
+import { useDate, useUser } from "hooks";
 import ImageList from "components/Peace/Post/ImageList";
 import EmojiPicker from "components/Peace/Feedback/EmojiPicker";
 import Emoji from "components/Peace/Feedback/Emoji";
@@ -30,6 +30,7 @@ const Button = styled.button`
 
 const Post = (props: Props) => {
   const { article } = props;
+  const { user } = useUser();
   const [textLimit, setTextLimit] = useState(
     Math.min(200, article.content.length)
   );
@@ -100,7 +101,7 @@ const Post = (props: Props) => {
                 {feedback.count}
               </Emoji>
             ))}
-          <EmojiPicker challengeId={article.id} />
+          {user && <EmojiPicker challengeId={article.id} />}
         </FlexBox>
       </FlexBox>
     </>
