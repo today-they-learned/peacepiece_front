@@ -69,7 +69,7 @@
 
 ## 🎥 데모 영상
 
-- (유투브 링크 올라오면 업로드)
+- (Youtube 링크 올라오면 업로드)
 
 ## 🔆 기대 효과
 
@@ -84,3 +84,54 @@
 
 - 피스 페이지를 통해 환경 관련 정보를 공유하고, 챌린지를 참여해 받은 포인트로 나의 섬을 꾸밀 수 있습니다.
 - 얻은 포인트로 멸종위기종를 입양할 수 있는데, 이를 통해 멸종위기종에 대한 관심을 이끌어낼 수 있다고 기대합니다.
+
+🖥 실행 방법
+
+```
+https://github.com/today-they-learned/peacepiece_front.git
+cd peacepiece_front
+yarn install
+yarn start
+```
+
+🗂 사용 패키지
+
+```
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@material-ui/types": "5.1.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.10.1",
+    "@mui/styled-engine-sc": "^5.10.1",
+    "@mui/types": "^7.1.5",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^28.1.5",
+    "@types/node": "^18.0.4",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-responsive": "^8.0.5",
+    "@types/styled-components": "^5.1.25",
+    "axios": "^0.27.2",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "moment": "^2.29.4",
+    "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-intersection-observer": "^9.4.0",
+    "react-isometric-grid": "^0.0.3",
+    "react-isometric-tilemap": "^1.0.0",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-query": "^3.39.2",
+    "react-responsive": "^9.0.0-beta.10",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.3",
+    "styled-components": "^5.3.5",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
+```
