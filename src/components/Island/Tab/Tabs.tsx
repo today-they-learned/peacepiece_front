@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useBuyItem, useItemListData } from "hooks/queries/item";
 import { BuyableItemType } from "types";
 import { Island, Animal, Item, Point } from "./index";
+import CurrentPoint from "./CurrentPoint";
 
 const TabContainer = styled(BannerBox)`
   max-height: 80vh;
@@ -58,6 +59,7 @@ const Tabs = () => {
         menuItem: "상점",
         render: () => (
           <TabPane>
+            <CurrentPoint />
             <Item treeData={treeData} handleBuyItem={handleBuyItem} />
             <Island islandData={islandData} handleBuyItem={handleBuyItem} />
             <Animal animalData={animalData} handleBuyItem={handleBuyItem} />

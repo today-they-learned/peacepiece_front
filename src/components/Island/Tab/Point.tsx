@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-import { userPointListData } from "hooks/queries/point";
+import { usePointListData } from "hooks/queries/point";
 import PointPartialList from "./PointPartialList";
 import PointListPlaceholder from "./PointListPlaceholder";
 
@@ -15,7 +15,7 @@ const PointContainer = styled.div`
 const Point = () => {
   const { ref, inView } = useInView();
   const { data, isFetched, isFetchingNextPage, hasNextPage, fetchNextPage } =
-    userPointListData();
+    usePointListData();
 
   useEffect(() => {
     if (inView && hasNextPage) {

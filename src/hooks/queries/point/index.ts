@@ -1,1 +1,2 @@
-export { default as userPointListData } from "./userPointListData";
+export { default as usePointListData } from "./usePointListData";
+export { default as useCurrentPointData } from "./useCurrentPointData";

@@ -12,6 +12,8 @@ const useBuyItemMutation = () => {
         const { user } = useUser();
         queryClient.invalidateQueries([queryKeys.ITEM_STATUS, user.id]);
         queryClient.invalidateQueries(queryKeys.ITEMS_DATA);
+        queryClient.invalidateQueries(queryKeys.CURRENT_POINT_DATA);
+        queryClient.invalidateQueries(queryKeys.POINT_LIST);
       },
     }
   );
