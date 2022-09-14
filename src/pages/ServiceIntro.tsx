@@ -1,6 +1,7 @@
 import COLOR from "constants/color";
 import styled from "styled-components";
 import ChallengeCarousel from "components/ServiceIntro/ChallengeCarousel";
+import IslandCarousel from "components/ServiceIntro/IslandCarousel";
 import MaxWidthLayout from "layouts/maxWidth.layout";
 import FAQAccordion from "components/ServiceIntro/FAQAccordion";
 
@@ -183,7 +184,7 @@ const ServiceIntro = () => {
                 넓혀 나가 구매할 수 있는 아이템의 개수도 넓혀나가 보세요!
               </ServiceDescriptionContent>
             </ServiceDescriptionTypoContainer>
-            <ChallengeCarousel />
+            <IslandCarousel />
           </ServiceDescriptionContainer>
 
           <FAQContainer>
