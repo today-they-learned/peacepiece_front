@@ -88,7 +88,7 @@
 ## 🖥 실행 방법
 
 ```
-https://github.com/today-they-learned/peacepiece_front.git
+git clone https://github.com/today-they-learned/peacepiece_front.git
 cd peacepiece_front
 yarn install
 yarn start
