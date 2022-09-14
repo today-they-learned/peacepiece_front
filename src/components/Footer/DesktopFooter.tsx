@@ -6,6 +6,9 @@ import { FlexBox } from "components/common";
 const Foot = styled.div`
   width: 100%;
   height: 5rem;
+  position: relative;
+  transform: translateY(100%);
+  background: ${COLOR.bg.default};
 `;
 
 const Line = styled.div`

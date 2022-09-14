@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import COLOR from "constants/color";
 import FlexBox from "components/common/FlexBox";
 
 const Foot = styled.div`
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  position: relative;
+  transform: translateY(50%);
+  background: ${COLOR.bg.default};
 `;
 
 const Line = styled.div`

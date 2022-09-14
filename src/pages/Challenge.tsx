@@ -21,7 +21,7 @@ const Challenge = () => {
           margin="2rem 0 0 0"
           gap="2rem"
         >
-          <FlexBox column width="100%" alignItems="center" margin="0 0 2rem 0">
+          <FlexBox column width="100%" alignItems="center">
             <TodayChallengeList />
             <WeeklyChallengeList />
             <ChallengeSuggestionGather />
