@@ -301,11 +301,18 @@ const Navbar = () => {
       setCurrentClickNav("challenge");
       setCurrentClickSubNav("/challenge");
       setClickedChallenge(true);
-    } else if (url === "/" || url === "/intro") {
+    } else if (url === "/") {
       setCurrentClickNav("/island");
     } else if (url.slice(0, 6) === "/piece") {
       setCurrentClickNav("/piece");
       setClickedChallenge(false);
+    } else if (url === "/intro") {
+      if (user) {
+        setCurrentClickNav(null);
+        setCurrentClickSubNav(null);
+      } else {
+        setCurrentClickNav("/island");
+      }
     } else {
       setCurrentClickNav(null);
       setCurrentClickSubNav(null);
