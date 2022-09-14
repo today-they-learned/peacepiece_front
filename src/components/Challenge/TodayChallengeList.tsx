@@ -59,7 +59,7 @@ const TodayChallengeList = () => {
         >
           <CardContainer>
             {isFetched &&
-              challenges.map((challenge: ChallengeType) => (
+              challenges?.map((challenge: ChallengeType) => (
                 <TodayChallengeCardWrapper
                   key={`today-challenges_${challenge.id}`}
                   gap="2rem"
@@ -79,7 +79,7 @@ const TodayChallengeList = () => {
         >
           <CardContainer>
             {isFetched &&
-              challenges.map((challenge: ChallengeType) => (
+              challenges?.map((challenge: ChallengeType) => (
                 <TodayChallengeCardWrapper
                   key={`today-challenges_${challenge.id}`}
                   gap="2rem"
