@@ -349,8 +349,8 @@ const MobileNavbar = () => {
     }
   }, [isFetched, isRefetching]);
 
-  const getNewNotiCnt = (notis: NotiType[]) => {
-    return notis.filter((noti: NotiType) => !noti.is_viewed).length;
+  const getNewNotiCnt = (notis: NotiType[] = []) => {
+    return notis.filter((noti: NotiType) => !noti?.is_viewed).length;
   };
 
   return (
