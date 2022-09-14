@@ -6,6 +6,8 @@ import { FlexBox } from "components/common";
 const Foot = styled.div`
   width: 100%;
   height: 5rem;
+  position: relative;
+  transform: translateY(50%);
 `;
 
 const Line = styled.div`
@@ -44,7 +46,13 @@ const Footer = () => {
     <Foot>
       <Line />
       <FlexBox padding="1.8rem 10rem">
-        <Logo>PeacePiece</Logo>
+        <Logo
+          onClick={() => {
+            navigate(`/`);
+          }}
+        >
+          PeacePiece
+        </Logo>
         <FootItems>
           <Label
             onClick={() => {
