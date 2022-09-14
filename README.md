@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9cc5d64a-ced2-42bc-8391-37c835b35bcc/deploy-status)](https://app.netlify.com/sites/peacepiece/deploys)
 
-<div width="500" align=center>
+<div  align=center dir=auto>
     <img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
     <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black">
     <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white">
