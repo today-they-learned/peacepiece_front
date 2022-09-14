@@ -32,9 +32,10 @@ const script = {
 interface Props {
   title: string;
   isEnded: boolean;
+  isProved: boolean;
 }
 
-const ChallengeTestimonial = ({ title, isEnded }: Props) => {
+const ChallengeTestimonial = ({ title, isEnded, isProved }: Props) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { user } = useUser();
@@ -69,15 +70,23 @@ const ChallengeTestimonial = ({ title, isEnded }: Props) => {
         titleColor={COLOR.font.primary}
         padding="2rem 3rem"
       >
-        <TemporaryContainer role="none" onClick={openModal}>
+        <TemporaryContainer
+          role="none"
+          onClick={!isEnded && !isProved && openModal}
+        >
           <FlexTextBox
             fontSize="1.25rem"
             fontFamily="Pr-Bold"
             color={COLOR.font.disabled}
           >
-            {isEnded
-              ? "종료된 챌린지입니다 🥺"
-              : "챌린지를 달성했나요? 모두에게 인증해주세요!"}
+            {
+              // eslint-disable-next-line no-nested-ternary
+              isEnded
+                ? "종료된 챌린지입니다 🥺"
+                : isProved
+                ? "이미 인증한 챌린지 입니다."
+                : "챌린지를 달성했나요? 모두에게 인증해주세요!"
+            }
           </FlexTextBox>
         </TemporaryContainer>
         <Divider style={{ width: "100%", margin: "2rem 0 " }} />

@@ -87,9 +87,9 @@ const CertificationBanner = (props: Props) => {
               position="absolute"
               right="1rem"
               bottom="1rem"
-              onClick={user ? openModal : () => navigate("/sign")}
+              onClick={user ? !isProved && openModal : () => navigate("/sign")}
             >
-              {isProved ? "인증완료" : "인증하기"}
+              {isProved ? "인증 완료" : "인증하기"}
             </FlexButton>
           </BannerBox>
         </FlexBox>
