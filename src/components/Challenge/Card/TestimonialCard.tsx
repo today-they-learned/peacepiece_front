@@ -41,7 +41,7 @@ const TestimonialCard = (props: Props) => {
   const { piece } = props;
   return (
     <FlexBox
-      width="45rem"
+      width="100%"
       background={COLOR.bg.nav}
       borderRadius="1.25rem"
       column
