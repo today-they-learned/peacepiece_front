@@ -11,3 +11,4 @@ export type { default as NotiType } from "./noti";
 export type { default as PointType } from "./point";
 export type { default as ItemType } from "./item";
 export type { default as ItemCategoryType } from "./itemCategory";
+export type { default as FeedbackType } from "./feedback";

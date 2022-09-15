@@ -4,8 +4,10 @@ import { FlexBox, FlexTextBox } from "components/common";
 import styled from "styled-components";
 import COLOR from "constants/color";
 import { ArticleType } from "types";
-import { useDate } from "hooks";
-import ImageList from "./ImageList";
+import { useDate, useUser } from "hooks";
+import ImageList from "components/Peace/Post/ImageList";
+import EmojiPicker from "components/Peace/Feedback/EmojiPicker";
+import Emoji from "components/Peace/Feedback/Emoji";
 
 interface Props {
   article: ArticleType;
@@ -19,18 +21,6 @@ const Avatar = styled.img`
   background: ${COLOR.bg.primary};
 `;
 
-const Emoji = styled.div<{ isFeedbacked: boolean }>`
-  font-size: 13px;
-  padding: 0.2rem 0.6rem;
-  border-radius: 15px;
-  margin-right: 0.7rem;
-  font-family: ${(props) => (props.isFeedbacked ? "Pr-Bold" : "Pr-Regular")};
-  color: ${(props) =>
-    props.isFeedbacked ? COLOR.font.darkDefault : COLOR.white};
-  background: ${(props) =>
-    props.isFeedbacked ? COLOR.white : COLOR.btn.active};
-`;
-
 const Button = styled.button`
   color: ${COLOR.font.link};
   font-size: 0.8rem;
@@ -40,6 +30,7 @@ const Button = styled.button`
 
 const Post = (props: Props) => {
   const { article } = props;
+  const { user } = useUser();
   const [textLimit, setTextLimit] = useState(
     Math.min(200, article.content.length)
   );
@@ -99,11 +90,19 @@ const Post = (props: Props) => {
 
         <ImageList article={article} />
 
-        <FlexBox background="transparent">
-          <Emoji isFeedbacked>👍 1</Emoji>
-          <Emoji isFeedbacked={false}>🌱 0</Emoji>
-          <Emoji isFeedbacked={false}>❤️ 0</Emoji>
-          <Emoji isFeedbacked={false}>🚀 0</Emoji>
+        <FlexBox background="transparent" wrap="wrap" gap="7px">
+          {!!article.feedbacks.length &&
+            article?.feedbacks?.map((feedback) => (
+              <Emoji
+                key={`article_${article.id}_feedback_${feedback.feedback.id}`}
+                articleId={article.id}
+                emoji={feedback.feedback.emoji}
+                isFeedbacked={feedback.is_feedbacked}
+              >
+                {feedback.count}
+              </Emoji>
+            ))}
+          {user && <EmojiPicker challengeId={article.id} />}
         </FlexBox>
       </FlexBox>
     </>

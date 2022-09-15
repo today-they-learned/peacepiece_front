@@ -10,6 +10,7 @@ const useRecommendChallengeQuery = () => {
       select: (data) => {
         return data.data;
       },
+      enabled: !!localStorage.getItem("user"),
     }
   );
 };
