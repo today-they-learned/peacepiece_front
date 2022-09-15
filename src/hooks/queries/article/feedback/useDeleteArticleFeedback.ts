@@ -4,11 +4,11 @@ import articleAPI from "apis/articleAPI";
 import { queryClient } from "config";
 import * as queryKeys from "constants/queryKeys";
 
-const useAddArticleFeedbackMutation = (articleId: string) => {
+const useDeleteArticleFeedbackMutation = (articleId: string | number) => {
   const { keyword } = useParams();
   return useMutation(
     (emoji: string) => {
-      return articleAPI.feedback.post(articleId, emoji);
+      return articleAPI.feedback.delete(articleId, emoji);
     },
     {
       onSuccess: () => {
@@ -20,4 +20,4 @@ const useAddArticleFeedbackMutation = (articleId: string) => {
   );
 };
 
-export default useAddArticleFeedbackMutation;
+export default useDeleteArticleFeedbackMutation;

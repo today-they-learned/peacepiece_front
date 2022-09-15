@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
-import { init } from "emoji-mart";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import ko from "components/Peace/Feedback/emoji-mart.locale.ko";
@@ -56,7 +55,7 @@ const EmojiPicker = ({ challengeId }) => {
   };
 
   const handleSelect = (e) => {
-    addFeedback(e.id);
+    addFeedback(e.native);
     handleClose();
   };
 
@@ -73,7 +72,6 @@ const EmojiPicker = ({ challengeId }) => {
     };
   }, [ref]);
 
-  init({ data });
   return (
     <div>
       <Emoji onClick={handletrigger}>

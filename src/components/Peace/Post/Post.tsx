@@ -95,7 +95,8 @@ const Post = (props: Props) => {
             article?.feedbacks?.map((feedback) => (
               <Emoji
                 key={`article_${article.id}_feedback_${feedback.feedback.id}`}
-                id={feedback.feedback.emoji}
+                articleId={article.id}
+                emoji={feedback.feedback.emoji}
                 isFeedbacked={feedback.is_feedbacked}
               >
                 {feedback.count}

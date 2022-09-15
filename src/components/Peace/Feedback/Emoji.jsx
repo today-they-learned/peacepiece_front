@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import COLOR from "constants/color";
-import { init } from "emoji-mart";
-import data from "@emoji-mart/data";
+import { useUser } from "hooks";
+import {
+  useAddArticleFeedback,
+  useDeleteArticleFeedback,
+} from "hooks/queries/article";
 
 const EmojiContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: ${(props) => (props.user ? "pointer" : "default")};
   height: 100%;
   max-height: 30px;
   font-size: 14px;
@@ -20,12 +23,29 @@ const EmojiContainer = styled.div`
     props.isFeedbacked ? COLOR.white : COLOR.btn.active};
 `;
 
-const Emoji = ({ id, children, isFeedbacked }) => {
-  init({ data });
+const Emoji = ({ articleId, emoji, children, isFeedbacked }) => {
+  const { user } = useUser();
+
+  const { mutate: addFeedback } = useAddArticleFeedback(articleId);
+  const { mutate: deleteFeedback } = useDeleteArticleFeedback(articleId);
+
+  const handleClick = () => {
+    if (!user) return;
+    if (isFeedbacked) {
+      deleteFeedback(emoji);
+    } else {
+      addFeedback(emoji);
+    }
+  };
 
   return (
-    <EmojiContainer isFeedbacked={isFeedbacked}>
-      <em-emoji id={id}>{children}</em-emoji>
+    <EmojiContainer
+      user={user}
+      isFeedbacked={isFeedbacked}
+      onClick={handleClick}
+    >
+      {emoji}
+      {children}
     </EmojiContainer>
   );
 };
