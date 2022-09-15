@@ -115,7 +115,7 @@
 
 ## 🎥 데모 영상
 
-- (Youtube 링크 올라오면 업로드)
+[![video](https://img.youtube.com/vi/8OakU0-HIYQ/0.jpg)](https://www.youtube.com/watch?v=8OakU0-HIYQ)
 
 </br>
 
