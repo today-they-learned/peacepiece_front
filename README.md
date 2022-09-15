@@ -69,7 +69,7 @@
 
 ## 📁 디렉토리 구조
 
-<img width="971" alt="스크린샷 2022-09-14 오후 4 31 43" src="https://user-images.githubusercontent.com/66055587/190090032-94959e5a-d6a4-4661-9b65-36ed32f1ee6b.png">
+<img width="971" alt="스크린샷 2022-09-14 오후 4 31 43" src="https://user-images.githubusercontent.com/47373998/190423928-62a3cd17-9b6b-4e64-83b3-467237c90bf5.png">
 
 </br>
 
