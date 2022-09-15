@@ -4,6 +4,7 @@ import ChallengeCarousel from "components/ServiceIntro/ChallengeCarousel";
 import IslandCarousel from "components/ServiceIntro/IslandCarousel";
 import MaxWidthLayout from "layouts/maxWidth.layout";
 import FAQAccordion from "components/ServiceIntro/FAQAccordion";
+import PieceCarousel from "components/ServiceIntro/PieceCarousel";
 
 const ServiceIntroContainer = styled.div`
   display: flex;
@@ -169,7 +170,7 @@ const ServiceIntro = () => {
                 SNS에도 공유할 수도 있어요!
               </ServiceDescriptionContent>
             </ServiceDescriptionTypoContainer>
-            <ChallengeCarousel />
+            <PieceCarousel />
           </ServiceDescriptionContainer>
           <ServiceDescriptionContainer reverse={false}>
             <ServiceDescriptionTypoContainer>
